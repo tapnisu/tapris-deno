@@ -14,15 +14,18 @@ class ExtendedClient extends Client {
   public env = env;
 
   public async init() {
+    GetCommands(this);
+    GetEvents(this);
+    GetComponents(this);
+
     await this.connect(this.env.BOT_TOKEN, [
       GatewayIntents.DIRECT_MESSAGES,
       GatewayIntents.GUILDS,
       GatewayIntents.GUILD_MESSAGES,
+      GatewayIntents.GUILD_MEMBERS,
+      GatewayIntents.GUILD_VOICE_STATES,
+      GatewayIntents.GUILD_PRESENCES,
     ]);
-
-    GetCommands(this);
-    GetEvents(this);
-    GetComponents(this);
 
     await serve(server, { port: Number(env.SERVER_PORT) });
   }
