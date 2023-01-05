@@ -1,5 +1,5 @@
 const server = (): Response => {
-  return Response.redirect("https://github.com/tapris-bot/tapris", 302);
+  return Response.redirect("https://tapris.tapni.su", 302);
 };
 
 export default server;
