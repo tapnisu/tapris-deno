@@ -247,7 +247,10 @@
     "https://unpkg.com/@evan/wasm@0.0.93/target/zlib/deno.js": "e65131e1c1f45e64960f2699a0b868927ea5c9201c4b986a7cfc57b18be5cc09"
   },
   "npm": {
-    "specifiers": { "genshin-db": "genshin-db@4.3.4" },
+    "specifiers": {
+      "genshin-db": "genshin-db@4.3.4",
+      "genshin-db@^4.3.4": "genshin-db@4.3.4"
+    },
     "packages": {
       "fuzzysort@1.9.0": {
         "integrity": "sha512-MOxCT0qLTwLqmEwc7UtU045RKef7mc8Qz8eR4r2bLNEq9dy/c3ZKMEFp6IEst69otkQdFZ4FfgH2dmZD+ddX1g==",

@@ -6,7 +6,7 @@
     "dotenv/": "https://deno.land/x/dotenv@v3.2.0/",
     "std": "https://deno.land/std@0.159.0/mod.ts",
     "std/": "https://deno.land/std@0.159.0/",
-    "genshin-db": "npm:genshin-db",
+    "genshin-db": "npm:genshin-db@^4.3.4",
     "@commands": "./commands/mod.ts",
     "@commands/": "./commands/",
     "@events": "./events/mod.ts",
