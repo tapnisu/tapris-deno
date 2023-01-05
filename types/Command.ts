@@ -2,13 +2,13 @@ import ExtendedClient from "@core";
 import {
   ApplicationCommandOption,
   InteractionResponse,
-  SlashCommandInteraction
+  SlashCommandInteraction,
 } from "harmony";
 
 interface Run {
   (
     client: ExtendedClient,
-    interaction: SlashCommandInteraction
+    interaction: SlashCommandInteraction,
   ): Promise<InteractionResponse>;
 }
 
