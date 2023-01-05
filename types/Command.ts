@@ -1,15 +1,15 @@
 import ExtendedClient from "@core";
 import {
-  ApplicationCommandOption,
+  ApplicationCommandInteraction, ApplicationCommandOption,
   InteractionResponse,
-  SlashCommandInteraction,
+  SlashCommandInteraction
 } from "harmony";
 
 interface Run {
   (
     client: ExtendedClient,
     interaction: SlashCommandInteraction,
-  ): Promise<InteractionResponse>;
+  ): Promise<InteractionResponse | ApplicationCommandInteraction>;
 }
 
 type ApplicationCommandOptionExtended = ApplicationCommandOption & {
