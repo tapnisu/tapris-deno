@@ -1,0 +1,23 @@
+{
+  "imports": {
+    "harmony": "https://deno.land/x/harmony@v2.6.0/mod.ts",
+    "harmony/": "https://deno.land/x/harmony@v2.6.0/",
+    "dotenv": "https://deno.land/x/dotenv@v3.2.0/mod.ts",
+    "dotenv/": "https://deno.land/x/dotenv@v3.2.0/",
+    "std": "https://deno.land/std@0.159.0/mod.ts",
+    "std/": "https://deno.land/std@0.159.0/",
+    "@commands": "./commands/mod.ts",
+    "@commands/": "./commands/",
+    "@events": "./events/mod.ts",
+    "@events/": "./events/",
+    "@components": "./components/mod.ts",
+    "@components/": "./components/",
+    "@utils": "./utils/mod.ts",
+    "@utils/": "./utils/",
+    "@types": "./types/mod.ts",
+    "@types/": "./types/",
+    "@core": "./core.ts",
+    "@buttons": "./buttons/mod.ts",
+    "@buttons/": "./buttons/"
+  }
+}
