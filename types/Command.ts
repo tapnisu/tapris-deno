@@ -2,7 +2,7 @@ import ExtendedClient from "@core";
 import {
   ApplicationCommandInteraction,
   ApplicationCommandOption,
-  SlashCommandInteraction
+  SlashCommandInteraction,
 } from "harmony";
 
 interface Run {
