@@ -1,8 +1,8 @@
 import ExtendedClient from "@core";
 import { ClientEvents, Message } from "harmony";
 
-type ArgsKeys = keyof ClientEvents;
-type Args = ClientEvents[ArgsKeys];
+type EventName = keyof ClientEvents;
+type Args = ClientEvents[EventName];
 
 interface Run {
   (
@@ -12,6 +12,6 @@ interface Run {
 }
 
 export interface Event {
-  name: keyof ClientEvents;
+  name: EventName;
   run: Run;
 }
