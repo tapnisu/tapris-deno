@@ -26,7 +26,7 @@ const command: Command = {
   ],
   run: async (client, interaction) => {
     const requestType: string = interaction.options.find(
-      (option) => option.name == "name",
+      (option) => option.name == "type",
     )?.value;
 
     const request: string = interaction.options
@@ -164,7 +164,7 @@ const command: Command = {
 
       if (weapon.url?.fandom) embed.setURL(weapon.url.fandom);
 
-      return await interaction.reply({ embeds: [Embed] });
+      return await interaction.reply({ embeds: [embed] });
     }
 
     if (requestType == "artifact") {
@@ -212,7 +212,7 @@ const command: Command = {
 
       if (artifact.url?.fandom) embed.setURL(artifact.url.fandom);
 
-      return await interaction.reply({ embeds: [Embed] });
+      return await interaction.reply({ embeds: [embed] });
     }
   },
 };
