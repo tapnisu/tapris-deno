@@ -17,7 +17,7 @@ const command: Command = {
     await interaction.defer();
 
     let colorString: string = interaction.options.find(
-      (option) => option.name == "color"
+      (option) => option.name == "color",
     )?.value;
 
     if (!colorString) {
