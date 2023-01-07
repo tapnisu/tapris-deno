@@ -1,9 +1,9 @@
 import ExtendedClient from "@core";
 import { Event } from "@types";
-import ready from "./ready.ts";
+import guildCreate from "./guildCreate.ts";
 import interactionCreate from "./interactionCreate.ts";
 import messageCreate from "./messageCreate.ts";
-import guildCreate from "./guildCreate.ts";
+import ready from "./ready.ts";
 
 const Register = (client: ExtendedClient, event: Event) => {
   client.events.set(event.name, event);
