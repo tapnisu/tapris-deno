@@ -7,6 +7,8 @@ import coin from "./fun/coin.ts";
 import lmgtfy from "./fun/lmgtfy.ts";
 import help from "./info/help.ts";
 import avatar from "./utils/avatar.ts";
+import color from "./utils/color.ts";
+import colour from "./utils/colour.ts";
 import password from "./utils/password.ts";
 import user from "./utils/user.ts";
 
@@ -21,6 +23,8 @@ export default (client: ExtendedClient) => {
   Register(client, help);
   Register(client, password);
   Register(client, avatar);
+  Register(client, color);
+  Register(client, colour);
   Register(client, user);
   Register(client, manga);
   Register(client, lmgtfy);
