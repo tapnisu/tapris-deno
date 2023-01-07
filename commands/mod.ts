@@ -12,7 +12,6 @@ import colour from "./utils/colour.ts";
 import password from "./utils/password.ts";
 import user from "./utils/user.ts";
 
-
 const Register = (client: ExtendedClient, command: Command) => {
   client.commands.set(command.name, command);
 };

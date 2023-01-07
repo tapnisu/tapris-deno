@@ -17,7 +17,7 @@ const command: Command = {
     await interaction.defer();
 
     let colorString: string = interaction.options.find(
-      (option) => option.name == "color"
+      (option) => option.name == "color",
     )?.value;
 
     if (!colorString) {
@@ -46,7 +46,7 @@ const command: Command = {
 
     const attachment = new MessageAttachment(
       "ColorHexSend.jpg",
-      canvas.toBuffer("image/jpeg")
+      canvas.toBuffer("image/jpeg"),
     );
 
     const embed = new Embed()
