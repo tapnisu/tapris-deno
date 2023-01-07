@@ -14,7 +14,7 @@ const command: Command = {
   ],
   run: (client, interaction) => {
     const request = interaction.options.find(
-      (option) => option.name == "command",
+      (option) => option.name == "command"
     )?.value;
 
     if (request) {
@@ -58,14 +58,16 @@ const command: Command = {
       embed.addFields({
         name: `/${command.name} ${
           command.options
-            ? command.options
-              .map(
-                (option: ApplicationCommandOptionBase) =>
-                  `<${
-                    option.required ? "" : ""
-                  }${option.name} [${option.description}]>`,
-              )
-              .join(" ")
+            ? Array.prototype.map
+                .call(
+                  command.options,
+                  (option: ApplicationCommandOptionBase) =>
+                    `<${option.required ? "" : ""}${option.name} [${
+                      option.description
+                    }]>`
+                )
+
+                .join(" ")
             : ""
         }`,
         value: command.description ? command.description : "...",
