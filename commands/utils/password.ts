@@ -1,7 +1,7 @@
 import { Command } from "@types";
 import { ActionRowComponent, Embed } from "harmony";
 
-export const command: Command = {
+const command: Command = {
   name: "password",
   description: "Password generator",
   options: [

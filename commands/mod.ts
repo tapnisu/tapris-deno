@@ -19,13 +19,13 @@ const Register = (client: ExtendedClient, command: Command) => {
 export default (client: ExtendedClient) => {
   Register(client, genshin);
   Register(client, genshinCodes);
+  Register(client, manga);
   Register(client, coin);
+  Register(client, lmgtfy);
   Register(client, help);
-  Register(client, password);
   Register(client, avatar);
   Register(client, color);
   Register(client, colour);
+  Register(client, password);
   Register(client, user);
-  Register(client, manga);
-  Register(client, lmgtfy);
 };
