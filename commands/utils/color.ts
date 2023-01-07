@@ -46,7 +46,7 @@ const command: Command = {
 
     const attachment = new MessageAttachment(
       "ColorHexSend.png",
-      canvas.toBuffer("image/png")
+      canvas.toBuffer("image/png"),
     );
 
     const embed = new Embed()
