@@ -12,7 +12,7 @@
 
 ## Overview
 
-Tapris is a `discord.js` bot, made in `TypeScript`. Bot is named after Tapris
+Tapris is a `discord.js` bot, made in `TypeScript`. Bot is named after Tapris Sugarbell Chisaki
 from Gabriel DropOut manga.
 
 ## Invite
