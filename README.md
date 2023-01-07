@@ -12,8 +12,8 @@
 
 ## Overview
 
-Tapris is a `discord.js` bot, made in `TypeScript`. Bot is named after Tapris Sugarbell Chisaki
-from Gabriel DropOut manga.
+Tapris is a `discord.js` bot, made in `TypeScript`. Bot is named after Tapris
+Sugarbell Chisaki from Gabriel DropOut manga.
 
 ## Invite
 
@@ -26,9 +26,11 @@ Type "/" to see commands!
 1. Create bot -
    [Discord developer portal](https://discord.com/developers/applications).
 
-2. Install [Deno](https://deno.land/manual@v1.29.2/getting_started/installation) (I recommend using LTS).
+2. Install [Deno](https://deno.land/manual@v1.29.2/getting_started/installation)
+   (I recommend using LTS).
 
-3. Clone repo: `git clone https://github.com/tapris-bot/tapris.git && cd ./tapris/`
+3. Clone repo:
+   `git clone https://github.com/tapris-bot/tapris.git && cd ./tapris/`
 
 4. Setup [.env](.env.sample) (example in [.env.sample](.env.sample))
 
