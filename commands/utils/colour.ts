@@ -12,7 +12,7 @@ const command: Command = {
       required: false,
     },
   ],
-  run: colorCommand.run
+  run: colorCommand.run,
 };
 
 export default command;
