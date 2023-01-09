@@ -38,11 +38,11 @@ const command: Command = {
     ctx.font = "50px monospace";
     ctx.fillStyle = "#ffffff";
     ctx.textAlign = "center";
-    ctx.fillText(colorString, 250, 200);
+    ctx.fillText("Lorem ipsum", 75, 200);
     ctx.font = "50px monospace";
     ctx.fillStyle = "#000000";
     ctx.textAlign = "center";
-    ctx.fillText(colorString, 250, 350);
+    ctx.fillText("Lorem ipsum", 75, 350);
 
     const attachment = new MessageAttachment(
       "ColorHexSend.png",
