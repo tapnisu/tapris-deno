@@ -6,7 +6,7 @@ const command: Command = {
   description: "Shows colour or generates colour",
   options: [
     {
-      name: "colour",
+      name: "string",
       description: "Colour to be shown",
       type: 3,
       required: false,

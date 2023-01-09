@@ -7,7 +7,7 @@ const command: Command = {
   description: "Shows color or generates color",
   options: [
     {
-      name: "color",
+      name: "string",
       description: "Color to be shown",
       type: 3,
       required: false,
@@ -17,7 +17,7 @@ const command: Command = {
     await interaction.defer();
 
     let colorString: string = interaction.options.find(
-      (option) => option.name == "color",
+      (option) => option.name == "string",
     )?.value;
 
     if (!colorString) {
