@@ -2,7 +2,6 @@ import ExtendedClient from "@core";
 import { Event } from "@types";
 import guildCreate from "./guildCreate.ts";
 import interactionCreate from "./interactionCreate.ts";
-import messageCreate from "./messageCreate.ts";
 import ready from "./ready.ts";
 
 const Register = (client: ExtendedClient, event: Event) => {
@@ -13,6 +12,5 @@ const Register = (client: ExtendedClient, event: Event) => {
 export default (client: ExtendedClient) => {
   Register(client, ready);
   Register(client, interactionCreate);
-  Register(client, messageCreate);
   Register(client, guildCreate);
 };
