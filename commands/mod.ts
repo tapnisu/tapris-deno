@@ -1,6 +1,6 @@
 import ExtendedClient from "../core.ts";
 import { Command } from "../types/mod.ts";
-import genshin from "./api/genshin.ts";
+// import genshin from "./api/genshin.ts";
 import genshinCodes from "./api/genshinCodes.ts";
 import manga from "./api/manga.ts";
 import coin from "./fun/coin.ts";
@@ -17,7 +17,7 @@ const Register = (client: ExtendedClient, command: Command) => {
 };
 
 export default (client: ExtendedClient) => {
-  Register(client, genshin);
+  // Register(client, genshin);
   Register(client, genshinCodes);
   Register(client, manga);
   Register(client, coin);
