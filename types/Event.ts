@@ -7,7 +7,7 @@ type Args = ClientEvents[EventName];
 interface Run {
   (
     client: ExtendedClient,
-    ...args: any
+    ...args: unknown[]
     //...args: Args
   ): Promise<Message | undefined | void> | Message | undefined | void;
 }
