@@ -19,7 +19,7 @@ const command: Command = {
 
     if (!user) {
       return interaction.reply({
-        content: "Unkown error happend :(",
+        content: "Unknown error happened! :(",
         ephemeral: true,
       });
     }
