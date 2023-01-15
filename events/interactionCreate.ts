@@ -1,9 +1,10 @@
+import ExtendedClient from "@core";
 import { Command, Component, Event } from "@types";
 import { Interaction } from "harmony";
 
 const event: Event = {
   name: "interactionCreate",
-  run: (client, interaction: Interaction) => {
+  run: (client: ExtendedClient, interaction: Interaction) => {
     if (interaction.isApplicationCommand()) {
       const command = client.commands.get(interaction.name);
       if (command) (command as Command).run(client, interaction);

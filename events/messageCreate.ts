@@ -1,9 +1,10 @@
+import ExtendedClient from "@core";
 import { Event } from "@types";
 import { GuildChannel, Message } from "harmony";
 
 const event: Event = {
   name: "messageCreate",
-  run: (_client, message: Message) => {
+  run: (_client: ExtendedClient, message: Message) => {
     const date = new Date().toLocaleString("en-US", {
       day: "2-digit",
       year: "2-digit",

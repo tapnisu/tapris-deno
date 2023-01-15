@@ -1,9 +1,10 @@
+import ExtendedClient from "@core";
 import { Event } from "@types";
 import { ApplicationCommandPartial } from "harmony";
 
 const event: Event = {
   name: "ready",
-  run: (client) => {
+  run: (client: ExtendedClient) => {
     client.setPresence({ name: "Type '/' to check bot commands!", type: 0 });
 
     const commands = client.interactions.commands;

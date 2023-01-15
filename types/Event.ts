@@ -8,7 +8,7 @@ interface Run {
   (
     client: ExtendedClient,
     ...args: Args
-  ): Promise<Message | void> | Message | void;
+  ): Promise<Message | undefined | void> | Message | undefined | void;
 }
 
 export interface Event {
