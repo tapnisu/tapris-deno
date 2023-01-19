@@ -7,7 +7,8 @@ type Args = ClientEvents[EventName];
 interface Run {
   (
     client: ExtendedClient,
-    ...args: unknown[]
+    // deno-lint-ignore no-explicit-any
+    ...args: any[]
     //...args: Args
   ): Promise<Message | undefined | void> | Message | undefined | void;
 }

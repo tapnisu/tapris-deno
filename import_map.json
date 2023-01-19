@@ -3,7 +3,7 @@
     "harmony": "https://deno.land/x/harmony@v2.8.0/mod.ts",
     "dotenv": "https://deno.land/x/dotenv@v3.2.0/mod.ts",
     "canvas": "https://deno.land/x/canvas@v1.4.1/mod.ts",
-    "genshin-db": "https://esm.sh/genshin-db@4.3.4",
+    "genshin-db": "https://esm.sh/genshin-db@4.3.5",
     "std": "https://deno.land/std@0.171.0/mod.ts",
     "std/": "https://deno.land/std@0.171.0/",
     "@commands": "./commands/mod.ts",
