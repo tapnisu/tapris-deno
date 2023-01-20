@@ -20,11 +20,12 @@ const command: Command = {
     if (request) {
       const command = client.commands.get(request);
 
-      if (!command)
+      if (!command) {
         return interaction.reply({
           content: `${request} is not a valid command!`,
           ephemeral: true,
         });
+      }
 
       const embed = new Embed()
         .setColor(client.env.BOT_COLOR)
@@ -52,7 +53,7 @@ const command: Command = {
       .setThumbnail(
         client.user
           ? client.user.avatarURL()
-          : "https://raw.githubusercontent.com/tapris-bot/tapris/main/assets/avatar.png"
+          : "https://raw.githubusercontent.com/tapris-bot/tapris/main/assets/avatar.png",
       );
 
     client.commands.forEach((command: Command) => {
