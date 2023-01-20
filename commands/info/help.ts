@@ -20,12 +20,11 @@ const command: Command = {
     if (request) {
       const command = client.commands.get(request);
 
-      if (!command) {
+      if (!command)
         return interaction.reply({
           content: `${request} is not a valid command!`,
           ephemeral: true,
         });
-      }
 
       const embed = new Embed()
         .setColor(client.env.BOT_COLOR)
@@ -48,11 +47,13 @@ const command: Command = {
       .setColor(client.env.BOT_COLOR)
       .setDescription(`Server member: ${interaction.guild?.name}`);
 
-    if (client.user) {
-      embed
-        .setTitle(client.user.username)
-        .setThumbnail(client.user.avatarURL());
-    }
+    embed
+      .setTitle(client.user ? client.user.username : "Tapris")
+      .setThumbnail(
+        client.user
+          ? client.user.avatarURL()
+          : "https://raw.githubusercontent.com/tapris-bot/tapris/main/assets/avatar.png"
+      );
 
     client.commands.forEach((command: Command) => {
       embed.addFields({
