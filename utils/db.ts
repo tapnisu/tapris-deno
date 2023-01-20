@@ -28,7 +28,7 @@ export default class DBManager {
     host: string,
     username: string,
     password: string,
-    database: string
+    database: string,
   ) {
     this.host = host;
     this.username = username;
