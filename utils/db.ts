@@ -21,7 +21,7 @@ export default class DBManager {
   private host: string;
   private username: string;
   private password: string;
-  private databese: string;
+  private database: string;
   public db: Database;
 
   constructor(
@@ -33,13 +33,13 @@ export default class DBManager {
     this.host = host;
     this.username = username;
     this.password = password;
-    this.databese = database;
+    this.database = database;
 
     const connection = new PostgresConnector({
       host: this.host,
       username: this.username,
       password: this.password,
-      database: this.databese,
+      database: this.database,
     });
 
     this.db = new Database(connection);
