@@ -65,4 +65,14 @@ export default class DBManager {
   public async getGuild(id: string) {
     return await Guild.where("id", id).first();
   }
+
+  public async getGuildLanguage(id: string): Promise<Language> {
+    return (await Guild.where("id", id).first()).language as Language;
+  }
+
+  public async setGuildLanguage(id: string, language: Language) {
+    const guild = await this.getGuild(id);
+    guild.language = language;
+    await guild.update();
+  }
 }
