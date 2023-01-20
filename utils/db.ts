@@ -22,13 +22,13 @@ export default class DBManager {
   private username: string;
   private password: string;
   private database: string;
-  public db: Database;
+  private db: Database;
 
   constructor(
     host: string,
     username: string,
     password: string,
-    database: string,
+    database: string
   ) {
     this.host = host;
     this.username = username;
