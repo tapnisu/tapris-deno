@@ -8,11 +8,11 @@ class Guild extends Model {
   static fields = {
     id: { primaryKey: true, type: DataTypes.STRING },
     language: DataTypes.STRING,
-    russianRouletBeforeDeath: DataTypes.INTEGER,
+    russianRouletteBeforeDeath: DataTypes.INTEGER,
   };
 
   static defaults = {
-    russianRouletBeforeDeath: 0,
+    russianRouletteBeforeDeath: 0,
     language: "en",
   };
 }
@@ -73,6 +73,33 @@ export default class DBManager {
   public async setGuildLanguage(id: string, language: Language) {
     const guild = await this.getGuild(id);
     guild.language = language;
+    await guild.update();
+  }
+
+  public async russianRouletteShoot(id: string): Promise<number> {
+    const guild = await Guild.where("id", id).first();
+
+    switch (guild.russianRouletteBeforeDeath) {
+      case 0:
+        return 2;
+
+      case 1:
+        guild.russianRouletteBeforeDeath = 0;
+        await guild.update();
+
+        return 1;
+
+      default:
+        (guild.russianRouletteBeforeDeath as number)--;
+        await guild.update();
+
+        return 0;
+    }
+  }
+
+  public async russianRouletteReload(id: string, drumSize: number) {
+    const guild = await this.getGuild(id);
+    guild.russianRouletteBeforeDeath = Math.floor(Math.random() * drumSize);
     await guild.update();
   }
 }
