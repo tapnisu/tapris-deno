@@ -14,7 +14,7 @@ const command: Command = {
   ],
   run: (client, interaction) => {
     const request = interaction.options.find(
-      (option) => option.name == "command",
+      (option) => option.name == "command"
     )?.value;
 
     if (request) {
@@ -59,14 +59,14 @@ const command: Command = {
         name: `/${command.name} ${
           command.options
             ? Array.prototype.map
-              .call(
-                command.options,
-                (option: ApplicationCommandOptionBase) =>
-                  `<${
-                    option.required ? "" : ""
-                  }${option.name} [${option.description}]>`,
-              )
-              .join(" ")
+                .call(
+                  command.options,
+                  (option: ApplicationCommandOptionBase) =>
+                    `<${option.required ? "(required) " : ""}${option.name} [${
+                      option.description
+                    }]>`
+                )
+                .join(" ")
             : ""
         }`,
         value: command.description ? command.description : "...",
