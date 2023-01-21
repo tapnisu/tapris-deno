@@ -1,6 +1,6 @@
+import ExtendedClient from "@core";
 import { Event } from "@types";
 import { Embed, Guild } from "harmony";
-import ExtendedClient from "../core.ts";
 
 const event: Event = {
   name: "guildCreate",
@@ -17,7 +17,7 @@ const event: Event = {
       .setThumbnail(client.user.avatarURL())
       .setDescription(
         `Type "/" to check bot commands!
-        https://github.com/tapris-bot/tapris.`,
+        https://github.com/tapris-bot/tapris.`
       );
 
     return channel.send({

@@ -18,8 +18,6 @@
     "@utils/": "./utils/",
     "@types": "./types/mod.ts",
     "@types/": "./types/",
-    "@core": "./core.ts",
-    "@buttons": "./buttons/mod.ts",
-    "@buttons/": "./buttons/"
+    "@core": "./core.ts"
   }
 }

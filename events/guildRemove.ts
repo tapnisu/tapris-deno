@@ -1,6 +1,6 @@
+import ExtendedClient from "@core";
 import { Event } from "@types";
 import { Guild } from "harmony";
-import ExtendedClient from "../core.ts";
 
 const event: Event = {
   name: "guildCreate",
