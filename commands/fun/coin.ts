@@ -34,12 +34,12 @@ const command: Command = {
   ],
   run: async (client, interaction) => {
     const choice = interaction.options.find(
-      (option) => option.name == "choice"
+      (option) => option.name == "choice",
     )?.value;
 
     const locales = (await client.db.selectLocale(
       interaction.guild!.id,
-      commandLocales
+      commandLocales,
     )) as typeof commandLocales.en;
 
     const winner: Choice = choices[Math.floor(Math.random() * 2)];
