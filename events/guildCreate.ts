@@ -17,7 +17,7 @@ const event: Event = {
       .setThumbnail(client.user.avatarURL())
       .setDescription(
         `Type "/" to check bot commands!
-        https://github.com/tapris-bot/tapris.`
+        https://github.com/tapris-bot/tapris.`,
       );
 
     return channel.send({
