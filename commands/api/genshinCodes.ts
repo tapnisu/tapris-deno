@@ -20,13 +20,13 @@ const command: Command = {
   run: async (client, interaction) => {
     const response = await (
       await fetch(
-        "https://raw.githubusercontent.com/ataraxyaffliction/gipn-json/main/gipn.json"
+        "https://raw.githubusercontent.com/ataraxyaffliction/gipn-json/main/gipn.json",
       )
     ).json();
 
     const locales = (await client.db.selectLocale(
       interaction.guild!.id,
-      commandLocales
+      commandLocales,
     )) as typeof commandLocales.en;
 
     const codes = response.CODES;
