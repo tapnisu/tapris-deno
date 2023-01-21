@@ -3,14 +3,14 @@ import { ActionRowComponent, Embed } from "harmony";
 
 const commandLocales = {
   en: {
-    urlButton: () => "Activate",
+    activateButton: () => "Activate",
     embedTitle: () => "Codes for Genshin Impact",
     description: () => "You can activate them in game, and get rewards!",
   },
   ru: {
     activateButton: () => "Активировать",
     embedTitle: () => "Промокоды для Genshin Impact",
-    description: () => "Вы можете активировать их в игре и получать награды!",
+    description: () => "Вы можете активировать их в игре и получить награды!",
   },
 };
 
@@ -20,14 +20,14 @@ const command: Command = {
   run: async (client, interaction) => {
     const response = await (
       await fetch(
-        "https://raw.githubusercontent.com/ataraxyaffliction/gipn-json/main/gipn.json",
+        "https://raw.githubusercontent.com/ataraxyaffliction/gipn-json/main/gipn.json"
       )
     ).json();
 
-    const locales = await client.db.selectLocale(
+    const locales = (await client.db.selectLocale(
       interaction.guild!.id,
-      commandLocales,
-    );
+      commandLocales
+    )) as typeof commandLocales.en;
 
     const codes = response.CODES;
     const url = "https://genshin.hoyoverse.com/en/gift";
@@ -35,7 +35,7 @@ const command: Command = {
     const embed = new Embed()
       .setColor(client.env.BOT_COLOR)
       .setTitle(locales.embedTitle())
-      .setDescription("You can activate them in game, and get rewards!")
+      .setDescription(locales.description())
       .setURL(url);
 
     codes.forEach((code: Code) => {
@@ -56,7 +56,7 @@ const command: Command = {
         {
           type: 2,
           url: url,
-          label: "Activate codes online",
+          label: locales.activateButton(),
           style: 5,
         },
       ],
