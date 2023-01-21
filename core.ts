@@ -3,6 +3,7 @@ import GetComponents from "@components/mod.ts";
 import GetEvents from "@events/mod.ts";
 import { Command, Component, Event } from "@types";
 import env from "@utils/config.ts";
+import DBManager from "@utils/db.ts";
 import server from "@utils/server.ts";
 import { Client, Collection, GatewayIntents } from "harmony";
 import { serve } from "std/http/server.ts";
@@ -12,6 +13,7 @@ class ExtendedClient extends Client {
   public components: Collection<RegExp, Component> = new Collection();
   public events: Collection<string, Event> = new Collection();
   public env = env;
+  public db = new DBManager(env.host, env.username, env.password, env.database);
 
   public async init() {
     GetCommands(this);
@@ -26,6 +28,8 @@ class ExtendedClient extends Client {
       GatewayIntents.GUILD_VOICE_STATES,
       GatewayIntents.GUILD_PRESENCES,
     ]);
+
+    this.db.sync();
 
     await serve(server, { port: Number(env.SERVER_PORT) });
   }
