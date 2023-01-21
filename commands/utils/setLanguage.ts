@@ -31,11 +31,11 @@ const command: Command = {
   run: async (client, interaction) => {
     const localesOld = await client.db.selectLocale(
       interaction.guild!.id,
-      commandLocales
+      commandLocales,
     );
 
     const userMember = await interaction.guild!.members.get(
-      interaction.user.id
+      interaction.user.id,
     );
 
     if (!userMember!.permissions.has("Administrator")) {
@@ -46,7 +46,7 @@ const command: Command = {
     }
 
     const language = interaction.options.find(
-      (option) => option.name == "language"
+      (option) => option.name == "language",
     )?.value as LocaleNames;
 
     await client.db.setGuildLanguage(interaction.guild!.id, language);
