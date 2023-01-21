@@ -1,6 +1,6 @@
+import { LocaleNames } from "@types";
 import { Database, DataTypes, Model, PostgresConnector } from "denodb";
-
-type Language = "en" | "ru";
+import { LocaleRecords, Locales } from "../types/Locales.ts";
 
 class Guild extends Model {
   static table = "Guild";
@@ -66,11 +66,18 @@ export default class DBManager {
     return await Guild.where("id", id).first();
   }
 
-  public async getGuildLanguage(id: string): Promise<Language> {
-    return (await Guild.where("id", id).first()).language as Language;
+  public async getGuildLanguage(id: string): Promise<LocaleNames> {
+    return (await Guild.where("id", id).first()).language as LocaleNames;
   }
 
-  public async setGuildLanguage(id: string, language: Language) {
+  public async selectLocale(
+    id: string,
+    locale: Locales,
+  ): Promise<LocaleRecords> {
+    return locale[await this.getGuildLanguage(id)];
+  }
+
+  public async setGuildLanguage(id: string, language: LocaleNames) {
     const guild = await this.getGuild(id);
     guild.language = language;
     await guild.update();
