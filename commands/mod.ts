@@ -10,6 +10,7 @@ import avatar from "@commands/utils/avatar.ts";
 import color from "@commands/utils/color.ts";
 import colour from "@commands/utils/colour.ts";
 import password from "@commands/utils/password.ts";
+import setLanguage from "@commands/utils/setLanguage.ts";
 import user from "@commands/utils/user.ts";
 
 const Register = (client: ExtendedClient, command: Command) => {
@@ -27,5 +28,6 @@ export default (client: ExtendedClient) => {
   Register(client, color);
   Register(client, colour);
   Register(client, password);
+  Register(client, setLanguage);
   Register(client, user);
 };
