@@ -1,5 +1,16 @@
-const server = (): Response => {
-  return Response.redirect("https://tapris.tapni.su", 302);
-};
+import { Hono } from "hono";
+const app = new Hono();
 
-export default server;
+app.get("/", (r) => r.redirect("https://tapris.tapni.su", 302));
+app.get("/git", (r) => r.redirect("https://github.com/tapris-bot/tapris", 302));
+app.get("/github", (r) =>
+  r.redirect("https://github.com/tapris-bot/tapris", 302)
+);
+app.get("/invite", (r) =>
+  r.redirect(
+    "https://discord.com/api/oauth2/authorize?client_id=869088074758520832&scope=bot+applications.commands&permissions=294208515334",
+    302
+  )
+);
+
+export default app;
