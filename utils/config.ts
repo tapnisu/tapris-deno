@@ -1,7 +1,9 @@
 import { config } from "dotenv";
 
 const inits = () => {
-  if (Deno.env.get("MODE") === "DEPLOY" || Deno.env.get("MODE") === "DENODEPLOY") {
+  if (
+    Deno.env.get("MODE") === "DEPLOY" || Deno.env.get("MODE") === "DENODEPLOY"
+  ) {
     return Deno.env.toObject();
   } else {
     return config();
