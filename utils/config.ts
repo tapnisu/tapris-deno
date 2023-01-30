@@ -1,13 +1,10 @@
 import { config } from "dotenv";
 
-const inits = () => {
-  if (Deno.env.get("MODE") === "DENODEPLOY") {
-    return Deno.env.toObject();
-  } else {
-    return config();
-  }
+const getEnv = () => {
+  if (Deno.env.get("MODE") === "DENODEPLOY") return Deno.env.toObject();
+  return config();
 };
 
-const dots = inits();
+const dots = getEnv();
 
 export default dots;
