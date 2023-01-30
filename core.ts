@@ -27,7 +27,9 @@ class ExtendedClient extends Client {
       GatewayIntents.GUILD_PRESENCES,
     ]);
 
-    await serve(server.fetch, { port: Number(env.SERVER_PORT) });
+    await serve(new server(this.commands).fetch, {
+      port: Number(env.SERVER_PORT),
+    });
   }
 }
 
