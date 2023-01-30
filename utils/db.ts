@@ -5,7 +5,7 @@ import {
   DataTypes,
   Model,
   PostgresConnector,
-  SQLite3Connector,
+  SQLite3Connector
 } from "denodb";
 import { ConnectorOptions } from "https://deno.land/x/denodb@v1.2.0/lib/connectors/connector.ts";
 import { LocaleRecords, Locales } from "../types/Locales.ts";
