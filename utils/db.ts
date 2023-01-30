@@ -1,8 +1,16 @@
 import { LocaleNames } from "@types";
-import { Database, DataTypes, Model, PostgresConnector } from "denodb";
+import {
+  Database,
+  DatabaseOptions,
+  DataTypes,
+  Model,
+  PostgresConnector,
+  SQLite3Connector,
+} from "denodb";
+import { ConnectorOptions } from "https://deno.land/x/denodb@v1.2.0/lib/connectors/connector.ts";
 import { LocaleRecords, Locales } from "../types/Locales.ts";
 
-class Guild extends Model {
+export class Guild extends Model {
   static table = "Guild";
 
   static fields = {
@@ -17,23 +25,17 @@ class Guild extends Model {
   };
 }
 
-export default class DBManager {
+export class DBManager {
   private db: Database;
 
   constructor(
-    host: string,
-    username: string,
-    password: string,
-    database: string,
+    dialectOptionsOrDatabaseOptionsOrConnector: DatabaseOptions,
+    connectionOptions?: ConnectorOptions,
   ) {
-    const connection = new PostgresConnector({
-      host: host,
-      username: username,
-      password: password,
-      database: database,
-    });
-
-    this.db = new Database(connection);
+    this.db = new Database(
+      dialectOptionsOrDatabaseOptionsOrConnector,
+      connectionOptions,
+    );
     this.db.link([Guild]);
   }
 
@@ -99,5 +101,63 @@ export default class DBManager {
     const guild = await this.getGuild(id);
     guild.russianRouletteBeforeDeath = Math.floor(Math.random() * drumSize);
     await guild.update();
+  }
+}
+
+export type DBNames = "sqlite3" | "postgres";
+
+export interface Sqlite3DBManagerSettings {
+  filepath: string;
+}
+
+interface PostgresDBManagerSettings {
+  host: string;
+  username: string;
+  password: string;
+  database: string;
+}
+
+type DBManagerSettings = Sqlite3DBManagerSettings | PostgresDBManagerSettings;
+
+export class Sqlite3DBManager extends DBManager {
+  constructor(settings: Sqlite3DBManagerSettings) {
+    const connection = new SQLite3Connector({
+      filepath: settings.filepath,
+    });
+
+    super(connection);
+  }
+}
+
+export class PostgresDBManager extends DBManager {
+  constructor(settings: PostgresDBManagerSettings) {
+    const connection = new PostgresConnector({
+      host: settings.host,
+      username: settings.username,
+      password: settings.password,
+      database: settings.database,
+    });
+
+    super(connection);
+  }
+}
+
+export default class DBManagerBuilder {
+  public dbManager: PostgresDBManager | Sqlite3DBManager;
+
+  constructor(dbName: DBNames, options: DBManagerSettings) {
+    switch (dbName) {
+      case "postgres":
+        this.dbManager = new PostgresDBManager(
+          options as PostgresDBManagerSettings,
+        );
+        break;
+
+      case "sqlite3":
+        this.dbManager = new Sqlite3DBManager(
+          options as Sqlite3DBManagerSettings,
+        );
+        break;
+    }
   }
 }
