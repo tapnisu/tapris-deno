@@ -13,7 +13,7 @@ class ExtendedClient extends Client {
   public components: Collection<RegExp, Component> = new Collection();
   public events: Collection<string, Event> = new Collection();
   public env = env;
-  public db = new DBManager(env.host, env.username, env.password, env.database);
+  public db = new DBManager(env.HOST, env.USERNAME, env.PASSWORD, env.DATABASE);
 
   public async init() {
     GetCommands(this);
