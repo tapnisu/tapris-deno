@@ -17,6 +17,7 @@ app.get("/invite", (r) =>
 );
 
 app.get("/api", (r) => r.redirect("/api/v1", 302));
+
 app.get("/api/v1", (r) =>
   r.json({
     routes: ["commands"],
