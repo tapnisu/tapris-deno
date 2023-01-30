@@ -18,10 +18,6 @@ class Guild extends Model {
 }
 
 export default class DBManager {
-  private host: string;
-  private username: string;
-  private password: string;
-  private database: string;
   private db: Database;
 
   constructor(
@@ -30,16 +26,11 @@ export default class DBManager {
     password: string,
     database: string,
   ) {
-    this.host = host;
-    this.username = username;
-    this.password = password;
-    this.database = database;
-
     const connection = new PostgresConnector({
-      host: this.host,
-      username: this.username,
-      password: this.password,
-      database: this.database,
+      host: host,
+      username: username,
+      password: password,
+      database: database,
     });
 
     this.db = new Database(connection);
