@@ -23,12 +23,12 @@ const command: Command = {
   ],
   run: async (client, interaction) => {
     const query = interaction.options.find(
-      (option) => option.name == "query"
+      (option) => option.name == "query",
     )?.value;
 
     const locales = (await client.db.selectLocale(
       interaction.guild!.id,
-      commandLocales
+      commandLocales,
     )) as typeof commandLocales.en;
 
     const link = `https://lmgtfy.app/?q=${encodeURI(query.replace(/ /g, "+"))}`;
