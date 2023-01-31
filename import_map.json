@@ -6,6 +6,8 @@
     "genshin-db": "https://esm.sh/genshin-db@4.3.5",
     "std": "https://deno.land/std@0.171.0/mod.ts",
     "std/": "https://deno.land/std@0.171.0/",
+    "hono": "https://deno.land/x/hono@v2.7.5/mod.ts",
+    "hono/": "https://deno.land/x/hono@v2.7.5/",
     "@commands": "./commands/mod.ts",
     "@commands/": "./commands/",
     "@events": "./events/mod.ts",
