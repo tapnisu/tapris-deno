@@ -3,8 +3,12 @@ import { Collection } from "harmony";
 import { Hono } from "hono";
 
 class Server extends Hono {
+  private commands: Collection<string, Command>;
+
   constructor(commands: Collection<string, Command>) {
     super();
+
+    this.commands = commands;
 
     this.get("/", (r) => r.redirect("https://tapris.tapni.su", 302));
 
@@ -31,10 +35,10 @@ class Server extends Hono {
         routes: ["commands"],
       }));
 
-    this.get("/api/v1/commands", (r) => r.json(commands.array()));
+    this.get("/api/v1/commands", (r) => r.json(this.commands.array()));
 
     this.get("/api/v1/commands/:name", (r) => {
-      const command = commands.get(r.req.param("name"));
+      const command = this.commands.get(r.req.param("name"));
 
       if (command) return r.json(command);
 
