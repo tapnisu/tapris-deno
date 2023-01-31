@@ -1,6 +1,22 @@
 import { Command } from "@types";
 import { ApplicationCommandOptionBase, Embed } from "harmony";
 
+const commandLocales = {
+  en: {
+    isNotAValidCommand: (request: string) =>
+      `${request} is not a valid command!`,
+    serverMember: (name: string | undefined) => name ? `Server member: ${name}` : "List of my commands",
+    required: () => "(required) ",
+  },
+  ru: {
+    isNotAValidCommand: (request: string) =>
+      `Команда ${request} не существует!`,
+      serverMember: (name: string | undefined) => name ? `Участник сервера: ${name}` : "Список моих команд",
+
+    required: () => "(обязателен) ",
+  },
+};
+
 const command: Command = {
   name: "help",
   description: "Get info about commands",
@@ -12,17 +28,22 @@ const command: Command = {
       required: false,
     },
   ],
-  run: (client, interaction) => {
+  run: async (client, interaction) => {
     const request = interaction.options.find(
-      (option) => option.name == "command",
+      (option) => option.name == "command"
     )?.value;
+
+    const locales = (await client.db.selectLocale(
+      interaction.guild!.id,
+      commandLocales
+    )) as typeof commandLocales.en;
 
     if (request) {
       const command = client.commands.get(request);
 
       if (!command) {
         return interaction.reply({
-          content: `${request} is not a valid command!`,
+          content: locales.isNotAValidCommand(request),
           ephemeral: true,
         });
       }
@@ -36,7 +57,7 @@ const command: Command = {
       command.options?.forEach((option) => {
         embed.addFields({
           name: `${option.name}`,
-          value: option.description ? option.description : "none",
+          value: option.description,
           inline: true,
         });
       });
@@ -46,14 +67,14 @@ const command: Command = {
 
     const embed = new Embed()
       .setColor(client.env.BOT_COLOR)
-      .setDescription(`Server member: ${interaction.guild?.name}`);
+      .setDescription(locales.serverMember(interaction.guild?.name));
 
     embed
       .setTitle(client.user ? client.user.username : "Tapris")
       .setThumbnail(
         client.user
           ? client.user.avatarURL()
-          : "https://raw.githubusercontent.com/tapris-bot/tapris/main/assets/avatar.png",
+          : "https://raw.githubusercontent.com/tapris-bot/tapris/main/assets/avatar.png"
       );
 
     client.commands.forEach((command: Command) => {
@@ -61,14 +82,14 @@ const command: Command = {
         name: `/${command.name} ${
           command.options
             ? Array.prototype.map
-              .call(
-                command.options,
-                (option: ApplicationCommandOptionBase) =>
-                  `<${
-                    option.required ? "(required) " : ""
-                  }${option.name} [${option.description}]>`,
-              )
-              .join(" ")
+                .call(
+                  command.options,
+                  (option: ApplicationCommandOptionBase) =>
+                    `<${option.required ? locales.required() : ""}${option.name} [${
+                      option.description
+                    }]>`
+                )
+                .join(" ")
             : ""
         }`,
         value: command.description ? command.description : "...",
