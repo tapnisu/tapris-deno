@@ -1,24 +1,24 @@
 import { config } from "dotenv";
 
 interface Env {
-  BOT_TOKEN: string
-  BOT_COLOR: string
+  BOT_TOKEN: string;
+  BOT_COLOR: string;
 
-  DATABASE_NAME: string
+  DATABASE_NAME: string;
 
-  HOST: string
-  USERNAME: string
-  PASSWORD: string
-  DATABASE: string
-  PORT: string
+  HOST: string;
+  USERNAME: string;
+  PASSWORD: string;
+  DATABASE: string;
+  PORT: string;
 
-  FILE_PATH: string
+  FILE_PATH: string;
 
-  SERVER_PORT: string
+  SERVER_PORT: string;
 
-  MODE: "DEPLOY" | "DENODEPLOY" | string
+  MODE: "DEPLOY" | "DENODEPLOY" | string;
 
-  [index: string]: string
+  [index: string]: string;
 }
 
 const getEnv = (): Env => {
