@@ -21,7 +21,7 @@ interface Env {
   [index: string]: string
 }
 
-const inits = (): Env => {
+const getEnv = (): Env => {
   if (
     Deno.env.get("MODE") === "DEPLOY" || Deno.env.get("MODE") === "DENODEPLOY"
   ) {
@@ -31,6 +31,6 @@ const inits = (): Env => {
   }
 };
 
-const dots = inits();
+const dots = getEnv();
 
 export default dots;
