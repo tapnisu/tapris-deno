@@ -5,7 +5,7 @@
     "denodb": "https://deno.land/x/denodb@v1.2.0/mod.ts",
     "denodb/": "https://deno.land/x/denodb@v1.2.0/",
     "canvas": "https://deno.land/x/canvas@v1.4.1/mod.ts",
-    "genshin-db": "https://esm.sh/genshin-db@4.3.5",
+    "genshin-db": "npm:genshin-db@4.3.5",
     "std": "https://deno.land/std@0.171.0/mod.ts",
     "std/": "https://deno.land/std@0.171.0/",
     "hono": "https://deno.land/x/hono@v2.7.5/mod.ts",
