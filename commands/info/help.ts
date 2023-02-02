@@ -5,14 +5,14 @@ const commandLocales = {
   en: {
     isNotAValidCommand: (request: string) =>
       `${request} is not a valid command!`,
-    serverMember: (name: string | undefined) =>
+    serverMember: (name?: string) =>
       name ? `Server member: ${name}` : "List of my commands",
     required: () => "(required) ",
   },
   ru: {
     isNotAValidCommand: (request: string) =>
       `Команда ${request} не существует!`,
-    serverMember: (name: string | undefined) =>
+    serverMember: (name?: string) =>
       name ? `Участник сервера: ${name}` : "Список моих команд",
 
     required: () => "(обязателен) ",
@@ -36,8 +36,8 @@ const command: Command = {
     )?.value;
 
     const locales = (await client.db.selectLocale(
-      interaction.guild?.id,
       commandLocales,
+      interaction.guild?.id,
     )) as typeof commandLocales.en;
 
     if (request) {

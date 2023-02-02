@@ -59,14 +59,14 @@ export class DBManager {
     return await Guild.where("id", id).first();
   }
 
-  public async getGuildLanguage(id: string | undefined): Promise<LocaleNames> {
+  public async getGuildLanguage(id?: string): Promise<LocaleNames> {
     if (!id) return "en";
     return (await Guild.where("id", id).first()).language as LocaleNames;
   }
 
   public async selectLocale(
-    id: string | undefined,
     locale: Locales,
+    id?: string,
   ): Promise<LocaleRecords> {
     return locale[await this.getGuildLanguage(id)];
   }

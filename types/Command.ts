@@ -9,7 +9,7 @@ interface Run {
   (
     client: ExtendedClient,
     interaction: SlashCommandInteraction,
-  ): Promise<ApplicationCommandInteraction | undefined>;
+  ): Promise<ApplicationCommandInteraction>;
 }
 
 type ApplicationCommandOptionExtended = ApplicationCommandOption & {

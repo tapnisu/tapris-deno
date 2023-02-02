@@ -31,8 +31,8 @@ const command: Command = {
     )?.value;
 
     const locales = (await client.db.selectLocale(
-      interaction.guild?.id,
       commandLocales,
+      interaction.guild?.id,
     )) as typeof commandLocales.en;
 
     const response: SearchResult[] = await (

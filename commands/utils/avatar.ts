@@ -1,5 +1,5 @@
 import { Command } from "@types";
-import { ActionRowComponent, Embed, User } from "harmony";
+import { ActionRowComponent, Embed } from "harmony";
 
 const commandLocales = {
   en: {
@@ -26,13 +26,13 @@ const command: Command = {
     },
   ],
   run: async (client, interaction) => {
-    const user: User | undefined = await client.users.get(
+    const user = await client.users.get(
       interaction.options.find((option) => option.name == "user")?.value,
     );
 
     const locales = (await client.db.selectLocale(
-      interaction.guild?.id,
       commandLocales,
+      interaction.guild?.id,
     )) as typeof commandLocales.en;
 
     if (!user) {

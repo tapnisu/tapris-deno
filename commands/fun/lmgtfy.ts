@@ -27,8 +27,8 @@ const command: Command = {
     )?.value;
 
     const locales = (await client.db.selectLocale(
-      interaction.guild?.id,
       commandLocales,
+      interaction.guild?.id,
     )) as typeof commandLocales.en;
 
     const link = `https://lmgtfy.app/?q=${encodeURI(query.replace(/ /g, "+"))}`;
