@@ -5,7 +5,7 @@ import { ActionRowComponent, Embed } from "harmony";
 const component: Component = {
   customId: /password_(.*)/gi,
   run: async (client, interaction) => {
-    interaction.defer();
+    await interaction.defer();
 
     const charset =
       "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
