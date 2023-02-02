@@ -20,7 +20,7 @@ const component: Component = {
     }
 
     const locales = (await client.db.selectLocale(
-      interaction.guild!.id,
+      interaction.guild?.id,
       commandLocales,
     )) as typeof commandLocales.en;
 

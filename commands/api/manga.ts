@@ -31,7 +31,7 @@ const command: Command = {
     )?.value;
 
     const locales = (await client.db.selectLocale(
-      interaction.guild!.id,
+      interaction.guild?.id,
       commandLocales,
     )) as typeof commandLocales.en;
 

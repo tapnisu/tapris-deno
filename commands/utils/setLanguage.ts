@@ -30,7 +30,7 @@ const command: Command = {
   guildsOnly: true,
   run: async (client, interaction) => {
     const localesOld = await client.db.selectLocale(
-      interaction.guild!.id,
+      interaction.guild?.id,
       commandLocales,
     );
 
