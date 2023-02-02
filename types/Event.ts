@@ -3,7 +3,7 @@ import {
   ApplicationCommandInteraction,
   ClientEvents,
   Interaction,
-  Message
+  Message,
 } from "harmony";
 
 type EventName = keyof ClientEvents;
@@ -17,11 +17,11 @@ interface Run {
     ...args: any[]
   ): //...args: Args
   | Promise<
-        ApplicationCommandInteraction | Interaction | Message | undefined | void
-      >
-    | Message
-    | undefined
-    | void;
+    ApplicationCommandInteraction | Interaction | Message | undefined | void
+  >
+  | Message
+  | undefined
+  | void;
 }
 
 export interface Event {

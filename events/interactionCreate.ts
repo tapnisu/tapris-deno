@@ -9,11 +9,12 @@ const event: Event = {
       const command = client.commands.get(interaction.name);
 
       if (command) {
-        if (command.guildsOnly && !interaction.guild)
+        if (command.guildsOnly && !interaction.guild) {
           return await interaction.reply({
             content: "Sorry, this command is only for guilds.",
             ephemeral: true,
           });
+        }
 
         return command.run(client, interaction);
       }

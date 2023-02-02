@@ -4,7 +4,7 @@ import { Interaction, MessageComponentInteraction } from "harmony";
 interface Run {
   (
     client: Client,
-    interaction: MessageComponentInteraction
+    interaction: MessageComponentInteraction,
   ): Promise<Interaction | void> | void;
 }
 
