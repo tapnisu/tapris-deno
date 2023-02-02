@@ -16,7 +16,11 @@ const event: Event = {
           });
         }
 
-        return command.run(client, interaction);
+        return await command.run(client, interaction).catch(async (e) => {
+          console.warn(e);
+
+          await interaction.reply("Unknown error happened!");
+        });
       }
     }
 
@@ -25,7 +29,11 @@ const event: Event = {
         component.customId.test(interaction.data.custom_id)
       );
 
-      if (component) return component.run(client, interaction);
+      if (component) {
+        return await component
+          .run(client, interaction)
+          ?.catch((e) => console.warn(e));
+      }
     }
   },
 };
