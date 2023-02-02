@@ -29,9 +29,8 @@ const command: Command = {
     let password = "";
 
     const passwordLength: number = interaction.options.find(
-      (option) => option.name == "length"
+      (option) => option.name == "length",
     )?.value;
-
 
     for (let i = 0, n = charset.length; i < passwordLength; ++i) {
       password += charset.charAt(Math.floor(Math.random() * n));

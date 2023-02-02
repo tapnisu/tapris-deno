@@ -12,7 +12,7 @@ const component: Component = {
     let password = "";
 
     const passwordLength = Number(
-      interaction.data.custom_id.replace(/password_/, "")
+      interaction.data.custom_id.replace(/password_/, ""),
     );
 
     for (let i = 0, n = charset.length; i < passwordLength; ++i) {
@@ -21,7 +21,7 @@ const component: Component = {
 
     const locales = (await client.db.selectLocale(
       interaction.guild!.id,
-      commandLocales
+      commandLocales,
     )) as typeof commandLocales.en;
 
     const buttonsRow: ActionRowComponent = {
