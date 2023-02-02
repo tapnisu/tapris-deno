@@ -32,7 +32,10 @@ Type "/" to see commands!
 3. Clone repo:
    `git clone https://github.com/tapris-bot/tapris.git && cd ./tapris/`
 
-4. Setup [.env](.env.sample) (example in [.env.sample](.env.sample))
+4. Setup [.env](.env.sample) / your env variables (example in
+   [.env.sample](.env.sample))
+
+If using on deployment set MODE to "DEPLOY"
 
 5. Run `deno task start`
 

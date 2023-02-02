@@ -2,6 +2,8 @@
   "imports": {
     "harmony": "https://deno.land/x/harmony@v2.8.0/mod.ts",
     "dotenv": "https://deno.land/x/dotenv@v3.2.0/mod.ts",
+    "denodb": "https://deno.land/x/denodb@v1.2.0/mod.ts",
+    "denodb/": "https://deno.land/x/denodb@v1.2.0/",
     "canvas": "https://deno.land/x/canvas@v1.4.1/mod.ts",
     "genshin-db": "https://esm.sh/genshin-db@4.3.5",
     "std": "https://deno.land/std@0.171.0/mod.ts",
@@ -18,8 +20,6 @@
     "@utils/": "./utils/",
     "@types": "./types/mod.ts",
     "@types/": "./types/",
-    "@core": "./core.ts",
-    "@buttons": "./buttons/mod.ts",
-    "@buttons/": "./buttons/"
+    "@core": "./core.ts"
   }
 }

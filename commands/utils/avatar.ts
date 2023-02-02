@@ -1,6 +1,19 @@
 import { Command } from "@types";
 import { ActionRowComponent, Embed, User } from "harmony";
 
+const commandLocales = {
+  en: {
+    unknownError: () => "Unknown error happened! :(",
+    usersAvatar: (user: string) => `${user}'s avatar`,
+    link: () => "Link to avatar",
+  },
+  ru: {
+    unknownError: () => "Произошла неизвестная ошибка! :(",
+    usersAvatar: (user: string) => `Аватар ${user}`,
+    link: () => "Ссылка",
+  },
+};
+
 const command: Command = {
   name: "avatar",
   description: "Get someones avatar",
@@ -17,9 +30,14 @@ const command: Command = {
       interaction.options.find((option) => option.name == "user")?.value,
     );
 
+    const locales = (await client.db.selectLocale(
+      interaction.guild?.id,
+      commandLocales,
+    )) as typeof commandLocales.en;
+
     if (!user) {
       return interaction.reply({
-        content: "Unknown error happened! :(",
+        content: locales.unknownError(),
         ephemeral: true,
       });
     }
@@ -28,7 +46,7 @@ const command: Command = {
 
     const embed = new Embed()
       .setColor(client.env.BOT_COLOR)
-      .setTitle(`${user.tag}\`s avatar`)
+      .setTitle(locales.usersAvatar(user.tag))
       .setImage(avatarUrl);
 
     const buttonsRow: ActionRowComponent = {
@@ -37,7 +55,7 @@ const command: Command = {
         {
           type: 2,
           url: avatarUrl,
-          label: "Link to avatar",
+          label: locales.link(),
           style: 5,
         },
       ],

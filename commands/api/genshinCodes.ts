@@ -1,6 +1,19 @@
 import { Code, Command } from "@types";
 import { ActionRowComponent, Embed } from "harmony";
 
+const commandLocales = {
+  en: {
+    activateButton: () => "Activate",
+    embedTitle: () => "Codes for Genshin Impact",
+    description: () => "You can activate them in game, and get rewards!",
+  },
+  ru: {
+    activateButton: () => "Активировать",
+    embedTitle: () => "Промокоды для Genshin Impact",
+    description: () => "Вы можете активировать их в игре и получить награды!",
+  },
+};
+
 const command: Command = {
   name: "genshincodes",
   description: "Get valid codes for Genshin Impact",
@@ -11,13 +24,18 @@ const command: Command = {
       )
     ).json();
 
+    const locales = (await client.db.selectLocale(
+      interaction.guild?.id,
+      commandLocales,
+    )) as typeof commandLocales.en;
+
     const codes = response.CODES;
     const url = "https://genshin.hoyoverse.com/en/gift";
 
     const embed = new Embed()
       .setColor(client.env.BOT_COLOR)
-      .setTitle("Genshin codes")
-      .setDescription("You can activate them in game, and get rewards!")
+      .setTitle(locales.embedTitle())
+      .setDescription(locales.description())
       .setURL(url);
 
     codes.forEach((code: Code) => {
@@ -38,7 +56,7 @@ const command: Command = {
         {
           type: 2,
           url: url,
-          label: "Activate codes online",
+          label: locales.activateButton(),
           style: 5,
         },
       ],
