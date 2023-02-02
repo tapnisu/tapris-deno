@@ -25,12 +25,12 @@ const command: Command = {
   ],
   run: async (client, interaction) => {
     const user: User | undefined = await client.users.get(
-      interaction.options.find((option) => option.name == "user")?.value
+      interaction.options.find((option) => option.name == "user")?.value,
     );
 
     const locales = (await client.db.selectLocale(
       interaction.guild?.id,
-      commandLocales
+      commandLocales,
     )) as typeof commandLocales.en;
 
     if (!user) {
