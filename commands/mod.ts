@@ -1,6 +1,4 @@
-import ExtendedClient from "@core";
-import { Command } from "@types";
-// import genshin from "@commands/api/genshin.ts";
+import genshin from "@commands/api/genshin.ts";
 import genshinCodes from "@commands/api/genshinCodes.ts";
 import manga from "@commands/api/manga.ts";
 import coin from "@commands/fun/coin.ts";
@@ -12,13 +10,15 @@ import colour from "@commands/utils/colour.ts";
 import password from "@commands/utils/password.ts";
 import setLanguage from "@commands/utils/setLanguage.ts";
 import user from "@commands/utils/user.ts";
+import ExtendedClient from "@core";
+import { Command } from "@types";
 
 const Register = (client: ExtendedClient, command: Command) => {
   client.commands.set(command.name, command);
 };
 
 export default (client: ExtendedClient) => {
-  // Register(client, genshin);
+  Register(client, genshin);
   Register(client, genshinCodes);
   Register(client, manga);
   Register(client, coin);
