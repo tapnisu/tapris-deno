@@ -26,23 +26,24 @@ const command: Command = {
   ],
   run: async (client, interaction) => {
     const requestType: string = interaction.options.find(
-      (option) => option.name == "type"
+      (option) => option.name == "type",
     )?.value;
 
     const request: string = interaction.options.find(
-      (option) => option.name == "name"
+      (option) => option.name == "name",
     )?.value;
 
     if (requestType == "character") {
       const character = genshindb.characters(
-        request.replace(/ /g, "").toLocaleLowerCase()
+        request.replace(/ /g, "").toLocaleLowerCase(),
       );
 
-      if (!character)
+      if (!character) {
         return await interaction.reply({
           content: `${request} is not a valid character!`,
           ephemeral: true,
         });
+      }
 
       await interaction.defer();
 
@@ -96,12 +97,14 @@ const command: Command = {
             name: "Appearance",
             value: character.version,
             inline: true,
-          }
+          },
         )
         .setImage(
-          `https://api.genshin.dev/characters/${request
-            .replace(/ /g, "-")
-            .toLocaleLowerCase()}/gacha-splash.png`
+          `https://api.genshin.dev/characters/${
+            request
+              .replace(/ /g, "-")
+              .toLocaleLowerCase()
+          }/gacha-splash.png`,
         );
 
       if (character.url?.fandom) embed.setURL(character.url.fandom);
@@ -111,7 +114,7 @@ const command: Command = {
 
     if (requestType == "weapon") {
       const weapon = genshindb.weapons(
-        request.replace(/ /g, "").toLocaleLowerCase()
+        request.replace(/ /g, "").toLocaleLowerCase(),
       );
 
       if (!weapon) {
@@ -128,7 +131,7 @@ const command: Command = {
         .setTitle(weapon.name)
         .setDescription(weapon.effect)
         .setThumbnail(
-          `https://upload-os-bbs.mihoyo.com/game_record/genshin/equip/${weapon.images.nameicon}.png`
+          `https://upload-os-bbs.mihoyo.com/game_record/genshin/equip/${weapon.images.nameicon}.png`,
         )
         .addFields(
           {
@@ -160,10 +163,10 @@ const command: Command = {
             name: "Appearance",
             value: weapon.version,
             inline: true,
-          }
+          },
         )
         .setImage(
-          `https://res.cloudinary.com/genshin/image/upload/sprites/${weapon.images.namegacha}.png`
+          `https://res.cloudinary.com/genshin/image/upload/sprites/${weapon.images.namegacha}.png`,
         );
 
       if (weapon.url?.fandom) embed.setURL(weapon.url.fandom);
@@ -173,7 +176,7 @@ const command: Command = {
 
     if (requestType == "artifact") {
       const artifact = genshindb.artifacts(
-        request.replace(/ /g, "").toLocaleLowerCase()
+        request.replace(/ /g, "").toLocaleLowerCase(),
       );
 
       if (!artifact) {
@@ -191,12 +194,12 @@ const command: Command = {
         .setDescription(
           artifact.flower
             ? artifact.flower.description
-            : artifact.circlet.description
+            : artifact.circlet.description,
         )
         .setThumbnail(
           artifact.images?.flower
             ? artifact.images.flower
-            : artifact.images.circlet
+            : artifact.images.circlet,
         )
         .addFields(
           {
@@ -213,7 +216,7 @@ const command: Command = {
             name: "4 piece bonus",
             value: artifact["4pc"] ? artifact["4pc"] : "None",
             inline: true,
-          }
+          },
         );
 
       if (artifact.url?.fandom) embed.setURL(artifact.url.fandom);
