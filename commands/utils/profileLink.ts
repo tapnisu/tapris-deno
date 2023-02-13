@@ -23,12 +23,12 @@ const command: Command = {
   ],
   run: async (client, interaction) => {
     const user = await client.users.get(
-      interaction.options.find((option) => option.name == "user")?.value
+      interaction.options.find((option) => option.name == "user")?.value,
     );
 
     const locales = (await client.db.selectLocale(
       commandLocales,
-      interaction.guild?.id
+      interaction.guild?.id,
     )) as typeof commandLocales.en;
 
     if (!user) {
