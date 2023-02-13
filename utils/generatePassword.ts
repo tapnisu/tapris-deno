@@ -1,6 +1,9 @@
+export const defaultCharset =
+  "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+
 export default function generatePassword(
   length: number,
-  charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+  charset = defaultCharset
 ) {
   let password = "";
 
