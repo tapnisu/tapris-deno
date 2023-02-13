@@ -8,6 +8,7 @@ import avatar from "@commands/utils/avatar.ts";
 import color from "@commands/utils/color.ts";
 import colour from "@commands/utils/colour.ts";
 import password from "@commands/utils/password.ts";
+import profileLink from "@commands/utils/profileLink.ts";
 import setLanguage from "@commands/utils/setLanguage.ts";
 import user from "@commands/utils/user.ts";
 import ExtendedClient from "@core";
@@ -28,6 +29,7 @@ export default (client: ExtendedClient) => {
   Register(client, color);
   Register(client, colour);
   Register(client, password);
+  Register(client, profileLink);
   Register(client, setLanguage);
   Register(client, user);
 };
