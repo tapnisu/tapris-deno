@@ -1,6 +1,6 @@
 import { Command } from "@types";
+import generatePassword from "@utils/generatePassword.ts";
 import { ActionRowComponent, Embed } from "harmony";
-import generatePassword from "../../utils/generatePassword.ts";
 
 export const commandLocales = {
   en: {

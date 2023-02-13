@@ -1,7 +1,7 @@
 import { commandLocales } from "@commands/utils/password.ts";
 import { Component } from "@types";
+import generatePassword from "@utils/generatePassword.ts";
 import { ActionRowComponent, Embed } from "harmony";
-import generatePassword from "../utils/generatePassword.ts";
 
 const component: Component = {
   customId: /password_(.*)/gi,
