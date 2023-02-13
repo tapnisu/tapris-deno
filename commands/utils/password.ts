@@ -1,4 +1,5 @@
 import { Command } from "@types";
+import generatePassword from "@utils/generatePassword.ts";
 import { ActionRowComponent, Embed } from "harmony";
 
 export const commandLocales = {
@@ -24,21 +25,13 @@ const command: Command = {
     },
   ],
   run: async (client, interaction) => {
-    const charset =
-      "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-    let password = "";
-
     const passwordLength: number = interaction.options.find(
-      (option) => option.name == "length",
+      (option) => option.name == "length"
     )?.value;
-
-    for (let i = 0, n = charset.length; i < passwordLength; ++i) {
-      password += charset.charAt(Math.floor(Math.random() * n));
-    }
 
     const locales = (await client.db.selectLocale(
       commandLocales,
-      interaction.guild?.id,
+      interaction.guild?.id
     )) as typeof commandLocales.en;
 
     const buttonsRow: ActionRowComponent = {
@@ -62,7 +55,7 @@ const command: Command = {
     const embed = new Embed()
       .setColor(client.env.BOT_COLOR)
       .setTitle("Password")
-      .setDescription(password);
+      .setDescription(`||${generatePassword(passwordLength)}||`);
 
     return interaction.reply({
       embeds: [embed],

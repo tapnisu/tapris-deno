@@ -13,3 +13,13 @@ jobs:
           deno-version: v1.x
       - name: Lint
         run: deno lint
+  tests:
+    name: Tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: denoland/setup-deno@v1
+        with:
+          deno-version: v1.x
+      - name: Test
+        run: deno test
