@@ -44,6 +44,7 @@ const command: Command = {
       .setColor(client.env.BOT_COLOR)
       .setTitle(`${user.tag} ${user.bot ? locales.bot() : ""}`)
       .setThumbnail(user.avatarURL())
+      .setURL(`https://discord.com/users/${user.id}`)
       .addFields({ name: "ID", value: user.id, inline: true });
 
     return interaction.reply({ embeds: [embed] });
