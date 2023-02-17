@@ -11,7 +11,7 @@
     "dotenv/": "https://deno.land/x/dotenv@v3.2.0/",
     "genshin-db": "https://esm.sh/genshin-db@4.3.5",
     "harmony/": "https://deno.land/x/harmony@v2.8.0/",
-    "hono/": "https://deno.land/x/hono@v2.7.5/",
-    "std/": "https://deno.land/std@0.171.0/"
+    "hono/": "https://deno.land/x/hono@v2.7.8/",
+    "std/": "https://deno.land/std@0.152.0/"
   }
 }
