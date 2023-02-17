@@ -1,6 +1,6 @@
-import { Command } from "@types";
+import { Command } from "@interfaces/mod.ts";
 import generatePassword from "@utils/generatePassword.ts";
-import { ActionRowComponent, Embed } from "harmony";
+import { ActionRowComponent, Embed } from "harmony/mod.ts";
 
 export const commandLocales = {
   en: {
@@ -26,12 +26,12 @@ const command: Command = {
   ],
   run: async (client, interaction) => {
     const passwordLength: number = interaction.options.find(
-      (option) => option.name == "length"
+      (option) => option.name == "length",
     )?.value;
 
     const locales = (await client.db.selectLocale(
       commandLocales,
-      interaction.guild?.id
+      interaction.guild?.id,
     )) as typeof commandLocales.en;
 
     const buttonsRow: ActionRowComponent = {

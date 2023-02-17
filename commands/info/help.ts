@@ -1,5 +1,5 @@
-import { Command } from "@types";
-import { ApplicationCommandOptionBase, Embed } from "harmony";
+import { Command } from "@interfaces/mod.ts";
+import { ApplicationCommandOptionBase, Embed } from "harmony/mod.ts";
 
 const commandLocales = {
   en: {

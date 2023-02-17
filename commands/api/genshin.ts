@@ -1,6 +1,6 @@
-import { Command } from "@types";
+import { Command } from "@interfaces/mod.ts";
 import genshindb from "genshin-db";
-import { Embed } from "harmony";
+import { Embed } from "harmony/mod.ts";
 
 const command: Command = {
   name: "genshin",

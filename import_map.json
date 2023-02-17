@@ -1,25 +1,17 @@
 {
   "imports": {
-    "harmony": "https://deno.land/x/harmony@v2.8.0/mod.ts",
-    "dotenv": "https://deno.land/x/dotenv@v3.2.0/mod.ts",
-    "denodb": "https://deno.land/x/denodb@v1.2.0/mod.ts",
-    "denodb/": "https://deno.land/x/denodb@v1.2.0/",
-    "canvas": "https://deno.land/x/canvas@v1.4.1/mod.ts",
-    "genshin-db": "https://esm.sh/genshin-db@4.3.5",
-    "std": "https://deno.land/std@0.171.0/mod.ts",
-    "std/": "https://deno.land/std@0.171.0/",
-    "hono": "https://deno.land/x/hono@v2.7.5/mod.ts",
-    "hono/": "https://deno.land/x/hono@v2.7.5/",
-    "@commands": "./commands/mod.ts",
     "@commands/": "./commands/",
-    "@events": "./events/mod.ts",
-    "@events/": "./events/",
-    "@components": "./components/mod.ts",
     "@components/": "./components/",
-    "@utils": "./utils/mod.ts",
+    "@core": "./core.ts",
+    "@events/": "./events/",
+    "@interfaces/": "./interfaces/",
     "@utils/": "./utils/",
-    "@types": "./types/mod.ts",
-    "@types/": "./types/",
-    "@core": "./core.ts"
+    "canvas/": "https://deno.land/x/canvas@v1.4.1/",
+    "denodb/": "https://deno.land/x/denodb@v1.2.0/",
+    "dotenv/": "https://deno.land/x/dotenv@v3.2.0/",
+    "genshin-db": "https://esm.sh/genshin-db@4.3.5",
+    "harmony/": "https://deno.land/x/harmony@v2.8.0/",
+    "hono/": "https://deno.land/x/hono@v2.7.5/",
+    "std/": "https://deno.land/std@0.171.0/"
   }
 }

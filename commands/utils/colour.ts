@@ -1,4 +1,4 @@
-import { Command } from "@types";
+import { Command } from "@interfaces/mod.ts";
 import colorCommand from "./color.ts";
 
 const command: Command = {

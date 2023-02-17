@@ -1,5 +1,5 @@
-import { Code, Command } from "@types";
-import { ActionRowComponent, Embed } from "harmony";
+import { Code, Command } from "@interfaces/mod.ts";
+import { ActionRowComponent, Embed } from "harmony/mod.ts";
 
 const commandLocales = {
   en: {

@@ -1,6 +1,6 @@
 import ExtendedClient from "@core";
-import { Event } from "@types";
-import { Interaction } from "harmony";
+import { Event } from "@interfaces/mod.ts";
+import { Interaction } from "harmony/mod.ts";
 
 const event: Event = {
   name: "interactionCreate",

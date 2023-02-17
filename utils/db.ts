@@ -1,4 +1,5 @@
-import { LocaleNames } from "@types";
+import { LocaleNames, LocaleRecords, Locales } from "@interfaces/mod.ts";
+import { ConnectorOptions } from "denodb/lib/connectors/connector.ts";
 import {
   Database,
   DatabaseOptions,
@@ -6,9 +7,7 @@ import {
   Model,
   PostgresConnector,
   SQLite3Connector
-} from "denodb";
-import { ConnectorOptions } from "denodb/lib/connectors/connector.ts";
-import { LocaleRecords, Locales } from "../types/Locales.ts";
+} from "denodb/mod.ts";
 
 export class Guild extends Model {
   static table = "Guild";
@@ -30,11 +29,11 @@ export class DBManager {
 
   constructor(
     dialectOptionsOrDatabaseOptionsOrConnector: DatabaseOptions,
-    connectionOptions?: ConnectorOptions
+    connectionOptions?: ConnectorOptions,
   ) {
     this.db = new Database(
       dialectOptionsOrDatabaseOptionsOrConnector,
-      connectionOptions
+      connectionOptions,
     );
     this.db.link([Guild]);
   }
@@ -66,7 +65,7 @@ export class DBManager {
 
   public async selectLocale(
     locale: Locales,
-    id?: string
+    id?: string,
   ): Promise<LocaleRecords> {
     return locale[await this.getGuildLanguage(id)];
   }
@@ -152,13 +151,13 @@ export default class DBManagerBuilder {
     switch (dbName) {
       case "postgres":
         this.dbManager = new PostgresDBManager(
-          options as PostgresDBManagerSettings
+          options as PostgresDBManagerSettings,
         );
         break;
 
       case "sqlite3":
         this.dbManager = new Sqlite3DBManager(
-          options as Sqlite3DBManagerSettings
+          options as Sqlite3DBManagerSettings,
         );
         break;
     }

@@ -1,10 +1,10 @@
 import GetCommands from "@commands/mod.ts";
 import GetComponents from "@components/mod.ts";
 import GetEvents from "@events/mod.ts";
-import { Command, Component, Event } from "@types";
+import { Command, Component, Event } from "@interfaces/mod.ts";
 import env from "@utils/config.ts";
 import server from "@utils/server.ts";
-import { Client, Collection, GatewayIntents } from "harmony";
+import { Client, Collection, GatewayIntents } from "harmony/mod.ts";
 import { serve } from "std/http/server.ts";
 import DBManagerBuilder, { DBNames } from "./utils/db.ts";
 

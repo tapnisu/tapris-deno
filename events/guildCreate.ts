@@ -1,6 +1,6 @@
 import ExtendedClient from "@core";
-import { Event } from "@types";
-import { Embed, Guild } from "harmony";
+import { Event } from "@interfaces/mod.ts";
+import { Embed, Guild } from "harmony/mod.ts";
 
 const event: Event = {
   name: "guildCreate",

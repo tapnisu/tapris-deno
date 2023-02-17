@@ -1,5 +1,5 @@
-import { Command } from "@types";
-import { Embed } from "harmony";
+import { Command } from "@interfaces/mod.ts";
+import { Embed } from "harmony/mod.ts";
 
 type Choice = "coin" | "tail";
 const choices: Choice[] = ["coin", "tail"];

@@ -12,7 +12,7 @@ import profileLink from "@commands/utils/profileLink.ts";
 import setLanguage from "@commands/utils/setLanguage.ts";
 import user from "@commands/utils/user.ts";
 import ExtendedClient from "@core";
-import { Command } from "@types";
+import { Command } from "@interfaces/mod.ts";
 
 const Register = (client: ExtendedClient, command: Command) => {
   client.commands.set(command.name, command);

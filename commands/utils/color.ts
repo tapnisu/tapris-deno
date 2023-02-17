@@ -1,6 +1,6 @@
-import { Command } from "@types";
-import { createCanvas } from "canvas";
-import { Embed, MessageAttachment } from "harmony";
+import { Command } from "@interfaces/mod.ts";
+import { createCanvas } from "canvas/mod.ts";
+import { Embed, MessageAttachment } from "harmony/mod.ts";
 
 const command: Command = {
   name: "color",

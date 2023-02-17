@@ -3,7 +3,7 @@ export const defaultCharset =
 
 export default function generatePassword(
   length: number,
-  charset = defaultCharset
+  charset = defaultCharset,
 ) {
   let password = "";
 

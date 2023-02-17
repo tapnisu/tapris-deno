@@ -1,6 +1,6 @@
 import ExtendedClient from "@core";
-import { Event } from "@types";
-import { ApplicationCommandPartial } from "harmony";
+import { Event } from "@interfaces/mod.ts";
+import { ApplicationCommandPartial } from "harmony/mod.ts";
 
 const event: Event = {
   name: "ready",

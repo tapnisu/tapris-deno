@@ -1,5 +1,5 @@
 import Client from "@core";
-import { Interaction, MessageComponentInteraction } from "harmony";
+import { Interaction, MessageComponentInteraction } from "harmony/mod.ts";
 
 interface Run {
   (

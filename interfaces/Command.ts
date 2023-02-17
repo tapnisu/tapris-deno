@@ -3,7 +3,7 @@ import {
   ApplicationCommandInteraction,
   ApplicationCommandOption,
   SlashCommandInteraction,
-} from "harmony";
+} from "harmony/mod.ts";
 
 interface Run {
   (

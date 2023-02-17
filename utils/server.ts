@@ -1,6 +1,6 @@
-import { Command } from "@types";
-import { Collection } from "harmony";
-import { Hono } from "hono";
+import { Command } from "@interfaces/mod.ts";
+import { Collection } from "harmony/mod.ts";
+import { Hono } from "hono/mod.ts";
 
 class Server extends Hono {
   private commands: Collection<string, Command>;

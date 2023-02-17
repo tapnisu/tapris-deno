@@ -1,7 +1,7 @@
 import { commandLocales } from "@commands/utils/password.ts";
-import { Component } from "@types";
+import { Component } from "@interfaces/mod.ts";
 import generatePassword from "@utils/generatePassword.ts";
-import { ActionRowComponent, Embed } from "harmony";
+import { ActionRowComponent, Embed } from "harmony/mod.ts";
 
 const component: Component = {
   customId: /password_(.*)/gi,
@@ -9,12 +9,12 @@ const component: Component = {
     await interaction.defer();
 
     const passwordLength = Number(
-      interaction.data.custom_id.replace(/password_/, "")
+      interaction.data.custom_id.replace(/password_/, ""),
     );
 
     const locales = (await client.db.selectLocale(
       commandLocales,
-      interaction.guild?.id
+      interaction.guild?.id,
     )) as typeof commandLocales.en;
 
     const buttonsRow: ActionRowComponent = {

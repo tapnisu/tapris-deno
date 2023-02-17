@@ -1,4 +1,4 @@
-import { config } from "dotenv";
+import { config } from "dotenv/mod.ts";
 
 interface Env {
   BOT_TOKEN: string;
