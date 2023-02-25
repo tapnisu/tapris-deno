@@ -7,7 +7,7 @@
     "@interfaces/": "./interfaces/",
     "@utils/": "./utils/",
     "canvas/": "https://deno.land/x/canvas@v1.4.1/",
-    "denodb/": "https://deno.land/x/denodb@v1.2.0/",
+    "denodb/": "https://raw.githubusercontent.com/tapnisu/denodb/dex-replace-fork/",
     "dotenv/": "https://deno.land/x/dotenv@v3.2.0/",
     "genshin-db": "https://esm.sh/genshin-db@4.3.5",
     "harmony/": "https://deno.land/x/harmony@v2.8.0/",
