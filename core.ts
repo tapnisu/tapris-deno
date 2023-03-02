@@ -17,7 +17,7 @@ class ExtendedClient extends Client {
     host: env.DATABASE_HOST,
     username: env.DATABASE_USERNAME,
     password: env.DATABASE_PASSWORD,
-    database: env.DATABASE_DATABASE,
+    database: env.DATABASE,
     filepath: env.DATABASE_FILE_PATH,
   }).dbManager;
 
