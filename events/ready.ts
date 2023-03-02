@@ -16,7 +16,7 @@ const event: Event = {
 
     client.commands.forEach((command) => commands.create(command));
 
-    console.log(
+    console.info(
       `${client.user?.username}#${client.user?.discriminator} is up!`,
     );
   },

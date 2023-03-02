@@ -5,8 +5,6 @@ import { Embed, Guild } from "harmony/mod.ts";
 const event: Event = {
   name: "guildCreate",
   run: async (client: ExtendedClient, guild: Guild) => {
-    console.log(`Joined ${guild.name} guild!`);
-
     if (!guild.systemChannelID || !client.user) return;
     const channel = await client.channels.get(guild.systemChannelID);
     if (!channel?.isText() || !channel) return;
