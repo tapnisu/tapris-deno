@@ -18,17 +18,15 @@ interface Env {
   SERVER_PORT: string;
 
   MODE: "DENODEPLOY" | string;
-
-  [index: string]: string;
 }
 
 const getEnv = (): Env => {
   if (
     Deno.env.get("MODE") === "DENODEPLOY"
   ) {
-    return Deno.env.toObject() as Env;
+    return Deno.env.toObject() as unknown as Env;
   } else {
-    return config() as Env;
+    return config() as unknown as Env;
   }
 };
 
