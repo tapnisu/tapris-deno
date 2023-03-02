@@ -6,7 +6,7 @@ import {
   DataTypes,
   Model,
   PostgresConnector,
-  SQLite3Connector
+  SQLite3Connector,
 } from "denodb/mod.ts";
 
 export class Guild extends Model {
