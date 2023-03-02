@@ -1,29 +1,30 @@
+import { DBNames } from "@utils/db.ts";
 import { config } from "dotenv/mod.ts";
 
 interface Env {
   BOT_TOKEN: string;
   BOT_COLOR: string;
 
-  DATABASE_NAME: string;
+  DATABASE_NAME: DBNames;
 
-  HOST: string;
-  USERNAME: string;
-  PASSWORD: string;
+  DATABASE_HOST: string;
+  DATABASE_USERNAME: string;
+  DATABASE_PASSWORD: string;
   DATABASE: string;
-  PORT: string;
+  DATABASE_PORT: string;
 
-  FILE_PATH: string;
+  DATABASE_FILE_PATH: string;
 
   SERVER_PORT: string;
 
-  MODE: "DEPLOY" | "DENODEPLOY" | string;
+  MODE: "DENODEPLOY" | string;
 
   [index: string]: string;
 }
 
 const getEnv = (): Env => {
   if (
-    Deno.env.get("MODE") === "DEPLOY" || Deno.env.get("MODE") === "DENODEPLOY"
+    Deno.env.get("MODE") === "DENODEPLOY"
   ) {
     return Deno.env.toObject() as Env;
   } else {
