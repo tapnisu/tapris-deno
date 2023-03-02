@@ -1,6 +1,5 @@
 import ExtendedClient from "@core";
 import { Event } from "@interfaces/mod.ts";
-import { ApplicationCommandPartial } from "harmony/mod.ts";
 
 const event: Event = {
   name: "ready",
@@ -8,16 +7,14 @@ const event: Event = {
     client.setPresence({ name: "Type '/' to check bot commands!", type: 0 });
 
     (await client.guilds.array()).forEach(async (guild) => {
-      if (!(await client.db.getGuild(guild.id))) {
+      if (!await client.db.getGuild(guild.id)) {
         await client.db.registerGuild(guild.id);
       }
     });
 
     const commands = client.interactions.commands;
 
-    client.commands.forEach((command) =>
-      commands?.create(command as ApplicationCommandPartial)
-    );
+    client.commands.forEach((command) => commands.create(command));
 
     console.log(
       `${client.user?.username}#${client.user?.discriminator} is up!`,
