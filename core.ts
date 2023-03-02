@@ -14,11 +14,11 @@ class ExtendedClient extends Client {
   public events: Collection<string, Event> = new Collection();
   public env = env;
   public db = new DBManagerBuilder(env.DATABASE_NAME as DBNames, {
-    host: env.HOST,
-    username: env.USERNAME,
-    password: env.PASSWORD,
-    database: env.DATABASE,
-    filepath: env.FILE_PATH,
+    host: env.DATABASE_HOST,
+    username: env.DATABASE_USERNAME,
+    password: env.DATABASE_PASSWORD,
+    database: env.DATABASE_DATABASE,
+    filepath: env.DATABASE_FILE_PATH,
   }).dbManager;
 
   public async init() {
