@@ -9,4 +9,4 @@
 .env.local
 
 # Executable
-tapris.exe
+*.exe
