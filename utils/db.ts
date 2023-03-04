@@ -44,8 +44,15 @@ class DBManagerBuilder extends PostgresClient {
 
   public async registerGuild(id: string) {
     await this.queryObject(
-      `insert into "Guild" (id)
-      values (${id});`,
+      `insert into "Guild" (id) values (${id});`,
+    );
+  }
+
+  public async removeGuild(id: string) {
+    console.log(id);
+
+    await this.queryObject(
+      `delete from "Guild" where id = '${id}';`,
     );
   }
 
