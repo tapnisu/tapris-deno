@@ -3,7 +3,7 @@ import { Event } from "@interfaces/mod.ts";
 import { Guild } from "harmony/mod.ts";
 
 const event: Event = {
-  name: "guildCreate",
+  name: "guildDelete",
   run: async (client: ExtendedClient, guild: Guild) => {
     await client.db.removeGuild(guild.id);
   },
