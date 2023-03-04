@@ -49,8 +49,6 @@ class DBManagerBuilder extends PostgresClient {
   }
 
   public async removeGuild(id: string) {
-    console.log(id);
-
     await this.queryObject(
       `delete from "Guild" where id = '${id}';`,
     );
