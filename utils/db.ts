@@ -11,6 +11,14 @@ class DBManagerBuilder extends PostgresClient {
     await this.connect();
   }
 
+  public async getGuild(id: string) {
+    const guild = await this.queryObject<Guild>(
+      `select * from Guild where id = ${id};`,
+    );
+
+    return guild.rows[0];
+  }
+
   public async getGuildLanguage(id?: string) {
     if (!id) return "en";
 
