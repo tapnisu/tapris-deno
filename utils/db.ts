@@ -42,6 +42,13 @@ class DBManagerBuilder extends PostgresClient {
     return languageResponse.rows[0];
   }
 
+  public async registerGuild(id: string) {
+    await this.queryObject<Pick<Guild, "language">>(
+      `insert into "Guild" (id)
+      values (${id});`,
+    );
+  }
+
   public async sync() {}
 }
 
