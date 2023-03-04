@@ -27,6 +27,7 @@ class ExtendedClient extends Client {
     GetEvents(this);
     GetComponents(this);
 
+    this.db.connect();
     this.db.sync();
 
     await this.connect(this.env.BOT_TOKEN, [
