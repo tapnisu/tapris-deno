@@ -28,7 +28,7 @@ class ExtendedClient extends Client {
     GetComponents(this);
 
     this.db.connect();
-    this.db.sync();
+    // this.db.sync();
 
     await this.connect(this.env.BOT_TOKEN, [
       GatewayIntents.DIRECT_MESSAGES,
