@@ -58,8 +58,8 @@ class DBManagerBuilder extends PostgresClient {
     await this.queryObject(
       `CREATE TABLE Guilds (
         id text,
-        language text,
-        russian_roulette_before_death int4
+        language text NOT NULL,
+        russian_roulette_before_death int4 NOT NULL
      );`,
     );
   }
