@@ -10,7 +10,7 @@ interface Guild {
 class DBManagerBuilder extends PostgresClient {
   public async getGuild(id: string) {
     const guildResponse = await this.queryObject<Guild>(
-      `select * from "Guild" where id = '${id}';`,
+      `select * from "Guilds" where id = '${id}';`,
     );
 
     return guildResponse.rows[0];
@@ -20,7 +20,7 @@ class DBManagerBuilder extends PostgresClient {
     if (!id) return "en";
 
     const guildResponse = await this.queryObject<Pick<Guild, "language">>(
-      `select language from "Guild" where id = '${id}';`,
+      `select language from "Guilds" where id = '${id}';`,
     );
 
     return guildResponse.rows.length ? guildResponse.rows[0].language : "en";
@@ -35,8 +35,8 @@ class DBManagerBuilder extends PostgresClient {
 
   public async setGuildLanguage(id: string, language: LocaleNames) {
     const languageResponse = await this.queryObject<Pick<Guild, "language">>(
-      `update "Guild" set language = '${language}' where id = '${id}';
-       select language from "Guild" where id = '${id}';`,
+      `update "Guilds" set language = '${language}' where id = '${id}';
+       select language from "Guilds" where id = '${id}';`,
     );
 
     return languageResponse.rows[0];
@@ -44,19 +44,25 @@ class DBManagerBuilder extends PostgresClient {
 
   public async registerGuild(id: string) {
     await this.queryObject(
-      `insert into "Guild" (id) values (${id});`,
+      `insert into "Guilds" (id) values (${id});`,
     );
   }
 
   public async removeGuild(id: string) {
-    console.log(id);
-
     await this.queryObject(
-      `delete from "Guild" where id = '${id}';`,
+      `delete from "Guilds" where id = '${id}';`,
     );
   }
 
-  public async sync() {}
+  public async sync() {
+    await this.queryObject(
+      `CREATE TABLE Guilds (
+        id text,
+        language text,
+        russian_roulette_before_death int4
+     );`,
+    );
+  }
 }
 
 export default DBManagerBuilder;

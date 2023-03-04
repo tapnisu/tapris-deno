@@ -1,5 +1,6 @@
 import ExtendedClient from "@core";
 import guildCreate from "@events/guildCreate.ts";
+import guildDelete from "@events/guildDelete.ts";
 import interactionCreate from "@events/interactionCreate.ts";
 import ready from "@events/ready.ts";
 import { Event } from "@interfaces/mod.ts";
@@ -13,4 +14,5 @@ export default (client: ExtendedClient) => {
   Register(client, ready);
   Register(client, interactionCreate);
   Register(client, guildCreate);
+  Register(client, guildDelete);
 };
