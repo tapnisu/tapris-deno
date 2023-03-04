@@ -13,20 +13,22 @@ class ExtendedClient extends Client {
   public components: Collection<RegExp, Component> = new Collection();
   public events: Collection<string, Event> = new Collection();
   public env = env;
-  public db = new DBManagerBuilder(env.DATABASE_NAME, {
-    host: env.DATABASE_HOST,
-    username: env.DATABASE_USERNAME,
-    password: env.DATABASE_PASSWORD,
-    database: env.DATABASE,
-    filepath: env.DATABASE_FILE_PATH,
-  }).dbManager;
+  public db = new DBManagerBuilder(
+    {
+      hostname: env.DATABASE_HOSTNAME,
+      user: env.DATABASE_USER,
+      password: env.DATABASE_PASSWORD,
+      database: env.DATABASE,
+    },
+  );
 
   public async init() {
     GetCommands(this);
     GetEvents(this);
     GetComponents(this);
 
-    this.db.sync().catch((e) => console.warn(e));
+    this.db.connect();
+    this.db.sync();
 
     await this.connect(this.env.BOT_TOKEN, [
       GatewayIntents.DIRECT_MESSAGES,
