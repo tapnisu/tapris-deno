@@ -8,26 +8,22 @@ interface Guild {
 }
 
 class DBManagerBuilder extends PostgresClient {
-  public async postInit() {
-    await this.connect();
-  }
-
   public async getGuild(id: string) {
-    const guild = await this.queryObject<Guild>(
+    const guildResponse = await this.queryObject<Guild>(
       `select * from "Guild" where id = '${id}';`,
     );
 
-    return guild.rows[0];
+    return guildResponse.rows[0];
   }
 
   public async getGuildLanguage(id?: string): Promise<LocaleNames> {
     if (!id) return "en";
 
-    const guild = await this.queryObject<LocaleNames>(
+    const guildResponse = await this.queryObject<Pick<Guild, "language">>(
       `select language from "Guild" where id = '${id}';`,
     );
 
-    return guild.rows.length ? guild.rows[0] : "en";
+    return guildResponse.rows.length ? guildResponse.rows[0].language : "en";
   }
 
   public async selectLocale(
@@ -38,7 +34,7 @@ class DBManagerBuilder extends PostgresClient {
   }
 
   public async setGuildLanguage(id: string, language: LocaleNames) {
-    const languageResponse = await this.queryObject<LocaleNames>(
+    const languageResponse = await this.queryObject<Pick<Guild, "language">>(
       `update "Guild" set language = '${language}' where id = '${id}';
        select language from "Guild" where id = '${id}';`,
     );
