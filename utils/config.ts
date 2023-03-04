@@ -4,8 +4,8 @@ interface Env {
   BOT_TOKEN: string;
   BOT_COLOR: string;
 
-  DATABASE_HOST: string;
-  DATABASE_USERNAME: string;
+  DATABASE_HOSTNAME: string;
+  DATABASE_USER: string;
   DATABASE_PASSWORD: string;
   DATABASE: string;
   DATABASE_PORT: string;
