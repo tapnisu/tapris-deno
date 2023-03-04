@@ -37,6 +37,15 @@ class DBManagerBuilder extends PostgresClient {
     return locale[await this.getGuildLanguage(id)];
   }
 
+  public async setGuildLanguage(id: string, language: LocaleNames) {
+    const languageResponse = await this.queryObject<LocaleNames>(
+      `update "Guild" set language = '${language}' where id = ${id};
+       select language from "Guild" where id = ${id};`,
+    );
+
+    return languageResponse.rows[0];
+  }
+
   public async sync() {
   }
 }
