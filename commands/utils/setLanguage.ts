@@ -31,7 +31,7 @@ const command: Command = {
   run: async (client, interaction) => {
     const localesOld = await client.db.selectLocale(
       commandLocales,
-      interaction.guild?.id,
+      Number(interaction.guild?.id),
     );
 
     const userMember = await interaction.guild!.members.get(

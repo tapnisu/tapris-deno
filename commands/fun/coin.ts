@@ -39,7 +39,7 @@ const command: Command = {
 
     const locales = (await client.db.selectLocale(
       commandLocales,
-      interaction.guild?.id,
+      Number(interaction.guild?.id),
     )) as typeof commandLocales.en;
 
     const winner: Choice = choices[Math.floor(Math.random() * 2)];
