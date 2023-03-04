@@ -32,7 +32,7 @@ class DBManagerBuilder extends PostgresClient {
 
   public async selectLocale(
     locale: Locales,
-    id: string,
+    id?: string,
   ): Promise<LocaleRecords> {
     return locale[await this.getGuildLanguage(id)];
   }

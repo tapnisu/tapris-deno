@@ -7,7 +7,7 @@ const event: Event = {
     client.setPresence({ name: "Type '/' to check bot commands!", type: 0 });
 
     (await client.guilds.array()).forEach(async (guild) => {
-      if (!await client.db.getGuild(Number(guild.id))) {
+      if (!await client.db.getGuild(guild.id)) {
         // await client.db.registerGuild(guild.id);
       }
     });

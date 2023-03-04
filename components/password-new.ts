@@ -14,7 +14,7 @@ const component: Component = {
 
     const locales = (await client.db.selectLocale(
       commandLocales,
-      Number(interaction.guild?.id),
+      interaction.guild?.id,
     )) as typeof commandLocales.en;
 
     const buttonsRow: ActionRowComponent = {
