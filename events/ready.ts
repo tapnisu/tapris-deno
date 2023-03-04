@@ -7,7 +7,7 @@ const event: Event = {
     client.setPresence({ name: "Type '/' to check bot commands!", type: 0 });
 
     (await client.guilds.array()).forEach(async (guild) => {
-      if (!await client.db.getGuild(guild.id)) {
+      if (!await client.db.getGuild(Number(guild.id))) {
         await client.db.registerGuild(guild.id);
       }
     });
@@ -17,7 +17,7 @@ const event: Event = {
     client.commands.forEach((command) => commands.create(command));
 
     console.info(
-      `${client.user?.username}#${client.user?.discriminator} is up!`,
+      `${client.user?.tag} is up!`,
     );
   },
 };
