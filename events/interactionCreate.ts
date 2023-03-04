@@ -17,7 +17,7 @@ const event: Event = {
         }
 
         return await command.run(client, interaction).catch(async (e) => {
-          console.warn(e);
+          console.error(e);
 
           await interaction.reply("Unknown error happened!");
         });
@@ -32,7 +32,7 @@ const event: Event = {
       if (component) {
         return await component
           .run(client, interaction)
-          ?.catch((e) => console.warn(e));
+          ?.catch((e) => console.error(e));
       }
     }
   },
