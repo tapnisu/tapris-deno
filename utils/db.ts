@@ -43,7 +43,7 @@ class DBManagerBuilder extends PostgresClient {
   }
 
   public async registerGuild(id: string) {
-    await this.queryObject<Pick<Guild, "language">>(
+    await this.queryObject(
       `insert into "Guild" (id)
       values (${id});`,
     );
