@@ -2,7 +2,7 @@ import { LocaleNames, LocaleRecords, Locales } from "@interfaces/Locales.ts";
 import { Client as PostgresClient } from "postgres/mod.ts";
 
 interface Guild {
-  id: number;
+  id: string;
   language: LocaleNames;
   russianRouletteBeforeDeath: number;
 }
@@ -12,7 +12,7 @@ class DBManagerBuilder extends PostgresClient {
     await this.connect();
   }
 
-  public async getGuild(id: number) {
+  public async getGuild(id: string) {
     const guild = await this.queryObject<Guild>(
       `select * from "Guild" where id = ${id};`,
     );
@@ -20,7 +20,7 @@ class DBManagerBuilder extends PostgresClient {
     return guild.rows[0];
   }
 
-  public async getGuildLanguage(id?: number): Promise<LocaleNames> {
+  public async getGuildLanguage(id?: string): Promise<LocaleNames> {
     if (!id) return "en";
 
     const guild = await this.queryObject<LocaleNames>(
@@ -32,7 +32,7 @@ class DBManagerBuilder extends PostgresClient {
 
   public async selectLocale(
     locale: Locales,
-    id: number,
+    id: string,
   ): Promise<LocaleRecords> {
     return locale[await this.getGuildLanguage(id)];
   }
