@@ -46,8 +46,7 @@ class DBManagerBuilder extends PostgresClient {
     return languageResponse.rows[0];
   }
 
-  public async sync() {
-  }
+  public async sync() {}
 }
 
 export default DBManagerBuilder;
