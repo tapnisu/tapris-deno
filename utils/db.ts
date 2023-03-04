@@ -4,6 +4,7 @@ import { Client as PostgresClient } from "postgres/mod.ts";
 interface Guild {
   id: number;
   language: LocaleNames;
+  russianRouletteBeforeDeath: number;
 }
 
 class DBManagerBuilder extends PostgresClient {
