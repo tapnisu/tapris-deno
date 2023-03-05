@@ -1,7 +1,7 @@
 <p align="center">
  <img width=400px src="assets/avatar.webp" alt="Bot logo">
  <h1 align="center">Tapris</h1>
- <h3 align="center">Multipurpose discord bot</h3>
+ <h3 align="center">Lightweight multilanguage discord bot</h3>
 </p>
 
 <p align="center">
@@ -21,14 +21,17 @@ Sugarbell Chisaki from Gabriel DropOut manga.
 
 You can invite the bot by
 [this link](https://discord.com/api/oauth2/authorize?client_id=869088074758520832&scope=bot+applications.commands&permissions=294208515334).
-Type "/" to see commands!
+
+This bot uses slash commands.
+
+You can change language by using /setlangauge command.
 
 ## Host
 
 1. Create bot -
-   [Discord developer portal](https://discord.com/developers/applications)
+   [Discord developer portal](https://discord.com/developers/applications). Copy token for bot (don't share it with anyone).
 
-2. Install [Deno](https://deno.land/manual@v1.29.2/getting_started/installation)
+2. Install [Deno](https://deno.land/manual@v1.29.2/getting_started/installation).
 
 3. Clone repo:
    `git clone https://github.com/tapris-bot/tapris.git && cd ./tapris/`
