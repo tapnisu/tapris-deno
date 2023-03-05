@@ -6,7 +6,6 @@ import lmgtfy from "@commands/fun/lmgtfy.ts";
 import help from "@commands/info/help.ts";
 import avatar from "@commands/utils/avatar.ts";
 import color from "@commands/utils/color.ts";
-import colour from "@commands/utils/colour.ts";
 import password from "@commands/utils/password.ts";
 import profileLink from "@commands/utils/profileLink.ts";
 import setLanguage from "@commands/utils/setLanguage.ts";
@@ -19,7 +18,6 @@ const Register = (client: ExtendedClient, command: Command) => {
 };
 
 export default (client: ExtendedClient) => {
-  // Register(client, genshin);
   Register(client, genshinCodes);
   Register(client, manga);
   Register(client, coin);
@@ -27,7 +25,6 @@ export default (client: ExtendedClient) => {
   Register(client, help);
   Register(client, avatar);
   Register(client, color);
-  Register(client, colour);
   Register(client, password);
   Register(client, profileLink);
   Register(client, setLanguage);
