@@ -56,11 +56,11 @@ class DBManagerBuilder extends PostgresClient {
 
   public async sync() {
     await this.queryObject(
-      `CREATE TABLE Guilds (
+      `CREATE TABLE "Guilds" (
         id text,
         language text NOT NULL,
         russian_roulette_before_death int4 NOT NULL
-     );`,
+      );`,
     );
   }
 }
