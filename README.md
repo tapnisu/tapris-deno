@@ -31,16 +31,15 @@ You can change language by using /setlangauge command.
 1. Create bot -
    [Discord developer portal](https://discord.com/developers/applications). Copy token for bot (don't share it with anyone).
 
-2. Install [Deno](https://deno.land/manual@v1.29.2/getting_started/installation).
+2. Install [Deno](https://deno.land/manual/getting_started/installation).
 
 3. Clone repo:
    `git clone https://github.com/tapris-bot/tapris.git && cd ./tapris/`
 
-4. Setup [.env](.env.sample) / your env variables (example in
+4. Setup [.env](.env.sample) (example in
    [.env.sample](.env.sample))
+   Or, if you will use environment variables, set MODE to `DENODEPLOY`
 
-Or, if you are using just env, set MODE to `DENODEPLOY`
+5. Run `deno task start`.
 
-5. Run `deno task start`
-
-Now you have a running bot!
+6. Congratulations! Now your bot is running!
