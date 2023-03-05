@@ -2,7 +2,7 @@ import ExtendedClient from "@core";
 import {
   ApplicationCommandInteraction,
   ApplicationCommandOption,
-  SlashCommandInteraction,
+  SlashCommandInteraction
 } from "harmony/mod.ts";
 
 interface Run {
@@ -12,14 +12,10 @@ interface Run {
   ): Promise<ApplicationCommandInteraction>;
 }
 
-type ApplicationCommandOptionExtended = ApplicationCommandOption & {
-  required: boolean;
-};
-
 export interface Command {
   name: string;
   description?: string;
-  options?: ApplicationCommandOptionExtended[];
+  options?: ApplicationCommandOption[];
   guildsOnly?: boolean;
   run: Run;
 }
