@@ -1,4 +1,4 @@
-import { config } from "dotenv/mod.ts";
+import { load } from "std/dotenv/mod.ts";
 
 interface Env {
   BOT_TOKEN: string;
@@ -15,16 +15,16 @@ interface Env {
   MODE: "DENODEPLOY" | string;
 }
 
-const getEnv = (): Env => {
+const getEnv = async (): Promise<Env> => {
   if (
     Deno.env.get("MODE") === "DENODEPLOY"
   ) {
     return Deno.env.toObject() as unknown as Env;
   } else {
-    return config() as unknown as Env;
+    return await load() as unknown as Env;
   }
 };
 
-const dots = getEnv();
+const dots = await getEnv();
 
 export default dots;
