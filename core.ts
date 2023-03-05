@@ -27,8 +27,8 @@ class ExtendedClient extends Client {
     GetEvents(this);
     GetComponents(this);
 
-    this.db.connect().catch((e) => console.warn(e));
-    this.db.sync().catch((e) => console.warn(e));
+    await this.db.sync().catch((e) => console.warn(e));
+    await this.db.connect().catch((e) => console.warn(e));
 
     await this.connect(this.env.BOT_TOKEN, [
       GatewayIntents.DIRECT_MESSAGES,
