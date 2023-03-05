@@ -1,4 +1,4 @@
-import { LocaleNames, LocaleRecords, Locales } from "@interfaces/Locales.ts";
+import { LocaleNames, LocaleRecords, Locales } from "@typings/Locales.ts";
 import { Client as PostgresClient } from "postgres/mod.ts";
 
 interface Guild {

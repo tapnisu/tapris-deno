@@ -1,4 +1,4 @@
-import { Component } from "@interfaces/mod.ts";
+import { Component } from "@typings/mod.ts";
 
 const component: Component = {
   customId: /delete_message/,

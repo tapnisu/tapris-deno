@@ -1,4 +1,4 @@
-import { Command } from "@interfaces/mod.ts";
+import { Command } from "@typings/mod.ts";
 import { Collection } from "harmony/mod.ts";
 import { Hono } from "hono/mod.ts";
 

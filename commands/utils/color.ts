@@ -1,4 +1,4 @@
-import { Command } from "@interfaces/mod.ts";
+import { Command } from "@typings/mod.ts";
 import { createCanvas } from "canvas/mod.ts";
 import { Embed, MessageAttachment } from "harmony/mod.ts";
 

@@ -4,7 +4,7 @@
     "@components/": "./components/",
     "@core": "./core.ts",
     "@events/": "./events/",
-    "@interfaces/": "./interfaces/",
+    "@typings/": "./typings/",
     "@utils/": "./utils/",
     "canvas/": "https://deno.land/x/canvas@v1.4.1/",
     "harmony/": "https://deno.land/x/harmony@v2.8.0/",

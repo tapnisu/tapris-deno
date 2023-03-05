@@ -1,5 +1,5 @@
 import { commandLocales } from "@commands/utils/password.ts";
-import { Component } from "@interfaces/mod.ts";
+import { Component } from "@typings/mod.ts";
 import generatePassword from "@utils/generatePassword.ts";
 import { ActionRowComponent, Embed } from "harmony/mod.ts";
 

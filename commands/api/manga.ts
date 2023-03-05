@@ -1,4 +1,4 @@
-import { Command, SearchResult } from "@interfaces/mod.ts";
+import { Command, SearchResult } from "@typings/mod.ts";
 import { ActionRowComponent, Embed } from "harmony/mod.ts";
 
 const commandLocales = {
