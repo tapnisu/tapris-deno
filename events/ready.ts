@@ -4,7 +4,7 @@ import { Event } from "@interfaces/mod.ts";
 const event: Event = {
   name: "ready",
   run: async (client: ExtendedClient) => {
-    client.setPresence({ name: "Type '/' to check bot commands!", type: 0 });
+    await client.updatePresence();
 
     (await client.guilds.array()).forEach(async (guild) => {
       if (!await client.db.getGuild(guild.id)) {

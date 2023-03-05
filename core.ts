@@ -48,6 +48,17 @@ class ExtendedClient extends Client {
       port: Number(env.SERVER_PORT),
     });
   }
+
+  public async updatePresence() {
+    const guildsAmount = (await this.guilds.array()).length;
+
+    this.setPresence({
+      name: `Serving ${guildsAmount} guild${
+        guildsAmount != 1 ? "s" : ""
+      }!`,
+      type: 0,
+    });
+  }
 }
 
 export default ExtendedClient;

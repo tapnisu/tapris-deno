@@ -6,6 +6,7 @@ const event: Event = {
   name: "guildDelete",
   run: async (client: ExtendedClient, guild: Guild) => {
     await client.db.removeGuild(guild.id);
+    await client.updatePresence();
   },
 };
 
