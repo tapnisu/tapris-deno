@@ -36,7 +36,7 @@ const component: Component = {
     };
 
     const embed = new Embed()
-      .setColor(client.env.BOT_COLOR)
+      .setColor(client.botColor)
       .setTitle("Password")
       .setDescription(`||${generatePassword(passwordLength)}||`);
 

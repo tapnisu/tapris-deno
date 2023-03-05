@@ -39,7 +39,7 @@ const command: Command = {
     }
 
     const embed = new Embed()
-      .setColor(client.env.BOT_COLOR)
+      .setColor(client.botColor)
       .setTitle(`Link to ${user.tag}'s profile`)
       .setDescription(`\`https://discord.com/users/${user.id}\``)
       .setURL(`https://discord.com/users/${user.id}`);

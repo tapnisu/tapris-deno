@@ -41,7 +41,7 @@ const command: Command = {
     }
 
     const embed = new Embed()
-      .setColor(client.env.BOT_COLOR)
+      .setColor(client.botColor)
       .setTitle(`${user.tag} ${user.bot ? locales.bot() : ""}`)
       .setThumbnail(user.avatarURL())
       .setURL(`https://discord.com/users/${user.id}`)

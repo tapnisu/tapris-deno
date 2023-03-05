@@ -51,7 +51,7 @@ const command: Command = {
       }
 
       const embed = new Embed()
-        .setColor(client.env.BOT_COLOR)
+        .setColor(client.botColor)
         .setTitle(command.name);
 
       if (command.description) embed.setDescription(command.description);
@@ -68,7 +68,7 @@ const command: Command = {
     }
 
     const embed = new Embed()
-      .setColor(client.env.BOT_COLOR)
+      .setColor(client.botColor)
       .setDescription(locales.serverMember(interaction.guild?.name));
 
     embed

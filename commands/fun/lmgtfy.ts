@@ -34,7 +34,7 @@ const command: Command = {
     const link = `https://lmgtfy.app/?q=${encodeURI(query.replace(/ /g, "+"))}`;
 
     const embed = new Embed()
-      .setColor(client.env.BOT_COLOR)
+      .setColor(client.botColor)
       .setTitle(link)
       .setURL(link);
 

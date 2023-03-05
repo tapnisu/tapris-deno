@@ -48,7 +48,7 @@ const command: Command = {
       await interaction.defer();
 
       const embed = new Embed()
-        .setColor(client.env.BOT_COLOR)
+        .setColor(client.botColor)
         .setTitle(character.name)
         .setDescription(character.description)
         .setThumbnail(character.images.icon)
@@ -127,7 +127,7 @@ const command: Command = {
       await interaction.defer();
 
       const embed = new Embed()
-        .setColor(client.env.BOT_COLOR)
+        .setColor(client.botColor)
         .setTitle(weapon.name)
         .setDescription(weapon.effect)
         .setThumbnail(
@@ -189,7 +189,7 @@ const command: Command = {
       await interaction.defer();
 
       const embed = new Embed()
-        .setColor(client.env.BOT_COLOR)
+        .setColor(client.botColor)
         .setTitle(artifact.name)
         .setDescription(
           artifact.flower

@@ -33,7 +33,7 @@ const command: Command = {
     const url = "https://genshin.hoyoverse.com/en/gift";
 
     const embed = new Embed()
-      .setColor(client.env.BOT_COLOR)
+      .setColor(client.botColor)
       .setTitle(locales.embedTitle())
       .setDescription(locales.description())
       .setURL(url);

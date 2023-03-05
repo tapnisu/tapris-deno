@@ -45,7 +45,7 @@ const command: Command = {
     const avatarUrl = user.avatarURL("png", 2048);
 
     const embed = new Embed()
-      .setColor(client.env.BOT_COLOR)
+      .setColor(client.botColor)
       .setTitle(locales.usersAvatar(user.tag))
       .setImage(avatarUrl);
 

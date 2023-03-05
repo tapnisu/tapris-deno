@@ -12,7 +12,8 @@ class ExtendedClient extends Client {
   public commands: Collection<string, Command> = new Collection();
   public components: Collection<RegExp, Component> = new Collection();
   public events: Collection<string, Event> = new Collection();
-  public env = env;
+  private env = env;
+  public botColor = env.BOT_COLOR ? env.BOT_COLOR : "#97aee8";
   public db = new DBManagerBuilder(
     {
       hostname: env.DATABASE_HOSTNAME,

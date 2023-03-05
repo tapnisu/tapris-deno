@@ -13,7 +13,7 @@ const event: Event = {
     if (!channel?.isText() || !channel) return;
 
     const embed = new Embed()
-      .setColor(client.env.BOT_COLOR)
+      .setColor(client.botColor)
       .setTitle(client.user.username)
       .setThumbnail(client.user.avatarURL())
       .setDescription(

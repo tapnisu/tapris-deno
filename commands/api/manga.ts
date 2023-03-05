@@ -47,7 +47,7 @@ const command: Command = {
     }
 
     const embed = new Embed()
-      .setColor(client.env.BOT_COLOR)
+      .setColor(client.botColor)
       .setTitle(response[0].name)
       .addFields({
         name: locales.lastChapter(),

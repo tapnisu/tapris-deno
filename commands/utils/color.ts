@@ -56,7 +56,7 @@ const command: Command = {
     try {
       embed.setColor(colorString);
     } catch {
-      embed.setColor(client.env.BOT_COLOR);
+      embed.setColor(client.botColor);
     }
 
     embed.attach(attachment);

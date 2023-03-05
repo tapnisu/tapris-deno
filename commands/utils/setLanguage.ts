@@ -56,7 +56,7 @@ const command: Command = {
       : commandLocales.en;
 
     const embed = new Embed()
-      .setColor(client.env.BOT_COLOR)
+      .setColor(client.botColor)
       .setTitle(localesNew.success());
 
     return interaction.reply({ embeds: [embed] });

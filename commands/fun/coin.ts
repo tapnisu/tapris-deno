@@ -46,7 +46,7 @@ const command: Command = {
 
     const embed = new Embed()
       .setTitle(locales.winner(winner))
-      .setColor(client.env.BOT_COLOR)
+      .setColor(client.botColor)
       .setDescription(locales.youWonLost(winner == choice));
 
     return interaction.reply({ embeds: [embed] });
