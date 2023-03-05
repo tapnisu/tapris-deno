@@ -31,5 +31,7 @@ jobs:
       - uses: denoland/setup-deno@v1
         with:
           deno-version: v1.x
+      - name: Cache
+        run: deno cache mod.ts
       - name: Compile
         run: deno task compile
