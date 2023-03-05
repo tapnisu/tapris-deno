@@ -19,6 +19,7 @@ class ExtendedClient extends Client {
       user: env.DATABASE_USER,
       password: env.DATABASE_PASSWORD,
       database: env.DATABASE,
+      port: env.DATABASE_PORT,
     },
   );
 
@@ -27,8 +28,12 @@ class ExtendedClient extends Client {
     GetEvents(this);
     GetComponents(this);
 
-    await this.db.sync().catch((e) => console.warn(e));
-    await this.db.connect().catch((e) => console.warn(e));
+    await this.db.sync().catch(() =>
+      console.warn("Error creating tables for database!")
+    );
+    await this.db.sync().catch(() =>
+      console.warn("Failed to connect to database using TCP!")
+    );
 
     await this.connect(this.env.BOT_TOKEN, [
       GatewayIntents.DIRECT_MESSAGES,
