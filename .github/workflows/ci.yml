@@ -12,7 +12,7 @@ jobs:
         with:
           deno-version: v1.x
       - name: Lint
-        run: deno lint
+        run: deno task lint
   tests:
     name: Tests
     runs-on: ubuntu-latest
@@ -22,4 +22,14 @@ jobs:
         with:
           deno-version: v1.x
       - name: Test
-        run: deno test
+        run: deno task test
+  compile:
+    name: Compile
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: denoland/setup-deno@v1
+        with:
+          deno-version: v1.x
+      - name: Compile
+        run: deno task compile
