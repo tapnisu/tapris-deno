@@ -54,9 +54,7 @@ class ExtendedClient extends Client {
     const guildsAmount = (await this.guilds.array()).length;
 
     this.setPresence({
-      name: `Serving ${guildsAmount} guild${
-        guildsAmount != 1 ? "s" : ""
-      }!`,
+      name: `Serving ${guildsAmount} guild${guildsAmount != 1 ? "s" : ""}!`,
       type: 0,
     });
   }
