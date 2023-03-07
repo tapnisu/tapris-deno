@@ -11,22 +11,20 @@ import profileLink from "@commands/utils/profileLink.ts";
 import setLanguage from "@commands/utils/setLanguage.ts";
 import user from "@commands/utils/user.ts";
 import ExtendedClient from "@core";
-import { Command } from "@typings/mod.ts";
 
-const Register = (client: ExtendedClient, command: Command) => {
-  client.commands.set(command.name, command);
-};
+const commands = [
+  genshinCodes,
+  manga,
+  coin,
+  lmgtfy,
+  help,
+  avatar,
+  color,
+  password,
+  profileLink,
+  setLanguage,
+  user,
+];
 
-export default (client: ExtendedClient) => {
-  Register(client, genshinCodes);
-  Register(client, manga);
-  Register(client, coin);
-  Register(client, lmgtfy);
-  Register(client, help);
-  Register(client, avatar);
-  Register(client, color);
-  Register(client, password);
-  Register(client, profileLink);
-  Register(client, setLanguage);
-  Register(client, user);
-};
+export default (client: ExtendedClient) =>
+  commands.forEach((c) => client.commands.set(c.name, c));
