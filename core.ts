@@ -2,9 +2,9 @@ import GetCommands from "@commands/mod.ts";
 import GetComponents from "@components/mod.ts";
 import GetEvents from "@events/mod.ts";
 import { Command, Component, Event } from "@typings/mod.ts";
+import api from "@utils/api.ts";
 import env from "@utils/config.ts";
 import DBManagerBuilder from "@utils/db.ts";
-import server from "@utils/server.ts";
 import { Client, Collection, GatewayIntents } from "harmony/mod.ts";
 import { serve } from "std/http/server.ts";
 
@@ -45,7 +45,7 @@ class ExtendedClient extends Client {
       GatewayIntents.GUILD_PRESENCES,
     ]);
 
-    await serve(new server(this).fetch, {
+    await serve(new api(this).fetch, {
       port: Number(env.SERVER_PORT),
     });
   }

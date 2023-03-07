@@ -1,7 +1,7 @@
 import Client from "@core";
 import { Hono } from "hono/mod.ts";
 
-class Server extends Hono {
+class Api extends Hono {
   private client: Client;
 
   constructor(client: Client) {
@@ -48,4 +48,4 @@ class Server extends Hono {
   }
 }
 
-export default Server;
+export default Api;
