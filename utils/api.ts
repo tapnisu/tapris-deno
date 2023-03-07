@@ -31,7 +31,7 @@ class Api extends Hono {
 
     this.get("/api/v1", (r) =>
       r.json({
-        routes: ["commands"],
+        routes: ["commands", "guildsAmount"],
       }));
 
     this.get("/api/v1/commands", (r) => r.json(this.client.commands.array()));
@@ -44,6 +44,12 @@ class Api extends Hono {
       return r.json({
         error: "Command not found!",
       });
+    });
+
+    this.get("/api/v1/guildsAmount", async (r) => {
+      const guildsAmount = (await this.client.guilds.array()).length;
+
+      return r.json({ guildsAmount: guildsAmount });
     });
   }
 }
