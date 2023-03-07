@@ -1,14 +1,13 @@
-import { Command } from "@typings/mod.ts";
-import { Collection } from "harmony/mod.ts";
+import Client from "@core";
 import { Hono } from "hono/mod.ts";
 
 class Server extends Hono {
-  private commands: Collection<string, Command>;
+  private client: Client;
 
-  constructor(commands: Collection<string, Command>) {
+  constructor(client: Client) {
     super();
 
-    this.commands = commands;
+    this.client = client;
 
     this.get("/", (r) => r.redirect("https://tapris.tapni.su", 302));
 
@@ -35,10 +34,10 @@ class Server extends Hono {
         routes: ["commands"],
       }));
 
-    this.get("/api/v1/commands", (r) => r.json(this.commands.array()));
+    this.get("/api/v1/commands", (r) => r.json(this.client.commands.array()));
 
     this.get("/api/v1/commands/:name", (r) => {
-      const command = this.commands.get(r.req.param("name"));
+      const command = this.client.commands.get(r.req.param("name"));
 
       if (command) return r.json(command);
 
