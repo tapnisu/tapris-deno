@@ -1,4 +1,3 @@
-// import genshin from "@commands/api/genshin.ts";
 import genshinCodes from "@commands/api/genshinCodes.ts";
 import manga from "@commands/api/manga.ts";
 import coin from "@commands/fun/coin.ts";
