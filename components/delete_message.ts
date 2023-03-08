@@ -1,12 +1,11 @@
-import { Component } from "@typings/mod.ts";
+import { ComponentBuilder } from "@builders/mod.ts";
 
-const component: Component = {
-  customId: /delete_message/,
-  run: (_client, interaction) => {
+const component = new ComponentBuilder().setCustomId(/delete_message/).setRun(
+  (_client, interaction) => {
     const message = interaction.message;
 
     return message.delete();
   },
-};
+);
 
 export default component;
