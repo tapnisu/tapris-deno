@@ -24,7 +24,7 @@ interface Run {
     | void;
 }
 
-class Event {
+class EventBuilder {
   public name: EventName = "raw";
   public run: Run = () => {};
 
@@ -37,4 +37,4 @@ class Event {
   }
 }
 
-export default Event;
+export default EventBuilder;
