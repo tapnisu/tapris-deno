@@ -13,9 +13,8 @@ const events = [
   reconnect,
 ];
 
-export default (client: ExtendedClient) => {
+export default (client: ExtendedClient) =>
   events.forEach((event) => {
     client.events.set(event.name, event);
     client.on(event.name, event.run.bind(null, client));
   });
-};
