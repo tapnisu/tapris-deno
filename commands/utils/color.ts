@@ -1,6 +1,6 @@
 import { Command } from "@typings/mod.ts";
 import { createCanvas } from "canvas/mod.ts";
-import { Embed, MessageAttachment } from "harmony/mod.ts";
+import { ApplicationCommandOptionType, Embed, MessageAttachment } from "harmony/mod.ts";
 
 const command: Command = {
   name: "color",
@@ -9,7 +9,7 @@ const command: Command = {
     {
       name: "string",
       description: "Color to be shown",
-      type: 3,
+      type: ApplicationCommandOptionType.STRING,
       required: false,
     },
   ],

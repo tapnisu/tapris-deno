@@ -1,5 +1,5 @@
 import { Command } from "@typings/mod.ts";
-import { ApplicationCommandOptionBase, Embed } from "harmony/mod.ts";
+import { ApplicationCommandOptionBase, ApplicationCommandOptionType, Embed } from "harmony/mod.ts";
 
 const commandLocales = {
   en: {
@@ -26,7 +26,7 @@ const command: Command = {
     {
       name: "command",
       description: "Name of command to get info",
-      type: 3,
+      type: ApplicationCommandOptionType.STRING,
       required: false,
     },
   ],

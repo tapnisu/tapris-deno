@@ -1,5 +1,5 @@
 import { Command, SearchResult } from "@typings/mod.ts";
-import { ActionRowComponent, Embed } from "harmony/mod.ts";
+import { ActionRowComponent, ApplicationCommandOptionType, Embed } from "harmony/mod.ts";
 
 const commandLocales = {
   en: {
@@ -21,7 +21,7 @@ const command: Command = {
     {
       name: "query",
       description: "Query for search",
-      type: 3,
+      type: ApplicationCommandOptionType.STRING,
       required: true,
     },
   ],

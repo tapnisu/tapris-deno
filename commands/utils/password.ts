@@ -1,6 +1,6 @@
 import { Command } from "@typings/mod.ts";
 import generatePassword from "@utils/generatePassword.ts";
-import { ActionRowComponent, Embed } from "harmony/mod.ts";
+import { ActionRowComponent, ApplicationCommandOptionType, Embed } from "harmony/mod.ts";
 
 export const commandLocales = {
   en: {
@@ -20,7 +20,7 @@ const command: Command = {
     {
       name: "length",
       description: "Set length of password",
-      type: 4,
+      type: ApplicationCommandOptionType.NUMBER,
       required: true,
     },
   ],

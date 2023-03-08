@@ -1,5 +1,5 @@
 import { Command } from "@typings/mod.ts";
-import { ActionRowComponent, Embed } from "harmony/mod.ts";
+import { ActionRowComponent, ApplicationCommandOptionType, Embed } from "harmony/mod.ts";
 
 const commandLocales = {
   en: {
@@ -21,7 +21,7 @@ const command: Command = {
     {
       name: "user",
       description: "User to get avatar from",
-      type: 6,
+      type: ApplicationCommandOptionType.USER,
       required: true,
     },
   ],

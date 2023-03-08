@@ -1,5 +1,5 @@
 import { Command } from "@typings/mod.ts";
-import { Embed } from "harmony/mod.ts";
+import { ApplicationCommandOptionType, Embed } from "harmony/mod.ts";
 
 type Choice = "coin" | "tail";
 const choices: Choice[] = ["coin", "tail"];
@@ -28,7 +28,7 @@ const command: Command = {
         { name: "Coin", value: "coin" },
         { name: "Tail", value: "tail" },
       ],
-      type: 3,
+      type: ApplicationCommandOptionType.STRING,
       required: true,
     },
   ],

@@ -1,5 +1,5 @@
 import { Command } from "@typings/mod.ts";
-import { Embed } from "harmony/mod.ts";
+import { ApplicationCommandOptionType, Embed } from "harmony/mod.ts";
 
 const commandLocales = {
   en: {
@@ -17,7 +17,7 @@ const command: Command = {
     {
       name: "user",
       description: "User to get link for",
-      type: 6,
+      type: ApplicationCommandOptionType.USER,
       required: true,
     },
   ],
