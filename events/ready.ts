@@ -1,9 +1,8 @@
+import { EventBuilder } from "@builders/mod.ts";
 import ExtendedClient from "@core";
-import { Event } from "@typings/mod.ts";
 
-const event: Event = {
-  name: "ready",
-  run: async (client: ExtendedClient) => {
+const event = new EventBuilder().setName("ready").setRun(
+  async (client: ExtendedClient) => {
     await client.updatePresence();
 
     (await client.guilds.array()).forEach(async (guild) => {
@@ -20,6 +19,6 @@ const event: Event = {
       `${client.user?.tag} is up!`,
     );
   },
-};
+);
 
 export default event;
