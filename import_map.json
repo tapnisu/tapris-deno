@@ -1,5 +1,6 @@
 {
   "imports": {
+    "@builders/": "./builders/",
     "@commands/": "./commands/",
     "@components/": "./components/",
     "@core": "./core.ts",
