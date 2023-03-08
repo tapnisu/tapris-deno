@@ -1,9 +1,8 @@
+import { EventBuilder } from "@builders/mod.ts";
 import ExtendedClient from "@core";
-import { Event } from "@typings/mod.ts";
 
-const event: Event = {
-  name: "reconnect",
-  run: async (client: ExtendedClient) => {
+const event = new EventBuilder().setName("reconnect").setRun(
+  async (client: ExtendedClient) => {
     await client.updatePresence();
 
     (await client.guilds.array()).forEach(async (guild) => {
@@ -20,6 +19,6 @@ const event: Event = {
       `${client.user?.tag} is reconnected!`,
     );
   },
-};
+);
 
 export default event;
