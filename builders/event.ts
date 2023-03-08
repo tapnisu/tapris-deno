@@ -24,17 +24,19 @@ interface Run {
     | void;
 }
 
-class EventBuilder {
+export class EventBuilder {
   public name: EventName = "raw";
   public run: Run = () => {};
 
   public setName(name: EventName) {
     this.name = name;
+
+    return this;
   }
 
   public setRun(run: Run) {
     this.run = run;
+
+    return this;
   }
 }
-
-export default EventBuilder;

@@ -1,10 +1,9 @@
+import { EventBuilder } from "@builders/mod.ts";
 import ExtendedClient from "@core";
-import { Event } from "@typings/mod.ts";
 import { Embed, Guild } from "harmony/mod.ts";
 
-const event: Event = {
-  name: "guildCreate",
-  run: async (client: ExtendedClient, guild: Guild) => {
+const event = new EventBuilder().setName("guildCreate").setRun(
+  async (client: ExtendedClient, guild: Guild) => {
     await client.db.registerGuild(guild.id);
     await client.updatePresence();
 
@@ -18,13 +17,13 @@ const event: Event = {
       .setThumbnail(client.user.avatarURL())
       .setDescription(
         `Type "/" to check bot commands!
-        https://github.com/tapris-bot/tapris.`,
+      https://github.com/tapris-bot/tapris.`,
       );
 
     return channel.send({
       embeds: [embed],
     });
   },
-};
+);
 
 export default event;
