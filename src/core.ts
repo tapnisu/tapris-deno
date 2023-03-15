@@ -32,7 +32,7 @@ class ExtendedClient extends Client {
     await this.db.sync().catch(() =>
       console.warn("Error creating tables for database!")
     );
-    await this.db.sync().catch(() =>
+    await this.db.connect().catch(() =>
       console.warn("Failed to connect to database using TCP!")
     );
 
