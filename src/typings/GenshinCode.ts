@@ -12,28 +12,10 @@ export interface Code {
 }
 
 export interface RewardArray {
-  image_path: ImagePath;
-  name: Name;
+  image_path: string;
+  name: string;
   count: string;
   rarity: Rarity;
-}
-
-export enum ImagePath {
-  AdventurerExperience = "adventurer_experience",
-  FineEnhancementOre = "fine_enhancement_ore",
-  HeroWit = "hero_wit",
-  Mora = "mora",
-  MysticEnhancementOre = "mystic_enhancement_ore",
-  Primogem = "primogem",
-}
-
-export enum Name {
-  AdventurerSExperience = "Adventurer's Experience",
-  FineEnhancementOre = "Fine Enhancement Ore",
-  HeroSWit = "Hero's Wit",
-  Mora = "Mora",
-  MysticEnhancementOre = "Mystic Enhancement Ore",
-  Primogems = "Primogems",
 }
 
 export enum Rarity {
@@ -41,4 +23,5 @@ export enum Rarity {
   RarityFourStar = "rarity_four_star",
   RarityTreeStar = "rarity_tree_star",
   RarityTwoStar = "rarity_two_star",
+  RarityOneStar = "rarity_one_star",
 }
