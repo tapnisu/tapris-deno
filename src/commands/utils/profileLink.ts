@@ -1,39 +1,36 @@
-import { Command } from "@typings/mod.ts";
 import { ApplicationCommandOptionType, Embed } from "harmony/mod.ts";
+import { CommandBuilder } from "../../builders/mod.ts";
+import { LocaleRecords } from "../../typings/mod.ts";
 
-const commandLocales = {
-  en: {
-    unknownError: () => "Unknown error happened! :(",
-  },
-  ru: {
-    unknownError: () => "Произошла неизвестная ошибка! :(",
-  },
-};
+interface ProfileLinkLocales extends LocaleRecords {
+  unknownError: () => string;
+}
 
-const command: Command = {
-  name: "profilelink",
-  description: "Get link to share user using link",
-  options: [
+const command = new CommandBuilder<ProfileLinkLocales>()
+  .setName("profilelink")
+  .setDescription("Get link to share user using link")
+  .setOptions(
     {
       name: "user",
       description: "User to get link for",
       type: ApplicationCommandOptionType.USER,
       required: true,
     },
-  ],
-  run: async (client, interaction) => {
+  ).setLocales({
+    en: {
+      unknownError: () => "Unknown error happened! :(",
+    },
+    ru: {
+      unknownError: () => "Произошла неизвестная ошибка! :(",
+    },
+  }).setRun(async (client, interaction, locale) => {
     const user = await client.users.get(
       interaction.options.find((option) => option.name == "user")?.value,
     );
 
-    const locales = (await client.db.selectLocale(
-      commandLocales,
-      interaction.guild?.id,
-    )) as typeof commandLocales.en;
-
     if (!user) {
       return interaction.reply({
-        content: locales.unknownError(),
+        content: locale.unknownError(),
         ephemeral: true,
       });
     }
@@ -45,7 +42,6 @@ const command: Command = {
       .setURL(`https://discord.com/users/${user.id}`);
 
     return interaction.reply({ embeds: [embed] });
-  },
-};
+  });
 
 export default command;
