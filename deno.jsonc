@@ -2,11 +2,11 @@
   "tasks": {
     "start": "deno run --allow-env --allow-net --allow-read --allow-write mod.ts",
     "dev": "deno run --watch --allow-env --allow-net --allow-read --allow-write mod.ts",
-    "deploy": "deno run --allow-env --allow-net --allow-read mod.ts",
+    "check": "deno check",
     "fmt": "deno fmt",
     "lint": "deno lint",
-    "compile": "deno compile --allow-env --allow-net --allow-read mod.ts",
-    "test": "deno test"
+    "test": "deno test",
+    "compile": "deno compile --allow-env --allow-net --allow-read mod.ts"
   },
   "importMap": "./import_map.json"
 }
