@@ -1,35 +1,34 @@
-import { Command } from "@typings/mod.ts";
-import { ActionRowComponent, ApplicationCommandOptionType, Embed } from "harmony/mod.ts";
+import { CommandBuilder } from "@builders/mod.ts";
+import { LocaleRecords } from "@typings/Locales.ts";
+import {
+  ActionRowComponent,
+  ApplicationCommandOptionType,
+  Embed,
+} from "harmony/mod.ts";
 
-const commandLocales = {
-  en: {
-    getAnswerButton: (query: string) => `Get answer for "${query}" question`,
-  },
-  ru: {
-    getAnswerButton: (query: string) => `Получить ответ на вопрос "${query}"`,
-  },
-};
+interface LmgtfyLocale extends LocaleRecords {
+  getAnswerButton: (query: string) => string;
+}
 
-const command: Command = {
-  name: "lmgtfy",
-  description: "'Let Me Google That For You' links generator",
-  options: [
-    {
-      name: "query",
-      description: "Query, to generate link",
-      type: ApplicationCommandOptionType.STRING,
-      required: true,
+const command = new CommandBuilder<LmgtfyLocale>().setName("lmgtfy")
+  .setDescription(
+    "'Let Me Google That For You' links generator",
+  ).setOptions({
+    name: "query",
+    description: "Query, to generate link",
+    type: ApplicationCommandOptionType.STRING,
+    required: true,
+  }).setLocales({
+    en: {
+      getAnswerButton: (query: string) => `Get answer for "${query}" question`,
     },
-  ],
-  run: async (client, interaction) => {
+    ru: {
+      getAnswerButton: (query: string) => `Получить ответ на вопрос "${query}"`,
+    },
+  }).setRun((client, interaction, locale) => {
     const query = interaction.options.find(
       (option) => option.name == "query",
     )?.value;
-
-    const locales = (await client.db.selectLocale(
-      commandLocales,
-      interaction.guild?.id,
-    )) as typeof commandLocales.en;
 
     const link = `https://lmgtfy.app/?q=${encodeURI(query.replace(/ /g, "+"))}`;
 
@@ -44,14 +43,13 @@ const command: Command = {
         {
           type: 2,
           url: link,
-          label: locales.getAnswerButton(query),
+          label: locale.getAnswerButton(query),
           style: 5,
         },
       ],
     };
 
     return interaction.reply({ embeds: [embed], components: [buttonsRow] });
-  },
-};
+  });
 
 export default command;

@@ -1,9 +1,7 @@
 export type LocaleNames = "en" | "ru";
 
 // deno-lint-ignore no-explicit-any
-type LocaleFunctionArgs = any[];
-
-type LocaleFunction = (...args: LocaleFunctionArgs) => string;
+type LocaleFunction = (...args: any[]) => string;
 
 export type LocaleRecords = Record<string, LocaleFunction>;
 

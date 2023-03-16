@@ -1,4 +1,4 @@
-import { LocaleNames, LocaleRecords, Locales } from "@typings/Locales.ts";
+import { LocaleNames, LocaleRecords } from "@typings/Locales.ts";
 import { Client as PostgresClient } from "postgres/mod.ts";
 
 interface Guild {
@@ -26,10 +26,11 @@ class DBManagerBuilder extends PostgresClient {
     return guildResponse.rows.length ? guildResponse.rows[0].language : "en";
   }
 
-  public async selectLocale(
-    locale: Locales,
+  public async selectLocale<T extends LocaleRecords | undefined>(
+    locale: Record<LocaleNames, T> | undefined,
     id?: string,
-  ): Promise<LocaleRecords> {
+  ): Promise<T> {
+    if (!locale) return undefined as T;
     return locale[await this.getGuildLanguage(id)];
   }
 

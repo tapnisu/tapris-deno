@@ -1,46 +1,41 @@
-import { Command, LocaleNames } from "@typings/mod.ts";
+import { CommandBuilder } from "@builders/mod.ts";
+import { LocaleNames, LocaleRecords } from "@typings/mod.ts";
 import { ApplicationCommandOptionType, Embed } from "harmony/mod.ts";
 
-const commandLocales = {
-  en: {
-    notAdministrator: () => "You don't have administrator permissions!",
-    success: () => "Language set to english!",
-  },
-  ru: {
-    notAdministrator: () => "У вас нет прав администратора!",
-    success: () => "Язык установлен на русский!",
-  },
-};
+interface SetLanguageLocale extends LocaleRecords {
+  notAdministrator: () => string;
+  success: () => string;
+}
 
-const command: Command = {
-  name: "setlanguage",
-  description: "Set my language for this guild",
-  options: [
-    {
-      name: "language",
-      description: "Your selection",
-      choices: [
-        { name: "English", value: "en" },
-        { name: "Russian", value: "ru" },
-      ],
-      type: ApplicationCommandOptionType.STRING,
-      required: true,
+const command = new CommandBuilder<SetLanguageLocale>().setName("setlanguage")
+  .setDescription(
+    "Set my language for this guild",
+  ).setOptions({
+    name: "language",
+    description: "Your selection",
+    choices: [
+      { name: "English", value: "en" },
+      { name: "Russian", value: "ru" },
+    ],
+    type: ApplicationCommandOptionType.STRING,
+    required: true,
+  }).setLocales({
+    en: {
+      notAdministrator: () => "You don't have administrator permissions!",
+      success: () => "Language set to english!",
     },
-  ],
-  guildsOnly: true,
-  run: async (client, interaction) => {
-    const localesOld = await client.db.selectLocale(
-      commandLocales,
-      interaction.guild?.id,
-    );
-
+    ru: {
+      notAdministrator: () => "У вас нет прав администратора!",
+      success: () => "Язык установлен на русский!",
+    },
+  }).setGuildOnly().setRun(async (client, interaction, locale) => {
     const userMember = await interaction.guild!.members.get(
       interaction.user.id,
     );
 
     if (!userMember!.permissions.has("Administrator")) {
       return await interaction.reply({
-        content: localesOld.notAdministrator(),
+        content: locale.notAdministrator(),
         ephemeral: true,
       });
     }
@@ -51,16 +46,11 @@ const command: Command = {
 
     await client.db.setGuildLanguage(interaction.guild!.id, language);
 
-    const localesNew = commandLocales[language]
-      ? commandLocales[language]
-      : commandLocales.en;
-
     const embed = new Embed()
       .setColor(client.botColor)
-      .setTitle(localesNew.success());
+      .setTitle(":thumbsup:");
 
     return interaction.reply({ embeds: [embed] });
-  },
-};
+  });
 
 export default command;

@@ -9,18 +9,26 @@ const event = new EventBuilder().setName("interactionCreate").setRun(
 
       if (!command) return;
 
-      if (command.guildsOnly && !interaction.guild) {
+      if (command.guildOnly && !interaction.guild) {
         return await interaction.reply({
           content: "Sorry, this command is only for guilds.",
           ephemeral: true,
         });
       }
 
-      return await command.run(client, interaction).catch(async (e) => {
-        console.error(e);
+      const locale = await client.db.selectLocale(
+        command.locales,
+        interaction.guild?.id,
+      );
 
-        await interaction.reply("Unknown error happened!");
-      });
+      // deno-lint-ignore no-explicit-any
+      return await command.run(client, interaction, locale as any).catch(
+        async (e) => {
+          console.error(e);
+
+          await interaction.reply("Unknown error happened!");
+        },
+      );
     }
 
     if (interaction.isMessageComponent()) {

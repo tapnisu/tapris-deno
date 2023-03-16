@@ -1,7 +1,19 @@
-import { Command } from "@typings/mod.ts";
+import { Command, LocaleRecords } from "@typings/mod.ts";
 import { ApplicationCommandOptionType, Embed } from "harmony/mod.ts";
 
-const commandLocales = {
+interface UserLocale extends LocaleRecords {
+  unknownError: () => string;
+  bot: () => string;
+}
+
+const command = new Command<UserLocale>().setName("user").setDescription(
+  "Sends user information",
+).setOptions({
+  name: "user",
+  description: "User to be shown",
+  type: ApplicationCommandOptionType.USER,
+  required: true,
+}).setLocales({
   en: {
     unknownError: () => "Unknown error happened! :(",
     bot: () => "`bot`",
@@ -10,45 +22,26 @@ const commandLocales = {
     unknownError: () => "Произошла неизвестная ошибка! :(",
     bot: () => "`бот`",
   },
-};
+}).setRun(async (client, interaction, locale) => {
+  const user = await client.users.get(
+    interaction.options.find((option) => option.name == "user")?.value,
+  );
 
-const command: Command = {
-  name: "user",
-  description: "Sends user information",
-  options: [
-    {
-      name: "user",
-      description: "User to be shown",
-      type: ApplicationCommandOptionType.USER,
-      required: true,
-    },
-  ],
-  run: async (client, interaction) => {
-    const user = await client.users.get(
-      interaction.options.find((option) => option.name == "user")?.value,
-    );
+  if (!user) {
+    return interaction.reply({
+      content: locale.unknownError(),
+      ephemeral: true,
+    });
+  }
 
-    const locales = (await client.db.selectLocale(
-      commandLocales,
-      interaction.guild?.id,
-    )) as typeof commandLocales.en;
+  const embed = new Embed()
+    .setColor(client.botColor)
+    .setTitle(`${user.tag} ${user.bot ? locale.bot() : ""}`)
+    .setThumbnail(user.avatarURL())
+    .setURL(`https://discord.com/users/${user.id}`)
+    .addFields({ name: "ID", value: user.id, inline: true });
 
-    if (!user) {
-      return interaction.reply({
-        content: locales.unknownError(),
-        ephemeral: true,
-      });
-    }
-
-    const embed = new Embed()
-      .setColor(client.botColor)
-      .setTitle(`${user.tag} ${user.bot ? locales.bot() : ""}`)
-      .setThumbnail(user.avatarURL())
-      .setURL(`https://discord.com/users/${user.id}`)
-      .addFields({ name: "ID", value: user.id, inline: true });
-
-    return interaction.reply({ embeds: [embed] });
-  },
-};
+  return interaction.reply({ embeds: [embed] });
+});
 
 export default command;
