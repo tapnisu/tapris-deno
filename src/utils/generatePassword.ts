@@ -1,10 +1,10 @@
 export const defaultCharset =
   "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 
-export default function generatePassword(
+const generatePassword = (
   length: number,
   charset = defaultCharset,
-) {
+) => {
   let password = "";
 
   for (let i = 0; i < length; ++i) {
@@ -12,4 +12,6 @@ export default function generatePassword(
   }
 
   return password;
-}
+};
+
+export default generatePassword;
