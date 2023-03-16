@@ -19,9 +19,11 @@ export class CommandBuilder extends HarmonyCommandBuilder {
 
   public setRun(run: Run) {
     this.run = run;
+    return this;
   }
 
   public setLocales(locales: Locales) {
     this.locales = locales;
+    return this;
   }
 }
