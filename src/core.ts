@@ -9,8 +9,7 @@ import { Client, Collection, GatewayIntents } from "harmony/mod.ts";
 import { serve } from "std/http/server.ts";
 
 class ExtendedClient extends Client {
-  public commands: Collection<string, CommandCollectionType> =
-    new Collection();
+  public commands: Collection<string, CommandCollectionType> = new Collection();
   public components: Collection<RegExp, Component> = new Collection();
   public events: Collection<string, Event> = new Collection();
   private env = env;

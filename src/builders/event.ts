@@ -3,7 +3,7 @@ import {
   ApplicationCommandInteraction,
   ClientEvents,
   Interaction,
-  Message
+  Message,
 } from "harmony/mod.ts";
 
 type EventName = keyof ClientEvents;

@@ -4,7 +4,7 @@ import { LocaleRecords } from "@typings/mod.ts";
 import {
   ApplicationCommandOptionBase,
   ApplicationCommandOptionType,
-  Embed
+  Embed,
 } from "harmony/mod.ts";
 
 interface HelpLocale extends LocaleRecords {
