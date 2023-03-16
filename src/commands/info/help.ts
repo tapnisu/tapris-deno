@@ -1,11 +1,25 @@
-import { Command } from "@typings/mod.ts";
+import { CommandBuilder } from "@builders/mod.ts";
+import { Command, LocaleRecords } from "@typings/mod.ts";
 import {
   ApplicationCommandOptionBase,
   ApplicationCommandOptionType,
-  Embed,
+  Embed
 } from "harmony/mod.ts";
 
-const commandLocales = {
+interface HelpLocale extends LocaleRecords {
+  isNotAValidCommand: (request: string) => string;
+  serverMember: (name?: string) => string;
+  required: () => string;
+}
+
+const command = new CommandBuilder<HelpLocale>().setName("help").setDescription(
+  "Get info about commands",
+).setOptions({
+  name: "command",
+  description: "Name of command to get info",
+  type: ApplicationCommandOptionType.STRING,
+  required: false,
+}).setLocales({
   en: {
     isNotAValidCommand: (request: string) =>
       `${request} is not a valid command!`,
@@ -21,90 +35,71 @@ const commandLocales = {
 
     required: () => "(обязателен) ",
   },
-};
+}).setRun((client, interaction, locale) => {
+  const request = interaction.options.find(
+    (option) => option.name == "command",
+  )?.value;
 
-const command: Command = {
-  name: "help",
-  description: "Get info about commands",
-  options: [
-    {
-      name: "command",
-      description: "Name of command to get info",
-      type: ApplicationCommandOptionType.STRING,
-      required: false,
-    },
-  ],
-  run: async (client, interaction) => {
-    const request = interaction.options.find(
-      (option) => option.name == "command",
-    )?.value;
+  if (request) {
+    const command = client.commands.get(request);
 
-    const locales = (await client.db.selectLocale(
-      commandLocales,
-      interaction.guild?.id,
-    )) as typeof commandLocales.en;
-
-    if (request) {
-      const command = client.commands.get(request);
-
-      if (!command) {
-        return interaction.reply({
-          content: locales.isNotAValidCommand(request),
-          ephemeral: true,
-        });
-      }
-
-      const embed = new Embed()
-        .setColor(client.botColor)
-        .setTitle(command.name);
-
-      if (command.description) embed.setDescription(command.description);
-
-      command.options?.forEach((option) => {
-        embed.addFields({
-          name: `${option.name}`,
-          value: option.description,
-          inline: true,
-        });
+    if (!command) {
+      return interaction.reply({
+        content: locale.isNotAValidCommand(request),
+        ephemeral: true,
       });
-
-      return interaction.reply({ embeds: [embed] });
     }
 
     const embed = new Embed()
       .setColor(client.botColor)
-      .setDescription(locales.serverMember(interaction.guild?.name));
+      .setTitle(command.name);
 
-    embed
-      .setTitle(client.user ? client.user.username : "Tapris")
-      .setThumbnail(
-        client.user
-          ? client.user.avatarURL()
-          : "https://raw.githubusercontent.com/tapris-bot/tapris/main/assets/avatar.webp",
-      );
+    if (command.description) embed.setDescription(command.description);
 
-    client.commands.forEach((command: Command) => {
+    command.options?.forEach((option) => {
       embed.addFields({
-        name: `/${command.name} ${
-          command.options
-            ? Array.prototype.map
-              .call(
-                command.options,
-                (option: ApplicationCommandOptionBase) =>
-                  `<${
-                    option.required ? locales.required() : ""
-                  }${option.name} [${option.description}]>`,
-              )
-              .join(" ")
-            : ""
-        }`,
-        value: command.description ? command.description : "...",
+        name: `${option.name}`,
+        value: option.description,
         inline: true,
       });
     });
 
     return interaction.reply({ embeds: [embed] });
-  },
-};
+  }
+
+  const embed = new Embed()
+    .setColor(client.botColor)
+    .setDescription(locale.serverMember(interaction.guild?.name));
+
+  embed
+    .setTitle(client.user ? client.user.username : "Tapris")
+    .setThumbnail(
+      client.user
+        ? client.user.avatarURL()
+        : "https://raw.githubusercontent.com/tapris-bot/tapris/main/assets/avatar.webp",
+    );
+
+  client.commands.forEach((command: Command<undefined>) => {
+    embed.addFields({
+      name: `/${command.name} ${
+        command.options
+          ? Array.prototype.map
+            .call(
+              command.options,
+              (option: ApplicationCommandOptionBase) =>
+                `<${
+                  option.required ? locale.required() : ""
+                }${option.name} [${option.description}]>`,
+            )
+            .join(" ")
+          : ""
+      }`,
+      value: command.description ? command.description : "...",
+      inline: true,
+    });
+  });
+
+  return interaction.reply({ embeds: [embed] });
+});
 
 export default command;
