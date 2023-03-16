@@ -1,42 +1,38 @@
-import { Command } from "@typings/mod.ts";
 import generatePassword from "@utils/generatePassword.ts";
 import {
   ActionRowComponent,
   ApplicationCommandOptionType,
-  Embed,
+  Embed
 } from "harmony/mod.ts";
+import { CommandBuilder } from "../../builders/mod.ts";
+import { LocaleRecords } from "../../typings/mod.ts";
 
-export const commandLocales = {
-  en: {
-    createNew: () => "Create new",
-    delete: () => "Delete",
-  },
-  ru: {
-    createNew: () => "Создать новый",
-    delete: () => "Удалить",
-  },
-};
+interface PasswordLocales extends LocaleRecords {
+  createNew: () => string;
+  delete: () => string;
+}
 
-const command: Command = {
-  name: "password",
-  description: "Password generator",
-  options: [
-    {
-      name: "length",
-      description: "Set length of password",
-      type: ApplicationCommandOptionType.NUMBER,
-      required: true,
+const command = new CommandBuilder<PasswordLocales>().setName("password")
+  .setDescription(
+    "Password generator",
+  ).setOptions({
+    name: "length",
+    description: "Set length of password",
+    type: ApplicationCommandOptionType.NUMBER,
+    required: true,
+  }).setLocales({
+    en: {
+      createNew: () => "Create new",
+      delete: () => "Delete",
     },
-  ],
-  run: async (client, interaction) => {
+    ru: {
+      createNew: () => "Создать новый",
+      delete: () => "Удалить",
+    },
+  }).setRun((client, interaction, locale) => {
     const passwordLength: number = interaction.options.find(
       (option) => option.name == "length",
     )?.value;
-
-    const locales = (await client.db.selectLocale(
-      commandLocales,
-      interaction.guild?.id,
-    )) as typeof commandLocales.en;
 
     const buttonsRow: ActionRowComponent = {
       type: 1,
@@ -44,12 +40,12 @@ const command: Command = {
         {
           type: 2,
           customID: `password_${passwordLength}`,
-          label: locales.createNew(),
+          label: locale.createNew(),
           style: 1,
         },
         {
           type: 2,
-          customID: locales.delete(),
+          customID: locale.delete(),
           label: "Delete",
           style: 4,
         },
@@ -65,7 +61,6 @@ const command: Command = {
       embeds: [embed],
       components: [buttonsRow],
     });
-  },
-};
+  });
 
 export default command;
