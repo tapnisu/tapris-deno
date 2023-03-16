@@ -3,7 +3,7 @@ import {
   ApplicationCommandInteraction,
   ClientEvents,
   Interaction,
-  Message,
+  Message
 } from "harmony/mod.ts";
 
 type EventName = keyof ClientEvents;
@@ -25,8 +25,8 @@ interface Run {
 }
 
 export class EventBuilder {
-  public name: EventName = "raw";
-  public run: Run = () => {};
+  name: EventName = "raw";
+  run: Run = () => {};
 
   public setName(name: EventName) {
     this.name = name;

@@ -9,8 +9,8 @@ interface Run {
 }
 
 export class ComponentBuilder {
-  public customId = /id/;
-  public run: Run = () => {};
+  customId = /id/;
+  run: Run = () => {};
 
   public setCustomId(customId: RegExp) {
     this.customId = customId;
