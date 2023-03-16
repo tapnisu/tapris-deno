@@ -1,10 +1,10 @@
 import ExtendedClient from "@core";
+import { Locales } from "@typings/mod.ts";
 import {
   ApplicationCommandInteraction,
-  CommandBuilder as HarmonyCommandBuilder,
+  ApplicationCommandOption,
   SlashCommandInteraction
 } from "harmony/mod.ts";
-import { Locales } from "../typings/Locales.ts";
 
 interface Run {
   (
@@ -13,9 +13,29 @@ interface Run {
   ): Promise<ApplicationCommandInteraction>;
 }
 
-export class CommandBuilder extends HarmonyCommandBuilder {
+export class CommandBuilder {
+  name = "";
+  description = "";
+  options: ApplicationCommandOption[] = [];
+  guildsOnly = false;
+
   run!: Run;
   locales!: Locales;
+
+  public setName(name: string) {
+    this.name = name;
+    return this;
+  }
+
+  public setDescription(description: string) {
+    this.description = description;
+    return this;
+  }
+
+  public setOptions(options: ApplicationCommandOption[]) {
+    this.options = options;
+    return this;
+  }
 
   public setRun(run: Run) {
     this.run = run;
@@ -25,5 +45,9 @@ export class CommandBuilder extends HarmonyCommandBuilder {
   public setLocales(locales: Locales) {
     this.locales = locales;
     return this;
+  }
+
+  public setGuildOnly(guildsOnly = false) {
+    this.guildsOnly = guildsOnly;
   }
 }
