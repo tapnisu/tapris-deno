@@ -2,7 +2,7 @@ import ExtendedClient from "@core";
 import {
   ApplicationCommandInteraction,
   CommandBuilder as HarmonyCommandBuilder,
-  SlashCommandInteraction
+  SlashCommandInteraction,
 } from "harmony/mod.ts";
 
 interface Run {

@@ -1,6 +1,10 @@
 import { Command } from "@typings/mod.ts";
 import generatePassword from "@utils/generatePassword.ts";
-import { ActionRowComponent, ApplicationCommandOptionType, Embed } from "harmony/mod.ts";
+import {
+  ActionRowComponent,
+  ApplicationCommandOptionType,
+  Embed,
+} from "harmony/mod.ts";
 
 export const commandLocales = {
   en: {

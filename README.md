@@ -12,10 +12,10 @@
 
 ## Overview
 
-Tapris is a discord bot, made in TypeScript and Deno (using [harmony](https://github.com/harmonyland/harmony) as a library).
+Tapris is a discord bot, made in TypeScript and Deno (using
+[harmony](https://github.com/harmonyland/harmony) as a library).
 
-Project is named after Tapris
-Sugarbell Chisaki from Gabriel DropOut manga.
+Project is named after Tapris Sugarbell Chisaki from Gabriel DropOut manga.
 
 ## Invite
 
@@ -29,16 +29,16 @@ You can change language by using /setlangauge command.
 ## Host
 
 1. Create bot -
-   [Discord developer portal](https://discord.com/developers/applications). Copy token for bot (don't share it with anyone).
+   [Discord developer portal](https://discord.com/developers/applications). Copy
+   token for bot (don't share it with anyone).
 
 2. Install [Deno](https://deno.land/manual/getting_started/installation).
 
 3. Clone repo:
    `git clone https://github.com/tapris-bot/tapris.git && cd ./tapris/`
 
-4. Setup [.env](.env.sample) (example in
-   [.env.sample](.env.sample))
-   Or, if you will use environment variables, set MODE to `DENODEPLOY`
+4. Setup [.env](.env.sample) (example in [.env.sample](.env.sample)) Or, if you
+   will use environment variables, set MODE to `DENODEPLOY`
 
 5. Run `deno task start`.
 
