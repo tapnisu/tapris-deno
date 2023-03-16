@@ -1,25 +1,22 @@
 import ExtendedClient from "@core";
-import { Locales } from "@typings/mod.ts";
+import { LocaleNames, LocaleRecords, Locales } from "@typings/mod.ts";
 import {
   ApplicationCommandInteraction,
   ApplicationCommandOption,
-  SlashCommandInteraction,
+  SlashCommandInteraction
 } from "harmony/mod.ts";
 
-interface Run {
-  (
-    client: ExtendedClient,
-    interaction: SlashCommandInteraction,
-  ): Promise<ApplicationCommandInteraction>;
-}
-
-export class CommandBuilder {
+export class CommandBuilder<T extends LocaleRecords> {
   name = "";
   description = "";
   options: ApplicationCommandOption[] = [];
   guildsOnly = false;
 
-  run!: Run;
+  run!: (
+    client: ExtendedClient,
+    interaction: SlashCommandInteraction,
+    locale: T,
+  ) => Promise<ApplicationCommandInteraction>;
   locales!: Locales;
 
   public setName(name: string) {
@@ -42,12 +39,12 @@ export class CommandBuilder {
     return this;
   }
 
-  public setRun(run: Run) {
+  public setRun(run: typeof this.run) {
     this.run = run;
     return this;
   }
 
-  public setLocales(locales: Locales) {
+  public setLocales(locales: Record<LocaleNames, T>) {
     this.locales = locales;
     return this;
   }
