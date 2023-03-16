@@ -3,7 +3,7 @@ import { LocaleRecords } from "@typings/Locales.ts";
 import {
   ActionRowComponent,
   ApplicationCommandOptionType,
-  Embed
+  Embed,
 } from "harmony/mod.ts";
 
 interface LmgtfyLocale extends LocaleRecords {

@@ -3,7 +3,7 @@ import { LocaleRecords } from "@typings/mod.ts";
 import {
   ActionRowComponent,
   ApplicationCommandOptionType,
-  Embed
+  Embed,
 } from "harmony/mod.ts";
 
 interface AvatarLocale extends LocaleRecords {

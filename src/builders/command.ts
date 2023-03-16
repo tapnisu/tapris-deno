@@ -3,7 +3,7 @@ import { LocaleNames, LocaleRecords } from "@typings/mod.ts";
 import {
   ApplicationCommandInteraction,
   ApplicationCommandOption,
-  SlashCommandInteraction
+  SlashCommandInteraction,
 } from "harmony/mod.ts";
 
 export class CommandBuilder<T extends LocaleRecords | undefined> {

@@ -3,7 +3,7 @@ import { createCanvas } from "canvas/mod.ts";
 import {
   ApplicationCommandOptionType,
   Embed,
-  MessageAttachment
+  MessageAttachment,
 } from "harmony/mod.ts";
 
 const command = new CommandBuilder().setName("color").setDescription(
