@@ -1,9 +1,9 @@
 import { EventBuilder } from "@builders/mod.ts";
-import ExtendedClient from "@core";
+import Client from "@core";
 import { Embed, Interaction } from "harmony/mod.ts";
 
 const event = new EventBuilder().setName("interactionCreate").setRun(
-  async (client: ExtendedClient, interaction: Interaction) => {
+  async (client: Client, interaction: Interaction) => {
     if (interaction.isApplicationCommand()) {
       const command = client.commands.get(interaction.name);
 

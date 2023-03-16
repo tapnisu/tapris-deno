@@ -1,9 +1,9 @@
-import ExtendedClient from "@core";
+import Client from "@core";
 import { LocaleNames, LocaleRecords } from "@typings/mod.ts";
 import {
-  ApplicationCommandInteraction,
-  ApplicationCommandOption,
-  SlashCommandInteraction,
+    ApplicationCommandInteraction,
+    ApplicationCommandOption,
+    SlashCommandInteraction
 } from "harmony/mod.ts";
 
 export class CommandBuilder<T extends LocaleRecords | undefined> {
@@ -13,7 +13,7 @@ export class CommandBuilder<T extends LocaleRecords | undefined> {
   guildOnly = false;
 
   run!: (
-    client: ExtendedClient,
+    client: Client,
     interaction: SlashCommandInteraction,
     locale: T,
   ) => Promise<ApplicationCommandInteraction>;

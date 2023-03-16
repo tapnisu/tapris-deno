@@ -1,8 +1,8 @@
 import { EventBuilder } from "@builders/mod.ts";
-import ExtendedClient from "@core";
+import Client from "@core";
 
 const event = new EventBuilder().setName("reconnect").setRun(
-  async (client: ExtendedClient) => {
+  async (client: Client) => {
     await client.updatePresence();
 
     (await client.guilds.array()).forEach(async (guild) => {

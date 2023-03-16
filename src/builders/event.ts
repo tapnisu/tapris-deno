@@ -1,9 +1,9 @@
-import ExtendedClient from "@core";
+import Client from "@core";
 import {
-  ApplicationCommandInteraction,
-  ClientEvents,
-  Interaction,
-  Message,
+    ApplicationCommandInteraction,
+    ClientEvents,
+    Interaction,
+    Message
 } from "harmony/mod.ts";
 
 type EventName = keyof ClientEvents;
@@ -11,7 +11,7 @@ type Args = ClientEvents[EventName];
 
 interface Run {
   (
-    client: ExtendedClient,
+    client: Client,
     // deno-lint-ignore no-explicit-any
     ...args: any[]
     // ...args: Args

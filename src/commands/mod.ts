@@ -9,7 +9,7 @@ import password from "@commands/utils/password.ts";
 import profileLink from "@commands/utils/profileLink.ts";
 import setLanguage from "@commands/utils/setLanguage.ts";
 import user from "@commands/utils/user.ts";
-import ExtendedClient from "@core";
+import Client from "@core";
 
 const commands = [
   genshinCodes,
@@ -27,5 +27,5 @@ const commands = [
 
 export type CommandCollectionType = typeof commands[number];
 
-export default (client: ExtendedClient) =>
+export default (client: Client) =>
   commands.forEach((c) => client.commands.set(c.name, c));
