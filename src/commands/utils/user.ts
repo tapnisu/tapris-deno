@@ -1,12 +1,12 @@
 import { Command, LocaleRecords } from "@typings/mod.ts";
 import { ApplicationCommandOptionType, Embed } from "harmony/mod.ts";
 
-interface UserLocales extends LocaleRecords {
+interface UserLocale extends LocaleRecords {
   unknownError: () => string;
   bot: () => string;
 }
 
-const command = new Command<UserLocales>().setName("user").setDescription(
+const command = new Command<UserLocale>().setName("user").setDescription(
   "Sends user information",
 ).setOptions({
   name: "user",

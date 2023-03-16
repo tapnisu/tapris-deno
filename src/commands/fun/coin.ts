@@ -5,12 +5,12 @@ import { ApplicationCommandOptionType, Embed } from "harmony/mod.ts";
 type Choice = "coin" | "tail";
 const choices: Choice[] = ["coin", "tail"];
 
-interface coinLocales extends LocaleRecords {
+interface coinLocale extends LocaleRecords {
   winner: (choice: Choice) => string;
   youWonLost: (winOrNot: boolean) => string;
 }
 
-const command = new CommandBuilder<coinLocales>().setName("coin")
+const command = new CommandBuilder<coinLocale>().setName("coin")
   .setDescription(
     "Flip a coin",
   ).setOptions({

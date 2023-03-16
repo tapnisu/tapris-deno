@@ -2,13 +2,13 @@ import { CommandBuilder } from "@builders/mod.ts";
 import { Code, LocaleRecords } from "@typings/mod.ts";
 import { ActionRowComponent, Embed } from "harmony/mod.ts";
 
-interface GenshinCodesLocales extends LocaleRecords {
+interface GenshinCodesLocale extends LocaleRecords {
   activateButton: () => string;
   embedTitle: () => string;
   description: () => string;
 }
 
-const command = new CommandBuilder<GenshinCodesLocales>().setName(
+const command = new CommandBuilder<GenshinCodesLocale>().setName(
   "genshincodes",
 ).setDescription(
   "Get valid codes for Genshin Impact",
