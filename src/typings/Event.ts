@@ -1,4 +1,1 @@
-import { EventBuilder as Event } from "@builders/mod.ts";
-
-export { Event };
-
+export { EventBuilder as Event } from "@builders/mod.ts";
