@@ -2,8 +2,9 @@ import ExtendedClient from "@core";
 import {
   ApplicationCommandInteraction,
   CommandBuilder as HarmonyCommandBuilder,
-  SlashCommandInteraction,
+  SlashCommandInteraction
 } from "harmony/mod.ts";
+import { Locales } from "../typings/Locales.ts";
 
 interface Run {
   (
@@ -14,8 +15,13 @@ interface Run {
 
 export class CommandBuilder extends HarmonyCommandBuilder {
   run!: Run;
+  locales!: Locales;
 
   public setRun(run: Run) {
     this.run = run;
+  }
+
+  public setLocales(locales: Locales) {
+    this.locales = locales;
   }
 }
