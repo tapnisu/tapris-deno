@@ -25,5 +25,7 @@ const commands = [
   user,
 ];
 
+export type CommandCollectionType = typeof commands[number];
+
 export default (client: ExtendedClient) =>
   commands.forEach((c) => client.commands.set(c.name, c));

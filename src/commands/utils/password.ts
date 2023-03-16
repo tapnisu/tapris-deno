@@ -1,10 +1,10 @@
 import { CommandBuilder } from "@builders/mod.ts";
-import { LocaleRecords } from "@typings/mod.ts";
+import { LocaleNames, LocaleRecords } from "@typings/mod.ts";
 import generatePassword from "@utils/generatePassword.ts";
 import {
   ActionRowComponent,
   ApplicationCommandOptionType,
-  Embed,
+  Embed
 } from "harmony/mod.ts";
 
 interface PasswordLocale extends LocaleRecords {
@@ -64,3 +64,8 @@ const command = new CommandBuilder<PasswordLocale>().setName("password")
   });
 
 export default command;
+
+export const commandLocales = command.locales as Record<
+  LocaleNames,
+  PasswordLocale
+>;

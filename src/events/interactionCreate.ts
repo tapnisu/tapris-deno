@@ -21,7 +21,8 @@ const event = new EventBuilder().setName("interactionCreate").setRun(
         interaction.guild?.id,
       );
 
-      return await command.run(client, interaction, locale).catch(
+      // deno-lint-ignore no-explicit-any
+      return await command.run(client, interaction, locale as any).catch(
         async (e) => {
           console.error(e);
 

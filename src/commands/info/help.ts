@@ -1,5 +1,6 @@
 import { CommandBuilder } from "@builders/mod.ts";
-import { Command, LocaleRecords } from "@typings/mod.ts";
+import { CommandCollectionType } from "@commands/mod.ts";
+import { LocaleRecords } from "@typings/mod.ts";
 import {
   ApplicationCommandOptionBase,
   ApplicationCommandOptionType,
@@ -79,7 +80,7 @@ const command = new CommandBuilder<HelpLocale>().setName("help").setDescription(
         : "https://raw.githubusercontent.com/tapris-bot/tapris/main/assets/avatar.webp",
     );
 
-  client.commands.forEach((command: Command<undefined>) => {
+  client.commands.forEach((command: CommandCollectionType) => {
     embed.addFields({
       name: `/${command.name} ${
         command.options

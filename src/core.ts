@@ -1,7 +1,7 @@
-import GetCommands from "@commands/mod.ts";
+import GetCommands, { CommandCollectionType } from "@commands/mod.ts";
 import GetComponents from "@components/mod.ts";
 import GetEvents from "@events/mod.ts";
-import { Command, Component, Event } from "@typings/mod.ts";
+import { Component, Event } from "@typings/mod.ts";
 import api from "@utils/api.ts";
 import env from "@utils/config.ts";
 import DBManagerBuilder from "@utils/db.ts";
@@ -9,7 +9,8 @@ import { Client, Collection, GatewayIntents } from "harmony/mod.ts";
 import { serve } from "std/http/server.ts";
 
 class ExtendedClient extends Client {
-  public commands: Collection<string, Command<undefined>> = new Collection();
+  public commands: Collection<string, CommandCollectionType> =
+    new Collection();
   public components: Collection<RegExp, Component> = new Collection();
   public events: Collection<string, Event> = new Collection();
   private env = env;
