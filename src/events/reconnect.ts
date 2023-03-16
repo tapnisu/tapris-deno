@@ -11,10 +11,6 @@ const event = new EventBuilder().setName("reconnect").setRun(
       }
     });
 
-    const commands = client.interactions.commands;
-
-    client.commands.forEach((command) => commands.create(command));
-
     console.info(
       `${client.user?.tag} is reconnected!`,
     );
