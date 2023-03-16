@@ -16,11 +16,18 @@ const event = new EventBuilder().setName("interactionCreate").setRun(
         });
       }
 
-      return await command.run(client, interaction).catch(async (e) => {
-        console.error(e);
+      const locale = await client.db.selectLocale(
+        command.locales,
+        interaction.guild?.id,
+      );
 
-        await interaction.reply("Unknown error happened!");
-      });
+      return await command.run(client, interaction, locale).catch(
+        async (e) => {
+          console.error(e);
+
+          await interaction.reply("Unknown error happened!");
+        },
+      );
     }
 
     if (interaction.isMessageComponent()) {
