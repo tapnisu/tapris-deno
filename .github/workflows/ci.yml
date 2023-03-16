@@ -23,8 +23,8 @@ jobs:
           deno-version: v1.x
       - name: Test
         run: deno task test
-  compile:
-    name: Compile
+  check:
+    name: Check
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -32,5 +32,5 @@ jobs:
         with:
           deno-version: v1.x
       - run: rm deno.lock
-      - name: Compile
-        run: deno task compile
+      - name: Check
+        run: deno task check
