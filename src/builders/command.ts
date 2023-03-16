@@ -32,8 +32,13 @@ export class CommandBuilder {
     return this;
   }
 
-  public setOptions(options: ApplicationCommandOption[]) {
+  public setOptions(...options: ApplicationCommandOption[]) {
     this.options = options;
+    return this;
+  }
+
+  public addOption(option: ApplicationCommandOption) {
+    this.options = [...this.options, option];
     return this;
   }
 

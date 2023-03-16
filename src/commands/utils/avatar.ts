@@ -20,14 +20,14 @@ const commandLocales = {
 
 const command = new CommandBuilder().setName("avatar").setDescription(
   "Get someones avatar",
-).setOptions([
+).setOptions(
   {
     name: "user",
     description: "User to get avatar from",
     type: ApplicationCommandOptionType.USER,
     required: true,
   },
-]).setRun(async (client, interaction) => {
+).setRun(async (client, interaction) => {
   const user = await client.users.get(
     interaction.options.find((option) => option.name == "user")?.value,
   );
