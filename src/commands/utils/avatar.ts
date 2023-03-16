@@ -2,7 +2,7 @@ import { CommandBuilder } from "@builders/mod.ts";
 import {
   ActionRowComponent,
   ApplicationCommandOptionType,
-  Embed
+  Embed,
 } from "harmony/mod.ts";
 
 const commandLocales = {
@@ -44,7 +44,7 @@ const command = new CommandBuilder().setName("avatar").setDescription(
     });
   }
 
-  const avatarUrl = user.avatarURL("png", 2048);
+  const avatarUrl = user.avatarURL("webp", 2048);
 
   const embed = new Embed()
     .setColor(client.botColor)

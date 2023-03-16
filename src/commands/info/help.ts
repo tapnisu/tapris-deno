@@ -80,7 +80,7 @@ const command: Command = {
       .setThumbnail(
         client.user
           ? client.user.avatarURL()
-          : "https://raw.githubusercontent.com/tapris-bot/tapris/main/assets/avatar.png",
+          : "https://raw.githubusercontent.com/tapris-bot/tapris/main/assets/avatar.webp",
       );
 
     client.commands.forEach((command: Command) => {

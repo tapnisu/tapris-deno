@@ -3,7 +3,7 @@ import { Locales } from "@typings/mod.ts";
 import {
   ApplicationCommandInteraction,
   ApplicationCommandOption,
-  SlashCommandInteraction
+  SlashCommandInteraction,
 } from "harmony/mod.ts";
 
 interface Run {
