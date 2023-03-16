@@ -1,18 +1,18 @@
+import { CommandBuilder } from "@builders/mod.ts";
+import { LocaleRecords } from "@typings/mod.ts";
 import generatePassword from "@utils/generatePassword.ts";
 import {
   ActionRowComponent,
   ApplicationCommandOptionType,
   Embed
 } from "harmony/mod.ts";
-import { CommandBuilder } from "../../builders/mod.ts";
-import { LocaleRecords } from "../../typings/mod.ts";
 
-interface PasswordLocales extends LocaleRecords {
+interface PasswordLocale extends LocaleRecords {
   createNew: () => string;
   delete: () => string;
 }
 
-const command = new CommandBuilder<PasswordLocales>().setName("password")
+const command = new CommandBuilder<PasswordLocale>().setName("password")
   .setDescription(
     "Password generator",
   ).setOptions({

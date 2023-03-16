@@ -9,7 +9,7 @@ const event = new EventBuilder().setName("interactionCreate").setRun(
 
       if (!command) return;
 
-      if (command.guildsOnly && !interaction.guild) {
+      if (command.guildOnly && !interaction.guild) {
         return await interaction.reply({
           content: "Sorry, this command is only for guilds.",
           ephemeral: true,

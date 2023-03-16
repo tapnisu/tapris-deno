@@ -1,12 +1,12 @@
+import { CommandBuilder } from "@builders/mod.ts";
+import { LocaleRecords } from "@typings/mod.ts";
 import { ApplicationCommandOptionType, Embed } from "harmony/mod.ts";
-import { CommandBuilder } from "../../builders/mod.ts";
-import { LocaleRecords } from "../../typings/mod.ts";
 
-interface ProfileLinkLocales extends LocaleRecords {
+interface ProfileLinkLocale extends LocaleRecords {
   unknownError: () => string;
 }
 
-const command = new CommandBuilder<ProfileLinkLocales>()
+const command = new CommandBuilder<ProfileLinkLocale>()
   .setName("profilelink")
   .setDescription("Get link to share user using link")
   .setOptions(

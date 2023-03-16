@@ -10,7 +10,7 @@ export class CommandBuilder<T extends LocaleRecords | undefined> {
   name = "";
   description = "";
   options: ApplicationCommandOption[] = [];
-  guildsOnly = false;
+  guildOnly = false;
 
   run!: (
     client: ExtendedClient,
@@ -49,7 +49,8 @@ export class CommandBuilder<T extends LocaleRecords | undefined> {
     return this;
   }
 
-  public setGuildOnly(guildsOnly = false) {
-    this.guildsOnly = guildsOnly;
+  public setGuildOnly(guildOnly = true) {
+    this.guildOnly = guildOnly;
+    return this;
   }
 }

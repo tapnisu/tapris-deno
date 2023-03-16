@@ -6,13 +6,13 @@ import {
   Embed
 } from "harmony/mod.ts";
 
-interface AvatarLocales extends LocaleRecords {
+interface AvatarLocale extends LocaleRecords {
   unknownError: () => string;
   usersAvatar: (user: string) => string;
   link: () => string;
 }
 
-const command = new CommandBuilder<AvatarLocales>().setName("avatar")
+const command = new CommandBuilder<AvatarLocale>().setName("avatar")
   .setDescription(
     "Get someones avatar",
   ).setOptions(
