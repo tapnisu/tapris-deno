@@ -1,6 +1,6 @@
 import { EventBuilder } from "@builders/mod.ts";
 import ExtendedClient from "@core";
-import { Interaction } from "harmony/mod.ts";
+import { Embed, Interaction } from "harmony/mod.ts";
 
 const event = new EventBuilder().setName("interactionCreate").setRun(
   async (client: ExtendedClient, interaction: Interaction) => {
@@ -11,7 +11,11 @@ const event = new EventBuilder().setName("interactionCreate").setRun(
 
       if (command.guildOnly && !interaction.guild) {
         return await interaction.reply({
-          content: "Sorry, this command is only for guilds.",
+          embeds: [
+            new Embed()
+              .setColor(client.botColor)
+              .setTitle("Sorry, this command is only for guilds"),
+          ],
           ephemeral: true,
         });
       }

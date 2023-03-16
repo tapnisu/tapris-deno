@@ -3,7 +3,7 @@ import { LocaleRecords } from "@typings/mod.ts";
 import {
   ActionRowComponent,
   ApplicationCommandOptionType,
-  Embed,
+  Embed
 } from "harmony/mod.ts";
 
 interface AvatarLocale extends LocaleRecords {
@@ -40,7 +40,11 @@ const command = new CommandBuilder<AvatarLocale>().setName("avatar")
 
     if (!user) {
       return interaction.reply({
-        content: locale.unknownError(),
+        embeds: [
+          new Embed()
+            .setColor(client.botColor)
+            .setTitle(locale.unknownError()),
+        ],
         ephemeral: true,
       });
     }

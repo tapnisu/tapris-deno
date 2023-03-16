@@ -35,7 +35,11 @@ const command = new CommandBuilder<SetLanguageLocale>().setName("setlanguage")
 
     if (!userMember!.permissions.has("Administrator")) {
       return await interaction.reply({
-        content: locale.notAdministrator(),
+        embeds: [
+          new Embed()
+            .setColor(client.botColor)
+            .setTitle(locale.notAdministrator()),
+        ],
         ephemeral: true,
       });
     }

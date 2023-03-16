@@ -30,7 +30,12 @@ const command = new CommandBuilder<ProfileLinkLocale>()
 
     if (!user) {
       return interaction.reply({
-        content: locale.unknownError(),
+        embeds: [
+          new Embed()
+            .setColor(client.botColor)
+            .setTitle(locale.unknownError()),
+        ],
+
         ephemeral: true,
       });
     }

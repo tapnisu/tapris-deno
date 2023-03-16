@@ -4,7 +4,7 @@ import { SearchResult } from "@typings/mod.ts";
 import {
   ActionRowComponent,
   ApplicationCommandOptionType,
-  Embed,
+  Embed
 } from "harmony/mod.ts";
 
 interface MangaLocales extends LocaleRecords {
@@ -43,7 +43,11 @@ const command = new CommandBuilder<MangaLocales>().setName("manga")
 
     if (response.length == 0) {
       return interaction.reply({
-        content: locale.mangaNotFound(),
+        embeds: [
+          new Embed()
+            .setColor(client.botColor)
+            .setTitle(locale.mangaNotFound()),
+        ],
         ephemeral: true,
       });
     }

@@ -4,7 +4,7 @@ import { LocaleRecords } from "@typings/mod.ts";
 import {
   ApplicationCommandOptionBase,
   ApplicationCommandOptionType,
-  Embed,
+  Embed
 } from "harmony/mod.ts";
 
 interface HelpLocale extends LocaleRecords {
@@ -46,7 +46,11 @@ const command = new CommandBuilder<HelpLocale>().setName("help").setDescription(
 
     if (!command) {
       return interaction.reply({
-        content: locale.isNotAValidCommand(request),
+        embeds: [
+          new Embed()
+            .setColor(client.botColor)
+            .setTitle(locale.isNotAValidCommand(request)),
+        ],
         ephemeral: true,
       });
     }
