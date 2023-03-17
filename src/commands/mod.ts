@@ -25,7 +25,7 @@ const commands = [
   user,
 ];
 
-export type CommandCollectionType = typeof commands[number];
+export type TaprisCommands = typeof commands[number];
 
 export default (client: Client) =>
   commands.forEach((c) => client.commands.set(c.name, c));

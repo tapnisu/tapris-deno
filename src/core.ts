@@ -1,4 +1,4 @@
-import GetCommands, { CommandCollectionType } from "@commands/mod.ts";
+import GetCommands, { TaprisCommands } from "@commands/mod.ts";
 import GetComponents from "@components/mod.ts";
 import GetEvents from "@events/mod.ts";
 import { Component, Event } from "@typings/mod.ts";
@@ -8,8 +8,8 @@ import DBManagerBuilder from "@utils/db.ts";
 import { Client, Collection, GatewayIntents } from "harmony/mod.ts";
 import { serve } from "std/http/server.ts";
 
-class ExtendedClient extends Client {
-  public commands: Collection<string, CommandCollectionType> = new Collection();
+class TaprisClient extends Client {
+  public commands: Collection<string, TaprisCommands> = new Collection();
   public components: Collection<RegExp, Component> = new Collection();
   public events: Collection<string, Event> = new Collection();
   private env = env;
@@ -60,4 +60,4 @@ class ExtendedClient extends Client {
   }
 }
 
-export default ExtendedClient;
+export default TaprisClient;

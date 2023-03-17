@@ -1,10 +1,10 @@
 import { CommandBuilder } from "@builders/mod.ts";
-import { CommandCollectionType } from "@commands/mod.ts";
+import { TaprisCommands } from "@commands/mod.ts";
 import { LocaleRecords } from "@typings/mod.ts";
 import {
-  ApplicationCommandOptionBase,
-  ApplicationCommandOptionType,
-  Embed
+    ApplicationCommandOptionBase,
+    ApplicationCommandOptionType,
+    Embed
 } from "harmony/mod.ts";
 
 interface HelpLocale extends LocaleRecords {
@@ -84,7 +84,7 @@ const command = new CommandBuilder<HelpLocale>().setName("help").setDescription(
         : "https://raw.githubusercontent.com/tapris-bot/tapris/main/assets/avatar.webp",
     );
 
-  client.commands.forEach((command: CommandCollectionType) => {
+  client.commands.forEach((command: TaprisCommands) => {
     embed.addFields({
       name: `/${command.name} ${
         command.options
