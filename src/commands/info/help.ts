@@ -2,9 +2,9 @@ import { CommandBuilder } from "@builders/mod.ts";
 import { TaprisCommands } from "@commands/mod.ts";
 import { LocaleRecords } from "@typings/mod.ts";
 import {
-    ApplicationCommandOptionBase,
-    ApplicationCommandOptionType,
-    Embed
+  ApplicationCommandOptionBase,
+  ApplicationCommandOptionType,
+  Embed,
 } from "harmony/mod.ts";
 
 interface HelpLocale extends LocaleRecords {

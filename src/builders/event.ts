@@ -1,9 +1,9 @@
 import Client from "@core";
 import {
-    ApplicationCommandInteraction,
-    ClientEvents,
-    Interaction,
-    Message
+  ApplicationCommandInteraction,
+  ClientEvents,
+  Interaction,
+  Message,
 } from "harmony/mod.ts";
 
 type EventName = keyof ClientEvents;

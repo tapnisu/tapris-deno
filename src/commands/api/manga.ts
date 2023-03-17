@@ -4,7 +4,7 @@ import { SearchResult } from "@typings/mod.ts";
 import {
   ActionRowComponent,
   ApplicationCommandOptionType,
-  Embed
+  Embed,
 } from "harmony/mod.ts";
 
 interface MangaLocales extends LocaleRecords {

@@ -1,9 +1,9 @@
 import Client from "@core";
 import { LocaleNames, LocaleRecords } from "@typings/mod.ts";
 import {
-    ApplicationCommandInteraction,
-    ApplicationCommandOption,
-    SlashCommandInteraction
+  ApplicationCommandInteraction,
+  ApplicationCommandOption,
+  SlashCommandInteraction,
 } from "harmony/mod.ts";
 
 export class CommandBuilder<T extends LocaleRecords | undefined> {
