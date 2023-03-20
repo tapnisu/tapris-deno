@@ -1,9 +1,9 @@
 import { CommandBuilder } from "@builders/mod.ts";
 import { createCanvas } from "canvas/mod.ts";
 import {
-  ApplicationCommandOptionType,
-  Embed,
-  MessageAttachment,
+    ApplicationCommandOptionType,
+    Embed,
+    MessageAttachment
 } from "harmony/mod.ts";
 
 const command = new CommandBuilder().setName("color").setDescription(
@@ -17,7 +17,7 @@ const command = new CommandBuilder().setName("color").setDescription(
   await interaction.defer();
 
   let colorString: string = interaction.options.find(
-    (option) => option.name == "string",
+    (option) => option.name === "string",
   )?.value;
 
   if (!colorString) {

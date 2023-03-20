@@ -25,20 +25,20 @@ const command = new CommandBuilder<coinLocale>().setName("coin")
   }).setLocales({
     en: {
       winner: (choice: Choice) =>
-        `Got ${choice == choices[0] ? "coin" : "tail"}`,
+        `Got ${choice === choices[0] ? "coin" : "tail"}`,
       youWonLost: (
         winOrNot: boolean,
       ) => (winOrNot ? "You won!" : "You lost! :("),
     },
     ru: {
       winner: (choice: Choice) =>
-        choice == choices[0] ? "Выпал орёл" : "Выпала решка",
+        choice === choices[0] ? "Выпал орёл" : "Выпала решка",
       youWonLost: (winOrNot: boolean) =>
         winOrNot ? "Вы выиграли! :D" : "Вы проиграли! :(",
     },
   }).setRun((client, interaction, locale) => {
     const choice = interaction.options.find(
-      (option) => option.name == "choice",
+      (option) => option.name === "choice",
     )?.value;
 
     const winner: Choice = choices[Math.floor(Math.random() * 2)];
@@ -46,7 +46,7 @@ const command = new CommandBuilder<coinLocale>().setName("coin")
     const embed = new Embed()
       .setTitle(locale.winner(winner))
       .setColor(client.botColor)
-      .setDescription(locale.youWonLost(winner == choice));
+      .setDescription(locale.youWonLost(winner === choice));
 
     return interaction.reply({ embeds: [embed] });
   });

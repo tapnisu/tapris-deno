@@ -2,9 +2,9 @@ import { CommandBuilder } from "@builders/mod.ts";
 import { LocaleNames, LocaleRecords } from "@typings/mod.ts";
 import generatePassword from "@utils/generatePassword.ts";
 import {
-  ActionRowComponent,
-  ApplicationCommandOptionType,
-  Embed,
+    ActionRowComponent,
+    ApplicationCommandOptionType,
+    Embed
 } from "harmony/mod.ts";
 
 interface PasswordLocale extends LocaleRecords {
@@ -31,7 +31,7 @@ const command = new CommandBuilder<PasswordLocale>().setName("password")
     },
   }).setRun((client, interaction, locale) => {
     const passwordLength: number = interaction.options.find(
-      (option) => option.name == "length",
+      (option) => option.name === "length",
     )?.value;
 
     const buttonsRow: ActionRowComponent = {

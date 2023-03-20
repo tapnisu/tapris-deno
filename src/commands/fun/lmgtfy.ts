@@ -1,9 +1,9 @@
 import { CommandBuilder } from "@builders/mod.ts";
 import { LocaleRecords } from "@typings/Locales.ts";
 import {
-  ActionRowComponent,
-  ApplicationCommandOptionType,
-  Embed,
+    ActionRowComponent,
+    ApplicationCommandOptionType,
+    Embed
 } from "harmony/mod.ts";
 
 interface LmgtfyLocale extends LocaleRecords {
@@ -27,7 +27,7 @@ const command = new CommandBuilder<LmgtfyLocale>().setName("lmgtfy")
     },
   }).setRun((client, interaction, locale) => {
     const query = interaction.options.find(
-      (option) => option.name == "query",
+      (option) => option.name === "query",
     )?.value;
 
     const link = `https://lmgtfy.app/?q=${encodeURI(query.replace(/ /g, "+"))}`;

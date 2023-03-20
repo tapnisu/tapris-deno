@@ -1,9 +1,9 @@
 import { CommandBuilder } from "@builders/mod.ts";
 import { LocaleRecords } from "@typings/mod.ts";
 import {
-  ActionRowComponent,
-  ApplicationCommandOptionType,
-  Embed,
+    ActionRowComponent,
+    ApplicationCommandOptionType,
+    Embed
 } from "harmony/mod.ts";
 
 interface AvatarLocale extends LocaleRecords {
@@ -35,7 +35,7 @@ const command = new CommandBuilder<AvatarLocale>().setName("avatar")
     },
   }).setRun(async (client, interaction, locale) => {
     const user = await client.users.get(
-      interaction.options.find((option) => option.name == "user")?.value,
+      interaction.options.find((option) => option.name === "user")?.value,
     );
 
     if (!user) {

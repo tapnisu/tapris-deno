@@ -2,9 +2,9 @@ import { CommandBuilder } from "@builders/mod.ts";
 import { LocaleRecords } from "@typings/Locales.ts";
 import { SearchResult } from "@typings/mod.ts";
 import {
-  ActionRowComponent,
-  ApplicationCommandOptionType,
-  Embed,
+    ActionRowComponent,
+    ApplicationCommandOptionType,
+    Embed
 } from "harmony/mod.ts";
 
 interface MangaLocales extends LocaleRecords {
@@ -34,14 +34,14 @@ const command = new CommandBuilder<MangaLocales>().setName("manga")
     },
   }).setRun(async (client, interaction, locale) => {
     const query = interaction.options.find(
-      (option) => option.name == "query",
+      (option) => option.name === "query",
     )?.value;
 
     const response: SearchResult[] = await (
       await fetch(`https://manga.deno.dev/api/search?q=${encodeURI(query)}`)
     ).json();
 
-    if (response.length == 0) {
+    if (response.length === 0) {
       return interaction.reply({
         embeds: [
           new Embed()
