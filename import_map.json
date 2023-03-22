@@ -12,6 +12,6 @@
     "hono/": "https://deno.land/x/hono@v3.0.2/",
     "postgres/": "https://deno.land/x/postgres@v0.17.0/",
     "std/": "https://deno.land/std@0.178.0/",
-    "translate": "https://esm.sh/google-translate@2.0.1"
+    "translate": "https://esm.sh/google-translate-api-x@10.5.4"
   }
 }
