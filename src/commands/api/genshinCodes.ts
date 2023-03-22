@@ -40,7 +40,7 @@ const command = new CommandBuilder<GenshinCodesLocale>().setName(
     .setURL(url);
 
   codes.forEach((code: Code) => {
-    if (code.is_expired === false) {
+    if (!code.is_expired) {
       let rewards: string[] = [];
 
       code.reward_array.forEach((reward) => {
