@@ -10,8 +10,8 @@
     "canvas/": "https://deno.land/x/canvas@v1.4.1/",
     "gtr/": "https://deno.land/x/gtr@v0.0.1/",
     "harmony/": "https://deno.land/x/harmony@v2.8.0/",
-    "hono/": "https://deno.land/x/hono@v3.0.2/",
+    "hono/": "https://deno.land/x/hono@v3.1.2/",
     "postgres/": "https://deno.land/x/postgres@v0.17.0/",
-    "std/": "https://deno.land/std@0.178.0/"
+    "std/": "https://deno.land/std@0.181.0/"
   }
 }
