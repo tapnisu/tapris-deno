@@ -8,6 +8,7 @@ import color from "@commands/utils/color.ts";
 import password from "@commands/utils/password.ts";
 import profileLink from "@commands/utils/profileLink.ts";
 import setLanguage from "@commands/utils/setLanguage.ts";
+import translate from "@commands/utils/translate.ts";
 import user from "@commands/utils/user.ts";
 import Client from "@core";
 
@@ -23,6 +24,7 @@ const commands = [
   profileLink,
   setLanguage,
   user,
+  translate,
 ];
 
 export type TaprisCommands = typeof commands[number];

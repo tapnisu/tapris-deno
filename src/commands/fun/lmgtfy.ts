@@ -1,9 +1,9 @@
 import { CommandBuilder } from "@builders/mod.ts";
 import { LocaleRecords } from "@typings/Locales.ts";
 import {
-    ActionRowComponent,
-    ApplicationCommandOptionType,
-    Embed
+  ActionRowComponent,
+  ApplicationCommandOptionType,
+  Embed,
 } from "harmony/mod.ts";
 
 interface LmgtfyLocale extends LocaleRecords {

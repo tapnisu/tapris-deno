@@ -8,6 +8,7 @@
     "@typings/": "./src/typings/",
     "@utils/": "./src/utils/",
     "canvas/": "https://deno.land/x/canvas@v1.4.1/",
+    "gtr/": "https://deno.land/x/gtr@v0.0.1/",
     "harmony/": "https://deno.land/x/harmony@v2.8.0/",
     "hono/": "https://deno.land/x/hono@v3.0.2/",
     "postgres/": "https://deno.land/x/postgres@v0.17.0/",
