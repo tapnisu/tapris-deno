@@ -12,6 +12,15 @@ class Api extends Hono {
     this.get("/", (r) => r.redirect("https://tapris.tapni.su", 302));
 
     this.get(
+      "/invite",
+      (r) =>
+        r.redirect(
+          "https://discord.com/api/oauth2/authorize?client_id=869088074758520832&scope=bot+applications.commands&permissions=294208515334",
+          302,
+        ),
+    );
+
+    this.get(
       "/git",
       (r) => r.redirect("https://github.com/tapris-bot/tapris", 302),
     );
