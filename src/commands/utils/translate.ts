@@ -1,7 +1,7 @@
 import { CommandBuilder } from "@builders/mod.ts";
 import { LocaleRecords } from "@typings/mod.ts";
+import { GTR } from "gtr/mod.ts";
 import { ApplicationCommandOptionType, Embed } from "harmony/mod.ts";
-import { translate } from "translate";
 
 interface TranslateLocale extends LocaleRecords {
   invalidLanguage: () => string;
@@ -9,6 +9,8 @@ interface TranslateLocale extends LocaleRecords {
   origLang: () => string;
   origMessage: () => string;
 }
+
+const gtr = new GTR();
 
 const command = new CommandBuilder<TranslateLocale>().setName("translate")
   .setDescription(
@@ -58,18 +60,21 @@ const command = new CommandBuilder<TranslateLocale>().setName("translate")
     )?.value;
 
     try {
-      const response = await translate(text, { to: to, from: from });
+      const response = await gtr.translate(text, {
+        targetLang: to,
+        sourceLang: from ? from : "auto",
+      });
 
       await interaction.defer();
 
       const embed = new Embed()
         .setColor(client.botColor)
         .setTitle(locale.textIn(to))
-        .setDescription(response.text)
+        .setDescription(response.trans)
         .addFields(
           {
             name: locale.origLang(),
-            value: from,
+            value: response.lang,
             inline: true,
           },
           {

@@ -352,6 +352,7 @@
     "https://deno.land/x/fetchbase64@1.0.0/src/auto.ts": "77a20763dd250b71af0ff7abe11a37722c0ee637cd1feafe4afd081f7d04e868",
     "https://deno.land/x/fetchbase64@1.0.0/src/local.ts": "53a9d0157419f3bc1aac6440549adac529c475042d2391532618242a883f96c9",
     "https://deno.land/x/fetchbase64@1.0.0/src/remote.ts": "95320d1e2cba524099f18a446195388de31281e713ec6c86e46f9d20bb6db736",
+    "https://deno.land/x/gtr@v0.0.1/mod.ts": "a2a75ccb4886d41aea928672b4b93a6643e2260f7751c320c9be73f57ed8d36f",
     "https://deno.land/x/harmony@v2.8.0/deps.ts": "78bbbb60e94653d0ce538981cb63dd605a21878bccde28fd726604968ef09148",
     "https://deno.land/x/harmony@v2.8.0/mod.ts": "91fb7c29642ec7dd2ffd5ff4d29e6a69021c9be43f8ffc54796af72d35e2eaa3",
     "https://deno.land/x/harmony@v2.8.0/src/cache/adapter.ts": "227cfd1fca519f8c0c37621c3706fdc249ec9df1043aaaad96894341ffeceb43",
