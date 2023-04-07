@@ -1,9 +1,9 @@
-import Client from "@core";
+import TaprisClient from "@core";
 import { Interaction, MessageComponentInteraction } from "harmony/mod.ts";
 
 interface Run {
   (
-    client: Client,
+    client: TaprisClient,
     interaction: MessageComponentInteraction
   ): Promise<Interaction | void> | void;
 }

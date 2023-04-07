@@ -1,9 +1,9 @@
-import Client from "@core";
+import TaprisClient from "@core";
 import { TaprisEvent } from "@framework/mod.ts";
 
 const event = new TaprisEvent()
   .setName("ready")
-  .setRun(async (client: Client) => {
+  .setRun(async (client: TaprisClient) => {
     await client.updatePresence();
 
     (await client.guilds.array()).forEach(async (guild) => {

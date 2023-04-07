@@ -1,4 +1,4 @@
-import Client from "@core";
+import TaprisClient from "@core";
 import {
   ApplicationCommandInteraction,
   ClientEvents,
@@ -11,12 +11,12 @@ type Args = ClientEvents[EventName];
 
 interface Run {
   (
-    client: Client,
+    client: TaprisClient,
     // deno-lint-ignore no-explicit-any
     ...args: any[]
   ): // ...args: Args
 
-    | Promise<
+  | Promise<
         ApplicationCommandInteraction | Interaction | Message | undefined | void
       >
     | Message

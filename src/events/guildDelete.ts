@@ -1,10 +1,10 @@
-import Client from "@core";
+import TaprisClient from "@core";
 import { TaprisEvent } from "@framework/mod.ts";
 import { Guild } from "harmony/mod.ts";
 
 const event = new TaprisEvent()
   .setName("guildDelete")
-  .setRun(async (client: Client, guild: Guild) => {
+  .setRun(async (client: TaprisClient, guild: Guild) => {
     await client.db.removeGuild(guild.id);
     await client.updatePresence();
   });

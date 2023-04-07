@@ -1,10 +1,10 @@
-import Client from "@core";
+import TaprisClient from "@core";
 import { Hono } from "hono/mod.ts";
 
 class Api extends Hono {
-  private client: Client;
+  private client: TaprisClient;
 
-  constructor(client: Client) {
+  constructor(client: TaprisClient) {
     super();
 
     this.client = client;

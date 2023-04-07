@@ -1,4 +1,4 @@
-import Client from "@core";
+import TaprisClient from "@core";
 import { LocaleNames, LocaleRecords } from "@typings/mod.ts";
 import {
   ApplicationCommandInteraction,
@@ -13,7 +13,7 @@ export class TaprisCommand<T extends LocaleRecords | undefined> {
   guildOnly = false;
 
   run!: (
-    client: Client,
+    client: TaprisClient,
     interaction: SlashCommandInteraction,
     locale: T
   ) => Promise<ApplicationCommandInteraction | undefined>;
