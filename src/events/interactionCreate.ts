@@ -26,7 +26,6 @@ const event = new TaprisEvent()
         interaction.guild?.id
       );
 
-      // deno-lint-ignore no-explicit-any
       return await command
         .run(client, interaction, locale as any)
         .catch(async (e) => {
