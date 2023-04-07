@@ -1,9 +1,9 @@
 import { commandLocales } from "@commands/utils/password.ts";
-import { ComponentBuilder } from "@framework/mod.ts";
+import { TaprisComponent } from "@framework/mod.ts";
 import generatePassword from "@utils/generatePassword.ts";
 import { ActionRowComponent, Embed } from "harmony/mod.ts";
 
-const component = new ComponentBuilder().setCustomId(/password_(.*)/gi).setRun(
+const component = new TaprisComponent().setCustomId(/password_(.*)/gi).setRun(
   async (client, interaction) => {
     await interaction.defer();
 

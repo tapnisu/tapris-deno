@@ -1,8 +1,8 @@
 import Client from "@core";
-import { EventBuilder } from "@framework/mod.ts";
+import { TaprisEvent } from "@framework/mod.ts";
 import { Embed, Guild } from "harmony/mod.ts";
 
-const event = new EventBuilder().setName("guildCreate").setRun(
+const event = new TaprisEvent().setName("guildCreate").setRun(
   async (client: Client, guild: Guild) => {
     await client.db.registerGuild(guild.id);
     await client.updatePresence();

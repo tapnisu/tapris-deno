@@ -6,7 +6,7 @@ import {
   SlashCommandInteraction,
 } from "harmony/mod.ts";
 
-export class CommandBuilder<T extends LocaleRecords | undefined> {
+export class TaprisCommand<T extends LocaleRecords | undefined> {
   name = "";
   description = "";
   options: ApplicationCommandOption[] = [];

@@ -1,4 +1,4 @@
-import { CommandBuilder } from "@framework/mod.ts";
+import { TaprisCommand } from "@framework/mod.ts";
 import { LocaleRecords } from "@typings/mod.ts";
 import { ApplicationCommandOptionType, Embed } from "harmony/mod.ts";
 
@@ -7,7 +7,7 @@ interface UserLocale extends LocaleRecords {
   bot: () => string;
 }
 
-const command = new CommandBuilder<UserLocale>()
+const command = new TaprisCommand<UserLocale>()
   .setName("user")
   .setDescription("Sends user information")
   .setOptions({

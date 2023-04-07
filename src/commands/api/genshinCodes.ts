@@ -1,4 +1,4 @@
-import { CommandBuilder } from "@framework/mod.ts";
+import { TaprisCommand } from "@framework/mod.ts";
 import { LocaleRecords } from "@typings/Locales.ts";
 import { ActionRowComponent, Embed } from "harmony/mod.ts";
 
@@ -32,7 +32,7 @@ interface GenshinCodesLocale extends LocaleRecords {
   description: () => string;
 }
 
-const command = new CommandBuilder<GenshinCodesLocale>()
+const command = new TaprisCommand<GenshinCodesLocale>()
   .setName("genshincodes")
   .setDescription("Get valid codes for Genshin Impact")
   .setLocales({

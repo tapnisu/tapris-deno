@@ -1,6 +1,6 @@
-import { ComponentBuilder } from "@framework/mod.ts";
+import { TaprisComponent } from "@framework/mod.ts";
 
-const component = new ComponentBuilder().setCustomId(/delete_message/).setRun(
+const component = new TaprisComponent().setCustomId(/delete_message/).setRun(
   (_client, interaction) => {
     const message = interaction.message;
 

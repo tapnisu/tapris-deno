@@ -1,7 +1,7 @@
 import Client from "@core";
-import { EventBuilder } from "@framework/mod.ts";
+import { TaprisEvent } from "@framework/mod.ts";
 
-const event = new EventBuilder().setName("ready").setRun(
+const event = new TaprisEvent().setName("ready").setRun(
   async (client: Client) => {
     await client.updatePresence();
 

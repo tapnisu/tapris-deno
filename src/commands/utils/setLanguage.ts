@@ -1,4 +1,4 @@
-import { CommandBuilder } from "@framework/mod.ts";
+import { TaprisCommand } from "@framework/mod.ts";
 import { LocaleNames, LocaleRecords } from "@typings/mod.ts";
 import { ApplicationCommandOptionType, Embed } from "harmony/mod.ts";
 
@@ -7,7 +7,7 @@ interface SetLanguageLocale extends LocaleRecords {
   success: () => string;
 }
 
-const command = new CommandBuilder<SetLanguageLocale>().setName("setlanguage")
+const command = new TaprisCommand<SetLanguageLocale>().setName("setlanguage")
   .setDescription(
     "Set my language for this guild",
   ).setOptions({

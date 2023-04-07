@@ -8,7 +8,7 @@ interface Run {
   ): Promise<Interaction | void> | void;
 }
 
-export class ComponentBuilder {
+export class TaprisComponent {
   customId = /id/;
   run: Run = () => {};
 

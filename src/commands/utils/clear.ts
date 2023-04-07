@@ -1,4 +1,4 @@
-import { CommandBuilder } from "@framework/mod.ts";
+import { TaprisCommand } from "@framework/mod.ts";
 import { LocaleRecords } from "@typings/mod.ts";
 import { ApplicationCommandOptionType, GuildTextChannel } from "harmony/mod.ts";
 
@@ -10,7 +10,7 @@ interface ClearLocale extends LocaleRecords {
   deletedNMessages: (n: number) => string;
 }
 
-const command = new CommandBuilder<ClearLocale>().setName("clear")
+const command = new TaprisCommand<ClearLocale>().setName("clear")
   .setDescription(
     "Clear messages in chat",
   ).setOptions(

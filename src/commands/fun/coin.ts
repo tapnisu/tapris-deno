@@ -1,4 +1,4 @@
-import { CommandBuilder } from "@framework/mod.ts";
+import { TaprisCommand } from "@framework/mod.ts";
 import { LocaleRecords } from "@typings/Locales.ts";
 import { ApplicationCommandOptionType, Embed } from "harmony/mod.ts";
 
@@ -10,7 +10,7 @@ interface coinLocale extends LocaleRecords {
   youWonLost: (winOrNot: boolean) => string;
 }
 
-const command = new CommandBuilder<coinLocale>().setName("coin")
+const command = new TaprisCommand<coinLocale>().setName("coin")
   .setDescription(
     "Flip a coin",
   ).setOptions({

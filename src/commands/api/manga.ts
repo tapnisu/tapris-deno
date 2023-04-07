@@ -1,10 +1,10 @@
-import { CommandBuilder } from "@framework/mod.ts";
+import { TaprisCommand } from "@framework/mod.ts";
 import { LocaleRecords } from "@typings/Locales.ts";
 import { SearchResult } from "@typings/mod.ts";
 import {
-  ActionRowComponent,
-  ApplicationCommandOptionType,
-  Embed,
+    ActionRowComponent,
+    ApplicationCommandOptionType,
+    Embed,
 } from "harmony/mod.ts";
 
 interface MangaLocales extends LocaleRecords {
@@ -13,7 +13,7 @@ interface MangaLocales extends LocaleRecords {
   readManga: () => string;
 }
 
-const command = new CommandBuilder<MangaLocales>()
+const command = new TaprisCommand<MangaLocales>()
   .setName("manga")
   .setDescription("Get data about manga")
   .setOptions({

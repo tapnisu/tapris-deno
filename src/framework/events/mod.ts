@@ -24,7 +24,7 @@ interface Run {
     | void;
 }
 
-export class EventBuilder {
+export class TaprisEvent {
   name: EventName = "raw";
   run: Run = () => {};
 

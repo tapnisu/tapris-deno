@@ -1,4 +1,4 @@
-import { CommandBuilder } from "@framework/mod.ts";
+import { TaprisCommand } from "@framework/mod.ts";
 import { LocaleRecords } from "@typings/mod.ts";
 import { ApplicationCommandOptionType, Embed } from "harmony/mod.ts";
 
@@ -6,7 +6,7 @@ interface ProfileLinkLocale extends LocaleRecords {
   unknownError: () => string;
 }
 
-const command = new CommandBuilder<ProfileLinkLocale>()
+const command = new TaprisCommand<ProfileLinkLocale>()
   .setName("profilelink")
   .setDescription("Get link to share user using link")
   .setOptions(

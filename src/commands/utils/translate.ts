@@ -1,4 +1,4 @@
-import { CommandBuilder } from "@framework/mod.ts";
+import { TaprisCommand } from "@framework/mod.ts";
 import { LocaleRecords } from "@typings/mod.ts";
 import { GTR } from "gtr/mod.ts";
 import { ApplicationCommandOptionType, Embed } from "harmony/mod.ts";
@@ -12,7 +12,7 @@ interface TranslateLocale extends LocaleRecords {
 
 const gtr = new GTR();
 
-const command = new CommandBuilder<TranslateLocale>().setName("translate")
+const command = new TaprisCommand<TranslateLocale>().setName("translate")
   .setDescription(
     "Translates text",
   ).setOptions(

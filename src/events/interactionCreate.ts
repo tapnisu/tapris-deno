@@ -1,8 +1,8 @@
 import Client from "@core";
-import { EventBuilder } from "@framework/mod.ts";
+import { TaprisEvent } from "@framework/mod.ts";
 import { Embed, Interaction } from "harmony/mod.ts";
 
-const event = new EventBuilder().setName("interactionCreate").setRun(
+const event = new TaprisEvent().setName("interactionCreate").setRun(
   async (client: Client, interaction: Interaction) => {
     if (interaction.isApplicationCommand()) {
       const command = client.commands.get(interaction.name);

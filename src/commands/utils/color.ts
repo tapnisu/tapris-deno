@@ -1,12 +1,12 @@
-import { CommandBuilder } from "@framework/mod.ts";
+import { TaprisCommand } from "@framework/mod.ts";
 import { createCanvas } from "canvas/mod.ts";
 import {
-  ApplicationCommandOptionType,
-  Embed,
-  MessageAttachment,
+    ApplicationCommandOptionType,
+    Embed,
+    MessageAttachment,
 } from "harmony/mod.ts";
 
-const command = new CommandBuilder().setName("color").setDescription(
+const command = new TaprisCommand().setName("color").setDescription(
   "Shows color or generates color",
 ).setOptions({
   name: "string",

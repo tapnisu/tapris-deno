@@ -1,10 +1,10 @@
-import { CommandBuilder } from "@framework/mod.ts";
+import { TaprisCommand } from "@framework/mod.ts";
 import { LocaleNames, LocaleRecords } from "@typings/mod.ts";
 import generatePassword from "@utils/generatePassword.ts";
 import {
-  ActionRowComponent,
-  ApplicationCommandOptionType,
-  Embed,
+    ActionRowComponent,
+    ApplicationCommandOptionType,
+    Embed,
 } from "harmony/mod.ts";
 
 interface PasswordLocale extends LocaleRecords {
@@ -12,7 +12,7 @@ interface PasswordLocale extends LocaleRecords {
   delete: () => string;
 }
 
-const command = new CommandBuilder<PasswordLocale>().setName("password")
+const command = new TaprisCommand<PasswordLocale>().setName("password")
   .setDescription(
     "Password generator",
   ).setOptions({

@@ -1,11 +1,11 @@
 import { TaprisCommands } from "@commands/mod.ts";
-import { CommandBuilder } from "@framework/mod.ts";
+import { TaprisCommand } from "@framework/mod.ts";
 import { LocaleRecords } from "@typings/mod.ts";
 import {
-  ApplicationCommandOption,
-  ApplicationCommandOptionBase,
-  ApplicationCommandOptionType,
-  Embed,
+    ApplicationCommandOption,
+    ApplicationCommandOptionBase,
+    ApplicationCommandOptionType,
+    Embed,
 } from "harmony/mod.ts";
 
 interface HelpLocale extends LocaleRecords {
@@ -14,7 +14,7 @@ interface HelpLocale extends LocaleRecords {
   required: () => string;
 }
 
-const command = new CommandBuilder<HelpLocale>()
+const command = new TaprisCommand<HelpLocale>()
   .setName("help")
   .setDescription("Get info about commands")
   .setOptions({

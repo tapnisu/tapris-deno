@@ -1,7 +1,7 @@
 import GetCommands, { TaprisCommands } from "@commands/mod.ts";
 import GetComponents from "@components/mod.ts";
 import GetEvents from "@events/mod.ts";
-import { ComponentBuilder, EventBuilder } from "@framework/mod.ts";
+import { TaprisComponent, TaprisEvent } from "@framework/mod.ts";
 import api from "@utils/api.ts";
 import env from "@utils/config.ts";
 import DBManagerBuilder from "@utils/db.ts";
@@ -10,8 +10,8 @@ import { serve } from "std/http/server.ts";
 
 class TaprisClient extends Client {
   public commands: Collection<string, TaprisCommands> = new Collection();
-  public components: Collection<RegExp, ComponentBuilder> = new Collection();
-  public events: Collection<string, EventBuilder> = new Collection();
+  public components: Collection<RegExp, TaprisComponent> = new Collection();
+  public events: Collection<string, TaprisEvent> = new Collection();
   private env = env;
   public botColor = env.BOT_COLOR ? env.BOT_COLOR : "#97aee8";
   public db = new DBManagerBuilder({

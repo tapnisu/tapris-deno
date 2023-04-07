@@ -1,9 +1,9 @@
-import { CommandBuilder } from "@framework/mod.ts";
+import { TaprisCommand } from "@framework/mod.ts";
 import { LocaleRecords } from "@typings/mod.ts";
 import {
-  ActionRowComponent,
-  ApplicationCommandOptionType,
-  Embed,
+    ActionRowComponent,
+    ApplicationCommandOptionType,
+    Embed,
 } from "harmony/mod.ts";
 
 interface AvatarLocale extends LocaleRecords {
@@ -12,7 +12,7 @@ interface AvatarLocale extends LocaleRecords {
   link: () => string;
 }
 
-const command = new CommandBuilder<AvatarLocale>().setName("avatar")
+const command = new TaprisCommand<AvatarLocale>().setName("avatar")
   .setDescription(
     "Get someones avatar",
   ).setOptions(
