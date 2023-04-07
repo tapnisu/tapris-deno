@@ -5,6 +5,7 @@ import {
   ApplicationCommandOptionType,
   Embed,
 } from "harmony/mod.ts";
+import ky from "ky";
 
 interface SearchResult {
   id: string;
@@ -48,7 +49,7 @@ const command = new TaprisCommand<MangaLocales>()
     )?.value;
 
     const response: SearchResult[] = await (
-      await fetch(`https://manga.deno.dev/api/search?q=${encodeURI(query)}`)
+      await ky.get(`https://manga.deno.dev/api/search?q=${encodeURI(query)}`)
     ).json();
 
     if (response.length === 0) {
