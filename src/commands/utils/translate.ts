@@ -1,5 +1,4 @@
-import { TaprisCommand } from "@framework/mod.ts";
-import { LocaleRecords } from "@typings/mod.ts";
+import { LocaleRecords, TaprisCommand } from "@framework/mod.ts";
 import { GTR } from "gtr/mod.ts";
 import { ApplicationCommandOptionType, Embed } from "harmony/mod.ts";
 

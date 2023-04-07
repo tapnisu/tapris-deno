@@ -1,5 +1,4 @@
-import { TaprisCommand } from "@framework/mod.ts";
-import { LocaleRecords } from "@typings/Locales.ts";
+import { LocaleRecords, TaprisCommand } from "@framework/mod.ts";
 import {
   ActionRowComponent,
   ApplicationCommandOptionType,

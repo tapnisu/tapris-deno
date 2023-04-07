@@ -1,5 +1,4 @@
-import { TaprisCommand } from "@framework/mod.ts";
-import { LocaleNames, LocaleRecords } from "@typings/mod.ts";
+import { LocaleNames, LocaleRecords, TaprisCommand } from "@framework/mod.ts";
 import generatePassword from "@utils/generatePassword.ts";
 import {
   ActionRowComponent,
