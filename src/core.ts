@@ -1,7 +1,7 @@
-import GetCommands, { TaprisCommands } from "@commands/mod.ts";
+import GetCommands from "@commands/mod.ts";
 import GetComponents from "@components/mod.ts";
 import GetEvents from "@events/mod.ts";
-import { TaprisComponent, TaprisEvent } from "@framework/mod.ts";
+import { TaprisCommand, TaprisComponent, TaprisEvent } from "@framework/mod.ts";
 import api from "@utils/api.ts";
 import env from "@utils/config.ts";
 import DBManagerBuilder from "@utils/db.ts";
@@ -9,7 +9,8 @@ import { Client, Collection, GatewayIntents } from "harmony/mod.ts";
 import { serve } from "std/http/server.ts";
 
 class TaprisClient extends Client {
-  public commands: Collection<string, TaprisCommands> = new Collection();
+  public commands: Collection<string, TaprisCommand<undefined>> =
+    new Collection();
   public components: Collection<RegExp, TaprisComponent> = new Collection();
   public events: Collection<string, TaprisEvent> = new Collection();
   private env = env;

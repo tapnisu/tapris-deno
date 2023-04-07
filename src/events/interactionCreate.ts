@@ -26,13 +26,11 @@ const event = new TaprisEvent()
         interaction.guild?.id
       );
 
-      return await command
-        .run(client, interaction, locale as any)
-        .catch(async (e) => {
-          console.error(e);
+      return await command.run(client, interaction, locale).catch(async (e) => {
+        console.error(e);
 
-          await interaction.reply("Unknown error happened!");
-        });
+        await interaction.reply("Unknown error happened!");
+      });
     }
 
     if (interaction.isMessageComponent()) {

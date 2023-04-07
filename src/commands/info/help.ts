@@ -1,4 +1,3 @@
-import { TaprisCommands } from "@commands/mod.ts";
 import { TaprisCommand } from "@framework/mod.ts";
 import { LocaleRecords } from "@typings/mod.ts";
 import {
@@ -88,7 +87,7 @@ const command = new TaprisCommand<HelpLocale>()
           : "https://raw.githubusercontent.com/tapris-bot/tapris/main/assets/avatar.webp"
       );
 
-    client.commands.forEach((command: TaprisCommands) => {
+    client.commands.forEach((command: TaprisCommand<undefined>) => {
       embed.addFields({
         name: `/${command.name} ${
           command.options

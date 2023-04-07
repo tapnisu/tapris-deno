@@ -12,6 +12,7 @@ import setLanguage from "@commands/utils/setLanguage.ts";
 import translate from "@commands/utils/translate.ts";
 import user from "@commands/utils/user.ts";
 import TaprisClient from "@core";
+import { TaprisCommand } from "@framework/mod.ts";
 
 const commands = [
   genshinCodes,
@@ -29,7 +30,7 @@ const commands = [
   translate,
 ];
 
-export type TaprisCommands = (typeof commands)[number];
-
 export default (client: TaprisClient) =>
-  commands.forEach((c) => client.commands.set(c.name, c));
+  commands.forEach((c) =>
+    client.commands.set(c.name, c as TaprisCommand<undefined>)
+  );
