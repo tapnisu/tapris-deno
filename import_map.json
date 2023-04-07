@@ -2,7 +2,7 @@
   "imports": {
     "@commands/": "./src/commands/",
     "@components/": "./src/components/",
-    "@core": "./src/core.ts",
+    "@core/": "./src/core/",
     "@events/": "./src/events/",
     "@framework/": "./src/framework/",
     "@typings/": "./src/typings/",

@@ -1,4 +1,4 @@
-import TaprisClient from "@core";
+import TaprisClient from "@core/mod.ts";
 import { LocaleNames, LocaleRecords } from "@typings/mod.ts";
 import {
   ApplicationCommandInteraction,

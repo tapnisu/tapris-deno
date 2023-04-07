@@ -11,7 +11,7 @@ import profileLink from "@commands/utils/profileLink.ts";
 import setLanguage from "@commands/utils/setLanguage.ts";
 import translate from "@commands/utils/translate.ts";
 import user from "@commands/utils/user.ts";
-import TaprisClient from "@core";
+import TaprisClient from "@core/mod.ts";
 import { TaprisCommand } from "@framework/mod.ts";
 
 const commands = [

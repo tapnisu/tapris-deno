@@ -1,4 +1,4 @@
-import TaprisClient from "@core";
+import TaprisClient from "@core/mod.ts";
 import guildCreate from "@events/guildCreate.ts";
 import guildDelete from "@events/guildDelete.ts";
 import interactionCreate from "@events/interactionCreate.ts";

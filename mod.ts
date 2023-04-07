@@ -1,4 +1,4 @@
-import TaprisClient from "@core";
+import TaprisClient from "@core/mod.ts";
 
 if (import.meta.main) await new TaprisClient().init();
 

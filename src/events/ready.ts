@@ -1,4 +1,4 @@
-import TaprisClient from "@core";
+import TaprisClient from "@core/mod.ts";
 import { TaprisEvent } from "@framework/mod.ts";
 
 const event = new TaprisEvent()

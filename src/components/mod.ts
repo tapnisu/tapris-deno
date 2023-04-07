@@ -1,6 +1,6 @@
 import deleteMessage from "@components/delete_message.ts";
 import passwordNew from "@components/password-new.ts";
-import TaprisClient from "@core";
+import TaprisClient from "@core/mod.ts";
 
 const components = [deleteMessage, passwordNew];
 
