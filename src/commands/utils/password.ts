@@ -1,3 +1,4 @@
+import { CommandBuilder } from "@framework/mod.ts";
 import { LocaleNames, LocaleRecords } from "@typings/mod.ts";
 import generatePassword from "@utils/generatePassword.ts";
 import {
@@ -5,7 +6,6 @@ import {
     ApplicationCommandOptionType,
     Embed,
 } from "harmony/mod.ts";
-import { CommandBuilder } from "../../framework/mod.ts";
 
 interface PasswordLocale extends LocaleRecords {
   createNew: () => string;

@@ -1,6 +1,6 @@
+import { CommandBuilder } from "@framework/mod.ts";
 import { LocaleRecords } from "@typings/Locales.ts";
 import { ApplicationCommandOptionType, Embed } from "harmony/mod.ts";
-import { CommandBuilder } from "../../framework/mod.ts";
 
 type Choice = "coin" | "tail";
 const choices: Choice[] = ["coin", "tail"];

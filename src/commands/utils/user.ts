@@ -1,6 +1,6 @@
+import { CommandBuilder } from "@framework/mod.ts";
 import { LocaleRecords } from "@typings/mod.ts";
 import { ApplicationCommandOptionType, Embed } from "harmony/mod.ts";
-import { CommandBuilder } from "../../framework/mod.ts";
 
 interface UserLocale extends LocaleRecords {
   unknownError: () => string;

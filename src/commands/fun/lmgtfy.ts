@@ -1,10 +1,10 @@
+import { CommandBuilder } from "@framework/mod.ts";
 import { LocaleRecords } from "@typings/Locales.ts";
 import {
     ActionRowComponent,
     ApplicationCommandOptionType,
     Embed,
 } from "harmony/mod.ts";
-import { CommandBuilder } from "../../framework/mod.ts";
 
 interface LmgtfyLocale extends LocaleRecords {
   getAnswerButton: (query: string) => string;
