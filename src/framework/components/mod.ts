@@ -1,4 +1,4 @@
-import TaprisClient from "@core/mod.ts";
+import { TaprisClient } from "@core/mod.ts";
 import { Interaction, MessageComponentInteraction } from "harmony/mod.ts";
 
 interface Run {

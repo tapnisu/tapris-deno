@@ -8,7 +8,7 @@ import DBManagerBuilder from "@utils/db.ts";
 import { Client, Collection, GatewayIntents } from "harmony/mod.ts";
 import { serve } from "std/http/server.ts";
 
-class TaprisClient extends Client {
+export class TaprisClient extends Client {
   public commands: Collection<string, TaprisCommand<undefined>> =
     new Collection();
   public components: Collection<RegExp, TaprisComponent> = new Collection();
@@ -58,5 +58,3 @@ class TaprisClient extends Client {
     });
   }
 }
-
-export default TaprisClient;
