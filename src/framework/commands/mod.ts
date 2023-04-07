@@ -15,7 +15,7 @@ export class TaprisCommand<T extends LocaleRecords | undefined> {
   run!: (
     client: Client,
     interaction: SlashCommandInteraction,
-    locale: T,
+    locale: T
   ) => Promise<ApplicationCommandInteraction | undefined>;
   locales: Record<LocaleNames, T> | undefined;
 

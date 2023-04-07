@@ -50,7 +50,7 @@ const command = new TaprisCommand<GenshinCodesLocale>()
   .setRun(async (client, interaction, locale) => {
     const response = await (
       await fetch(
-        "https://raw.githubusercontent.com/ataraxyaffliction/gipn-json/main/gipn.json",
+        "https://raw.githubusercontent.com/ataraxyaffliction/gipn-json/main/gipn.json"
       )
     ).json();
 

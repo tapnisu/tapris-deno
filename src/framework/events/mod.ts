@@ -14,11 +14,11 @@ interface Run {
     client: Client,
     // deno-lint-ignore no-explicit-any
     ...args: any[]
-    // ...args: Args
-  ):
+  ): // ...args: Args
+
     | Promise<
-      ApplicationCommandInteraction | Interaction | Message | undefined | void
-    >
+        ApplicationCommandInteraction | Interaction | Message | undefined | void
+      >
     | Message
     | undefined
     | void;

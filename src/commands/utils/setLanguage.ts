@@ -7,10 +7,10 @@ interface SetLanguageLocale extends LocaleRecords {
   success: () => string;
 }
 
-const command = new TaprisCommand<SetLanguageLocale>().setName("setlanguage")
-  .setDescription(
-    "Set my language for this guild",
-  ).setOptions({
+const command = new TaprisCommand<SetLanguageLocale>()
+  .setName("setlanguage")
+  .setDescription("Set my language for this guild")
+  .setOptions({
     name: "language",
     description: "Your selection",
     choices: [
@@ -19,7 +19,8 @@ const command = new TaprisCommand<SetLanguageLocale>().setName("setlanguage")
     ],
     type: ApplicationCommandOptionType.STRING,
     required: true,
-  }).setLocales({
+  })
+  .setLocales({
     en: {
       notAdministrator: () => "You don't have administrator permissions!",
       success: () => "Language set to english!",
@@ -28,9 +29,11 @@ const command = new TaprisCommand<SetLanguageLocale>().setName("setlanguage")
       notAdministrator: () => "У вас нет прав администратора!",
       success: () => "Язык установлен на русский!",
     },
-  }).setGuildOnly().setRun(async (client, interaction, locale) => {
+  })
+  .setGuildOnly()
+  .setRun(async (client, interaction, locale) => {
     const userMember = await interaction.guild!.members.get(
-      interaction.user.id,
+      interaction.user.id
     );
 
     if (!userMember!.permissions.has("Administrator")) {
@@ -45,14 +48,12 @@ const command = new TaprisCommand<SetLanguageLocale>().setName("setlanguage")
     }
 
     const language = interaction.options.find(
-      (option) => option.name === "language",
+      (option) => option.name === "language"
     )?.value as LocaleNames;
 
     await client.db.setGuildLanguage(interaction.guild!.id, language);
 
-    const embed = new Embed()
-      .setColor(client.botColor)
-      .setTitle(":thumbsup:");
+    const embed = new Embed().setColor(client.botColor).setTitle(":thumbsup:");
 
     return interaction.reply({ embeds: [embed] });
   });

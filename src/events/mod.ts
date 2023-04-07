@@ -5,13 +5,7 @@ import interactionCreate from "@events/interactionCreate.ts";
 import ready from "@events/ready.ts";
 import reconnect from "@events/reconnect.ts";
 
-const events = [
-  ready,
-  interactionCreate,
-  guildCreate,
-  guildDelete,
-  reconnect,
-];
+const events = [ready, interactionCreate, guildCreate, guildDelete, reconnect];
 
 export default (client: Client) =>
   events.forEach((event) => {

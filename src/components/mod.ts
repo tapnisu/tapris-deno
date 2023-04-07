@@ -2,10 +2,7 @@ import deleteMessage from "@components/delete_message.ts";
 import passwordNew from "@components/password-new.ts";
 import Client from "@core";
 
-const components = [
-  deleteMessage,
-  passwordNew,
-];
+const components = [deleteMessage, passwordNew];
 
 export default (client: Client) => {
   components.forEach((component) =>

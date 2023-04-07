@@ -10,24 +10,26 @@ interface LmgtfyLocale extends LocaleRecords {
   getAnswerButton: (query: string) => string;
 }
 
-const command = new TaprisCommand<LmgtfyLocale>().setName("lmgtfy")
-  .setDescription(
-    "'Let Me Google That For You' links generator",
-  ).setOptions({
+const command = new TaprisCommand<LmgtfyLocale>()
+  .setName("lmgtfy")
+  .setDescription("'Let Me Google That For You' links generator")
+  .setOptions({
     name: "query",
     description: "Query, to generate link",
     type: ApplicationCommandOptionType.STRING,
     required: true,
-  }).setLocales({
+  })
+  .setLocales({
     en: {
       getAnswerButton: (query: string) => `Get answer for "${query}" question`,
     },
     ru: {
       getAnswerButton: (query: string) => `Получить ответ на вопрос "${query}"`,
     },
-  }).setRun((client, interaction, locale) => {
+  })
+  .setRun((client, interaction, locale) => {
     const query = interaction.options.find(
-      (option) => option.name === "query",
+      (option) => option.name === "query"
     )?.value;
 
     const link = `https://lmgtfy.app/?q=${encodeURI(query.replace(/ /g, "+"))}`;

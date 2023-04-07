@@ -10,10 +10,10 @@ interface coinLocale extends LocaleRecords {
   youWonLost: (winOrNot: boolean) => string;
 }
 
-const command = new TaprisCommand<coinLocale>().setName("coin")
-  .setDescription(
-    "Flip a coin",
-  ).setOptions({
+const command = new TaprisCommand<coinLocale>()
+  .setName("coin")
+  .setDescription("Flip a coin")
+  .setOptions({
     name: "choice",
     description: "Your selection",
     choices: [
@@ -22,13 +22,13 @@ const command = new TaprisCommand<coinLocale>().setName("coin")
     ],
     type: ApplicationCommandOptionType.STRING,
     required: true,
-  }).setLocales({
+  })
+  .setLocales({
     en: {
       winner: (choice: Choice) =>
         `Got ${choice === choices[0] ? "coin" : "tail"}`,
-      youWonLost: (
-        winOrNot: boolean,
-      ) => (winOrNot ? "You won!" : "You lost! :("),
+      youWonLost: (winOrNot: boolean) =>
+        winOrNot ? "You won!" : "You lost! :(",
     },
     ru: {
       winner: (choice: Choice) =>
@@ -36,9 +36,10 @@ const command = new TaprisCommand<coinLocale>().setName("coin")
       youWonLost: (winOrNot: boolean) =>
         winOrNot ? "Вы выиграли! :D" : "Вы проиграли! :(",
     },
-  }).setRun((client, interaction, locale) => {
+  })
+  .setRun((client, interaction, locale) => {
     const choice = interaction.options.find(
-      (option) => option.name === "choice",
+      (option) => option.name === "choice"
     )?.value;
 
     const winner: Choice = choices[Math.floor(Math.random() * 2)];

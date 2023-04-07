@@ -4,7 +4,7 @@ import { Interaction, MessageComponentInteraction } from "harmony/mod.ts";
 interface Run {
   (
     client: Client,
-    interaction: MessageComponentInteraction,
+    interaction: MessageComponentInteraction
   ): Promise<Interaction | void> | void;
 }
 

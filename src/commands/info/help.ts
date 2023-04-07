@@ -42,7 +42,7 @@ const command = new TaprisCommand<HelpLocale>()
   })
   .setRun((client, interaction, locale) => {
     const request = interaction.options.find(
-      (option) => option.name === "command",
+      (option) => option.name === "command"
     )?.value;
 
     if (request) {
@@ -85,7 +85,7 @@ const command = new TaprisCommand<HelpLocale>()
       .setThumbnail(
         client.user
           ? client.user.avatarURL()
-          : "https://raw.githubusercontent.com/tapris-bot/tapris/main/assets/avatar.webp",
+          : "https://raw.githubusercontent.com/tapris-bot/tapris/main/assets/avatar.webp"
       );
 
     client.commands.forEach((command: TaprisCommands) => {
@@ -93,14 +93,14 @@ const command = new TaprisCommand<HelpLocale>()
         name: `/${command.name} ${
           command.options
             ? Array.prototype.map
-              .call(
-                command.options,
-                (option: ApplicationCommandOptionBase) =>
-                  `<${
-                    option.required ? locale.required() : ""
-                  }${option.name} [${option.description}]>`,
-              )
-              .join(" ")
+                .call(
+                  command.options,
+                  (option: ApplicationCommandOptionBase) =>
+                    `<${option.required ? locale.required() : ""}${
+                      option.name
+                    } [${option.description}]>`
+                )
+                .join(" ")
             : ""
         }`,
         value: command.description ? command.description : "...",

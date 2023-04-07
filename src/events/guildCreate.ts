@@ -2,8 +2,9 @@ import Client from "@core";
 import { TaprisEvent } from "@framework/mod.ts";
 import { Embed, Guild } from "harmony/mod.ts";
 
-const event = new TaprisEvent().setName("guildCreate").setRun(
-  async (client: Client, guild: Guild) => {
+const event = new TaprisEvent()
+  .setName("guildCreate")
+  .setRun(async (client: Client, guild: Guild) => {
     await client.db.registerGuild(guild.id);
     await client.updatePresence();
 
@@ -17,13 +18,12 @@ const event = new TaprisEvent().setName("guildCreate").setRun(
       .setThumbnail(client.user.avatarURL())
       .setDescription(
         `Type "/" to check bot commands!
-      https://github.com/tapris-bot/tapris.`,
+      https://github.com/tapris-bot/tapris.`
       );
 
     return channel.send({
       embeds: [embed],
     });
-  },
-);
+  });
 
 export default event;
