@@ -2,7 +2,7 @@ import { TaprisCommand } from "@framework/mod.ts";
 import { LocaleRecords } from "@typings/Locales.ts";
 import { ActionRowComponent, Embed } from "harmony/mod.ts";
 
-export interface Code {
+interface Code {
   reward: string;
   date: string;
   code: string;
@@ -11,14 +11,14 @@ export interface Code {
   reward_array: RewardArray[];
 }
 
-export interface RewardArray {
+interface RewardArray {
   image_path: string;
   name: string;
   count: string;
   rarity: Rarity;
 }
 
-export enum Rarity {
+enum Rarity {
   RarityFiveStar = "rarity_five_star",
   RarityFourStar = "rarity_four_star",
   RarityTreeStar = "rarity_tree_star",
@@ -50,7 +50,7 @@ const command = new TaprisCommand<GenshinCodesLocale>()
   .setRun(async (client, interaction, locale) => {
     const response = await (
       await fetch(
-        "https://raw.githubusercontent.com/ataraxyaffliction/gipn-json/main/gipn.json",
+        "https://raw.githubusercontent.com/ataraxyaffliction/gipn-json/main/gipn.json"
       )
     ).json();
 
