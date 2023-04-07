@@ -3,7 +3,7 @@
     "start": "deno run --allow-env --allow-net --allow-read mod.ts",
     "dev": "deno run --watch --allow-env --allow-net --allow-read mod.ts",
     "check": "deno check mod.ts",
-    "cache": "deno cache mod.ts",
+    "cache": "deno cache --lock-write mod.ts",
     "fmt": "deno fmt",
     "lint": "deno lint",
     "test": "deno test",
