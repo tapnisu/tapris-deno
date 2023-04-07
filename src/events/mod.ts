@@ -7,7 +7,7 @@ import reconnect from "@events/reconnect.ts";
 
 const events = [ready, interactionCreate, guildCreate, guildDelete, reconnect];
 
-export default (client: TaprisClient) =>
+export const getEvents = (client: TaprisClient) =>
   events.forEach((event) => {
     client.events.set(event.name, event);
     client.on(event.name, event.run.bind(null, client));

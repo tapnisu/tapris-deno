@@ -1,6 +1,6 @@
-import GetCommands from "@commands/mod.ts";
-import GetComponents from "@components/mod.ts";
-import GetEvents from "@events/mod.ts";
+import { getCommands } from "@commands/mod.ts";
+import { getComponents } from "@components/mod.ts";
+import { getEvents } from "@events/mod.ts";
 import { TaprisCommand, TaprisComponent, TaprisEvent } from "@framework/mod.ts";
 import api from "@utils/api.ts";
 import { env } from "@utils/config.ts";
@@ -24,9 +24,9 @@ export class TaprisClient extends Client {
   });
 
   public async init() {
-    GetCommands(this);
-    GetEvents(this);
-    GetComponents(this);
+    getCommands(this);
+    getEvents(this);
+    getComponents(this);
 
     await this.db
       .sync()

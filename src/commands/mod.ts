@@ -30,7 +30,7 @@ const commands = [
   translate,
 ];
 
-export default (client: TaprisClient) =>
+export const getCommands = (client: TaprisClient) =>
   commands.forEach((c) =>
     client.commands.set(c.name, c as TaprisCommand<undefined>)
   );

@@ -4,7 +4,7 @@ import { TaprisClient } from "@core/mod.ts";
 
 const components = [deleteMessage, passwordNew];
 
-export default (client: TaprisClient) => {
+export const getComponents = (client: TaprisClient) => {
   components.forEach((component) =>
     client.components.set(component.customId, component)
   );
