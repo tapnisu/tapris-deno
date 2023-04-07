@@ -1,4 +1,4 @@
-import Client from "@core";
+import TaprisClient from "@core";
 import { LocaleNames, LocaleRecords } from "@typings/mod.ts";
 import {
   ApplicationCommandInteraction,
@@ -6,16 +6,16 @@ import {
   SlashCommandInteraction,
 } from "harmony/mod.ts";
 
-export class CommandBuilder<T extends LocaleRecords | undefined> {
+export class TaprisCommand<T extends LocaleRecords | undefined> {
   name = "";
   description = "";
   options: ApplicationCommandOption[] = [];
   guildOnly = false;
 
   run!: (
-    client: Client,
+    client: TaprisClient,
     interaction: SlashCommandInteraction,
-    locale: T,
+    locale: T
   ) => Promise<ApplicationCommandInteraction | undefined>;
   locales: Record<LocaleNames, T> | undefined;
 

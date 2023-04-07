@@ -1,8 +1,8 @@
-import Client from "@core";
+import TaprisClient from "@core";
 
-if (import.meta.main) await new Client().init();
+if (import.meta.main) await new TaprisClient().init();
 
-export * from "@builders/mod.ts";
+export * from "@framework/mod.ts";
 export * from "@typings/mod.ts";
 export * from "@utils/mod.ts";
-export { Client };
+export { TaprisClient };

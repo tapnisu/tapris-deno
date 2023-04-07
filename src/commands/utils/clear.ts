@@ -1,4 +1,4 @@
-import { CommandBuilder } from "@builders/mod.ts";
+import { TaprisCommand } from "@framework/mod.ts";
 import { LocaleRecords } from "@typings/mod.ts";
 import { ApplicationCommandOptionType, GuildTextChannel } from "harmony/mod.ts";
 
@@ -10,17 +10,16 @@ interface ClearLocale extends LocaleRecords {
   deletedNMessages: (n: number) => string;
 }
 
-const command = new CommandBuilder<ClearLocale>().setName("clear")
-  .setDescription(
-    "Clear messages in chat",
-  ).setOptions(
-    {
-      name: "amount",
-      description: "Amount of messages to be deleted",
-      type: ApplicationCommandOptionType.NUMBER,
-      required: true,
-    },
-  ).setLocales({
+const command = new TaprisCommand<ClearLocale>()
+  .setName("clear")
+  .setDescription("Clear messages in chat")
+  .setOptions({
+    name: "amount",
+    description: "Amount of messages to be deleted",
+    type: ApplicationCommandOptionType.NUMBER,
+    required: true,
+  })
+  .setLocales({
     en: {
       noPermission: () => "You don't have a permission to delete messages!",
       bigRequest: () => "I can't delete more than 100 posts at a time!",
@@ -35,9 +34,11 @@ const command = new CommandBuilder<ClearLocale>().setName("clear")
       oldMessages: () => "Я не могу удалять сообщения старше 14 дней!",
       deletedNMessages: (n: number) => `Удалено ${n} сообщений!`,
     },
-  }).setGuildOnly().setRun(async (_client, interaction, locale) => {
+  })
+  .setGuildOnly()
+  .setRun(async (_client, interaction, locale) => {
     const amount: number = interaction.options.find(
-      (option) => option.name === "amount",
+      (option) => option.name === "amount"
     )?.value;
 
     const channel = interaction.channel as GuildTextChannel;
@@ -61,19 +62,21 @@ const command = new CommandBuilder<ClearLocale>().setName("clear")
       });
     }
 
-    channel.bulkDelete(amount)
+    channel
+      .bulkDelete(amount)
       .catch(
         async () =>
           await interaction.reply({
             content: locale.oldMessages(),
             ephemeral: true,
-          }),
+          })
       )
-      .then(async () =>
-        await interaction.reply({
-          content: locale.deletedNMessages(amount),
-          ephemeral: true,
-        })
+      .then(
+        async () =>
+          await interaction.reply({
+            content: locale.deletedNMessages(amount),
+            ephemeral: true,
+          })
       );
   });
 

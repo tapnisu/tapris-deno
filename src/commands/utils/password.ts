@@ -1,4 +1,4 @@
-import { CommandBuilder } from "@builders/mod.ts";
+import { TaprisCommand } from "@framework/mod.ts";
 import { LocaleNames, LocaleRecords } from "@typings/mod.ts";
 import generatePassword from "@utils/generatePassword.ts";
 import {
@@ -12,15 +12,16 @@ interface PasswordLocale extends LocaleRecords {
   delete: () => string;
 }
 
-const command = new CommandBuilder<PasswordLocale>().setName("password")
-  .setDescription(
-    "Password generator",
-  ).setOptions({
+const command = new TaprisCommand<PasswordLocale>()
+  .setName("password")
+  .setDescription("Password generator")
+  .setOptions({
     name: "length",
     description: "Set length of password",
     type: ApplicationCommandOptionType.NUMBER,
     required: true,
-  }).setLocales({
+  })
+  .setLocales({
     en: {
       createNew: () => "Create new",
       delete: () => "Delete",
@@ -29,9 +30,10 @@ const command = new CommandBuilder<PasswordLocale>().setName("password")
       createNew: () => "Создать новый",
       delete: () => "Удалить",
     },
-  }).setRun((client, interaction, locale) => {
+  })
+  .setRun((client, interaction, locale) => {
     const passwordLength: number = interaction.options.find(
-      (option) => option.name === "length",
+      (option) => option.name === "length"
     )?.value;
 
     const buttonsRow: ActionRowComponent = {

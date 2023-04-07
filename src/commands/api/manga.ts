@@ -1,11 +1,19 @@
-import { CommandBuilder } from "@builders/mod.ts";
+import { TaprisCommand } from "@framework/mod.ts";
 import { LocaleRecords } from "@typings/Locales.ts";
-import { SearchResult } from "@typings/mod.ts";
 import {
   ActionRowComponent,
   ApplicationCommandOptionType,
   Embed,
 } from "harmony/mod.ts";
+
+interface SearchResult {
+  id: string;
+  name: string;
+  lastChapter: string;
+  thumbnail: string;
+  author: string;
+  url: string;
+}
 
 interface MangaLocales extends LocaleRecords {
   mangaNotFound: () => string;
@@ -13,15 +21,16 @@ interface MangaLocales extends LocaleRecords {
   readManga: () => string;
 }
 
-const command = new CommandBuilder<MangaLocales>().setName("manga")
-  .setDescription(
-    "Get data about manga",
-  ).setOptions({
+const command = new TaprisCommand<MangaLocales>()
+  .setName("manga")
+  .setDescription("Get data about manga")
+  .setOptions({
     name: "query",
     description: "Query for search",
     type: ApplicationCommandOptionType.STRING,
     required: true,
-  }).setLocales({
+  })
+  .setLocales({
     en: {
       mangaNotFound: () => "Sorry! Manga not found! :(",
       lastChapter: () => "Last chapter",
@@ -32,9 +41,10 @@ const command = new CommandBuilder<MangaLocales>().setName("manga")
       lastChapter: () => "Последняя глава",
       readManga: () => "Читать мангу",
     },
-  }).setRun(async (client, interaction, locale) => {
+  })
+  .setRun(async (client, interaction, locale) => {
     const query = interaction.options.find(
-      (option) => option.name === "query",
+      (option) => option.name === "query"
     )?.value;
 
     const response: SearchResult[] = await (

@@ -1,4 +1,4 @@
-import { CommandBuilder } from "@builders/mod.ts";
+import { TaprisCommand } from "@framework/mod.ts";
 import { LocaleRecords } from "@typings/mod.ts";
 import { GTR } from "gtr/mod.ts";
 import { ApplicationCommandOptionType, Embed } from "harmony/mod.ts";
@@ -12,10 +12,10 @@ interface TranslateLocale extends LocaleRecords {
 
 const gtr = new GTR();
 
-const command = new CommandBuilder<TranslateLocale>().setName("translate")
-  .setDescription(
-    "Translates text",
-  ).setOptions(
+const command = new TaprisCommand<TranslateLocale>()
+  .setName("translate")
+  .setDescription("Translates text")
+  .setOptions(
     {
       name: "text",
       description: "Text to be translated",
@@ -32,8 +32,9 @@ const command = new CommandBuilder<TranslateLocale>().setName("translate")
       name: "from",
       description: "Original language",
       type: ApplicationCommandOptionType.STRING,
-    },
-  ).setLocales({
+    }
+  )
+  .setLocales({
     en: {
       invalidLanguage: () => "Error, language is invalid!",
       textIn: (language: string) => `Text in ${language}`,
@@ -46,17 +47,18 @@ const command = new CommandBuilder<TranslateLocale>().setName("translate")
       origLang: () => "Язык оригинала",
       origMessage: () => "Оригинальное сообщение",
     },
-  }).setRun(async (client, interaction, locale) => {
-    const from: string = interaction.options.find((option) =>
-      option.name === "from"
+  })
+  .setRun(async (client, interaction, locale) => {
+    const from: string = interaction.options.find(
+      (option) => option.name === "from"
     )?.value;
 
-    const to: string = interaction.options.find((option) =>
-      option.name === "to"
+    const to: string = interaction.options.find(
+      (option) => option.name === "to"
     )?.value;
 
-    const text: string = interaction.options.find((option) =>
-      option.name === "text"
+    const text: string = interaction.options.find(
+      (option) => option.name === "text"
     )?.value;
 
     try {
@@ -81,16 +83,16 @@ const command = new CommandBuilder<TranslateLocale>().setName("translate")
             name: locale.origMessage(),
             value: text,
             inline: true,
-          },
+          }
         );
 
       return await interaction.reply({ embeds: [embed] });
     } catch {
       return await interaction.reply({
         embeds: [
-          new Embed().setTitle(locale.invalidLanguage()).setColor(
-            client.botColor,
-          ),
+          new Embed()
+            .setTitle(locale.invalidLanguage())
+            .setColor(client.botColor),
         ],
         ephemeral: true,
       });

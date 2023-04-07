@@ -1,9 +1,10 @@
-import { EventBuilder } from "@builders/mod.ts";
-import Client from "@core";
+import TaprisClient from "@core";
+import { TaprisEvent } from "@framework/mod.ts";
 import { Embed, Interaction } from "harmony/mod.ts";
 
-const event = new EventBuilder().setName("interactionCreate").setRun(
-  async (client: Client, interaction: Interaction) => {
+const event = new TaprisEvent()
+  .setName("interactionCreate")
+  .setRun(async (client: TaprisClient, interaction: Interaction) => {
     if (interaction.isApplicationCommand()) {
       const command = client.commands.get(interaction.name);
 
@@ -22,17 +23,14 @@ const event = new EventBuilder().setName("interactionCreate").setRun(
 
       const locale = await client.db.selectLocale(
         command.locales,
-        interaction.guild?.id,
+        interaction.guild?.id
       );
 
-      // deno-lint-ignore no-explicit-any
-      return await command.run(client, interaction, locale as any).catch(
-        async (e) => {
-          console.error(e);
+      return await command.run(client, interaction, locale).catch(async (e) => {
+        console.error(e);
 
-          await interaction.reply("Unknown error happened!");
-        },
-      );
+        await interaction.reply("Unknown error happened!");
+      });
     }
 
     if (interaction.isMessageComponent()) {
@@ -46,7 +44,6 @@ const event = new EventBuilder().setName("interactionCreate").setRun(
         .run(client, interaction)
         ?.catch((e) => console.error(e));
     }
-  },
-);
+  });
 
 export default event;

@@ -1,4 +1,4 @@
-import { CommandBuilder } from "@builders/mod.ts";
+import { TaprisCommand } from "@framework/mod.ts";
 import { LocaleRecords } from "@typings/mod.ts";
 import {
   ActionRowComponent,
@@ -12,17 +12,16 @@ interface AvatarLocale extends LocaleRecords {
   link: () => string;
 }
 
-const command = new CommandBuilder<AvatarLocale>().setName("avatar")
-  .setDescription(
-    "Get someones avatar",
-  ).setOptions(
-    {
-      name: "user",
-      description: "User to get avatar from",
-      type: ApplicationCommandOptionType.USER,
-      required: true,
-    },
-  ).setLocales({
+const command = new TaprisCommand<AvatarLocale>()
+  .setName("avatar")
+  .setDescription("Get someones avatar")
+  .setOptions({
+    name: "user",
+    description: "User to get avatar from",
+    type: ApplicationCommandOptionType.USER,
+    required: true,
+  })
+  .setLocales({
     en: {
       unknownError: () => "Unknown error happened! :(",
       usersAvatar: (user: string) => `${user}'s avatar`,
@@ -33,17 +32,16 @@ const command = new CommandBuilder<AvatarLocale>().setName("avatar")
       usersAvatar: (user: string) => `Аватар ${user}`,
       link: () => "Ссылка",
     },
-  }).setRun(async (client, interaction, locale) => {
+  })
+  .setRun(async (client, interaction, locale) => {
     const user = await client.users.get(
-      interaction.options.find((option) => option.name === "user")?.value,
+      interaction.options.find((option) => option.name === "user")?.value
     );
 
     if (!user) {
       return interaction.reply({
         embeds: [
-          new Embed()
-            .setColor(client.botColor)
-            .setTitle(locale.unknownError()),
+          new Embed().setColor(client.botColor).setTitle(locale.unknownError()),
         ],
         ephemeral: true,
       });
