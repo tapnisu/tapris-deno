@@ -1,9 +1,9 @@
 import { TaprisCommand } from "@framework/mod.ts";
 import { LocaleRecords } from "@typings/mod.ts";
 import {
-    ActionRowComponent,
-    ApplicationCommandOptionType,
-    Embed,
+  ActionRowComponent,
+  ApplicationCommandOptionType,
+  Embed,
 } from "harmony/mod.ts";
 
 interface AvatarLocale extends LocaleRecords {

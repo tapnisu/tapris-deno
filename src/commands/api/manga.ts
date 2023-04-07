@@ -44,7 +44,7 @@ const command = new TaprisCommand<MangaLocales>()
   })
   .setRun(async (client, interaction, locale) => {
     const query = interaction.options.find(
-      (option) => option.name === "query"
+      (option) => option.name === "query",
     )?.value;
 
     const response: SearchResult[] = await (
