@@ -2,9 +2,9 @@ import { CommandBuilder } from "@framework/mod.ts";
 import { LocaleRecords } from "@typings/Locales.ts";
 import { SearchResult } from "@typings/mod.ts";
 import {
-    ActionRowComponent,
-    ApplicationCommandOptionType,
-    Embed,
+  ActionRowComponent,
+  ApplicationCommandOptionType,
+  Embed,
 } from "harmony/mod.ts";
 
 interface MangaLocales extends LocaleRecords {
@@ -36,7 +36,7 @@ const command = new CommandBuilder<MangaLocales>()
   })
   .setRun(async (client, interaction, locale) => {
     const query = interaction.options.find(
-      (option) => option.name === "query"
+      (option) => option.name === "query",
     )?.value;
 
     const response: SearchResult[] = await (
