@@ -1,7 +1,7 @@
 {
   "tasks": {
-    "start": "deno run --allow-env --allow-net --allow-read --allow-write mod.ts",
-    "dev": "deno run --watch --allow-env --allow-net --allow-read --allow-write mod.ts",
+    "start": "deno run --allow-env --allow-net --allow-read mod.ts",
+    "dev": "deno run --watch --allow-env --allow-net --allow-read mod.ts",
     "check": "deno check mod.ts",
     "cache": "deno cache mod.ts",
     "fmt": "deno fmt",
