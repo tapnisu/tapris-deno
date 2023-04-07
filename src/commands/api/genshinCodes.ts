@@ -1,8 +1,13 @@
 import { TaprisCommand } from "@framework/mod.ts";
 import { LocaleRecords } from "@typings/Locales.ts";
 import { ActionRowComponent, Embed } from "harmony/mod.ts";
+import ky from "ky";
 
-interface Code {
+export interface CodesResponse {
+  CODES: Code[];
+}
+
+export interface Code {
   reward: string;
   date: string;
   code: string;
@@ -11,19 +16,11 @@ interface Code {
   reward_array: RewardArray[];
 }
 
-interface RewardArray {
+export interface RewardArray {
   image_path: string;
   name: string;
   count: string;
-  rarity: Rarity;
-}
-
-enum Rarity {
-  RarityFiveStar = "rarity_five_star",
-  RarityFourStar = "rarity_four_star",
-  RarityTreeStar = "rarity_tree_star",
-  RarityTwoStar = "rarity_two_star",
-  RarityOneStar = "rarity_one_star",
+  rarity: string;
 }
 
 interface GenshinCodesLocale extends LocaleRecords {
@@ -48,11 +45,11 @@ const command = new TaprisCommand<GenshinCodesLocale>()
     },
   })
   .setRun(async (client, interaction, locale) => {
-    const response = await (
-      await fetch(
+    const response: CodesResponse = await ky
+      .get(
         "https://raw.githubusercontent.com/ataraxyaffliction/gipn-json/main/gipn.json"
       )
-    ).json();
+      .json();
 
     const codes = response.CODES;
     const url = "https://genshin.hoyoverse.com/en/gift";
