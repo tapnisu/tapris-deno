@@ -1,10 +1,16 @@
 import { TaprisClient } from "@core/mod.ts";
-import { LocaleNames, LocaleRecords } from "@typings/mod.ts";
+
 import {
   ApplicationCommandInteraction,
   ApplicationCommandOption,
   SlashCommandInteraction,
 } from "harmony/mod.ts";
+
+export type LocaleNames = "en" | "ru";
+// deno-lint-ignore no-explicit-any
+export type LocaleFunction = (...args: any[]) => string;
+export type LocaleRecords = Record<string, LocaleFunction>;
+export type Locales = Record<LocaleNames, LocaleRecords>;
 
 export class TaprisCommand<T extends LocaleRecords | undefined> {
   name = "";

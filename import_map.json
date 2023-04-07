@@ -5,7 +5,6 @@
     "@core/": "./src/core/",
     "@events/": "./src/events/",
     "@framework/": "./src/framework/",
-    "@typings/": "./src/typings/",
     "@utils/": "./src/utils/",
     "canvas/": "https://deno.land/x/canvas@v1.4.1/",
     "gtr/": "https://deno.land/x/gtr@v0.0.1/",
