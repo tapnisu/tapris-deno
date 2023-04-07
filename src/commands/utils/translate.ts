@@ -1,7 +1,7 @@
-import { CommandBuilder } from "@builders/mod.ts";
 import { LocaleRecords } from "@typings/mod.ts";
 import { GTR } from "gtr/mod.ts";
 import { ApplicationCommandOptionType, Embed } from "harmony/mod.ts";
+import { CommandBuilder } from "../../framework/mod.ts";
 
 interface TranslateLocale extends LocaleRecords {
   invalidLanguage: () => string;

@@ -1,10 +1,10 @@
-import { CommandBuilder } from "@builders/mod.ts";
 import { createCanvas } from "canvas/mod.ts";
 import {
-  ApplicationCommandOptionType,
-  Embed,
-  MessageAttachment,
+    ApplicationCommandOptionType,
+    Embed,
+    MessageAttachment,
 } from "harmony/mod.ts";
+import { CommandBuilder } from "../../framework/mod.ts";
 
 const command = new CommandBuilder().setName("color").setDescription(
   "Shows color or generates color",

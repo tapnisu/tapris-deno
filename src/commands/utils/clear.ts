@@ -1,6 +1,6 @@
-import { CommandBuilder } from "@builders/mod.ts";
 import { LocaleRecords } from "@typings/mod.ts";
 import { ApplicationCommandOptionType, GuildTextChannel } from "harmony/mod.ts";
+import { CommandBuilder } from "../../framework/mod.ts";
 
 interface ClearLocale extends LocaleRecords {
   noPermission: () => string;

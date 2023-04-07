@@ -1,10 +1,10 @@
-import { CommandBuilder } from "@builders/mod.ts";
 import { LocaleRecords } from "@typings/mod.ts";
 import {
-  ActionRowComponent,
-  ApplicationCommandOptionType,
-  Embed,
+    ActionRowComponent,
+    ApplicationCommandOptionType,
+    Embed,
 } from "harmony/mod.ts";
+import { CommandBuilder } from "../../framework/mod.ts";
 
 interface AvatarLocale extends LocaleRecords {
   unknownError: () => string;

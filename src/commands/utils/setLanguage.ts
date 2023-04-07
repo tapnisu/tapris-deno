@@ -1,6 +1,6 @@
-import { CommandBuilder } from "@builders/mod.ts";
 import { LocaleNames, LocaleRecords } from "@typings/mod.ts";
 import { ApplicationCommandOptionType, Embed } from "harmony/mod.ts";
+import { CommandBuilder } from "../../framework/mod.ts";
 
 interface SetLanguageLocale extends LocaleRecords {
   notAdministrator: () => string;

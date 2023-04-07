@@ -1,4 +1,4 @@
-import { ComponentBuilder } from "@builders/mod.ts";
+import { ComponentBuilder } from "@framework/mod.ts";
 
 const component = new ComponentBuilder().setCustomId(/delete_message/).setRun(
   (_client, interaction) => {

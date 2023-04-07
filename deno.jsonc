@@ -10,7 +10,7 @@
     "compile": "deno compile --allow-env --allow-net --allow-read mod.ts"
   },
   "imports": {
-    "@builders/": "./src/builders/",
+    "@framework/": "./src/framework/",
     "@commands/": "./src/commands/",
     "@components/": "./src/components/",
     "@core": "./src/core.ts",

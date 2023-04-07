@@ -1,5 +1,5 @@
-import { EventBuilder } from "@builders/mod.ts";
 import Client from "@core";
+import { EventBuilder } from "@framework/mod.ts";
 import { Guild } from "harmony/mod.ts";
 
 const event = new EventBuilder().setName("guildDelete").setRun(
