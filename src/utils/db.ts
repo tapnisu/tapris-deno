@@ -7,7 +7,7 @@ interface Guild {
   russianRouletteBeforeDeath: number;
 }
 
-class DBManagerBuilder extends PostgresClient {
+class TaprisDBManager extends PostgresClient {
   public async getGuild(id: string): Promise<Guild> {
     const guildResponse = await this.queryObject<Guild>(
       `select * from "Guilds" where id = '${id}';`
@@ -65,4 +65,4 @@ class DBManagerBuilder extends PostgresClient {
   }
 }
 
-export default DBManagerBuilder;
+export default TaprisDBManager;

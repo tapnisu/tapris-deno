@@ -3,8 +3,8 @@ import GetComponents from "@components/mod.ts";
 import GetEvents from "@events/mod.ts";
 import { TaprisCommand, TaprisComponent, TaprisEvent } from "@framework/mod.ts";
 import api from "@utils/api.ts";
-import env from "@utils/config.ts";
-import DBManagerBuilder from "@utils/db.ts";
+import { env } from "@utils/config.ts";
+import TaprisDBManager from "@utils/db.ts";
 import { Client, Collection, GatewayIntents } from "harmony/mod.ts";
 import { serve } from "std/http/server.ts";
 
@@ -15,7 +15,7 @@ export class TaprisClient extends Client {
   public events: Collection<string, TaprisEvent> = new Collection();
   private env = env;
   public botColor = env.BOT_COLOR ? env.BOT_COLOR : "#97aee8";
-  public db = new DBManagerBuilder({
+  public db = new TaprisDBManager({
     hostname: env.DATABASE_HOSTNAME,
     user: env.DATABASE_USER,
     password: env.DATABASE_PASSWORD,

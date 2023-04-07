@@ -23,6 +23,4 @@ const getEnv = async (): Promise<Env> => {
   }
 };
 
-const dots = await getEnv();
-
-export default dots;
+export const env = await getEnv();
