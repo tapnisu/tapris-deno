@@ -23,14 +23,14 @@ export interface Result {
   image: string;
 }
 
-interface MangaLocales extends LocaleRecords {
+interface TracemoeLocales extends LocaleRecords {
   frameNotFound: () => string;
   similarity: () => string;
   episode: () => string;
   watch: () => string;
 }
 
-const command = new TaprisCommand<MangaLocales>()
+const command = new TaprisCommand<TracemoeLocales>()
   .setName("tracemoe")
   .setDescription("Get exact moment and the episode for screenshot from anime")
   .setOptions({
