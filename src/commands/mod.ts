@@ -1,5 +1,6 @@
 import genshinCodes from "@commands/api/genshinCodes.ts";
 import manga from "@commands/api/manga.ts";
+import tracemoe from "@commands/api/tracemoe.ts";
 import coin from "@commands/fun/coin.ts";
 import lmgtfy from "@commands/fun/lmgtfy.ts";
 import help from "@commands/info/help.ts";
@@ -24,6 +25,7 @@ const commands = [
   avatar,
   color,
   password,
+  tracemoe,
   profileLink,
   setLanguage,
   user,
