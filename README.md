@@ -1,7 +1,7 @@
 <p align="center">
  <img width=400px src="assets/avatar.webp" alt="Bot logo">
  <h1 align="center">Tapris</h1>
- <h3 align="center">Lightweight multilanguage discord bot</h3>
+ <h3 align="center">Lightweight multi-language, multi-purpose bot for Discord</h3>
 </p>
 
 <p align="center">

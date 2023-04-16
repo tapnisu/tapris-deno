@@ -4,6 +4,7 @@ import tracemoe from "@commands/api/tracemoe.ts";
 import coin from "@commands/fun/coin.ts";
 import lmgtfy from "@commands/fun/lmgtfy.ts";
 import help from "@commands/info/help.ts";
+import info from "@commands/info/info.ts";
 import avatar from "@commands/utils/avatar.ts";
 import clear from "@commands/utils/clear.ts";
 import color from "@commands/utils/color.ts";
@@ -21,6 +22,7 @@ const commands = [
   coin,
   lmgtfy,
   help,
+  info,
   clear,
   avatar,
   color,
