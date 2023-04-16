@@ -1,4 +1,4 @@
-import { LocaleRecords, TaprisCommand } from "@framework/mod.ts";
+import { TaprisCommand } from "@framework/mod.ts";
 import { ActionRowComponent, Embed } from "harmony/mod.ts";
 import ky from "ky";
 
@@ -22,7 +22,7 @@ export interface RewardArray {
   rarity: string;
 }
 
-interface GenshinCodesLocale extends LocaleRecords {
+interface GenshinCodesLocale {
   activateButton: () => string;
   embedTitle: () => string;
   description: () => string;

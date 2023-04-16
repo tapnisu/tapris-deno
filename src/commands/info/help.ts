@@ -1,4 +1,4 @@
-import { LocaleRecords, TaprisCommand } from "@framework/mod.ts";
+import { TaprisCommand } from "@framework/mod.ts";
 import {
   ApplicationCommandOption,
   ApplicationCommandOptionBase,
@@ -6,7 +6,7 @@ import {
   Embed,
 } from "harmony/mod.ts";
 
-interface HelpLocale extends LocaleRecords {
+interface HelpLocale  {
   isNotAValidCommand: (request: string) => string;
   serverMember: (name?: string) => string;
   required: () => string;

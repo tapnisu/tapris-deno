@@ -1,10 +1,10 @@
-import { LocaleRecords, TaprisCommand } from "@framework/mod.ts";
+import { TaprisCommand } from "@framework/mod.ts";
 import { ApplicationCommandOptionType, Embed } from "harmony/mod.ts";
 
 type Choice = "coin" | "tail";
 const choices: Choice[] = ["coin", "tail"];
 
-interface coinLocale extends LocaleRecords {
+interface coinLocale  {
   winner: (choice: Choice) => string;
   youWonLost: (winOrNot: boolean) => string;
 }

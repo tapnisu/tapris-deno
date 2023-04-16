@@ -1,5 +1,4 @@
 import { TaprisClient } from "@core/mod.ts";
-
 import {
   ApplicationCommandInteraction,
   ApplicationCommandOption,
@@ -7,23 +6,19 @@ import {
 } from "harmony/mod.ts";
 
 export type LocaleNames = "en" | "ru";
-// deno-lint-ignore no-explicit-any
-export type LocaleFunction = (...args: any[]) => string;
-export type LocaleRecords = Record<string, LocaleFunction>;
-export type Locales = Record<LocaleNames, LocaleRecords>;
 
-export class TaprisCommand<T extends LocaleRecords | undefined> {
+export class TaprisCommand<T> {
   name = "";
   description = "";
   options: ApplicationCommandOption[] = [];
   guildOnly = false;
+  locales: Record<LocaleNames, T> | undefined;
 
   run!: (
     client: TaprisClient,
     interaction: SlashCommandInteraction,
     locale: T
   ) => Promise<ApplicationCommandInteraction | undefined>;
-  locales: Record<LocaleNames, T> | undefined;
 
   public setName(name: string) {
     this.name = name;

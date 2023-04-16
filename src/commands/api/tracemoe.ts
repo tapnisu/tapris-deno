@@ -1,8 +1,8 @@
-import { LocaleRecords, TaprisCommand } from "@framework/mod.ts";
+import { TaprisCommand } from "@framework/mod.ts";
 import {
-  ActionRowComponent,
-  ApplicationCommandOptionType,
-  Embed,
+    ActionRowComponent,
+    ApplicationCommandOptionType,
+    Embed,
 } from "harmony/mod.ts";
 import ky from "ky";
 
@@ -23,7 +23,7 @@ export interface Result {
   image: string;
 }
 
-interface TracemoeLocales extends LocaleRecords {
+interface TracemoeLocales  {
   frameNotFound: () => string;
   similarity: () => string;
   episode: () => string;

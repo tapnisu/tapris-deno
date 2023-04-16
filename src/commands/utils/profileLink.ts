@@ -1,7 +1,7 @@
-import { LocaleRecords, TaprisCommand } from "@framework/mod.ts";
+import { TaprisCommand } from "@framework/mod.ts";
 import { ApplicationCommandOptionType, Embed } from "harmony/mod.ts";
 
-interface ProfileLinkLocale extends LocaleRecords {
+interface ProfileLinkLocale  {
   unknownError: () => string;
 }
 

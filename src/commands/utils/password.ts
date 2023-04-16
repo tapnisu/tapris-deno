@@ -1,12 +1,12 @@
-import { LocaleNames, LocaleRecords, TaprisCommand } from "@framework/mod.ts";
+import { LocaleNames, TaprisCommand } from "@framework/mod.ts";
 import generatePassword from "@utils/generatePassword.ts";
 import {
-  ActionRowComponent,
-  ApplicationCommandOptionType,
-  Embed,
+    ActionRowComponent,
+    ApplicationCommandOptionType,
+    Embed,
 } from "harmony/mod.ts";
 
-interface PasswordLocale extends LocaleRecords {
+interface PasswordLocale  {
   createNew: () => string;
   delete: () => string;
 }

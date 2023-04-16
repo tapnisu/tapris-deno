@@ -1,7 +1,7 @@
-import { LocaleNames, LocaleRecords, TaprisCommand } from "@framework/mod.ts";
+import { LocaleNames, TaprisCommand } from "@framework/mod.ts";
 import { ApplicationCommandOptionType, Embed } from "harmony/mod.ts";
 
-interface SetLanguageLocale extends LocaleRecords {
+interface SetLanguageLocale  {
   notAdministrator: () => string;
   success: () => string;
 }

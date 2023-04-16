@@ -1,4 +1,4 @@
-import { LocaleNames, LocaleRecords } from "@framework/mod.ts";
+import { LocaleNames } from "@framework/mod.ts";
 import { Client as PostgresClient } from "postgres/mod.ts";
 
 interface Guild {
@@ -26,7 +26,7 @@ class TaprisDBManager extends PostgresClient {
     return guildResponse.rows.length ? guildResponse.rows[0].language : "en";
   }
 
-  public async selectLocale<T extends LocaleRecords | undefined>(
+  public async selectLocale<T>(
     locale: Record<LocaleNames, T> | undefined,
     id?: string
   ): Promise<T> {

@@ -1,4 +1,4 @@
-import { LocaleRecords, TaprisCommand } from "@framework/mod.ts";
+import { TaprisCommand } from "@framework/mod.ts";
 import {
   ActionRowComponent,
   ApplicationCommandOptionType,
@@ -15,7 +15,7 @@ interface SearchResult {
   url: string;
 }
 
-interface MangaLocales extends LocaleRecords {
+interface MangaLocales {
   mangaNotFound: () => string;
   lastChapter: () => string;
   readManga: () => string;

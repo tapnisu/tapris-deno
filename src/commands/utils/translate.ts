@@ -1,8 +1,8 @@
-import { LocaleRecords, TaprisCommand } from "@framework/mod.ts";
+import { TaprisCommand } from "@framework/mod.ts";
 import { GTR } from "gtr/mod.ts";
 import { ApplicationCommandOptionType, Embed } from "harmony/mod.ts";
 
-interface TranslateLocale extends LocaleRecords {
+interface TranslateLocale  {
   invalidLanguage: () => string;
   textIn: (language: string) => string;
   origLang: () => string;

@@ -1,11 +1,11 @@
-import { LocaleRecords, TaprisCommand } from "@framework/mod.ts";
+import { TaprisCommand } from "@framework/mod.ts";
 import {
-  ActionRowComponent,
-  ApplicationCommandOptionType,
-  Embed,
+    ActionRowComponent,
+    ApplicationCommandOptionType,
+    Embed,
 } from "harmony/mod.ts";
 
-interface AvatarLocale extends LocaleRecords {
+interface AvatarLocale  {
   unknownError: () => string;
   usersAvatar: (user: string) => string;
   link: () => string;

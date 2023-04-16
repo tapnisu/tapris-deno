@@ -1,7 +1,7 @@
-import { LocaleRecords, TaprisCommand } from "@framework/mod.ts";
+import { TaprisCommand } from "@framework/mod.ts";
 import { Embed } from "harmony/mod.ts";
 
-interface InfoLocale extends LocaleRecords {
+interface InfoLocale {
   embedTitle: () => string;
   description: () => string;
   amountOfGuilds: () => string;
