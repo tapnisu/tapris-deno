@@ -56,5 +56,3 @@ export default new TaprisCommand<SetLanguageLocale>()
 
     return interaction.reply({ embeds: [embed] });
   });
-
-

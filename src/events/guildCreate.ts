@@ -2,7 +2,7 @@ import { TaprisClient } from "@core/mod.ts";
 import { TaprisEvent } from "@framework/mod.ts";
 import { Embed, Guild } from "harmony/mod.ts";
 
-const event = new TaprisEvent()
+export default new TaprisEvent()
   .setName("guildCreate")
   .setRun(async (client: TaprisClient, guild: Guild) => {
     await client.db.registerGuild(guild.id);
@@ -25,5 +25,3 @@ const event = new TaprisEvent()
       embeds: [embed],
     });
   });
-
-export default event;

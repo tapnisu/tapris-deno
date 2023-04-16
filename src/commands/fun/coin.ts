@@ -50,5 +50,3 @@ export default new TaprisCommand<coinLocale>()
 
     return interaction.reply({ embeds: [embed] });
   });
-
-

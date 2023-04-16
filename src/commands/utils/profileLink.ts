@@ -45,5 +45,3 @@ export default new TaprisCommand<ProfileLinkLocale>()
 
     return interaction.reply({ embeds: [embed] });
   });
-
-

@@ -78,5 +78,3 @@ export default new TaprisCommand<ClearLocale>()
           })
       );
   });
-
-

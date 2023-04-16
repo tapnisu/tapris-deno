@@ -2,7 +2,7 @@ import { TaprisClient } from "@core/mod.ts";
 import { TaprisEvent } from "@framework/mod.ts";
 import { Embed, Interaction } from "harmony/mod.ts";
 
-const event = new TaprisEvent()
+export default new TaprisEvent()
   .setName("interactionCreate")
   .setRun(async (client: TaprisClient, interaction: Interaction) => {
     if (interaction.isApplicationCommand()) {
@@ -45,5 +45,3 @@ const event = new TaprisEvent()
         ?.catch((e) => console.error(e));
     }
   });
-
-export default event;

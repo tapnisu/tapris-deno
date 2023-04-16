@@ -1,9 +1,9 @@
 import { TaprisCommand } from "@framework/mod.ts";
 import { createCanvas } from "canvas/mod.ts";
 import {
-    ApplicationCommandOptionType,
-    Embed,
-    MessageAttachment,
+  ApplicationCommandOptionType,
+  Embed,
+  MessageAttachment,
 } from "harmony/mod.ts";
 
 export default new TaprisCommand()
@@ -65,5 +65,3 @@ export default new TaprisCommand()
 
     return await interaction.reply({ embeds: [embed] });
   });
-
-

@@ -48,5 +48,3 @@ export default new TaprisCommand<UserLocale>()
 
     return interaction.reply({ embeds: [embed] });
   });
-
-

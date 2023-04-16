@@ -97,5 +97,3 @@ export default new TaprisCommand<TranslateLocale>()
       });
     }
   });
-
-

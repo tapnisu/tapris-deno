@@ -1,8 +1,8 @@
 import { LocaleRecords, TaprisCommand } from "@framework/mod.ts";
 import {
-    ActionRowComponent,
-    ApplicationCommandOptionType,
-    Embed,
+  ActionRowComponent,
+  ApplicationCommandOptionType,
+  Embed,
 } from "harmony/mod.ts";
 
 interface LmgtfyLocale extends LocaleRecords {
@@ -52,5 +52,3 @@ export default new TaprisCommand<LmgtfyLocale>()
 
     return interaction.reply({ embeds: [embed], components: [buttonsRow] });
   });
-
-

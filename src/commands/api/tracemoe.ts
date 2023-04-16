@@ -1,8 +1,8 @@
 import { LocaleRecords, TaprisCommand } from "@framework/mod.ts";
 import {
-    ActionRowComponent,
-    ApplicationCommandOptionType,
-    Embed,
+  ActionRowComponent,
+  ApplicationCommandOptionType,
+  Embed,
 } from "harmony/mod.ts";
 import ky from "ky";
 
@@ -122,5 +122,3 @@ export default new TaprisCommand<TracemoeLocales>()
 
     return interaction.reply({ embeds: [embed], components: [buttonsRow] });
   });
-
-
