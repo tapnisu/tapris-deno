@@ -1,8 +1,8 @@
 import { TaprisCommand } from "@framework/mod.ts";
 import {
-    ActionRowComponent,
-    ApplicationCommandOptionType,
-    Embed,
+  ActionRowComponent,
+  ApplicationCommandOptionType,
+  Embed,
 } from "harmony/mod.ts";
 import ky from "ky";
 
@@ -23,11 +23,11 @@ export interface Result {
   image: string;
 }
 
-interface TracemoeLocales  {
-  frameNotFound: () => string;
-  similarity: () => string;
-  episode: () => string;
-  watch: () => string;
+interface TracemoeLocales {
+  frameNotFound: string;
+  similarity: string;
+  episode: string;
+  watch: string;
 }
 
 export default new TaprisCommand<TracemoeLocales>()
@@ -41,16 +41,16 @@ export default new TaprisCommand<TracemoeLocales>()
   })
   .setLocales({
     en: {
-      frameNotFound: () => "Sorry, I can't find this frame",
-      similarity: () => "Similarity",
-      episode: () => "Episode",
-      watch: () => "Watch",
+      frameNotFound: "Sorry, I can't find this frame",
+      similarity: "Similarity",
+      episode: "Episode",
+      watch: "Watch",
     },
     ru: {
-      frameNotFound: () => "Извините, я не могу найти этот кадр",
-      similarity: () => "Схожести",
-      episode: () => "Эпизод",
-      watch: () => "Смотреть",
+      frameNotFound: "Извините, я не могу найти этот кадр",
+      similarity: "Схожести",
+      episode: "Эпизод",
+      watch: "Смотреть",
     },
   })
   .setRun(async (client, interaction, locale) => {
@@ -67,7 +67,7 @@ export default new TaprisCommand<TracemoeLocales>()
           embeds: [
             new Embed()
               .setColor(client.botColor)
-              .setTitle(locale.frameNotFound()),
+              .setTitle(locale.frameNotFound),
           ],
         });
       });
@@ -79,9 +79,7 @@ export default new TaprisCommand<TracemoeLocales>()
     if (res.result.length === 0) {
       return interaction.reply({
         embeds: [
-          new Embed()
-            .setColor(client.botColor)
-            .setTitle(locale.frameNotFound()),
+          new Embed().setColor(client.botColor).setTitle(locale.frameNotFound),
         ],
         ephemeral: true,
       });
@@ -94,12 +92,12 @@ export default new TaprisCommand<TracemoeLocales>()
       .setTitle(frame.filename)
       .addFields(
         {
-          name: locale.similarity(),
+          name: locale.similarity,
           value: `${frame.similarity}%`,
           inline: true,
         },
         {
-          name: locale.episode(),
+          name: locale.episode,
           value: frame.episode.toString(),
           inline: true,
         }
@@ -114,7 +112,7 @@ export default new TaprisCommand<TracemoeLocales>()
         {
           type: 2,
           url: frame.video,
-          label: locale.watch(),
+          label: locale.watch,
           style: 5,
         },
       ],

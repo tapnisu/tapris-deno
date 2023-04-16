@@ -1,14 +1,14 @@
 import { TaprisCommand } from "@framework/mod.ts";
 import {
-    ActionRowComponent,
-    ApplicationCommandOptionType,
-    Embed,
+  ActionRowComponent,
+  ApplicationCommandOptionType,
+  Embed,
 } from "harmony/mod.ts";
 
-interface AvatarLocale  {
-  unknownError: () => string;
+interface AvatarLocale {
+  unknownError: string;
   usersAvatar: (user: string) => string;
-  link: () => string;
+  link: string;
 }
 
 export default new TaprisCommand<AvatarLocale>()
@@ -22,14 +22,14 @@ export default new TaprisCommand<AvatarLocale>()
   })
   .setLocales({
     en: {
-      unknownError: () => "Unknown error happened! :(",
+      unknownError: "Unknown error happened! :(",
       usersAvatar: (user: string) => `${user}'s avatar`,
-      link: () => "Link to avatar",
+      link: "Link to avatar",
     },
     ru: {
-      unknownError: () => "Произошла неизвестная ошибка! :(",
+      unknownError: "Произошла неизвестная ошибка! :(",
       usersAvatar: (user: string) => `Аватар ${user}`,
-      link: () => "Ссылка",
+      link: "Ссылка",
     },
   })
   .setRun(async (client, interaction, locale) => {
@@ -40,7 +40,7 @@ export default new TaprisCommand<AvatarLocale>()
     if (!user) {
       return interaction.reply({
         embeds: [
-          new Embed().setColor(client.botColor).setTitle(locale.unknownError()),
+          new Embed().setColor(client.botColor).setTitle(locale.unknownError),
         ],
         ephemeral: true,
       });
@@ -59,7 +59,7 @@ export default new TaprisCommand<AvatarLocale>()
         {
           type: 2,
           url: avatarUrl,
-          label: locale.link(),
+          label: locale.link,
           style: 5,
         },
       ],

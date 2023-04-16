@@ -2,11 +2,11 @@ import { TaprisCommand } from "@framework/mod.ts";
 import { Embed } from "harmony/mod.ts";
 
 interface InfoLocale {
-  embedTitle: () => string;
-  description: () => string;
-  amountOfGuilds: () => string;
-  author: () => string;
-  ping: () => string;
+  embedTitle: string;
+  description: string;
+  amountOfGuilds: string;
+  author: string;
+  ping: string;
 }
 
 export default new TaprisCommand<InfoLocale>()
@@ -14,38 +14,38 @@ export default new TaprisCommand<InfoLocale>()
   .setDescription("Get info about me")
   .setLocales({
     en: {
-      embedTitle: () => "Info about me",
-      description: () => "Multi-language, multi-purpose bot for Discord",
-      amountOfGuilds: () => "Amount of guilds",
-      author: () => "Author",
-      ping: () => "Ping",
+      embedTitle: "Info about me",
+      description: "Multi-language, multi-purpose bot for Discord",
+      amountOfGuilds: "Amount of guilds",
+      author: "Author",
+      ping: "Ping",
     },
     ru: {
-      embedTitle: () => "Информация обо мне",
-      description: () => "Многоязычный, многоцелевой бот для Discord",
-      amountOfGuilds: () => "Количество серверов",
-      author: () => "Автор",
-      ping: () => "Задержка",
+      embedTitle: "Информация обо мне",
+      description: "Многоязычный, многоцелевой бот для Discord",
+      amountOfGuilds: "Количество серверов",
+      author: "Автор",
+      ping: "Задержка",
     },
   })
   .setRun(async (client, interaction, locale) => {
     const embed = new Embed()
       .setColor(client.botColor)
-      .setTitle(locale.embedTitle())
-      .setDescription(locale.description())
+      .setTitle(locale.embedTitle)
+      .setDescription(locale.description)
       .addFields(
         {
-          name: locale.author(),
+          name: locale.author,
           value: `<@${client.authorId}>`,
           inline: true,
         },
         {
-          name: locale.amountOfGuilds(),
+          name: locale.amountOfGuilds,
           value: `${await client.getGuildsAmount()}`,
           inline: true,
         },
         {
-          name: locale.ping(),
+          name: locale.ping,
           value: client.gateway.ping.toString(),
           inline: true,
         }

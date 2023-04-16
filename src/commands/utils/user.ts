@@ -1,9 +1,9 @@
 import { TaprisCommand } from "@framework/mod.ts";
 import { ApplicationCommandOptionType, Embed } from "harmony/mod.ts";
 
-interface UserLocale  {
-  unknownError: () => string;
-  bot: () => string;
+interface UserLocale {
+  unknownError: string;
+  bot: string;
 }
 
 export default new TaprisCommand<UserLocale>()
@@ -17,12 +17,12 @@ export default new TaprisCommand<UserLocale>()
   })
   .setLocales({
     en: {
-      unknownError: () => "Unknown error happened! :(",
-      bot: () => "`bot`",
+      unknownError: "Unknown error happened! :(",
+      bot: "`bot`",
     },
     ru: {
-      unknownError: () => "Произошла неизвестная ошибка! :(",
-      bot: () => "`бот`",
+      unknownError: "Произошла неизвестная ошибка! :(",
+      bot: "`бот`",
     },
   })
   .setRun(async (client, interaction, locale) => {
@@ -33,7 +33,7 @@ export default new TaprisCommand<UserLocale>()
     if (!user) {
       return interaction.reply({
         embeds: [
-          new Embed().setColor(client.botColor).setTitle(locale.unknownError()),
+          new Embed().setColor(client.botColor).setTitle(locale.unknownError),
         ],
         ephemeral: true,
       });
@@ -41,7 +41,7 @@ export default new TaprisCommand<UserLocale>()
 
     const embed = new Embed()
       .setColor(client.botColor)
-      .setTitle(`${user.tag} ${user.bot ? locale.bot() : ""}`)
+      .setTitle(`${user.tag} ${user.bot ? locale.bot : ""}`)
       .setThumbnail(user.avatarURL())
       .setURL(`https://discord.com/users/${user.id}`)
       .addFields({ name: "ID", value: user.id, inline: true });

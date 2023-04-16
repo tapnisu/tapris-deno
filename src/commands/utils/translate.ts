@@ -2,11 +2,11 @@ import { TaprisCommand } from "@framework/mod.ts";
 import { GTR } from "gtr/mod.ts";
 import { ApplicationCommandOptionType, Embed } from "harmony/mod.ts";
 
-interface TranslateLocale  {
-  invalidLanguage: () => string;
+interface TranslateLocale {
+  invalidLanguage: string;
   textIn: (language: string) => string;
-  origLang: () => string;
-  origMessage: () => string;
+  origLang: string;
+  origMessage: string;
 }
 
 const gtr = new GTR();
@@ -35,16 +35,16 @@ export default new TaprisCommand<TranslateLocale>()
   )
   .setLocales({
     en: {
-      invalidLanguage: () => "Error, language is invalid!",
+      invalidLanguage: "Error, language is invalid!",
       textIn: (language: string) => `Text in ${language}`,
-      origLang: () => "Original language",
-      origMessage: () => "Original message",
+      origLang: "Original language",
+      origMessage: "Original message",
     },
     ru: {
-      invalidLanguage: () => "Я не могу найти этот язык!",
+      invalidLanguage: "Я не могу найти этот язык!",
       textIn: (language: string) => `Текст на ${language} языке`,
-      origLang: () => "Язык оригинала",
-      origMessage: () => "Оригинальное сообщение",
+      origLang: "Язык оригинала",
+      origMessage: "Оригинальное сообщение",
     },
   })
   .setRun(async (client, interaction, locale) => {
@@ -74,12 +74,12 @@ export default new TaprisCommand<TranslateLocale>()
         .setDescription(response.trans)
         .addFields(
           {
-            name: locale.origLang(),
+            name: locale.origLang,
             value: response.lang,
             inline: true,
           },
           {
-            name: locale.origMessage(),
+            name: locale.origMessage,
             value: text,
             inline: true,
           }
@@ -90,7 +90,7 @@ export default new TaprisCommand<TranslateLocale>()
       return await interaction.reply({
         embeds: [
           new Embed()
-            .setTitle(locale.invalidLanguage())
+            .setTitle(locale.invalidLanguage)
             .setColor(client.botColor),
         ],
         ephemeral: true,

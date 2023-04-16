@@ -16,9 +16,9 @@ interface SearchResult {
 }
 
 interface MangaLocales {
-  mangaNotFound: () => string;
-  lastChapter: () => string;
-  readManga: () => string;
+  mangaNotFound: string;
+  lastChapter: string;
+  readManga: string;
 }
 
 export default new TaprisCommand<MangaLocales>()
@@ -32,14 +32,14 @@ export default new TaprisCommand<MangaLocales>()
   })
   .setLocales({
     en: {
-      mangaNotFound: () => "Sorry! Manga not found! :(",
-      lastChapter: () => "Last chapter",
-      readManga: () => "Read manga",
+      mangaNotFound: "Sorry! Manga not found! :(",
+      lastChapter: "Last chapter",
+      readManga: "Read manga",
     },
     ru: {
-      mangaNotFound: () => "Извините! Манга не найдена! :(",
-      lastChapter: () => "Последняя глава",
-      readManga: () => "Читать мангу",
+      mangaNotFound: "Извините! Манга не найдена! :(",
+      lastChapter: "Последняя глава",
+      readManga: "Читать мангу",
     },
   })
   .setRun(async (client, interaction, locale) => {
@@ -54,9 +54,7 @@ export default new TaprisCommand<MangaLocales>()
     if (response.length === 0) {
       return interaction.reply({
         embeds: [
-          new Embed()
-            .setColor(client.botColor)
-            .setTitle(locale.mangaNotFound()),
+          new Embed().setColor(client.botColor).setTitle(locale.mangaNotFound),
         ],
         ephemeral: true,
       });
@@ -66,7 +64,7 @@ export default new TaprisCommand<MangaLocales>()
       .setColor(client.botColor)
       .setTitle(response[0].name)
       .addFields({
-        name: locale.lastChapter(),
+        name: locale.lastChapter,
         value: response[0].lastChapter,
         inline: true,
       })
@@ -80,7 +78,7 @@ export default new TaprisCommand<MangaLocales>()
         {
           type: 2,
           url: response[0].url,
-          label: locale.readManga(),
+          label: locale.readManga,
           style: 5,
         },
       ],

@@ -23,9 +23,9 @@ export interface RewardArray {
 }
 
 interface GenshinCodesLocale {
-  activateButton: () => string;
-  embedTitle: () => string;
-  description: () => string;
+  activateButton: string;
+  embedTitle: string;
+  description: string;
 }
 
 export default new TaprisCommand<GenshinCodesLocale>()
@@ -33,14 +33,14 @@ export default new TaprisCommand<GenshinCodesLocale>()
   .setDescription("Get valid codes for Genshin Impact")
   .setLocales({
     en: {
-      activateButton: () => "Activate",
-      embedTitle: () => "Codes for Genshin Impact",
-      description: () => "You can activate them in game, and get rewards!",
+      activateButton: "Activate",
+      embedTitle: "Codes for Genshin Impact",
+      description: "You can activate them in game, and get rewards!",
     },
     ru: {
-      activateButton: () => "Активировать",
-      embedTitle: () => "Промокоды для Genshin Impact",
-      description: () => "Вы можете активировать их в игре и получить награды!",
+      activateButton: "Активировать",
+      embedTitle: "Промокоды для Genshin Impact",
+      description: "Вы можете активировать их в игре и получить награды!",
     },
   })
   .setRun(async (client, interaction, locale) => {
@@ -55,8 +55,8 @@ export default new TaprisCommand<GenshinCodesLocale>()
 
     const embed = new Embed()
       .setColor(client.botColor)
-      .setTitle(locale.embedTitle())
-      .setDescription(locale.description())
+      .setTitle(locale.embedTitle)
+      .setDescription(locale.description)
       .setURL(url);
 
     codes.forEach((code: Code) => {
@@ -77,7 +77,7 @@ export default new TaprisCommand<GenshinCodesLocale>()
         {
           type: 2,
           url: url,
-          label: locale.activateButton(),
+          label: locale.activateButton,
           style: 5,
         },
       ],

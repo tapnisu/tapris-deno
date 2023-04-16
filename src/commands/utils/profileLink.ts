@@ -1,8 +1,8 @@
 import { TaprisCommand } from "@framework/mod.ts";
 import { ApplicationCommandOptionType, Embed } from "harmony/mod.ts";
 
-interface ProfileLinkLocale  {
-  unknownError: () => string;
+interface ProfileLinkLocale {
+  unknownError: string;
 }
 
 export default new TaprisCommand<ProfileLinkLocale>()
@@ -16,10 +16,10 @@ export default new TaprisCommand<ProfileLinkLocale>()
   })
   .setLocales({
     en: {
-      unknownError: () => "Unknown error happened! :(",
+      unknownError: "Unknown error happened! :(",
     },
     ru: {
-      unknownError: () => "Произошла неизвестная ошибка! :(",
+      unknownError: "Произошла неизвестная ошибка! :(",
     },
   })
   .setRun(async (client, interaction, locale) => {
@@ -30,7 +30,7 @@ export default new TaprisCommand<ProfileLinkLocale>()
     if (!user) {
       return interaction.reply({
         embeds: [
-          new Embed().setColor(client.botColor).setTitle(locale.unknownError()),
+          new Embed().setColor(client.botColor).setTitle(locale.unknownError),
         ],
 
         ephemeral: true,

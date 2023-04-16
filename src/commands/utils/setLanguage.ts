@@ -1,9 +1,9 @@
 import { LocaleNames, TaprisCommand } from "@framework/mod.ts";
 import { ApplicationCommandOptionType, Embed } from "harmony/mod.ts";
 
-interface SetLanguageLocale  {
-  notAdministrator: () => string;
-  success: () => string;
+interface SetLanguageLocale {
+  notAdministrator: string;
+  success: string;
 }
 
 export default new TaprisCommand<SetLanguageLocale>()
@@ -21,12 +21,12 @@ export default new TaprisCommand<SetLanguageLocale>()
   })
   .setLocales({
     en: {
-      notAdministrator: () => "You don't have administrator permissions!",
-      success: () => "Language set to english!",
+      notAdministrator: "You don't have administrator permissions!",
+      success: "Language set to english!",
     },
     ru: {
-      notAdministrator: () => "У вас нет прав администратора!",
-      success: () => "Язык установлен на русский!",
+      notAdministrator: "У вас нет прав администратора!",
+      success: "Язык установлен на русский!",
     },
   })
   .setGuildOnly()
@@ -40,7 +40,7 @@ export default new TaprisCommand<SetLanguageLocale>()
         embeds: [
           new Embed()
             .setColor(client.botColor)
-            .setTitle(locale.notAdministrator()),
+            .setTitle(locale.notAdministrator),
         ],
         ephemeral: true,
       });

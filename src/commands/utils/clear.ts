@@ -1,11 +1,11 @@
 import { TaprisCommand } from "@framework/mod.ts";
 import { ApplicationCommandOptionType, GuildTextChannel } from "harmony/mod.ts";
 
-interface ClearLocale  {
-  noPermission: () => string;
-  bigRequest: () => string;
-  smallNumber: () => string;
-  oldMessages: () => string;
+interface ClearLocale {
+  noPermission: string;
+  bigRequest: string;
+  smallNumber: string;
+  oldMessages: string;
   deletedNMessages: (n: number) => string;
 }
 
@@ -20,17 +20,17 @@ export default new TaprisCommand<ClearLocale>()
   })
   .setLocales({
     en: {
-      noPermission: () => "You don't have a permission to delete messages!",
-      bigRequest: () => "I can't delete more than 100 posts at a time!",
-      smallNumber: () => "You need to enter a number greater than 1!",
-      oldMessages: () => "I can't delete messages older than 14 days!",
+      noPermission: "You don't have a permission to delete messages!",
+      bigRequest: "I can't delete more than 100 posts at a time!",
+      smallNumber: "You need to enter a number greater than 1!",
+      oldMessages: "I can't delete messages older than 14 days!",
       deletedNMessages: (n: number) => `Deleted ${n} messages!`,
     },
     ru: {
-      noPermission: () => "У тебя нет прав на удаление сообщений!",
-      bigRequest: () => "Я не могу удалять более 100 сообщений за раз!",
-      smallNumber: () => "Тебе нужно ввести число больше чем 1!",
-      oldMessages: () => "Я не могу удалять сообщения старше 14 дней!",
+      noPermission: "У тебя нет прав на удаление сообщений!",
+      bigRequest: "Я не могу удалять более 100 сообщений за раз!",
+      smallNumber: "Тебе нужно ввести число больше чем 1!",
+      oldMessages: "Я не могу удалять сообщения старше 14 дней!",
       deletedNMessages: (n: number) => `Удалено ${n} сообщений!`,
     },
   })
@@ -44,19 +44,19 @@ export default new TaprisCommand<ClearLocale>()
 
     if (!interaction.member?.permissions.has("ManageMessages")) {
       return await interaction.reply({
-        content: locale.noPermission(),
+        content: locale.noPermission,
         ephemeral: true,
       });
     }
     if (amount > 100) {
       return await interaction.reply({
-        content: locale.bigRequest(),
+        content: locale.bigRequest,
         ephemeral: true,
       });
     }
     if (amount < 1) {
       return await interaction.reply({
-        content: locale.smallNumber(),
+        content: locale.smallNumber,
         ephemeral: true,
       });
     }
@@ -66,7 +66,7 @@ export default new TaprisCommand<ClearLocale>()
       .catch(
         async () =>
           await interaction.reply({
-            content: locale.oldMessages(),
+            content: locale.oldMessages,
             ephemeral: true,
           })
       )

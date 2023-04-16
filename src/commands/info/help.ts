@@ -6,10 +6,10 @@ import {
   Embed,
 } from "harmony/mod.ts";
 
-interface HelpLocale  {
+interface HelpLocale {
   isNotAValidCommand: (request: string) => string;
   serverMember: (name?: string) => string;
-  required: () => string;
+  required: string;
 }
 
 export default new TaprisCommand<HelpLocale>()
@@ -27,7 +27,7 @@ export default new TaprisCommand<HelpLocale>()
         `${request} is not a valid command!`,
       serverMember: (name?: string) =>
         name ? `Server member: ${name}` : "List of my commands",
-      required: () => "(required) ",
+      required: "(required) ",
     },
     ru: {
       isNotAValidCommand: (request: string) =>
@@ -35,7 +35,7 @@ export default new TaprisCommand<HelpLocale>()
       serverMember: (name?: string) =>
         name ? `Участник сервера: ${name}` : "Список моих команд",
 
-      required: () => "(обязателен) ",
+      required: "(обязателен) ",
     },
   })
   .setRun((client, interaction, locale) => {
@@ -90,7 +90,7 @@ export default new TaprisCommand<HelpLocale>()
                 .call(
                   command.options,
                   (option: ApplicationCommandOptionBase) =>
-                    `<${option.required ? locale.required() : ""}${
+                    `<${option.required ? locale.required : ""}${
                       option.name
                     } [${option.description}]>`
                 )

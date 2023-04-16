@@ -4,7 +4,7 @@ import { ApplicationCommandOptionType, Embed } from "harmony/mod.ts";
 type Choice = "coin" | "tail";
 const choices: Choice[] = ["coin", "tail"];
 
-interface coinLocale  {
+interface coinLocale {
   winner: (choice: Choice) => string;
   youWonLost: (winOrNot: boolean) => string;
 }

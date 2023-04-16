@@ -1,14 +1,14 @@
 import { LocaleNames, TaprisCommand } from "@framework/mod.ts";
 import generatePassword from "@utils/generatePassword.ts";
 import {
-    ActionRowComponent,
-    ApplicationCommandOptionType,
-    Embed,
+  ActionRowComponent,
+  ApplicationCommandOptionType,
+  Embed,
 } from "harmony/mod.ts";
 
-interface PasswordLocale  {
-  createNew: () => string;
-  delete: () => string;
+interface PasswordLocale {
+  createNew: string;
+  delete: string;
 }
 
 const command = new TaprisCommand<PasswordLocale>()
@@ -22,12 +22,12 @@ const command = new TaprisCommand<PasswordLocale>()
   })
   .setLocales({
     en: {
-      createNew: () => "Create new",
-      delete: () => "Delete",
+      createNew: "Create new",
+      delete: "Delete",
     },
     ru: {
-      createNew: () => "Создать новый",
-      delete: () => "Удалить",
+      createNew: "Создать новый",
+      delete: "Удалить",
     },
   })
   .setRun((client, interaction, locale) => {
@@ -41,12 +41,12 @@ const command = new TaprisCommand<PasswordLocale>()
         {
           type: 2,
           customID: `password_${passwordLength}`,
-          label: locale.createNew(),
+          label: locale.createNew,
           style: 1,
         },
         {
           type: 2,
-          customID: locale.delete(),
+          customID: locale.delete,
           label: "Delete",
           style: 4,
         },
