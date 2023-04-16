@@ -49,8 +49,12 @@ export class TaprisClient extends Client {
     });
   }
 
+  public async getGuildsAmount(): Promise<number> {
+    return (await this.guilds.array()).length;
+  }
+
   public async updatePresence() {
-    const guildsAmount = (await this.guilds.array()).length;
+    const guildsAmount = await this.getGuildsAmount();
 
     this.setPresence({
       name: `Serving ${guildsAmount} guild${guildsAmount != 1 ? "s" : ""}!`,

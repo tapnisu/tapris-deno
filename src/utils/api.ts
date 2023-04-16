@@ -54,7 +54,7 @@ class Api extends Hono {
     });
 
     this.get("/api/v1/guildsAmount", async (r) => {
-      const guildsAmount = (await this.client.guilds.array()).length;
+      const guildsAmount = await this.client.getGuildsAmount();
 
       return r.json({ guildsAmount: guildsAmount });
     });
