@@ -23,13 +23,13 @@ export default new TaprisComponent()
         {
           type: 2,
           customID: `password_${passwordLength}`,
-          label: locales.createNew(),
+          label: locales.createNew,
           style: 1,
         },
         {
           type: 2,
           customID: "delete_message",
-          label: locales.delete(),
+          label: locales.delete,
           style: 4,
         },
       ],
