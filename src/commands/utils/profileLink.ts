@@ -40,7 +40,7 @@ export default new TaprisCommand<ProfileLinkLocale>()
     const embed = new Embed()
       .setColor(client.botColor)
       .setTitle(`Link to ${user.tag}'s profile`)
-      .setDescription(`\`https://discord.com/users/${user.id}\``)
+      .setDescription(`https://discord.com/users/${user.id}`)
       .setURL(`https://discord.com/users/${user.id}`);
 
     return interaction.reply({ embeds: [embed] });
