@@ -28,7 +28,7 @@ interface GenshinCodesLocale extends LocaleRecords {
   description: () => string;
 }
 
-const command = new TaprisCommand<GenshinCodesLocale>()
+export default new TaprisCommand<GenshinCodesLocale>()
   .setName("genshincodes")
   .setDescription("Get valid codes for Genshin Impact")
   .setLocales({
@@ -85,5 +85,3 @@ const command = new TaprisCommand<GenshinCodesLocale>()
 
     return interaction.reply({ embeds: [embed], components: [buttonsRow] });
   });
-
-export default command;

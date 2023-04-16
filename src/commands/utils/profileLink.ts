@@ -5,7 +5,7 @@ interface ProfileLinkLocale extends LocaleRecords {
   unknownError: () => string;
 }
 
-const command = new TaprisCommand<ProfileLinkLocale>()
+export default new TaprisCommand<ProfileLinkLocale>()
   .setName("profilelink")
   .setDescription("Get link to share user using link")
   .setOptions({
@@ -46,4 +46,4 @@ const command = new TaprisCommand<ProfileLinkLocale>()
     return interaction.reply({ embeds: [embed] });
   });
 
-export default command;
+

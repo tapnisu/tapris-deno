@@ -6,7 +6,7 @@ interface UserLocale extends LocaleRecords {
   bot: () => string;
 }
 
-const command = new TaprisCommand<UserLocale>()
+export default new TaprisCommand<UserLocale>()
   .setName("user")
   .setDescription("Sends user information")
   .setOptions({
@@ -49,4 +49,4 @@ const command = new TaprisCommand<UserLocale>()
     return interaction.reply({ embeds: [embed] });
   });
 
-export default command;
+

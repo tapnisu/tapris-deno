@@ -11,7 +11,7 @@ interface TranslateLocale extends LocaleRecords {
 
 const gtr = new GTR();
 
-const command = new TaprisCommand<TranslateLocale>()
+export default new TaprisCommand<TranslateLocale>()
   .setName("translate")
   .setDescription("Translates text")
   .setOptions(
@@ -98,4 +98,4 @@ const command = new TaprisCommand<TranslateLocale>()
     }
   });
 
-export default command;
+

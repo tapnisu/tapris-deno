@@ -9,7 +9,7 @@ interface ClearLocale extends LocaleRecords {
   deletedNMessages: (n: number) => string;
 }
 
-const command = new TaprisCommand<ClearLocale>()
+export default new TaprisCommand<ClearLocale>()
   .setName("clear")
   .setDescription("Clear messages in chat")
   .setOptions({
@@ -79,4 +79,4 @@ const command = new TaprisCommand<ClearLocale>()
       );
   });
 
-export default command;
+

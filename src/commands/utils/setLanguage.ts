@@ -6,7 +6,7 @@ interface SetLanguageLocale extends LocaleRecords {
   success: () => string;
 }
 
-const command = new TaprisCommand<SetLanguageLocale>()
+export default new TaprisCommand<SetLanguageLocale>()
   .setName("setlanguage")
   .setDescription("Set my language for this guild")
   .setOptions({
@@ -57,4 +57,4 @@ const command = new TaprisCommand<SetLanguageLocale>()
     return interaction.reply({ embeds: [embed] });
   });
 
-export default command;
+

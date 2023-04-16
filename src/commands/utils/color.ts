@@ -1,12 +1,12 @@
 import { TaprisCommand } from "@framework/mod.ts";
 import { createCanvas } from "canvas/mod.ts";
 import {
-  ApplicationCommandOptionType,
-  Embed,
-  MessageAttachment,
+    ApplicationCommandOptionType,
+    Embed,
+    MessageAttachment,
 } from "harmony/mod.ts";
 
-const command = new TaprisCommand()
+export default new TaprisCommand()
   .setName("color")
   .setDescription("Shows color or generates color")
   .setOptions({
@@ -66,4 +66,4 @@ const command = new TaprisCommand()
     return await interaction.reply({ embeds: [embed] });
   });
 
-export default command;
+

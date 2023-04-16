@@ -9,7 +9,7 @@ interface coinLocale extends LocaleRecords {
   youWonLost: (winOrNot: boolean) => string;
 }
 
-const command = new TaprisCommand<coinLocale>()
+export default new TaprisCommand<coinLocale>()
   .setName("coin")
   .setDescription("Flip a coin")
   .setOptions({
@@ -51,4 +51,4 @@ const command = new TaprisCommand<coinLocale>()
     return interaction.reply({ embeds: [embed] });
   });
 
-export default command;
+

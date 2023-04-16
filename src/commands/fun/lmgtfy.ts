@@ -1,15 +1,15 @@
 import { LocaleRecords, TaprisCommand } from "@framework/mod.ts";
 import {
-  ActionRowComponent,
-  ApplicationCommandOptionType,
-  Embed,
+    ActionRowComponent,
+    ApplicationCommandOptionType,
+    Embed,
 } from "harmony/mod.ts";
 
 interface LmgtfyLocale extends LocaleRecords {
   getAnswerButton: (query: string) => string;
 }
 
-const command = new TaprisCommand<LmgtfyLocale>()
+export default new TaprisCommand<LmgtfyLocale>()
   .setName("lmgtfy")
   .setDescription("'Let Me Google That For You' links generator")
   .setOptions({
@@ -53,4 +53,4 @@ const command = new TaprisCommand<LmgtfyLocale>()
     return interaction.reply({ embeds: [embed], components: [buttonsRow] });
   });
 
-export default command;
+

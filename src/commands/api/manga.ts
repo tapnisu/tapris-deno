@@ -1,8 +1,8 @@
 import { LocaleRecords, TaprisCommand } from "@framework/mod.ts";
 import {
-  ActionRowComponent,
-  ApplicationCommandOptionType,
-  Embed,
+    ActionRowComponent,
+    ApplicationCommandOptionType,
+    Embed,
 } from "harmony/mod.ts";
 import ky from "ky";
 
@@ -21,7 +21,7 @@ interface MangaLocales extends LocaleRecords {
   readManga: () => string;
 }
 
-const command = new TaprisCommand<MangaLocales>()
+export default new TaprisCommand<MangaLocales>()
   .setName("manga")
   .setDescription("Get data about manga")
   .setOptions({
@@ -89,4 +89,4 @@ const command = new TaprisCommand<MangaLocales>()
     return interaction.reply({ embeds: [embed], components: [buttonsRow] });
   });
 
-export default command;
+

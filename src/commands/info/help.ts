@@ -12,7 +12,7 @@ interface HelpLocale extends LocaleRecords {
   required: () => string;
 }
 
-const command = new TaprisCommand<HelpLocale>()
+export default new TaprisCommand<HelpLocale>()
   .setName("help")
   .setDescription("Get info about commands")
   .setOptions({
@@ -104,5 +104,3 @@ const command = new TaprisCommand<HelpLocale>()
 
     return interaction.reply({ embeds: [embed] });
   });
-
-export default command;

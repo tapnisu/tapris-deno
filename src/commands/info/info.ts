@@ -9,7 +9,7 @@ interface InfoLocale extends LocaleRecords {
   ping: () => string;
 }
 
-const command = new TaprisCommand<InfoLocale>()
+export default new TaprisCommand<InfoLocale>()
   .setName("info")
   .setDescription("Get info about me")
   .setLocales({
@@ -50,4 +50,4 @@ const command = new TaprisCommand<InfoLocale>()
     return interaction.reply({ embeds: [embed] });
   });
 
-export default command;
+

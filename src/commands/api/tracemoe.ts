@@ -1,8 +1,8 @@
 import { LocaleRecords, TaprisCommand } from "@framework/mod.ts";
 import {
-  ActionRowComponent,
-  ApplicationCommandOptionType,
-  Embed,
+    ActionRowComponent,
+    ApplicationCommandOptionType,
+    Embed,
 } from "harmony/mod.ts";
 import ky from "ky";
 
@@ -30,7 +30,7 @@ interface TracemoeLocales extends LocaleRecords {
   watch: () => string;
 }
 
-const command = new TaprisCommand<TracemoeLocales>()
+export default new TaprisCommand<TracemoeLocales>()
   .setName("tracemoe")
   .setDescription("Get exact moment and the episode for screenshot from anime")
   .setOptions({
@@ -123,4 +123,4 @@ const command = new TaprisCommand<TracemoeLocales>()
     return interaction.reply({ embeds: [embed], components: [buttonsRow] });
   });
 
-export default command;
+
