@@ -12,7 +12,7 @@ interface Env {
 
   SERVER_PORT: string;
 
-  CREATOR_ID: string;
+  AUTHOR_ID: string;
 
   MODE: "DENODEPLOY" | string;
 }
@@ -23,7 +23,7 @@ const getEnv = async (): Promise<Env> => {
     : await load()) as unknown as Env;
 
   if (!env.BOT_COLOR) env.BOT_COLOR = "#97aee8";
-  if (!env.CREATOR_ID) env.CREATOR_ID = "586128640136445964";
+  if (!env.AUTHOR_ID) env.AUTHOR_ID = "586128640136445964";
 
   return env;
 };

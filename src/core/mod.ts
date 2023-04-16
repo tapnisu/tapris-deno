@@ -22,6 +22,7 @@ export class TaprisClient extends Client {
     database: env.DATABASE,
     port: env.DATABASE_PORT,
   });
+  public authorId = env.AUTHOR_ID;
 
   public async init() {
     getCommands(this);

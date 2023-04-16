@@ -34,7 +34,11 @@ export default new TaprisCommand<InfoLocale>()
       .setTitle(locale.embedTitle())
       .setDescription(locale.description())
       .addFields(
-        { name: locale.author(), value: "<@586128640136445964>", inline: true },
+        {
+          name: locale.author(),
+          value: `<@${client.authorId}>`,
+          inline: true,
+        },
         {
           name: locale.amountOfGuilds(),
           value: `${await client.getGuildsAmount()}`,
