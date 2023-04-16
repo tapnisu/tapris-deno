@@ -63,9 +63,9 @@ const command = new TaprisCommand<HelpLocale>()
 
       if (command.description) embed.setDescription(command.description);
 
-      command.options?.forEach((option: ApplicationCommandOption) => {
+      command.options.forEach((option: ApplicationCommandOption) => {
         embed.addFields({
-          name: `${option.name}`,
+          name: option.name,
           value: option.description,
           inline: true,
         });
@@ -79,12 +79,8 @@ const command = new TaprisCommand<HelpLocale>()
       .setDescription(locale.serverMember(interaction.guild?.name));
 
     embed
-      .setTitle(client.user ? client.user.username : "Tapris")
-      .setThumbnail(
-        client.user
-          ? client.user.avatarURL()
-          : "https://raw.githubusercontent.com/tapris-bot/tapris/main/assets/avatar.webp"
-      );
+      .setTitle(client.user!.username)
+      .setThumbnail(client.user!.avatarURL());
 
     client.commands.forEach((command: TaprisCommand<undefined>) => {
       embed.addFields({
@@ -101,7 +97,7 @@ const command = new TaprisCommand<HelpLocale>()
                 .join(" ")
             : ""
         }`,
-        value: command.description ? command.description : "...",
+        value: command.description,
         inline: true,
       });
     });

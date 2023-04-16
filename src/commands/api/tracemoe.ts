@@ -100,7 +100,7 @@ const command = new TaprisCommand<TracemoeLocales>()
         },
         {
           name: locale.episode(),
-          value: `${frame.episode}`,
+          value: frame.episode.toString(),
           inline: true,
         }
       )
