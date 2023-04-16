@@ -12,7 +12,7 @@
 
 ## Overview
 
-Tapris is a discord bot, made in TypeScript and Deno (using
+Tapris is a Discord bot, made in TypeScript and Deno (using
 [harmony](https://github.com/harmonyland/harmony) as a library).
 
 Project is named after Tapris Sugarbell Chisaki from Gabriel DropOut manga.
