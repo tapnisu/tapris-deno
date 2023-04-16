@@ -7,16 +7,15 @@ const event = new TaprisEvent()
     await client.updatePresence();
 
     (await client.guilds.array()).forEach(async (guild) => {
-      if (!(await client.db.getGuild(guild.id))) {
+      if (!(await client.db.getGuild(guild.id)))
         await client.db.registerGuild(guild.id);
-      }
     });
 
-    const commands = client.interactions.commands;
+    client.commands.forEach(
+      async (command) => await client.interactions.commands.create(command)
+    );
 
-    client.commands.forEach((command) => commands.create(command));
-
-    console.info(`${client.user?.tag} is up!`);
+    console.info(`${client.user!.tag} is up!`);
   });
 
 export default event;
