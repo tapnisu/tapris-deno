@@ -3,7 +3,7 @@ import { TaprisComponent } from "@framework/mod.ts";
 import generatePassword from "@utils/generatePassword.ts";
 import { ActionRowComponent, Embed } from "harmony/mod.ts";
 
-const component = new TaprisComponent()
+export default new TaprisComponent()
   .setCustomId(/password_(.*)/gi)
   .setRun(async (client, interaction) => {
     await interaction.defer();
@@ -45,5 +45,3 @@ const component = new TaprisComponent()
       components: [buttonsRow],
     });
   });
-
-export default component;
