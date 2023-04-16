@@ -12,15 +12,20 @@ interface Env {
 
   SERVER_PORT: string;
 
+  CREATOR_ID: string;
+
   MODE: "DENODEPLOY" | string;
 }
 
 const getEnv = async (): Promise<Env> => {
-  if (Deno.env.get("MODE") === "DENODEPLOY") {
-    return Deno.env.toObject() as unknown as Env;
-  } else {
-    return (await load()) as unknown as Env;
-  }
+  const env = (Deno.env.get("MODE") === "DENODEPLOY"
+    ? Deno.env.toObject()
+    : await load()) as unknown as Env;
+
+  if (!env.BOT_COLOR) env.BOT_COLOR = "#97aee8";
+  if (!env.CREATOR_ID) env.CREATOR_ID = "586128640136445964";
+
+  return env;
 };
 
 export const env = await getEnv();

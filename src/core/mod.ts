@@ -14,7 +14,7 @@ export class TaprisClient extends Client {
   public components: Collection<RegExp, TaprisComponent> = new Collection();
   public events: Collection<string, TaprisEvent> = new Collection();
   private env = env;
-  public botColor = env.BOT_COLOR ? env.BOT_COLOR : "#97aee8";
+  public botColor = env.BOT_COLOR;
   public db = new TaprisDBManager({
     hostname: env.DATABASE_HOSTNAME,
     user: env.DATABASE_USER,
