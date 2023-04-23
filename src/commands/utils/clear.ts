@@ -37,7 +37,7 @@ export default new TaprisCommand<ClearLocale>()
   .setGuildOnly()
   .setRun(async (_client, interaction, locale) => {
     const amount: number = interaction.options.find(
-      (option) => option.name === "amount"
+      (option) => option.name == "amount"
     )?.value;
 
     const channel = interaction.channel as GuildTextChannel;

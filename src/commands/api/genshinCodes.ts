@@ -44,13 +44,13 @@ export default new TaprisCommand<GenshinCodesLocale>()
     },
   })
   .setRun(async (client, interaction, locale) => {
-    const response: CodesResponse = await ky
+    const res: CodesResponse = await ky
       .get(
         "https://raw.githubusercontent.com/ataraxyaffliction/gipn-json/main/gipn.json"
       )
       .json();
 
-    const codes = response.CODES;
+    const codes = res.CODES;
     const url = "https://genshin.hoyoverse.com/en/gift";
 
     const embed = new Embed()

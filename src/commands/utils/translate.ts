@@ -49,19 +49,19 @@ export default new TaprisCommand<TranslateLocale>()
   })
   .setRun(async (client, interaction, locale) => {
     const from: string = interaction.options.find(
-      (option) => option.name === "from"
+      (option) => option.name == "from"
     )?.value;
 
     const to: string = interaction.options.find(
-      (option) => option.name === "to"
+      (option) => option.name == "to"
     )?.value;
 
     const text: string = interaction.options.find(
-      (option) => option.name === "text"
+      (option) => option.name == "text"
     )?.value;
 
     try {
-      const response = await gtr.translate(text, {
+      const res = await gtr.translate(text, {
         targetLang: to,
         sourceLang: from ? from : "auto",
       });
@@ -71,11 +71,11 @@ export default new TaprisCommand<TranslateLocale>()
       const embed = new Embed()
         .setColor(client.botColor)
         .setTitle(locale.textIn(to))
-        .setDescription(response.trans)
+        .setDescription(res.trans)
         .addFields(
           {
             name: locale.origLang,
-            value: response.lang,
+            value: res.lang,
             inline: true,
           },
           {

@@ -55,7 +55,7 @@ export default new TaprisCommand<TracemoeLocales>()
   })
   .setRun(async (client, interaction, locale) => {
     const url = interaction.options.find(
-      (option) => option.name === "url"
+      (option) => option.name == "url"
     )?.value;
 
     await interaction.defer();

@@ -18,7 +18,7 @@ interface Env {
 }
 
 const getEnv = async (): Promise<Env> => {
-  const env = (Deno.env.get("MODE") === "DENODEPLOY"
+  const env = (Deno.env.get("MODE") == "DENODEPLOY"
     ? Deno.env.toObject()
     : await load()) as unknown as Env;
 

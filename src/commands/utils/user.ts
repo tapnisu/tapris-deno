@@ -27,7 +27,7 @@ export default new TaprisCommand<UserLocale>()
   })
   .setRun(async (client, interaction, locale) => {
     const user = await client.users.get(
-      interaction.options.find((option) => option.name === "user")?.value
+      interaction.options.find((option) => option.name == "user")?.value
     );
 
     if (!user) {

@@ -19,7 +19,7 @@ export default new TaprisCommand()
     await interaction.defer();
 
     let colorString: string = interaction.options.find(
-      (option) => option.name === "string"
+      (option) => option.name == "string"
     )?.value;
 
     if (!colorString) {

@@ -47,7 +47,7 @@ export default new TaprisCommand<SetLanguageLocale>()
     }
 
     const language = interaction.options.find(
-      (option) => option.name === "language"
+      (option) => option.name == "language"
     )?.value as LocaleNames;
 
     await client.db.setGuildLanguage(interaction.guild!.id, language);

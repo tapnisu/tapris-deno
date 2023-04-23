@@ -32,7 +32,7 @@ const command = new TaprisCommand<PasswordLocale>()
   })
   .setRun((client, interaction, locale) => {
     const passwordLength: number = interaction.options.find(
-      (option) => option.name === "length"
+      (option) => option.name == "length"
     )?.value;
 
     const buttonsRow: ActionRowComponent = {
