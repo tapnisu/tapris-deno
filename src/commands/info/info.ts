@@ -1,12 +1,26 @@
 import { TaprisCommand } from "@framework/mod.ts";
 import { Embed } from "harmony/mod.ts";
 
+const formatSize = (amount: number) => {
+  let i = 0;
+  const type = ["Bytes", "KiB", "MiB", "GiB", "TiB", "PiB"];
+
+  while ((amount / 1024) | 0 && i < type.length - 1) {
+    amount /= 1024;
+
+    i++;
+  }
+
+  return amount.toFixed(2) + " " + type[i];
+};
+
 interface InfoLocale {
   embedTitle: string;
   description: string;
   amountOfGuilds: string;
   author: string;
   ping: string;
+  memoryUsage: string;
 }
 
 export default new TaprisCommand<InfoLocale>()
@@ -19,6 +33,7 @@ export default new TaprisCommand<InfoLocale>()
       amountOfGuilds: "Amount of guilds",
       author: "Author",
       ping: "Ping",
+      memoryUsage: "Memory usage",
     },
     ru: {
       embedTitle: "Информация обо мне",
@@ -26,6 +41,7 @@ export default new TaprisCommand<InfoLocale>()
       amountOfGuilds: "Количество серверов",
       author: "Автор",
       ping: "Задержка",
+      memoryUsage: "Использование ОЗУ",
     },
   })
   .setRun(async (client, interaction, locale) => {
@@ -47,6 +63,11 @@ export default new TaprisCommand<InfoLocale>()
         {
           name: locale.ping,
           value: client.gateway.ping.toString(),
+          inline: true,
+        },
+        {
+          name: locale.memoryUsage,
+          value: formatSize(Deno.memoryUsage().rss),
           inline: true,
         }
       );
