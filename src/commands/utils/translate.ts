@@ -36,7 +36,7 @@ export default new TaprisCommand<TranslateLocale>()
   .setLocales({
     en: {
       invalidLanguage: "Error, language is invalid!",
-      textIn: (language: string) => `Text in ${language}`,
+      textIn: (language: string) => `Text in ${language} language`,
       origLang: "Original language",
       origMessage: "Original message",
     },
