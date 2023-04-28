@@ -64,13 +64,15 @@ export default new TaprisCommand<InfoLocale>()
           name: locale.ping,
           value: client.gateway.ping.toString(),
           inline: true,
-        },
-        {
-          name: locale.memoryUsage,
-          value: formatSize(Deno.memoryUsage().rss),
-          inline: true,
         }
       );
+
+    if (Deno.memoryUsage)
+      embed.addField({
+        name: locale.memoryUsage,
+        value: formatSize(Deno.memoryUsage().rss),
+        inline: true,
+      });
 
     return interaction.reply({ embeds: [embed] });
   });
