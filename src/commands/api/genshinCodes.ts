@@ -61,13 +61,13 @@ export default new TaprisCommand<GenshinCodesLocale>()
 
     codes.forEach((code: Code) => {
       if (!code.is_expired) {
-        let rewards: string[] = [];
-
-        code.reward_array.forEach((reward) => {
-          rewards = [...rewards, `${reward.name}: ${reward.count}`];
-        });
-
-        embed.addField(code.code, rewards.join("\n"), true);
+        embed.addField(
+          code.code,
+          code.reward_array
+            .map((reward) => `${reward.count} ${reward.name}`)
+            .join("\n"),
+          true
+        );
       }
     });
 
