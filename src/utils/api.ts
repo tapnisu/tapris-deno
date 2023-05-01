@@ -41,12 +41,23 @@ class Api extends Hono {
       })
     );
 
-    this.get("/api/v1/commands", (r) => r.json(this.client.commands.array()));
+    this.get("/api/v1/commands", (r) =>
+      r.json(
+        this.client.commands.array().map((command) => {
+          command.locales = undefined;
+          return command;
+        })
+      )
+    );
 
     this.get("/api/v1/commands/:name", (r) => {
       const command = this.client.commands.get(r.req.param("name"));
 
-      if (command) return r.json(command);
+      if (command) {
+        command.locales = undefined;
+
+        return r.json(command);
+      }
 
       return r.json({
         error: "Command not found!",
