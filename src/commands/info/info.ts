@@ -1,9 +1,11 @@
 import { TaprisCommand } from "@framework/mod.ts";
 import { Embed } from "harmony/mod.ts";
 
-const formatSize = (amount: number) => {
+type MemoryFormats = "Bytes" | "KiB" | "MiB" | "GiB" | "TiB" | "PiB";
+
+const formatSize = (amount: number): `${string} ${MemoryFormats}` => {
   let i = 0;
-  const type = ["Bytes", "KiB", "MiB", "GiB", "TiB", "PiB"];
+  const type: MemoryFormats[] = ["Bytes", "KiB", "MiB", "GiB", "TiB", "PiB"];
 
   while ((amount / 1024) | 0 && i < type.length - 1) {
     amount /= 1024;
@@ -11,7 +13,7 @@ const formatSize = (amount: number) => {
     i++;
   }
 
-  return amount.toFixed(2) + " " + type[i];
+  return `${amount.toFixed(2)} ${type[i]}`;
 };
 
 interface InfoLocale {
