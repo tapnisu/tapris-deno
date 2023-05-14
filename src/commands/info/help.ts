@@ -75,12 +75,10 @@ export default new TaprisCommand<HelpLocale>()
     }
 
     const embed = new Embed()
+      .setTitle(client.user!.username)
+      .setThumbnail(client.user!.avatarURL())
       .setColor(client.botColor)
       .setDescription(locale.serverMember(interaction.guild?.name));
-
-    embed
-      .setTitle(client.user!.username)
-      .setThumbnail(client.user!.avatarURL());
 
     client.commands.forEach((command: TaprisCommand<undefined>) => {
       embed.addFields({
