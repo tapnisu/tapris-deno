@@ -11,9 +11,7 @@ export default new TaprisEvent()
         await client.db.registerGuild(guild.id);
     });
 
-    client.commands.forEach(
-      async (command) => await client.interactions.commands.create(command)
-    );
+    await client.interactions.commands.bulkEdit(client.commands.array());
 
     console.info(`${client.user!.tag} is up!`);
   });

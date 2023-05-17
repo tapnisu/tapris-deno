@@ -9,10 +9,9 @@ import { Client, Collection, GatewayIntents } from "harmony/mod.ts";
 import { serve } from "std/http/server.ts";
 
 export class TaprisClient extends Client {
-  public commands: Collection<string, TaprisCommand<undefined>> =
-    new Collection();
-  public components: Collection<RegExp, TaprisComponent> = new Collection();
-  public events: Collection<string, TaprisEvent> = new Collection();
+  public commands = new Collection<string, TaprisCommand>();
+  public components = new Collection<RegExp, TaprisComponent>();
+  public events = new Collection<string, TaprisEvent>();
   public botColor = env.BOT_COLOR;
   public db = new TaprisDBManager();
   public authorId = env.AUTHOR_ID;
