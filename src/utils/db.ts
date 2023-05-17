@@ -26,7 +26,7 @@ class TaprisDBManager {
     return localeName ? localeName : "en";
   }
 
-  public async selectLocale<T>(
+  public async selectLocale<T = unknown>(
     locale: Record<LocaleNames, T> | undefined,
     id?: string
   ): Promise<T> {

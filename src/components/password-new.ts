@@ -12,10 +12,10 @@ export default new TaprisComponent()
       interaction.data.custom_id.replace(/password_/, "")
     );
 
-    const locales = (await client.db.selectLocale(
+    const locales = await client.db.selectLocale(
       commandLocales,
       interaction.guild?.id
-    )) as typeof commandLocales.en;
+    );
 
     const buttonsRow: ActionRowComponent = {
       type: 1,
