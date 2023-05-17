@@ -13,7 +13,6 @@ export class TaprisClient extends Client {
     new Collection();
   public components: Collection<RegExp, TaprisComponent> = new Collection();
   public events: Collection<string, TaprisEvent> = new Collection();
-  private env = env;
   public botColor = env.BOT_COLOR;
   public db = new TaprisDBManager();
   public authorId = env.AUTHOR_ID;
@@ -25,7 +24,7 @@ export class TaprisClient extends Client {
 
     await this.db.connect();
 
-    await this.connect(this.env.BOT_TOKEN, [
+    await this.connect(env.BOT_TOKEN, [
       GatewayIntents.DIRECT_MESSAGES,
       GatewayIntents.GUILDS,
       GatewayIntents.GUILD_MESSAGES,
