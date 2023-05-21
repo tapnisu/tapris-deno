@@ -5,6 +5,9 @@ import coin from "@commands/fun/coin.ts";
 import lmgtfy from "@commands/fun/lmgtfy.ts";
 import help from "@commands/info/help.ts";
 import info from "@commands/info/info.ts";
+import ban from "@commands/moderation/ban.ts";
+import kick from "@commands/moderation/kick.ts";
+import unban from "@commands/moderation/unban.ts";
 import avatar from "@commands/utils/avatar.ts";
 import clear from "@commands/utils/clear.ts";
 import color from "@commands/utils/color.ts";
@@ -20,18 +23,21 @@ const commands = [
   genshinCodes,
   manga,
   coin,
+  tracemoe,
   lmgtfy,
   help,
   info,
-  clear,
+  ban,
+  kick,
+  unban,
   avatar,
+  clear,
   color,
   password,
-  tracemoe,
   profileLink,
   setLanguage,
-  user,
   translate,
+  user,
 ];
 
 export const getCommands = (client: TaprisClient) =>
