@@ -21,6 +21,18 @@ export default new TaprisEvent()
         });
       }
 
+      if (!interaction.member?.permissions.has(command.memberPermissions, true))
+        return await interaction.reply({
+          embeds: [
+            new Embed()
+              .setColor(client.botColor)
+              .setTitle(
+                "Sorry, you don't have permission to run this commands"
+              ),
+          ],
+          ephemeral: true,
+        });
+
       const locale = await client.db.selectLocale(
         command.locales,
         interaction.guild?.id

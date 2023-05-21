@@ -2,6 +2,7 @@ import { TaprisClient } from "@core/mod.ts";
 import {
   ApplicationCommandInteraction,
   ApplicationCommandOption,
+  PermissionResolvable,
   SlashCommandInteraction,
 } from "harmony/mod.ts";
 
@@ -13,6 +14,7 @@ export class TaprisCommand<T = undefined> {
   options: ApplicationCommandOption[] = [];
   guildOnly = false;
   locales: Record<LocaleNames, T> | undefined;
+  memberPermissions!: PermissionResolvable;
 
   run!: (
     client: TaprisClient,
@@ -52,6 +54,11 @@ export class TaprisCommand<T = undefined> {
 
   public setGuildOnly(guildOnly = true) {
     this.guildOnly = guildOnly;
+    return this;
+  }
+
+  public setMemberPermissions(memberPermissions: PermissionResolvable) {
+    this.memberPermissions = memberPermissions;
     return this;
   }
 }

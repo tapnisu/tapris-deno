@@ -1,5 +1,9 @@
 import { TaprisCommand } from "@framework/mod.ts";
-import { ApplicationCommandOptionType, Embed } from "harmony/mod.ts";
+import {
+  ApplicationCommandOptionType,
+  Embed,
+  PermissionFlags,
+} from "harmony/mod.ts";
 
 interface UnbanLocale {
   success: string;
@@ -22,6 +26,7 @@ export default new TaprisCommand<UnbanLocale>()
       required: true,
     }
   )
+  .setMemberPermissions(PermissionFlags.BAN_MEMBERS)
   .setLocales({
     en: {
       success: "User got unbanned",
