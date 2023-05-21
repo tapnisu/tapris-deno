@@ -1,5 +1,5 @@
 <p align="center">
- <img width=400px src="assets/avatar.webp" alt="Bot logo">
+ <img width=400px src="assets/avatar.webp" alt="Bot avatar">
  <h1 align="center">Tapris</h1>
  <h3 align="center">Lightweight multi-language, multi-purpose bot for Discord</h3>
 </p>
