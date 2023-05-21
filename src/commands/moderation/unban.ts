@@ -14,7 +14,7 @@ export default new TaprisCommand<UnbanLocale>()
   .setDescription("Unban selected user")
   .setOptions(
     {
-      name: "userId",
+      name: "id",
       description: "User id to be unbanned",
       type: 4,
       required: true,
@@ -38,7 +38,7 @@ export default new TaprisCommand<UnbanLocale>()
   .setGuildOnly()
   .setRun(async (client, interaction, locale) => {
     const userId: string = interaction.options.find(
-      (option) => option.name == "userId"
+      (option) => option.name == "id"
     )?.value;
     const reason: string | undefined = interaction.options.find(
       (option) => option.name == "reason"
