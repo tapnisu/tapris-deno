@@ -50,9 +50,9 @@ export default new TaprisCommand<KickLocale>()
     if (!(await member!.kickable(interaction.member))) {
       return interaction.reply({
         embeds: [
-          new Embed({
-            title: member!.user.tag,
-          }),
+          new Embed()
+            .setColor(client.botColor)
+            .setTitle(locale.failure(member!.user.tag)),
         ],
         ephemeral: true,
       });

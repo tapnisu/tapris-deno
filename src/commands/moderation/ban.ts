@@ -50,9 +50,9 @@ export default new TaprisCommand<BanLocale>()
     if (!(await member!.bannable(interaction.member))) {
       return interaction.reply({
         embeds: [
-          new Embed({
-            title: member!.user.tag,
-          }),
+          new Embed()
+            .setColor(client.botColor)
+            .setTitle(locale.failure(member!.user.tag)),
         ],
         ephemeral: true,
       });
