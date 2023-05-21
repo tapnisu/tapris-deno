@@ -1,5 +1,9 @@
 import { TaprisClient } from "@core/mod.ts";
 import { TaprisEvent } from "@framework/mod.ts";
+import {
+  ApplicationCommandPartial,
+  PermissionResolvable,
+} from "harmony/mod.ts";
 
 export default new TaprisEvent()
   .setName("ready")
@@ -11,7 +15,20 @@ export default new TaprisEvent()
         await client.db.registerGuild(guild.id);
     });
 
-    await client.interactions.commands.bulkEdit(client.commands.array());
+    await client.interactions.commands.bulkEdit(
+      client.commands.array().map(
+        (
+          c: ApplicationCommandPartial & {
+            id?: string;
+            memberPermissions?: PermissionResolvable;
+          }
+        ) => {
+          delete c.memberPermissions;
+
+          return c;
+        }
+      )
+    );
 
     console.info(`${client.user!.tag} is up!`);
   });
