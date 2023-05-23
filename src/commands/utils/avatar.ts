@@ -1,8 +1,10 @@
 import { TaprisCommand } from "@framework/mod.ts";
 import {
-  ActionRowComponent,
-  ApplicationCommandOptionType,
-  Embed,
+    ActionRowComponent,
+    ApplicationCommandOptionType,
+    ButtonStyle,
+    Embed,
+    MessageComponentType,
 } from "harmony/mod.ts";
 
 interface AvatarLocale {
@@ -54,13 +56,13 @@ export default new TaprisCommand<AvatarLocale>()
       .setImage(avatarUrl);
 
     const buttonsRow: ActionRowComponent = {
-      type: 1,
+      type: MessageComponentType.ACTION_ROW,
       components: [
         {
-          type: 2,
+          type: MessageComponentType.BUTTON,
           url: avatarUrl,
           label: locale.link,
-          style: 5,
+          style: ButtonStyle.LINK,
         },
       ],
     };

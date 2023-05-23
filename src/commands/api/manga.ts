@@ -1,8 +1,10 @@
 import { TaprisCommand } from "@framework/mod.ts";
 import {
-  ActionRowComponent,
-  ApplicationCommandOptionType,
-  Embed,
+    ActionRowComponent,
+    ApplicationCommandOptionType,
+    ButtonStyle,
+    Embed,
+    MessageComponentType,
 } from "harmony/mod.ts";
 import ky from "ky";
 
@@ -73,13 +75,13 @@ export default new TaprisCommand<MangaLocales>()
       .setAuthor({ name: res[0].author });
 
     const buttonsRow: ActionRowComponent = {
-      type: 1,
+      type: MessageComponentType.ACTION_ROW,
       components: [
         {
-          type: 2,
+          type: MessageComponentType.BUTTON,
           url: res[0].url,
           label: locale.readManga,
-          style: 5,
+          style: ButtonStyle.LINK,
         },
       ],
     };

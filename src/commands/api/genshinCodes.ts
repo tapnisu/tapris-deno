@@ -1,5 +1,5 @@
 import { TaprisCommand } from "@framework/mod.ts";
-import { ActionRowComponent, Embed } from "harmony/mod.ts";
+import { ActionRowComponent, ButtonStyle, Embed, MessageComponentType } from "harmony/mod.ts";
 import ky from "ky";
 
 export interface CodesResponse {
@@ -72,13 +72,13 @@ export default new TaprisCommand<GenshinCodesLocale>()
     });
 
     const buttonsRow: ActionRowComponent = {
-      type: 1,
+      type: MessageComponentType.ACTION_ROW,
       components: [
         {
-          type: 2,
+          type: MessageComponentType.BUTTON,
           url: url,
           label: locale.activateButton,
-          style: 5,
+          style: ButtonStyle.LINK,
         },
       ],
     };

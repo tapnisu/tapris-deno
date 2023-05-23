@@ -4,6 +4,7 @@ import {
   ActionRowComponent,
   ApplicationCommandOptionType,
   Embed,
+  MessageComponentType,
 } from "harmony/mod.ts";
 
 interface PasswordLocale {
@@ -36,16 +37,16 @@ const command = new TaprisCommand<PasswordLocale>()
     )?.value;
 
     const buttonsRow: ActionRowComponent = {
-      type: 1,
+      type: MessageComponentType.ACTION_ROW,
       components: [
         {
-          type: 2,
+          type: MessageComponentType.BUTTON,
           customID: `password_${passwordLength}`,
           label: locale.createNew,
           style: 1,
         },
         {
-          type: 2,
+          type: MessageComponentType.BUTTON,
           customID: locale.delete,
           label: "Delete",
           style: 4,

@@ -1,8 +1,10 @@
 import { TaprisCommand } from "@framework/mod.ts";
 import {
-  ActionRowComponent,
-  ApplicationCommandOptionType,
-  Embed,
+    ActionRowComponent,
+    ApplicationCommandOptionType,
+    ButtonStyle,
+    Embed,
+    MessageComponentType,
 } from "harmony/mod.ts";
 import ky from "ky";
 
@@ -107,13 +109,13 @@ export default new TaprisCommand<TracemoeLocales>()
       .setVideo(frame.video);
 
     const buttonsRow: ActionRowComponent = {
-      type: 1,
+      type: MessageComponentType.ACTION_ROW,
       components: [
         {
-          type: 2,
+          type: MessageComponentType.BUTTON,
           url: frame.video,
           label: locale.watch,
-          style: 5,
+          style: ButtonStyle.LINK,
         },
       ],
     };
