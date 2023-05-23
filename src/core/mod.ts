@@ -51,7 +51,7 @@ export class TaprisClient extends Client {
   }
 
   public async getGuildsAmount(): Promise<number> {
-    return (await this.guilds.array()).length;
+    return await this.guilds.size();
   }
 
   public async updatePresence() {
