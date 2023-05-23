@@ -1,7 +1,12 @@
 import { commandLocales } from "@commands/utils/password.ts";
 import { TaprisComponent } from "@framework/mod.ts";
 import generatePassword from "@utils/generatePassword.ts";
-import { ActionRowComponent, Embed } from "harmony/mod.ts";
+import {
+  ActionRowComponent,
+  ButtonStyle,
+  Embed,
+  MessageComponentType,
+} from "harmony/mod.ts";
 
 export default new TaprisComponent()
   .setCustomId(/password_(.*)/gi)
@@ -12,25 +17,25 @@ export default new TaprisComponent()
       interaction.data.custom_id.replace(/password_/, "")
     );
 
-    const locales = (await client.db.selectLocale(
+    const locales = await client.db.selectLocale(
       commandLocales,
       interaction.guild?.id
-    )) as typeof commandLocales.en;
+    );
 
     const buttonsRow: ActionRowComponent = {
-      type: 1,
+      type: MessageComponentType.ACTION_ROW,
       components: [
         {
-          type: 2,
+          type: MessageComponentType.BUTTON,
           customID: `password_${passwordLength}`,
           label: locales.createNew,
-          style: 1,
+          style: ButtonStyle.PRIMARY,
         },
         {
-          type: 2,
+          type: MessageComponentType.BUTTON,
           customID: "delete_message",
           label: locales.delete,
-          style: 4,
+          style: ButtonStyle.DESTRUCTIVE,
         },
       ],
     };
