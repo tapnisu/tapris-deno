@@ -1,4 +1,5 @@
 import { TaprisClient } from "@core/mod.ts";
+import { Any } from "@utils/mod.ts";
 import {
   ApplicationCommandInteraction,
   ClientEvents,
@@ -10,8 +11,7 @@ export type EventName = keyof ClientEvents;
 
 export type EventRun = (
   client: TaprisClient,
-  // deno-lint-ignore no-explicit-any
-  ...args: any[]
+  ...args: Any[]
 ) =>
   | Promise<
       ApplicationCommandInteraction | Interaction | Message | undefined | void
