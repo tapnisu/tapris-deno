@@ -42,12 +42,7 @@ export class Api extends Hono {
     );
 
     this.get("/api/v1/commands", (r) =>
-      r.json(
-        this.client.commands.array().map((command) => {
-          command.locales = undefined;
-          return command;
-        })
-      )
+      r.json(this.client.commands.array().map((command) => command.json()))
     );
 
     this.get("/api/v1/commands/:name", (r) => {

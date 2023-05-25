@@ -61,4 +61,14 @@ export class TaprisCommand<T = undefined> {
     this.memberPermissions = memberPermissions;
     return this;
   }
+
+  /**
+   * Get json for command (to register or send as json)
+   */
+  public json() {
+    // deno-lint-ignore no-unused-vars
+    const { memberPermissions, locales, ...commandJson } = this;
+
+    return commandJson;
+  }
 }

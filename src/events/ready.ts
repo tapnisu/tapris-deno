@@ -12,11 +12,7 @@ export default new TaprisEvent()
     });
 
     await client.interactions.commands.bulkEdit(
-      client.commands.array().map((c) => {
-        // deno-lint-ignore no-unused-vars
-        const { memberPermissions, ...c2 } = c;
-        return c2;
-      })
+      client.commands.array().map((command) => command.json())
     );
 
     console.info(`${client.user!.tag} is up!`);
