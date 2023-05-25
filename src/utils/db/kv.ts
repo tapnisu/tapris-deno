@@ -4,19 +4,33 @@ class Guild {
   public language: LocaleNames = "en";
 }
 
-export class TaprisDBClient {
-  kv!: Deno.Kv;
+/**
+ * Db client for tapris using Deno KV.
+ */
+export class TaprisDbClient {
+  private kv!: Deno.Kv;
 
-  public async connect(): Promise<TaprisDBClient> {
+  /**
+   * Open Deno KV connection
+   */
+  public async connect(): Promise<TaprisDbClient> {
     this.kv = await Deno.openKv();
 
     return this;
   }
 
+  /**
+   * Get guild info from db by id
+   * @param id Id of discord guild
+   */
   public async getGuild(id: string): Promise<Guild | null> {
     return (await this.kv.get<Guild>(["guilds", id])).value;
   }
 
+  /**
+   * Get guild info from db by id
+   * @param id Id of discord guild
+   */
   public async getGuildLanguage(id?: string): Promise<LocaleNames> {
     if (!id) return "en";
 
@@ -27,6 +41,11 @@ export class TaprisDBClient {
     return localeName ? localeName : "en";
   }
 
+  /**
+   * Select one of locales, depending on locale in guild
+   * @param locale Locales, to chose from
+   * @param id Id of guild, if not presented, return en
+   */
   public async selectLocale<T = unknown>(
     locale: Record<LocaleNames, T> | undefined,
     id?: string
@@ -36,6 +55,11 @@ export class TaprisDBClient {
     return locale[await this.getGuildLanguage(id)];
   }
 
+  /**
+   * Select language for a guild
+   * @param id Id of guild to change language
+   * @param locale Language to set
+   */
   public async setGuildLanguage(
     id: string,
     language: LocaleNames
@@ -45,13 +69,21 @@ export class TaprisDBClient {
     return language;
   }
 
-  public async registerGuild(id: string): Promise<TaprisDBClient> {
+  /**
+   * Inserts new guild into db
+   * @param id Id of new guild
+   */
+  public async registerGuild(id: string): Promise<TaprisDbClient> {
     await this.kv.set(["guilds", id], new Guild());
 
     return this;
   }
 
-  public async removeGuild(id: string): Promise<TaprisDBClient> {
+  /**
+   * Removes guild from db
+   * @param id Id of guild to remove
+   */
+  public async removeGuild(id: string): Promise<TaprisDbClient> {
     await this.kv.delete(["guilds", id]);
 
     return this;

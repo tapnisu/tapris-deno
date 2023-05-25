@@ -7,8 +7,14 @@ interface Guild {
   russianRouletteBeforeDeath: number;
 }
 
-export class TaprisDBClient extends PostgresClient {
-  public async sync(): Promise<TaprisDBClient> {
+/**
+ * Db client for tapris using postgres
+ */
+export class TaprisDbClient extends PostgresClient {
+  /**
+   * Create default tables
+   */
+  public async sync(): Promise<TaprisDbClient> {
     await this.queryObject(
       `CREATE TABLE "Guilds" (
         id text,
@@ -20,6 +26,10 @@ export class TaprisDBClient extends PostgresClient {
     return this;
   }
 
+  /**
+   * Get guild info from db by id
+   * @param id Id of discord guild
+   */
   public async getGuild(id: string): Promise<Guild> {
     const guildResponse = await this.queryObject<Guild>(
       `select * from "Guilds" where id = '${id}';`
@@ -28,6 +38,10 @@ export class TaprisDBClient extends PostgresClient {
     return guildResponse.rows[0];
   }
 
+  /**
+   * Get guild info from db by id
+   * @param id Id of discord guild
+   */
   public async getGuildLanguage(id?: string): Promise<LocaleNames> {
     if (!id) return "en";
 
@@ -38,6 +52,11 @@ export class TaprisDBClient extends PostgresClient {
     return guildResponse.rows.length ? guildResponse.rows[0].language : "en";
   }
 
+  /**
+   * Select one of locales, depending on locale in guild
+   * @param locale Locales, to chose from
+   * @param id Id of guild, if not presented, return en
+   */
   public async selectLocale<T>(
     locale: Record<LocaleNames, T> | undefined,
     id?: string
@@ -47,6 +66,11 @@ export class TaprisDBClient extends PostgresClient {
     return locale[await this.getGuildLanguage(id)];
   }
 
+  /**
+   * Select language for a guild
+   * @param id Id of guild to change language
+   * @param locale Language to set
+   */
   public async setGuildLanguage(
     id: string,
     language: LocaleNames
@@ -58,13 +82,21 @@ export class TaprisDBClient extends PostgresClient {
     return languageResponse.rows[0];
   }
 
-  public async registerGuild(id: string): Promise<TaprisDBClient> {
+  /**
+   * Inserts new guild into db
+   * @param id Id of new guild
+   */
+  public async registerGuild(id: string): Promise<TaprisDbClient> {
     await this.queryObject(`insert into "Guilds" (id) values (${id});`);
 
     return this;
   }
 
-  public async removeGuild(id: string): Promise<TaprisDBClient> {
+  /**
+   * Removes guild from db
+   * @param id Id of guild to remove
+   */
+  public async removeGuild(id: string): Promise<TaprisDbClient> {
     await this.queryObject(`delete from "Guilds" where id = '${id}';`);
 
     return this;

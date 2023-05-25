@@ -2,7 +2,7 @@ import { getCommands } from "@commands/mod.ts";
 import { getComponents } from "@components/mod.ts";
 import { getEvents } from "@events/mod.ts";
 import { TaprisCommand, TaprisComponent, TaprisEvent } from "@framework/mod.ts";
-import { Api, TaprisDBClient, env } from "@utils/mod.ts";
+import { Api, TaprisDbClient, env } from "@utils/mod.ts";
 import { Client, Collection, GatewayIntents } from "harmony/mod.ts";
 import { serve } from "std/http/server.ts";
 
@@ -11,7 +11,7 @@ export class TaprisClient extends Client {
   public components = new Collection<RegExp, TaprisComponent>();
   public events = new Collection<string, TaprisEvent>();
   public botColor = env.BOT_COLOR;
-  public db = new TaprisDBClient();
+  public db = new TaprisDbClient();
   public authorId = env.AUTHOR_ID;
 
   public async init() {
