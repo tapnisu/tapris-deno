@@ -1,6 +1,6 @@
 import { load } from "std/dotenv/mod.ts";
 
-interface Env {
+export interface Env {
   BOT_TOKEN: string;
   BOT_COLOR: string;
 
@@ -14,11 +14,12 @@ interface Env {
 
   AUTHOR_ID: string;
 
-  MODE: "DENODEPLOY" | string;
+  MODE: string;
 }
 
-const getEnv = async (): Promise<Env> => {
-  const env = (Deno.env.get("MODE") == "DENODEPLOY"
+export const getEnv = async (): Promise<Env> => {
+  const env = (Deno.env.get("MODE") === "DENODEPLOY" ||
+  Deno.env.get("MODE") === "DEPLOY"
     ? Deno.env.toObject()
     : await load()) as unknown as Env;
 

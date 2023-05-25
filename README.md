@@ -36,7 +36,7 @@ You can change language by using /setlangauge command.
 3. Clone repo:
    `git clone https://github.com/tapris-bot/tapris.git && cd ./tapris/`
 
-4. Setup [.env](.env.sample) (example in [.env.sample](.env.sample)).
+4. Set environment variables (dotenv is supported), if dotenv is not used, set MODE to DEPLOY (example in [.env.sample](.env.sample)).
 
 5. Run `deno task start`.
 
