@@ -11,7 +11,13 @@ export default new TaprisEvent()
         await client.db.registerGuild(guild.id);
     });
 
-    await client.interactions.commands.bulkEdit(client.commands.array());
+    await client.interactions.commands.bulkEdit(
+      client.commands.array().map((c) => {
+        // deno-lint-ignore no-unused-vars
+        const { memberPermissions, ...c2 } = c;
+        return c2;
+      })
+    );
 
     console.info(`${client.user!.tag} is up!`);
   });

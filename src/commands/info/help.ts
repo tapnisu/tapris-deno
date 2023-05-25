@@ -1,9 +1,9 @@
 import { TaprisCommand } from "@framework/mod.ts";
 import {
-    ApplicationCommandOption,
-    ApplicationCommandOptionBase,
-    ApplicationCommandOptionType,
-    Embed,
+  ApplicationCommandOption,
+  ApplicationCommandOptionBase,
+  ApplicationCommandOptionType,
+  Embed,
 } from "harmony/mod.ts";
 
 interface HelpLocale {
