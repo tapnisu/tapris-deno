@@ -55,7 +55,6 @@ class Api extends Hono {
 
       if (command) {
         command.locales = undefined;
-
         return r.json(command);
       }
 

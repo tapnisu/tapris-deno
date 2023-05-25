@@ -1,0 +1,14 @@
+{
+  "tasks": {
+    "start": "deno run --unstable --allow-env --allow-net --allow-read mod.ts",
+    "dev": "deno run --unstable --watch --allow-env --allow-net --allow-read mod.ts",
+    "check": "deno check --unstable mod.ts",
+    "lint": "deno lint --unstable",
+    "test": "deno test --unstable",
+    "cache": "deno cache mod.ts",
+    "fmt": "deno run --allow-read --allow-write --allow-sys --allow-env npm:prettier . --write",
+    "compile": "deno compile --unstable --allow-env --allow-net --allow-read mod.ts"
+  },
+  "importMap": "./import_map.json",
+  "lock": false
+}

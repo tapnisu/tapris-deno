@@ -35,6 +35,4 @@ const commands = [
 ];
 
 export const getCommands = (client: TaprisClient) =>
-  commands.forEach((c) =>
-    client.commands.set(c.name, c as TaprisCommand<undefined>)
-  );
+  commands.forEach((c) => client.commands.set(c.name, c as TaprisCommand));

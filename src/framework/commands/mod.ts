@@ -7,7 +7,7 @@ import {
 
 export type LocaleNames = "en" | "ru";
 
-export class TaprisCommand<T> {
+export class TaprisCommand<T = undefined> {
   name = "";
   description = "";
   options: ApplicationCommandOption[] = [];

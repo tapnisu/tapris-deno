@@ -1,9 +1,9 @@
 import { TaprisCommand } from "@framework/mod.ts";
 import {
-  ApplicationCommandOption,
-  ApplicationCommandOptionBase,
-  ApplicationCommandOptionType,
-  Embed,
+    ApplicationCommandOption,
+    ApplicationCommandOptionBase,
+    ApplicationCommandOptionType,
+    Embed,
 } from "harmony/mod.ts";
 
 interface HelpLocale {
@@ -80,7 +80,7 @@ export default new TaprisCommand<HelpLocale>()
       .setColor(client.botColor)
       .setDescription(locale.serverMember(interaction.guild?.name));
 
-    client.commands.forEach((command: TaprisCommand<undefined>) => {
+    client.commands.forEach((command: TaprisCommand) => {
       embed.addFields({
         name: `/${command.name} ${
           command.options
