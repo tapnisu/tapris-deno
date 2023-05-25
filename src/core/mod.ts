@@ -25,8 +25,12 @@ export class TaprisClient extends Client {
     getEvents(this);
     getComponents(this);
 
-    await this.db.connect();
-    await this.db.sync();
+    await this.db
+      .sync()
+      .catch(() => console.warn("Error creating tables for database!"));
+    await this.db
+      .connect()
+      .catch(() => console.warn("Failed to connect to database using TCP!"));
 
     await this.connect(env.BOT_TOKEN, [
       GatewayIntents.DIRECT_MESSAGES,
