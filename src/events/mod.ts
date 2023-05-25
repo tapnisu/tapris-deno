@@ -18,6 +18,6 @@ export class EventsCollection extends Collection<string, TaprisEvent> {
   constructor(events: TaprisEvent[]) {
     super();
 
-    events.forEach((event) => this.set(event.name, event));
+    events.forEach((event) => this.set(event.name, event as TaprisEvent));
   }
 }
