@@ -1,32 +1,32 @@
 import { LocaleNames } from "@framework/mod.ts";
+import { Client as PostgresClient } from "postgres/mod.ts";
 
-class Guild {
-  public language: LocaleNames = "en";
+interface Guild {
+  id: string;
+  language: LocaleNames;
+  russianRouletteBeforeDeath: number;
 }
 
-class TaprisDBManager {
-  kv!: Deno.Kv;
+class TaprisDBManager extends PostgresClient {
+  public async getGuild(id: string): Promise<Guild> {
+    const guildResponse = await this.queryObject<Guild>(
+      `select * from "Guilds" where id = '${id}';`
+    );
 
-  public async connect(): Promise<TaprisDBManager> {
-    this.kv = await Deno.openKv();
-    return this;
-  }
-
-  public async getGuild(id: string): Promise<Guild | null> {
-    return (await this.kv.get<Guild>(["guilds", id])).value;
+    return guildResponse.rows[0];
   }
 
   public async getGuildLanguage(id?: string): Promise<LocaleNames> {
     if (!id) return "en";
 
-    const localeName = (
-      await this.kv.get<LocaleNames>(["guilds", id, "language"])
-    ).value;
+    const guildResponse = await this.queryObject<Pick<Guild, "language">>(
+      `select language from "Guilds" where id = '${id}';`
+    );
 
-    return localeName ? localeName : "en";
+    return guildResponse.rows.length ? guildResponse.rows[0].language : "en";
   }
 
-  public async selectLocale<T = unknown>(
+  public async selectLocale<T>(
     locale: Record<LocaleNames, T> | undefined,
     id?: string
   ): Promise<T> {
@@ -37,17 +37,31 @@ class TaprisDBManager {
   public async setGuildLanguage(
     id: string,
     language: LocaleNames
-  ): Promise<LocaleNames> {
-    await this.kv.set(["guilds", id, "language"], language);
-    return language;
+  ): Promise<Pick<Guild, "language">> {
+    const languageResponse = await this.queryObject<Pick<Guild, "language">>(
+      `update "Guilds" set language = '${language}' where id = '${id}';
+       select language from "Guilds" where id = '${id}';`
+    );
+
+    return languageResponse.rows[0];
   }
 
   public async registerGuild(id: string) {
-    await this.kv.set(["guilds", id], new Guild());
+    await this.queryObject(`insert into "Guilds" (id) values (${id});`);
   }
 
   public async removeGuild(id: string) {
-    await this.kv.delete(["guilds", id]);
+    await this.queryObject(`delete from "Guilds" where id = '${id}';`);
+  }
+
+  public async sync() {
+    await this.queryObject(
+      `CREATE TABLE "Guilds" (
+        id text,
+        language text DEFAULT 'en' NOT NULL,
+        russian_roulette_before_death int4 DEFAULT 0 NOT NULL
+      );`
+    );
   }
 }
 

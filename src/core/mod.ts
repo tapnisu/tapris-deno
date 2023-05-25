@@ -22,6 +22,7 @@ export class TaprisClient extends Client {
     getComponents(this);
 
     await this.db.connect();
+    await this.db.sync();
 
     await this.connect(env.BOT_TOKEN, [
       GatewayIntents.DIRECT_MESSAGES,
