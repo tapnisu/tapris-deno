@@ -1,1 +1,1 @@
-export * from "@utils/db/db.ts";
+export * from "@utils/db/postgres.ts";
