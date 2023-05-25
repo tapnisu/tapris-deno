@@ -1,6 +1,6 @@
 import { CommandsCollection, commands } from "@commands/mod.ts";
 import { ComponentsCollection, components } from "@components/mod.ts";
-import { getEvents } from "@events/mod.ts";
+import { EventsCollection, events } from "@events/mod.ts";
 import { TaprisCommand, TaprisComponent, TaprisEvent } from "@framework/mod.ts";
 import { Api, TaprisDbClient, env } from "@utils/mod.ts";
 import { Client, Collection, GatewayIntents } from "harmony/mod.ts";
@@ -25,11 +25,10 @@ export class TaprisClient extends Client {
 
     this.commands = new CommandsCollection(commands as TaprisCommand[]);
     this.components = new ComponentsCollection(components);
+    this.events = new EventsCollection(events);
   }
 
-  public async init() {
-    getEvents(this);
-
+  public async start() {
     await this.db
       .sync()
       .catch(() => console.warn("Error creating tables for database!"));
