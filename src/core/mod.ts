@@ -2,9 +2,7 @@ import { getCommands } from "@commands/mod.ts";
 import { getComponents } from "@components/mod.ts";
 import { getEvents } from "@events/mod.ts";
 import { TaprisCommand, TaprisComponent, TaprisEvent } from "@framework/mod.ts";
-import api from "@utils/api.ts";
-import { env } from "@utils/config.ts";
-import { TaprisDBManager } from "@utils/mod.ts";
+import { Api, TaprisDBManager, env } from "@utils/mod.ts";
 import { Client, Collection, GatewayIntents } from "harmony/mod.ts";
 import { serve } from "std/http/server.ts";
 
@@ -33,7 +31,7 @@ export class TaprisClient extends Client {
       GatewayIntents.GUILD_PRESENCES,
     ]);
 
-    await serve(new api(this).fetch, {
+    await serve(new Api(this).fetch, {
       port: Number(env.SERVER_PORT),
     });
   }

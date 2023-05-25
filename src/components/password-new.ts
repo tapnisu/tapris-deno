@@ -1,6 +1,6 @@
 import { commandLocales } from "@commands/utils/password.ts";
 import { TaprisComponent } from "@framework/mod.ts";
-import generatePassword from "@utils/generatePassword.ts";
+import { generatePassword } from "@utils/mod.ts";
 import {
   ActionRowComponent,
   ButtonStyle,
