@@ -8,6 +8,18 @@ interface Guild {
 }
 
 export class TaprisDBManager extends PostgresClient {
+  public async sync(): Promise<TaprisDBManager> {
+    await this.queryObject(
+      `CREATE TABLE "Guilds" (
+        id text,
+        language text DEFAULT 'en' NOT NULL,
+        russian_roulette_before_death int4 DEFAULT 0 NOT NULL
+      );`
+    );
+
+    return this;
+  }
+
   public async getGuild(id: string): Promise<Guild> {
     const guildResponse = await this.queryObject<Guild>(
       `select * from "Guilds" where id = '${id}';`
@@ -31,6 +43,7 @@ export class TaprisDBManager extends PostgresClient {
     id?: string
   ): Promise<T> {
     if (!locale) return undefined as T;
+
     return locale[await this.getGuildLanguage(id)];
   }
 
@@ -42,25 +55,18 @@ export class TaprisDBManager extends PostgresClient {
       `update "Guilds" set language = '${language}' where id = '${id}';
        select language from "Guilds" where id = '${id}';`
     );
-
     return languageResponse.rows[0];
   }
 
-  public async registerGuild(id: string) {
+  public async registerGuild(id: string): Promise<TaprisDBManager> {
     await this.queryObject(`insert into "Guilds" (id) values (${id});`);
+
+    return this;
   }
 
-  public async removeGuild(id: string) {
+  public async removeGuild(id: string): Promise<TaprisDBManager> {
     await this.queryObject(`delete from "Guilds" where id = '${id}';`);
-  }
 
-  public async sync() {
-    await this.queryObject(
-      `CREATE TABLE "Guilds" (
-        id text,
-        language text DEFAULT 'en' NOT NULL,
-        russian_roulette_before_death int4 DEFAULT 0 NOT NULL
-      );`
-    );
+    return this;
   }
 }
