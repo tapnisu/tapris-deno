@@ -11,7 +11,13 @@ export class TaprisClient extends Client {
   public components = new Collection<RegExp, TaprisComponent>();
   public events = new Collection<string, TaprisEvent>();
   public botColor = env.BOT_COLOR;
-  public db = new TaprisDbClient();
+  public db = new TaprisDbClient({
+    hostname: env.DATABASE_HOSTNAME,
+    user: env.DATABASE_USER,
+    password: env.DATABASE_PASSWORD,
+    database: env.DATABASE,
+    port: env.DATABASE_PORT,
+  });
   public authorId = env.AUTHOR_ID;
 
   public async init() {
