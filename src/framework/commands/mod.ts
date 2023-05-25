@@ -8,6 +8,12 @@ import {
 
 export type LocaleNames = "en" | "ru";
 
+export type CommandRun<T> = (
+  client: TaprisClient,
+  interaction: SlashCommandInteraction,
+  locale: T
+) => Promise<ApplicationCommandInteraction | undefined>;
+
 export class TaprisCommand<T = undefined> {
   name = "";
   description = "";
@@ -16,49 +22,53 @@ export class TaprisCommand<T = undefined> {
   locales: Record<LocaleNames, T> | undefined;
   memberPermissions!: PermissionResolvable;
 
-  run!: (
-    client: TaprisClient,
-    interaction: SlashCommandInteraction,
-    locale: T
-  ) => Promise<ApplicationCommandInteraction | undefined>;
+  run!: CommandRun<T>;
 
   public setName(name: string) {
     this.name = name;
+
     return this;
   }
 
   public setDescription(description: string) {
     this.description = description;
+
     return this;
   }
 
   public setOptions(...options: ApplicationCommandOption[]) {
     this.options = options;
+
     return this;
   }
 
   public addOption(option: ApplicationCommandOption) {
     this.options = [...this.options, option];
+
     return this;
   }
 
   public setRun(run: typeof this.run) {
     this.run = run;
+
     return this;
   }
 
   public setLocales(locales: Record<LocaleNames, T>) {
     this.locales = locales;
+
     return this;
   }
 
   public setGuildOnly(guildOnly = true) {
     this.guildOnly = guildOnly;
+
     return this;
   }
 
   public setMemberPermissions(memberPermissions: PermissionResolvable) {
     this.memberPermissions = memberPermissions;
+
     return this;
   }
 

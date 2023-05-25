@@ -6,27 +6,23 @@ import {
   Message,
 } from "harmony/mod.ts";
 
-type EventName = keyof ClientEvents;
-type Args = ClientEvents[EventName];
+export type EventName = keyof ClientEvents;
 
-interface Run {
-  (
-    client: TaprisClient,
-    // deno-lint-ignore no-explicit-any
-    ...args: any[]
-  ): // ...args: Args
-
+export type EventRun = (
+  client: TaprisClient,
+  // deno-lint-ignore no-explicit-any
+  ...args: any[]
+) =>
   | Promise<
-        ApplicationCommandInteraction | Interaction | Message | undefined | void
-      >
-    | Message
-    | undefined
-    | void;
-}
+      ApplicationCommandInteraction | Interaction | Message | undefined | void
+    >
+  | Message
+  | undefined
+  | void;
 
 export class TaprisEvent {
   name: EventName = "raw";
-  run: Run = () => {};
+  run: EventRun = () => {};
 
   public setName(name: EventName) {
     this.name = name;
@@ -34,7 +30,7 @@ export class TaprisEvent {
     return this;
   }
 
-  public setRun(run: Run) {
+  public setRun(run: EventRun) {
     this.run = run;
 
     return this;

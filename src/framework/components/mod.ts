@@ -1,16 +1,14 @@
 import { TaprisClient } from "@core/mod.ts";
 import { Interaction, MessageComponentInteraction } from "harmony/mod.ts";
 
-interface Run {
-  (
-    client: TaprisClient,
-    interaction: MessageComponentInteraction
-  ): Promise<Interaction | void> | void;
-}
+export type ComponentRun = (
+  client: TaprisClient,
+  interaction: MessageComponentInteraction
+) => Promise<Interaction | void> | void;
 
 export class TaprisComponent {
   customId = /id/;
-  run: Run = () => {};
+  run: ComponentRun = () => {};
 
   public setCustomId(customId: RegExp) {
     this.customId = customId;
@@ -18,7 +16,7 @@ export class TaprisComponent {
     return this;
   }
 
-  public setRun(run: Run) {
+  public setRun(run: ComponentRun) {
     this.run = run;
 
     return this;
