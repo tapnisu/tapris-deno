@@ -1,11 +1,14 @@
 import deleteMessage from "@components/delete_message.ts";
 import passwordNew from "@components/password-new.ts";
-import { TaprisClient } from "@core/mod.ts";
+import { TaprisComponent } from "@framework/mod.ts";
+import { Collection } from "harmony/mod.ts";
 
-const components = [deleteMessage, passwordNew];
+export const components = [deleteMessage, passwordNew];
 
-export const getComponents = (client: TaprisClient) => {
-  components.forEach((component) =>
-    client.components.set(component.customId, component)
-  );
-};
+export class ComponentsCollection extends Collection<RegExp, TaprisComponent> {
+  constructor(components: TaprisComponent[]) {
+    super();
+
+    components.forEach((component) => this.set(component.customId, component));
+  }
+}

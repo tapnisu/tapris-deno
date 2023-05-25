@@ -1,5 +1,5 @@
 import { CommandsCollection, commands } from "@commands/mod.ts";
-import { getComponents } from "@components/mod.ts";
+import { ComponentsCollection, components } from "@components/mod.ts";
 import { getEvents } from "@events/mod.ts";
 import { TaprisCommand, TaprisComponent, TaprisEvent } from "@framework/mod.ts";
 import { Api, TaprisDbClient, env } from "@utils/mod.ts";
@@ -24,11 +24,11 @@ export class TaprisClient extends Client {
     super();
 
     this.commands = new CommandsCollection(commands as TaprisCommand[]);
+    this.components = new ComponentsCollection(components);
   }
 
   public async init() {
     getEvents(this);
-    getComponents(this);
 
     await this.db
       .sync()
