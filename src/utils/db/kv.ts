@@ -4,10 +4,10 @@ class Guild {
   public language: LocaleNames = "en";
 }
 
-export class TaprisDBManager {
+export class TaprisDBClient {
   kv!: Deno.Kv;
 
-  public async connect(): Promise<TaprisDBManager> {
+  public async connect(): Promise<TaprisDBClient> {
     this.kv = await Deno.openKv();
 
     return this;
@@ -45,13 +45,13 @@ export class TaprisDBManager {
     return language;
   }
 
-  public async registerGuild(id: string): Promise<TaprisDBManager> {
+  public async registerGuild(id: string): Promise<TaprisDBClient> {
     await this.kv.set(["guilds", id], new Guild());
 
     return this;
   }
 
-  public async removeGuild(id: string): Promise<TaprisDBManager> {
+  public async removeGuild(id: string): Promise<TaprisDBClient> {
     await this.kv.delete(["guilds", id]);
 
     return this;

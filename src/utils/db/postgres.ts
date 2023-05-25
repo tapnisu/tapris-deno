@@ -7,8 +7,8 @@ interface Guild {
   russianRouletteBeforeDeath: number;
 }
 
-export class TaprisDBManager extends PostgresClient {
-  public async sync(): Promise<TaprisDBManager> {
+export class TaprisDBClient extends PostgresClient {
+  public async sync(): Promise<TaprisDBClient> {
     await this.queryObject(
       `CREATE TABLE "Guilds" (
         id text,
@@ -58,13 +58,13 @@ export class TaprisDBManager extends PostgresClient {
     return languageResponse.rows[0];
   }
 
-  public async registerGuild(id: string): Promise<TaprisDBManager> {
+  public async registerGuild(id: string): Promise<TaprisDBClient> {
     await this.queryObject(`insert into "Guilds" (id) values (${id});`);
 
     return this;
   }
 
-  public async removeGuild(id: string): Promise<TaprisDBManager> {
+  public async removeGuild(id: string): Promise<TaprisDBClient> {
     await this.queryObject(`delete from "Guilds" where id = '${id}';`);
 
     return this;
