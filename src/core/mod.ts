@@ -1,4 +1,4 @@
-import { getCommands } from "@commands/mod.ts";
+import { CommandsCollection, commands } from "@commands/mod.ts";
 import { getComponents } from "@components/mod.ts";
 import { getEvents } from "@events/mod.ts";
 import { TaprisCommand, TaprisComponent, TaprisEvent } from "@framework/mod.ts";
@@ -7,7 +7,7 @@ import { Client, Collection, GatewayIntents } from "harmony/mod.ts";
 import { serve } from "std/http/server.ts";
 
 export class TaprisClient extends Client {
-  public commands = new Collection<string, TaprisCommand>();
+  public commands: Collection<string, TaprisCommand>;
   public components = new Collection<RegExp, TaprisComponent>();
   public events = new Collection<string, TaprisEvent>();
   public botColor = env.BOT_COLOR;
@@ -20,8 +20,13 @@ export class TaprisClient extends Client {
   });
   public authorId = env.AUTHOR_ID;
 
+  constructor() {
+    super();
+
+    this.commands = new CommandsCollection(commands as TaprisCommand[]);
+  }
+
   public async init() {
-    getCommands(this);
     getEvents(this);
     getComponents(this);
 
