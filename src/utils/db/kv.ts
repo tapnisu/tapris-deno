@@ -4,7 +4,7 @@ class Guild {
   public language: LocaleNames = "en";
 }
 
-class TaprisDBManager {
+export class TaprisDBManager {
   kv!: Deno.Kv;
 
   public async connect(): Promise<TaprisDBManager> {
