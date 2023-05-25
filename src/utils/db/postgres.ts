@@ -64,5 +64,3 @@ export class TaprisDBManager extends PostgresClient {
     );
   }
 }
-
-export default TaprisDBManager;

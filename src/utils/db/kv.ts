@@ -50,5 +50,3 @@ export class TaprisDBManager {
     await this.kv.delete(["guilds", id]);
   }
 }
-
-export default TaprisDBManager;

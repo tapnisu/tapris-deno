@@ -70,5 +70,3 @@ export class Api extends Hono {
     });
   }
 }
-
-export default Api;
