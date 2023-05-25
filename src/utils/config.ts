@@ -18,8 +18,7 @@ export interface Env {
 }
 
 export const getEnv = async (): Promise<Env> => {
-  const env = (Deno.env.get("MODE") === "DENODEPLOY" ||
-  Deno.env.get("MODE") === "DEPLOY"
+  const env = (Deno.env.get("MODE") === "DEPLOY"
     ? Deno.env.toObject()
     : await load()) as unknown as Env;
 
