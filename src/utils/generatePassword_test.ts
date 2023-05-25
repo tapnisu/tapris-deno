@@ -1,4 +1,4 @@
-import generatePassword, { defaultCharset } from "@utils/generatePassword.ts";
+import { defaultCharset, generatePassword } from "@utils/generatePassword.ts";
 import { assertEquals } from "std/testing/asserts.ts";
 
 Deno.test("generatePassword length test", () => {
