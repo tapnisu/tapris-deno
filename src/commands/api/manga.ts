@@ -1,10 +1,10 @@
 import { TaprisCommand } from "@framework/mod.ts";
 import {
-    ActionRowComponent,
-    ApplicationCommandOptionType,
-    ButtonStyle,
-    Embed,
-    MessageComponentType,
+  ActionRowComponent,
+  ApplicationCommandOptionType,
+  ButtonStyle,
+  Embed,
+  MessageComponentType,
 } from "harmony/mod.ts";
 import ky from "ky";
 

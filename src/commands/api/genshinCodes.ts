@@ -1,5 +1,10 @@
 import { TaprisCommand } from "@framework/mod.ts";
-import { ActionRowComponent, ButtonStyle, Embed, MessageComponentType } from "harmony/mod.ts";
+import {
+  ActionRowComponent,
+  ButtonStyle,
+  Embed,
+  MessageComponentType,
+} from "harmony/mod.ts";
 import ky from "ky";
 
 export interface CodesResponse {
