@@ -48,19 +48,19 @@ export default new TaprisCommand<AvatarLocale>()
       });
     }
 
-    const avatarUrl = user.avatarURL("webp", 2048);
+    const avatarURL = user.avatarURL("webp", 2048);
 
     const embed = new Embed()
       .setColor(client.botColor)
       .setTitle(locale.usersAvatar(user.tag))
-      .setImage(avatarUrl);
+      .setImage(avatarURL);
 
     const buttonsRow: ActionRowComponent = {
       type: MessageComponentType.ACTION_ROW,
       components: [
         {
           type: MessageComponentType.BUTTON,
-          url: avatarUrl,
+          url: avatarURL,
           label: locale.link,
           style: ButtonStyle.LINK,
         },

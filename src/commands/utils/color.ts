@@ -46,14 +46,12 @@ export default new TaprisCommand()
     ctx.textAlign = "center";
     ctx.fillText("Lorem ipsum", 85, 350);
 
-    const attachment = new MessageAttachment(
-      "ColorHexSend.png",
-      canvas.toBuffer("image/png")
-    );
-
     const embed = new Embed()
       .setTitle(colorString)
-      .setImage("attachment://ColorHexSend.png");
+      .setImage("attachment://ColorHexSend.png")
+      .attach(
+        new MessageAttachment("ColorHexSend.png", canvas.toBuffer("image/png"))
+      );
 
     try {
       embed.setColor(colorString);
@@ -61,7 +59,7 @@ export default new TaprisCommand()
       embed.setColor(client.botColor);
     }
 
-    embed.attach(attachment);
+    embed;
 
     return await interaction.reply({ embeds: [embed] });
   });
