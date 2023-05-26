@@ -20,7 +20,7 @@ export type EventRun<T extends EventName> = (
   | undefined
   | void;
 
-export class TaprisEvent<T extends EventName = "raw"> {
+export class TaprisEvent<T extends EventName = EventName> {
   name!: T;
   run: EventRun<T> = () => {};
 

@@ -25,7 +25,7 @@ export class TaprisClient extends Client {
 
     this.commands = new CommandsCollection(commands as TaprisCommand[]);
     this.components = new ComponentsCollection(components);
-    this.events = new EventsCollection(events as unknown as TaprisEvent[]);
+    this.events = new EventsCollection(events as TaprisEvent[]);
   }
 
   public async start() {
