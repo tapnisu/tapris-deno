@@ -6,16 +6,29 @@ export type ComponentRun = (
   interaction: MessageComponentInteraction
 ) => Promise<Interaction | void> | void;
 
+/**
+ * Component builder used in Tapris
+ */
 export class TaprisComponent {
-  customId = /id/;
-  run: ComponentRun = () => {};
+  customId!: RegExp;
+  run!: ComponentRun;
 
+  /**
+   * Set id for component
+   * @param customId Id for component
+   * @returns this
+   */
   public setCustomId(customId: RegExp) {
     this.customId = customId;
 
     return this;
   }
 
+  /**
+   * Set run function
+   * @param run Function to be run
+   * @returns this
+   */
   public setRun(run: ComponentRun) {
     this.run = run;
 

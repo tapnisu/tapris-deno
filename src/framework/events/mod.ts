@@ -20,16 +20,29 @@ export type EventRun<T extends EventName> = (
   | undefined
   | void;
 
+/**
+ * Event builder used in Tapris
+ */
 export class TaprisEvent<T extends EventName = EventName> {
   name!: T;
-  run: EventRun<T> = () => {};
+  run!: EventRun<T>;
 
+  /**
+   * Set name for event
+   * @param name Name for event
+   * @returns this
+   */
   public setName(name: T) {
     this.name = name;
 
     return this;
   }
 
+  /**
+   * Set run function
+   * @param run Function to be run
+   * @returns this
+   */
   public setRun(run: EventRun<T>) {
     this.run = run;
 

@@ -44,11 +44,13 @@ export const commands = [
  * Create a collection of commands
  */
 export class CommandsCollection extends Collection<string, TaprisCommand> {
+  /**
+   * Create a collection of commands
+   * @param commands array of commands to set to collection
+   */
   constructor(commands: TaprisCommand[]) {
     super();
 
-    commands.forEach((command) =>
-      this.set(command.name, command as TaprisCommand)
-    );
+    commands.forEach((command) => this.set(command.name, command));
   }
 }

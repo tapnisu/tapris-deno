@@ -9,6 +9,10 @@ export const components = [deleteMessage, passwordNew];
  * Create a collection of components
  */
 export class ComponentsCollection extends Collection<RegExp, TaprisComponent> {
+  /**
+   * Create a collection of components
+   * @param components array of components to set to collection
+   */
   constructor(components: TaprisComponent[]) {
     super();
 

@@ -18,9 +18,13 @@ export const events = [
  * Create a collection of events
  */
 export class EventsCollection extends Collection<string, TaprisEvent> {
+  /**
+   * Create a collection of events
+   * @param events array of events to set to collection
+   */
   constructor(events: TaprisEvent[]) {
     super();
 
-    events.forEach((event) => this.set(event.name, event as TaprisEvent));
+    events.forEach((event) => this.set(event.name, event));
   }
 }
