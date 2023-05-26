@@ -5,6 +5,9 @@ import { Collection } from "harmony/mod.ts";
 
 export const components = [deleteMessage, passwordNew];
 
+/**
+ * Create a collection of components
+ */
 export class ComponentsCollection extends Collection<RegExp, TaprisComponent> {
   constructor(components: TaprisComponent[]) {
     super();

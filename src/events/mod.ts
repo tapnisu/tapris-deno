@@ -14,6 +14,9 @@ export const events = [
   reconnect,
 ];
 
+/**
+ * Create a collection of events
+ */
 export class EventsCollection extends Collection<string, TaprisEvent> {
   constructor(events: TaprisEvent[]) {
     super();

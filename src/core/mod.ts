@@ -8,8 +8,8 @@ import { serve } from "std/http/server.ts";
 
 export class TaprisClient extends Client {
   public commands: Collection<string, TaprisCommand>;
-  public components = new Collection<RegExp, TaprisComponent>();
-  public events = new Collection<string, TaprisEvent>();
+  public components: Collection<RegExp, TaprisComponent>;
+  public events: Collection<string, TaprisEvent>;
   public botColor = env.BOT_COLOR;
   public db = new TaprisDbClient({
     hostname: env.DATABASE_HOSTNAME,

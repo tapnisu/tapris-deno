@@ -40,6 +40,9 @@ export const commands = [
   user,
 ];
 
+/**
+ * Create a collection of commands
+ */
 export class CommandsCollection extends Collection<string, TaprisCommand> {
   constructor(commands: TaprisCommand[]) {
     super();
