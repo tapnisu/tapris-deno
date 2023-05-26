@@ -14,11 +14,11 @@ export interface Env {
 
   AUTHOR_ID: string;
 
-  MODE: string;
+  MODE: "production" | "development";
 }
 
 export const getEnv = async (): Promise<Env> => {
-  const env = (Deno.env.get("MODE") === "DEPLOY"
+  const env = ((Deno.env.get("MODE") as Env["MODE"]) === "production"
     ? Deno.env.toObject()
     : await load()) as unknown as Env;
 
