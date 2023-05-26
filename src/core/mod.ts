@@ -26,6 +26,10 @@ export class TaprisClient extends Client {
     this.commands = new CommandsCollection(commands as TaprisCommand[]);
     this.components = new ComponentsCollection(components);
     this.events = new EventsCollection(events as TaprisEvent[]);
+
+    this.events.array().forEach((event) => {
+      this.on(event.name, event.run.bind(null, this));
+    });
   }
 
   public async start() {
