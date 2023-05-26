@@ -7,6 +7,7 @@
     "test": "deno test ",
     "cache": "deno cache mod.ts",
     "fmt": "deno run --allow-read --allow-write --allow-sys --allow-env npm:prettier . --write",
+    "format": "deno run --allow-read --allow-write --allow-sys --allow-env npm:prettier . --write",
     "compile": "deno compile --allow-env --allow-net --allow-read mod.ts"
   },
   "importMap": "./import_map.json",
