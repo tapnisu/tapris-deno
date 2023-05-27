@@ -5,7 +5,7 @@ class Guild {
 }
 
 /**
- * Db client for tapris using Deno KV.
+ * Db client for tapris using Deno KV
  */
 export class TaprisDbClient {
   private kv!: Deno.Kv;
