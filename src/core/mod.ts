@@ -1,8 +1,8 @@
-import { CommandsCollection, commands } from "@commands/mod.ts";
-import { ComponentsCollection, components } from "@components/mod.ts";
-import { EventsCollection, events } from "@events/mod.ts";
+import { CommandsCollection } from "@commands/mod.ts";
+import { ComponentsCollection } from "@components/mod.ts";
+import { EventsCollection } from "@events/mod.ts";
 import { TaprisCommand, TaprisComponent, TaprisEvent } from "@framework/mod.ts";
-import { Api, TaprisDbClient, env } from "@utils/mod.ts";
+import { Api, Config, TaprisDbClient } from "@utils/mod.ts";
 import { Client, Collection, GatewayIntents } from "harmony/mod.ts";
 import { serve } from "std/http/server.ts";
 
@@ -10,25 +10,40 @@ export class TaprisClient extends Client {
   public commands: Collection<string, TaprisCommand>;
   public components: Collection<RegExp, TaprisComponent>;
   public events: Collection<string, TaprisEvent>;
-  public botColor = env.BOT_COLOR;
-  public db = new TaprisDbClient({
-    hostname: env.DATABASE_HOSTNAME,
-    user: env.DATABASE_USER,
-    password: env.DATABASE_PASSWORD,
-    database: env.DATABASE,
-    port: env.DATABASE_PORT,
-  });
-  public authorId = env.AUTHOR_ID;
 
-  constructor() {
+  public botColor: string;
+  public db: TaprisDbClient;
+  public authorId: string;
+  public serverPort: string;
+
+  constructor(
+    config: Config,
+    commands: TaprisCommand[],
+    events: TaprisEvent[],
+    components: TaprisComponent[]
+  ) {
     super();
 
-    this.commands = new CommandsCollection(commands as TaprisCommand[]);
+    this.commands = new CommandsCollection(commands);
     this.components = new ComponentsCollection(components);
-    this.events = new EventsCollection(events as TaprisEvent[]);
+    this.events = new EventsCollection(events);
+
+    this.botColor = config.botColor;
+    this.authorId = config.authorId;
+
+    this.token = config.token;
+    this.serverPort = config.serverPort;
 
     this.events.array().forEach((event) => {
       this.on(event.name, event.run.bind(null, this));
+    });
+
+    this.db = new TaprisDbClient({
+      hostname: config.db.hostname,
+      user: config.db.user,
+      password: config.db.password,
+      database: config.db.database,
+      port: config.db.port,
     });
   }
 
@@ -40,7 +55,7 @@ export class TaprisClient extends Client {
       .connect()
       .catch(() => console.warn("Failed to connect to database using TCP!"));
 
-    await this.connect(env.BOT_TOKEN, [
+    await this.connect(this.token, [
       GatewayIntents.DIRECT_MESSAGES,
       GatewayIntents.GUILDS,
       GatewayIntents.GUILD_MESSAGES,
@@ -50,7 +65,7 @@ export class TaprisClient extends Client {
     ]);
 
     await serve(new Api(this).fetch, {
-      port: Number(env.SERVER_PORT),
+      port: Number(this.serverPort),
     });
   }
 

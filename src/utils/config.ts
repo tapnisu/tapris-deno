@@ -11,10 +11,29 @@ export interface Env {
   DATABASE_PORT: string;
 
   SERVER_PORT: string;
-
   AUTHOR_ID: string;
 
   MODE: "production" | "development";
+}
+
+export interface Config {
+  token: string;
+  botColor: string;
+
+  db: DbConfig;
+
+  serverPort: string;
+  authorId: string;
+
+  mode: "production" | "development";
+}
+
+export interface DbConfig {
+  hostname: string;
+  user: string;
+  password: string;
+  database: string;
+  port: string;
 }
 
 export const getEnv = async (): Promise<Env> => {
