@@ -12,6 +12,6 @@
     "postgres/": "https://deno.land/x/postgres@v0.17.0/",
     "hono/": "https://deno.land/x/hono@v3.2.2/",
     "ky": "https://esm.sh/ky@0.33.3",
-    "std/": "https://deno.land/std@0.188.0/"
+    "std/": "https://deno.land/std@0.189.0/"
   }
 }
