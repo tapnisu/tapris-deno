@@ -118,6 +118,7 @@ export class TaprisCommand<T = undefined> {
 
   /**
    * Get json for command (to register or send as json)
+   * @returns Command as json
    */
   public json() {
     // deno-lint-ignore no-unused-vars
