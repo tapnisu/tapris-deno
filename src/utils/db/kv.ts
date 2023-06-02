@@ -34,11 +34,9 @@ export class TaprisDbClient {
   public async getGuildLanguage(id?: string): Promise<LocaleNames> {
     if (!id) return "en";
 
-    const localeName = (
-      await this.kv.get<LocaleNames>(["guilds", id, "language"])
-    ).value;
+    const guild = (await this.kv.get<Guild>(["guilds", id])).value;
 
-    return localeName ? localeName : "en";
+    return guild ? guild.language : "en";
   }
 
   /**
@@ -64,7 +62,9 @@ export class TaprisDbClient {
     id: string,
     language: LocaleNames
   ): Promise<LocaleNames> {
-    await this.kv.set(["guilds", id, "language"], language);
+    const guild = (await this.kv.get<Guild>(["guilds", id])).value;
+    guild!.language = language;
+    await this.kv.set(["guilds", id], guild);
 
     return language;
   }
