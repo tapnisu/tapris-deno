@@ -7,9 +7,7 @@ export default new TaprisEvent<"ready">()
     await client.updatePresence();
 
     (await client.guilds.array())
-      .filter(async (guild) => {
-        (await client.db.getGuild(guild.id)) == null;
-      })
+      .filter(async (guild) => (await client.db.getGuild(guild.id)) == null)
       .forEach(async (guild) => await client.db.registerGuild(guild.id));
 
     await client.interactions.commands.bulkEdit(
