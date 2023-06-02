@@ -38,22 +38,11 @@ export class TaprisClient extends Client {
       this.on(event.name, event.run.bind(null, this));
     });
 
-    this.db = new TaprisDbClient({
-      hostname: config.db.hostname,
-      user: config.db.user,
-      password: config.db.password,
-      database: config.db.database,
-      port: config.db.port,
-    });
+    this.db = new TaprisDbClient();
   }
 
   public async start() {
-    await this.db
-      .sync()
-      .catch(() => console.warn("Error creating tables for database!"));
-    await this.db
-      .connect()
-      .catch(() => console.warn("Failed to connect to database using TCP!"));
+    await this.db.connect();
 
     await this.connect(this.token, [
       GatewayIntents.DIRECT_MESSAGES,

@@ -1,14 +1,14 @@
 {
   "tasks": {
-    "start": "deno run --allow-env --allow-net --allow-read mod.ts",
-    "dev": "deno run --watch --allow-env --allow-net --allow-read mod.ts",
-    "check": "deno check mod.ts",
-    "lint": "deno lint ",
-    "test": "deno test ",
+    "start": "deno run --unstable --allow-env --allow-net --allow-read mod.ts",
+    "dev": "deno run --unstable --watch --allow-env --allow-net --allow-read mod.ts",
+    "check": "deno check --unstable mod.ts",
+    "lint": "deno lint --unstable",
+    "test": "deno test",
     "cache": "deno cache mod.ts",
     "fmt": "deno run --allow-read --allow-write --allow-sys --allow-env npm:prettier . --write",
     "format": "deno run --allow-read --allow-write --allow-sys --allow-env npm:prettier . --write",
-    "compile": "deno compile --allow-env --allow-net --allow-read mod.ts"
+    "compile": "deno compile --unstable --allow-env --allow-net --allow-read mod.ts"
   },
   "importMap": "./import_map.json",
   "lock": false
