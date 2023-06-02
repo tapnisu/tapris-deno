@@ -41,6 +41,9 @@ export class TaprisClient extends Client {
     this.db = new TaprisDbClient();
   }
 
+  /**
+   * Start bot
+   */
   public async start() {
     await this.db.connect();
 
@@ -58,10 +61,17 @@ export class TaprisClient extends Client {
     });
   }
 
+  /**
+   * Get amount of guilds
+   * @returns Size of guild
+   */
   public async getGuildsAmount(): Promise<number> {
     return await this.guilds.size();
   }
 
+  /**
+   * Updates presence
+   */
   public async updatePresence() {
     const guildsAmount = await this.getGuildsAmount();
 
