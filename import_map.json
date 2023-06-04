@@ -10,8 +10,8 @@
     "gtr/": "https://deno.land/x/gtr@v0.0.1/",
     "harmony/": "https://deno.land/x/harmony@v2.8.0/",
     "postgres/": "https://deno.land/x/postgres@v0.17.0/",
-    "hono/": "https://deno.land/x/hono@v3.2.2/",
+    "hono/": "https://deno.land/x/hono@v3.2.4/",
     "ky": "https://esm.sh/ky@0.33.3",
-    "std/": "https://deno.land/std@0.189.0/"
+    "std/": "https://deno.land/std@0.190.0/"
   }
 }
