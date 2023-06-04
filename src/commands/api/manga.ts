@@ -49,9 +49,9 @@ export default new TaprisCommand<MangaLocales>()
       (option) => option.name == "query"
     )?.value;
 
-    const res: SearchResult[] = await (
-      await ky.get(`https://manga.deno.dev/api/search?q=${encodeURI(query)}`)
-    ).json();
+    const res: SearchResult[] = await ky
+      .get(`https://manga.deno.dev/api/search?q=${encodeURI(query)}`)
+      .json();
 
     if (res.length === 0) {
       return interaction.reply({
