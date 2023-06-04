@@ -1,6 +1,13 @@
 import { TaprisClient } from "@core/mod.ts";
 import { Hono } from "hono/mod.ts";
 
+const INVITE_URL =
+  "https://discord.com/api/oauth2/authorize?client_id=869088074758520832&scope=bot+applications.commands&permissions=294208515334";
+
+const GITHUB_URL = "https://github.com/tapris-bot/tapris";
+
+const WEBSITE_URL = "https://tapris.tapni.su";
+
 export class Api extends Hono {
   private client: TaprisClient;
 
@@ -9,29 +16,13 @@ export class Api extends Hono {
 
     this.client = client;
 
-    this.get("/", (r) => r.redirect("https://tapris.tapni.su", 302));
+    this.get("/", (r) => r.redirect(WEBSITE_URL, 302));
 
-    this.get("/invite", (r) =>
-      r.redirect(
-        "https://discord.com/api/oauth2/authorize?client_id=869088074758520832&scope=bot+applications.commands&permissions=294208515334",
-        302
-      )
-    );
+    this.get("/invite", (r) => r.redirect(INVITE_URL, 302));
 
-    this.get("/git", (r) =>
-      r.redirect("https://github.com/tapris-bot/tapris", 302)
-    );
+    this.get("/git", (r) => r.redirect(GITHUB_URL, 302));
 
-    this.get("/github", (r) =>
-      r.redirect("https://github.com/tapris-bot/tapris", 302)
-    );
-
-    this.get("/invite", (r) =>
-      r.redirect(
-        "https://discord.com/api/oauth2/authorize?client_id=869088074758520832&scope=bot+applications.commands&permissions=294208515334",
-        302
-      )
-    );
+    this.get("/github", (r) => r.redirect(GITHUB_URL, 302));
 
     this.get("/api", (r) => r.redirect("/api/v1", 302));
 

@@ -7,6 +7,8 @@ import {
 } from "harmony/mod.ts";
 import ky from "ky";
 
+const ACTIVATE_GIFT_URL = "https://genshin.hoyoverse.com/en/gift";
+
 export interface CodesResponse {
   CODES: Code[];
 }
@@ -55,16 +57,13 @@ export default new TaprisCommand<GenshinCodesLocale>()
       )
       .json();
 
-    const codes = res.CODES;
-    const url = "https://genshin.hoyoverse.com/en/gift";
-
     const embed = new Embed()
       .setColor(client.botColor)
       .setTitle(locale.embedTitle)
       .setDescription(locale.description)
-      .setURL(url);
+      .setURL(ACTIVATE_GIFT_URL);
 
-    codes.forEach((code: Code) => {
+    res.CODES.forEach((code: Code) => {
       if (!code.is_expired) {
         embed.addField(
           code.code,
@@ -81,7 +80,7 @@ export default new TaprisCommand<GenshinCodesLocale>()
       components: [
         {
           type: MessageComponentType.BUTTON,
-          url: url,
+          url: ACTIVATE_GIFT_URL,
           label: locale.activateButton,
           style: ButtonStyle.LINK,
         },
