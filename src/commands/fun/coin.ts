@@ -2,6 +2,7 @@ import { TaprisCommand } from "@framework/mod.ts";
 import { ApplicationCommandOptionType, Embed } from "harmony/mod.ts";
 
 type Choice = "coin" | "tail";
+
 const choices: Choice[] = ["coin", "tail"];
 
 interface coinLocale {
