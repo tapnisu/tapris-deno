@@ -9,14 +9,6 @@ if (import.meta.main)
       token: env.BOT_TOKEN,
       botColor: env.BOT_COLOR,
 
-      db: {
-        hostname: env.DATABASE_HOSTNAME,
-        user: env.DATABASE_USER,
-        password: env.DATABASE_PASSWORD,
-        database: env.DATABASE,
-        port: env.SERVER_PORT,
-      },
-
       serverPort: env.SERVER_PORT,
       authorId: env.AUTHOR_ID,
 
