@@ -7,7 +7,7 @@ export interface Env {
   SERVER_PORT: string;
   AUTHOR_ID: string;
 
-  MODE: "production" | "development";
+  MODE: "production" | "development" & (string & {});
 }
 
 export interface Config {
@@ -17,7 +17,7 @@ export interface Config {
   serverPort: string;
   authorId: string;
 
-  mode: "production" | "development";
+  mode: "production" | "development" | (string & {});
 }
 
 export const getEnv = async (): Promise<Env> => {
