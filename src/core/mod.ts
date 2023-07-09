@@ -34,9 +34,11 @@ export class TaprisClient extends Client {
     this.token = config.token;
     this.serverPort = config.serverPort;
 
-    this.events.array().forEach((event) => {
-      this.on(event.name, event.run.bind(null, this));
-    });
+    this.events
+      .array()
+      .forEach((event) =>
+        this.on(event.name, event.run.bind(null, this) as any)
+      );
 
     this.db = new TaprisDbClient();
   }
