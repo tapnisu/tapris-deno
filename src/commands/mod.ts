@@ -20,37 +20,37 @@ import { TaprisCommand } from "@framework/mod.ts";
 import { Collection } from "https://deno.land/x/harmony@v2.8.0/mod.ts";
 
 export const commands = [
-  genshinCodes,
-  manga,
-  coin,
-  tracemoe,
-  lmgtfy,
-  help,
-  info,
-  ban,
-  kick,
-  unban,
-  avatar,
-  clear,
-  color,
-  password,
-  profileLink,
-  setLanguage,
-  translate,
-  user,
+    genshinCodes,
+    manga,
+    coin,
+    tracemoe,
+    lmgtfy,
+    help,
+    info,
+    ban,
+    kick,
+    unban,
+    avatar,
+    clear,
+    color,
+    password,
+    profileLink,
+    setLanguage,
+    translate,
+    user,
 ];
 
 /**
  * Create a collection of commands
  */
 export class CommandsCollection extends Collection<string, TaprisCommand> {
-  /**
-   * Create a collection of commands
-   * @param commands array of commands to set to collection
-   */
-  constructor(commands: TaprisCommand[]) {
-    super();
+    /**
+     * Create a collection of commands
+     * @param commands array of commands to set to collection
+     */
+    constructor(commands: TaprisCommand[]) {
+        super();
 
-    commands.forEach((command) => this.set(command.name, command));
-  }
+        commands.forEach((command) => this.set(command.name, command));
+    }
 }

@@ -7,24 +7,24 @@ import { TaprisEvent } from "@framework/mod.ts";
 import { Collection } from "harmony/mod.ts";
 
 export const events = [
-  ready,
-  interactionCreate,
-  guildCreate,
-  guildDelete,
-  reconnect,
+    ready,
+    interactionCreate,
+    guildCreate,
+    guildDelete,
+    reconnect,
 ];
 
 /**
  * Create a collection of events
  */
 export class EventsCollection extends Collection<string, TaprisEvent> {
-  /**
-   * Create a collection of events
-   * @param events array of events to set to collection
-   */
-  constructor(events: TaprisEvent[]) {
-    super();
+    /**
+     * Create a collection of events
+     * @param events array of events to set to collection
+     */
+    constructor(events: TaprisEvent[]) {
+        super();
 
-    events.forEach((event) => this.set(event.name, event));
-  }
+        events.forEach((event) => this.set(event.name, event));
+    }
 }

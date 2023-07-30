@@ -3,33 +3,33 @@ name: CI
 on: push
 
 jobs:
-  lint:
-    name: Lint
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: denoland/setup-deno@v1
-        with:
-          deno-version: v1.x
-      - name: Lint
-        run: deno task lint
-  tests:
-    name: Tests
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: denoland/setup-deno@v1
-        with:
-          deno-version: v1.x
-      - name: Test
-        run: deno task test
-  check:
-    name: Check
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: denoland/setup-deno@v1
-        with:
-          deno-version: v1.x
-      - name: Check
-        run: deno task check
+    lint:
+        name: Lint
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
+            - uses: denoland/setup-deno@v1
+              with:
+                  deno-version: v1.x
+            - name: Lint
+              run: deno task lint
+    tests:
+        name: Tests
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
+            - uses: denoland/setup-deno@v1
+              with:
+                  deno-version: v1.x
+            - name: Test
+              run: deno task test
+    check:
+        name: Check
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
+            - uses: denoland/setup-deno@v1
+              with:
+                  deno-version: v1.x
+            - name: Check
+              run: deno task check
