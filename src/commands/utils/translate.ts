@@ -63,7 +63,7 @@ export default new TaprisCommand<TranslateLocale>()
         try {
             const res = await gtr.translate(text, {
                 targetLang: to,
-                sourceLang: from ? from : "auto",
+                sourceLang: from || "auto",
             });
 
             await interaction.defer();
