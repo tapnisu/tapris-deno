@@ -19,7 +19,7 @@ Project is named after Tapris Sugarbell Chisaki from Gabriel DropOut manga.
 
 ## Invite
 
-You can invite the bot by [this link](https://tapris.tapni.su/invite).
+You can invite the bot by [this link](https://tapris.tapnisu.ru/invite).
 
 This bot uses slash commands.
 
