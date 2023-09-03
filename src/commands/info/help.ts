@@ -40,7 +40,7 @@ export default new TaprisCommand<HelpLocale>()
   })
   .setRun((client, interaction, locale) => {
     const request: string = interaction.options.find(
-      (option) => option.name == "command"
+      (option) => option.name == "command",
     )?.value;
 
     if (request) {
@@ -90,7 +90,7 @@ export default new TaprisCommand<HelpLocale>()
                   (option: ApplicationCommandOptionBase) =>
                     `<${option.required ? locale.required : ""}${
                       option.name
-                    } [${option.description}]>`
+                    } [${option.description}]>`,
                 )
                 .join(" ")
             : ""
