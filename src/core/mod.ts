@@ -4,7 +4,6 @@ import { EventsCollection } from "@events/mod.ts";
 import { TaprisCommand, TaprisComponent, TaprisEvent } from "@framework/mod.ts";
 import { Api, Config, TaprisDbClient } from "@utils/mod.ts";
 import { Client, Collection, GatewayIntents } from "harmony/mod.ts";
-import { serve } from "std/http/server.ts";
 
 export class TaprisClient extends Client {
   public commands: Collection<string, TaprisCommand>;
@@ -20,7 +19,7 @@ export class TaprisClient extends Client {
     config: Config,
     commands: TaprisCommand[],
     events: TaprisEvent[],
-    components: TaprisComponent[],
+    components: TaprisComponent[]
   ) {
     super();
 
@@ -36,7 +35,7 @@ export class TaprisClient extends Client {
 
     this.events.array().forEach((event) =>
       // deno-lint-ignore no-explicit-any
-      this.on(event.name, event.run.bind(null, this) as any),
+      this.on(event.name, event.run.bind(null, this) as any)
     );
 
     this.db = new TaprisDbClient();
@@ -57,9 +56,14 @@ export class TaprisClient extends Client {
       GatewayIntents.GUILD_PRESENCES,
     ]);
 
-    await serve(new Api(this).fetch, {
-      port: Number(this.serverPort),
-    });
+    const api = new Api(this);
+
+    Deno.serve(
+      {
+        port: Number(this.serverPort),
+      },
+      api.fetch as Deno.ServeHandler
+    );
   }
 
   /**
