@@ -51,6 +51,8 @@ export class CommandsCollection extends Collection<string, TaprisCommand> {
   constructor(commands: TaprisCommand[]) {
     super();
 
-    commands.forEach((command) => this.set(command.name, command));
+    commands
+      .filter((command) => !command.disabled)
+      .forEach((command) => this.set(command.name, command));
   }
 }

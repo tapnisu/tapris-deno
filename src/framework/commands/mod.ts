@@ -11,7 +11,7 @@ export type LocaleNames = "en" | "ru";
 export type CommandRun<T> = (
   client: TaprisClient,
   interaction: SlashCommandInteraction,
-  locale: T,
+  locale: T
 ) => Promise<ApplicationCommandInteraction | undefined>;
 
 /**
@@ -24,6 +24,7 @@ export class TaprisCommand<T = undefined> {
   guildOnly = false;
   locales: Record<LocaleNames, T> | undefined;
   memberPermissions!: PermissionResolvable;
+  disabled = false;
   run!: CommandRun<T>;
 
   /**
@@ -109,7 +110,7 @@ export class TaprisCommand<T = undefined> {
    * @returns this
    */
   public setMemberPermissions(
-    memberPermissions: PermissionResolvable,
+    memberPermissions: PermissionResolvable
   ): TaprisCommand<T> {
     this.memberPermissions = memberPermissions;
 
@@ -125,5 +126,14 @@ export class TaprisCommand<T = undefined> {
     const { memberPermissions, locales, ...commandJson } = this;
 
     return commandJson;
+  }
+
+  /**
+   * Disable command
+   */
+  public disable() {
+    this.disabled = true;
+
+    return this;
   }
 }
