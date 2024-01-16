@@ -2,7 +2,7 @@ import { CommandsCollection } from "@commands/mod.ts";
 import { ComponentsCollection } from "@components/mod.ts";
 import { EventsCollection } from "@events/mod.ts";
 import { TaprisCommand, TaprisComponent, TaprisEvent } from "@framework/mod.ts";
-import { Api, Config, TaprisDbClient } from "@utils/mod.ts";
+import { Config, TaprisDbClient } from "@utils/mod.ts";
 import { Client, Collection, GatewayIntents } from "harmony/mod.ts";
 
 export class TaprisClient extends Client {
@@ -55,15 +55,6 @@ export class TaprisClient extends Client {
       GatewayIntents.GUILD_VOICE_STATES,
       GatewayIntents.GUILD_PRESENCES,
     ]);
-
-    const api = new Api(this);
-
-    Deno.serve(
-      {
-        port: Number(this.serverPort),
-      },
-      api.fetch as Deno.ServeHandler,
-    );
   }
 
   /**

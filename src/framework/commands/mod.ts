@@ -11,7 +11,7 @@ export type LocaleNames = "en" | "ru";
 export type CommandRun<T> = (
   client: TaprisClient,
   interaction: SlashCommandInteraction,
-  locale: T
+  locale: T,
 ) => Promise<ApplicationCommandInteraction | undefined>;
 
 /**
@@ -110,7 +110,7 @@ export class TaprisCommand<T = undefined> {
    * @returns this
    */
   public setMemberPermissions(
-    memberPermissions: PermissionResolvable
+    memberPermissions: PermissionResolvable,
   ): TaprisCommand<T> {
     this.memberPermissions = memberPermissions;
 
