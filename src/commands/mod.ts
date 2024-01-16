@@ -17,7 +17,7 @@ import setLanguage from "@commands/utils/setLanguage.ts";
 import translate from "@commands/utils/translate.ts";
 import user from "@commands/utils/user.ts";
 import { TaprisCommand } from "@framework/mod.ts";
-import { Collection } from "https://deno.land/x/harmony@v2.8.0/mod.ts";
+import { Collection } from "harmony/mod.ts";
 
 export const commands = [
   genshinCodes,
