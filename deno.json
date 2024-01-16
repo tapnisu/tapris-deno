@@ -21,9 +21,8 @@
     "gtr/": "https://deno.land/x/gtr@v0.0.1/",
     "harmony/": "https://deno.land/x/harmony@v2.9.0/",
     "postgres/": "https://deno.land/x/postgres@v0.17.0/",
-    "hono/": "https://deno.land/x/hono@v3.5.7/",
-    "ky": "https://esm.sh/ky@1.0.0",
-    "std/": "https://deno.land/std@0.201.0/"
+    "ky": "https://esm.sh/ky@1.2.0",
+    "std/": "https://deno.land/std@0.212.0/"
   },
   "lock": false
 }
