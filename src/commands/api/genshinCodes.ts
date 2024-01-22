@@ -50,10 +50,11 @@ export default new TaprisCommand<GenshinCodesLocale>()
       description: "Вы можете активировать их в игре и получить награды!",
     },
   })
+  .disable()
   .setRun(async (client, interaction, locale) => {
     const res: CodesResponse = await ky
       .get(
-        "https://raw.githubusercontent.com/ataraxyaffliction/gipn-json/main/gipn.json",
+        "https://raw.githubusercontent.com/ataraxyaffliction/gipn-json/main/gipn.json"
       )
       .json();
 
@@ -70,7 +71,7 @@ export default new TaprisCommand<GenshinCodesLocale>()
           code.reward_array
             .map((reward) => `${reward.count} ${reward.name}`)
             .join("\n"),
-          true,
+          true
         );
       }
     });
