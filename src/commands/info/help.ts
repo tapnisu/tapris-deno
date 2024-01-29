@@ -1,10 +1,5 @@
 import { TaprisCommand } from "@framework/mod.ts";
-import {
-  ApplicationCommandOption,
-  ApplicationCommandOptionBase,
-  ApplicationCommandOptionType,
-  Embed,
-} from "harmony/mod.ts";
+import { ApplicationCommandOptionType, Embed } from "harmony/mod.ts";
 
 interface HelpLocale {
   isNotAValidCommand: (request: string) => string;
@@ -40,7 +35,7 @@ export default new TaprisCommand<HelpLocale>()
   })
   .setRun((client, interaction, locale) => {
     const request: string = interaction.options.find(
-      (option) => option.name == "command",
+      (option) => option.name == "command"
     )?.value;
 
     if (request) {
@@ -59,17 +54,16 @@ export default new TaprisCommand<HelpLocale>()
 
       const embed = new Embed()
         .setColor(client.botColor)
-        .setTitle(command.name);
+        .setTitle(command.name)
+        .addFields(
+          ...command.options.map((option) => ({
+            name: option.name,
+            value: option.description,
+            inline: true,
+          }))
+        );
 
       if (command.description) embed.setDescription(command.description);
-
-      command.options.forEach((option: ApplicationCommandOption) => {
-        embed.addFields({
-          name: option.name,
-          value: option.description,
-          inline: true,
-        });
-      });
 
       return interaction.reply({ embeds: [embed] });
     }
@@ -78,27 +72,25 @@ export default new TaprisCommand<HelpLocale>()
       .setTitle(client.user!.username)
       .setThumbnail(client.user!.avatarURL())
       .setColor(client.botColor)
-      .setDescription(locale.serverMember(interaction.guild?.name));
-
-    client.commands.forEach((command: TaprisCommand) => {
-      embed.addFields({
-        name: `/${command.name} ${
-          command.options
-            ? Array.prototype.map
-                .call(
-                  command.options,
-                  (option: ApplicationCommandOptionBase) =>
-                    `<${option.required ? locale.required : ""}${
-                      option.name
-                    } [${option.description}]>`,
-                )
-                .join(" ")
-            : ""
-        }`,
-        value: command.description,
-        inline: true,
-      });
-    });
+      .setDescription(locale.serverMember(interaction.guild?.name))
+      .addFields(
+        ...client.commands.map((command) => ({
+          name: `/${command.name} ${
+            command.options
+              ? command.options
+                  .map(
+                    (option) =>
+                      `<${option.required ? locale.required : ""}${
+                        option.name
+                      } [${option.description}]>`
+                  )
+                  .join(" ")
+              : ""
+          }`,
+          value: command.description,
+          inline: true,
+        }))
+      );
 
     return interaction.reply({ embeds: [embed] });
   });
