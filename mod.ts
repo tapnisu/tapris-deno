@@ -3,6 +3,10 @@ import { components } from "@components/mod.ts";
 import { events } from "@events/mod.ts";
 import { TaprisClient, TaprisCommand, TaprisEvent, env } from "./src/mod.ts";
 
+Deno.cron("ping", "* * * * *", () => {
+  console.log("Ping!!!");
+});
+
 if (import.meta.main)
   await new TaprisClient(
     {
@@ -16,7 +20,7 @@ if (import.meta.main)
     },
     commands as TaprisCommand[],
     events as TaprisEvent[],
-    components,
+    components
   ).start();
 
 export * from "./src/mod.ts";
