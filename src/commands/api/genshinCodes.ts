@@ -8,6 +8,8 @@ import {
 import ky from "ky";
 
 const ACTIVATE_GIFT_URL = "https://genshin.hoyoverse.com/en/gift";
+const API_URL =
+  "https://raw.githubusercontent.com/ataraxyaffliction/gipn-json/main/gipn.json";
 
 export interface CodesResponse {
   CODES: Code[];
@@ -52,11 +54,7 @@ export default new TaprisCommand<GenshinCodesLocale>()
   })
   .disable()
   .setRun(async (client, interaction, locale) => {
-    const res: CodesResponse = await ky
-      .get(
-        "https://raw.githubusercontent.com/ataraxyaffliction/gipn-json/main/gipn.json"
-      )
-      .json();
+    const res: CodesResponse = await ky.get(API_URL).json();
 
     const embed = new Embed()
       .setColor(client.botColor)
@@ -71,7 +69,7 @@ export default new TaprisCommand<GenshinCodesLocale>()
           code.reward_array
             .map((reward) => `${reward.count} ${reward.name}`)
             .join("\n"),
-          true
+          true,
         );
       }
     });

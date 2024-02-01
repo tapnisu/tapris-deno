@@ -52,8 +52,9 @@ export default new TaprisCommand<TranslateLocale>()
       (option) => option.name == "from",
     )?.value;
 
-    const to: string = interaction.options.find((option) => option.name == "to")
-      ?.value;
+    const to: string = interaction.options.find(
+      (option) => option.name == "to",
+    )?.value;
 
     const text: string = interaction.options.find(
       (option) => option.name == "text",

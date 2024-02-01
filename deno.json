@@ -6,9 +6,8 @@
     "lint": "deno lint",
     "test": "deno test",
     "cache": "deno cache mod.ts",
-    "fmt": "deno run --allow-read --allow-write --allow-sys --allow-env npm:prettier . --write",
-    "format": "deno run --allow-read --allow-write --allow-sys --allow-env npm:prettier . --write",
-    "compile": "deno compile --unstable --allow-env --allow-net --allow-read mod.ts"
+    "fmt": "deno run -A npm:@biomejs/biome format --check .",
+    "compile": "deno compile --unstable -A mod.ts"
   },
   "imports": {
     "@commands/": "./src/commands/",

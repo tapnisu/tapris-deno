@@ -38,8 +38,9 @@ export default new TaprisCommand<coinLocale>()
     },
   })
   .setRun((client, interaction, locale) => {
-    const choice = interaction.options.find((option) => option.name == "choice")
-      ?.value;
+    const choice = interaction.options.find(
+      (option) => option.name == "choice",
+    )?.value;
 
     const winner: Choice = choices[Math.floor(Math.random() * 2)];
 

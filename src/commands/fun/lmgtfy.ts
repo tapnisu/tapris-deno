@@ -29,8 +29,9 @@ export default new TaprisCommand<LmgtfyLocale>()
     },
   })
   .setRun((client, interaction, locale) => {
-    const query = interaction.options.find((option) => option.name == "query")
-      ?.value;
+    const query = interaction.options.find(
+      (option) => option.name == "query",
+    )?.value;
 
     const link = `https://lmgtfy.app/?q=${encodeURI(query.replace(/ /g, "+"))}`;
 

@@ -20,7 +20,7 @@ if (import.meta.main)
     },
     commands as TaprisCommand[],
     events as TaprisEvent[],
-    components
+    components,
   ).start();
 
 export * from "./src/mod.ts";
