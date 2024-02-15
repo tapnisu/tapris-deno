@@ -19,9 +19,9 @@
     "canvas/": "https://deno.land/x/canvas@v1.4.1/",
     "gtr/": "https://deno.land/x/gtr@v0.0.1/",
     "harmony/": "https://deno.land/x/harmony@v2.9.0/",
-    "postgres/": "https://deno.land/x/postgres@v0.17.0/",
+    "postgres/": "https://deno.land/x/postgres@v0.18.1/",
     "ky": "https://esm.sh/ky@1.2.0",
-    "std/": "https://deno.land/std@0.212.0/"
+    "std/": "https://deno.land/std@0.215.0/"
   },
   "lock": false
 }
