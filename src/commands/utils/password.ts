@@ -62,6 +62,7 @@ const command = new TaprisCommand<PasswordLocale>()
     return interaction.reply({
       embeds: [embed],
       components: [buttonsRow],
+      ephemeral: true
     });
   });
 
