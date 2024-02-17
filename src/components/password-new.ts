@@ -14,12 +14,12 @@ export default new TaprisComponent()
     await interaction.defer();
 
     const passwordLength = Number(
-      interaction.data.custom_id.replace(/password_/, ""),
+      interaction.data.custom_id.replace(/password_/, "")
     );
 
     const locales = await client.db.selectLocale(
       commandLocales,
-      interaction.guild?.id,
+      interaction.guild?.id
     );
 
     const buttonsRow: ActionRowComponent = {
@@ -48,5 +48,6 @@ export default new TaprisComponent()
     interaction.editResponse({
       embeds: [embed],
       components: [buttonsRow],
+      ephemeral: true,
     });
   });
