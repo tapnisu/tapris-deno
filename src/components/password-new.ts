@@ -9,7 +9,7 @@ import {
 } from "harmony/mod.ts";
 
 export default new TaprisComponent()
-  .setCustomId(/password_(.*)/gi)
+  .setCustomId(/password_(\d+)/)
   .setRun(async (client, interaction) => {
     await interaction.defer();
 
