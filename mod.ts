@@ -9,18 +9,10 @@ Deno.cron("ping", "* * * * *", () => {
 
 if (import.meta.main)
   await new TaprisClient(
-    {
-      token: env.BOT_TOKEN,
-      botColor: env.BOT_COLOR,
-
-      serverPort: env.SERVER_PORT,
-      authorId: env.AUTHOR_ID,
-
-      mode: env.MODE,
-    },
+    env,
     commands as TaprisCommand[],
     events as TaprisEvent[],
-    components,
+    components
   ).start();
 
 export * from "./src/mod.ts";

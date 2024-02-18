@@ -2,7 +2,7 @@ import { CommandsCollection } from "@commands/mod.ts";
 import { ComponentsCollection } from "@components/mod.ts";
 import { EventsCollection } from "@events/mod.ts";
 import { TaprisCommand, TaprisComponent, TaprisEvent } from "@framework/mod.ts";
-import { Config, TaprisDbClient } from "@utils/mod.ts";
+import { Env, TaprisDbClient } from "@utils/mod.ts";
 import { Client, Collection, GatewayIntents } from "harmony/mod.ts";
 
 export class TaprisClient extends Client {
@@ -13,13 +13,12 @@ export class TaprisClient extends Client {
   public botColor: string;
   public db: TaprisDbClient;
   public authorId: string;
-  public serverPort: string;
 
   constructor(
-    config: Config,
+    env: Env,
     commands: TaprisCommand[],
     events: TaprisEvent[],
-    components: TaprisComponent[],
+    components: TaprisComponent[]
   ) {
     super();
 
@@ -27,15 +26,14 @@ export class TaprisClient extends Client {
     this.components = new ComponentsCollection(components);
     this.events = new EventsCollection(events);
 
-    this.botColor = config.botColor;
-    this.authorId = config.authorId;
+    this.botColor = env.BOT_COLOR;
+    this.authorId = env.AUTHOR_ID;
 
-    this.token = config.token;
-    this.serverPort = config.serverPort;
+    this.token = env.BOT_TOKEN;
 
     this.events.array().forEach((event) =>
       // deno-lint-ignore no-explicit-any
-      this.on(event.name, event.run.bind(null, this) as any),
+      this.on(event.name, event.run.bind(null, this) as any)
     );
 
     this.db = new TaprisDbClient();
