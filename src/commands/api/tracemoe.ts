@@ -6,7 +6,6 @@ import {
   Embed,
   MessageComponentType,
 } from "harmony/mod.ts";
-import ky from "ky";
 
 interface SearchResult {
   frameCount: number;
@@ -62,23 +61,11 @@ export default new TaprisCommand<TracemoeLocales>()
 
     await interaction.defer();
 
-    const req = await ky
-      .get(`https://api.trace.moe/search?url=${encodeURI(url)}`)
-      .catch(() => {
-        interaction.reply({
-          embeds: [
-            new Embed()
-              .setColor(client.botColor)
-              .setTitle(locale.frameNotFound),
-          ],
-        });
-      });
+    const res = await fetch(`https://api.trace.moe/search?url=${encodeURI(url)}`);
+    const data: SearchResult = await res.json();
 
-    if (!req) return;
-
-    const res: SearchResult = await req.json();
-
-    if (res.result.length === 0) {
+    if (!data) return;
+    if (data.result.length === 0) {
       return interaction.reply({
         embeds: [
           new Embed().setColor(client.botColor).setTitle(locale.frameNotFound),
@@ -87,7 +74,7 @@ export default new TaprisCommand<TracemoeLocales>()
       });
     }
 
-    const frame = res.result[0];
+    const frame = data.result[0];
 
     const embed = new Embed()
       .setColor(client.botColor)

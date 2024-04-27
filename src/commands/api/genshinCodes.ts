@@ -5,7 +5,6 @@ import {
   Embed,
   MessageComponentType,
 } from "harmony/mod.ts";
-import ky from "ky";
 
 const ACTIVATE_GIFT_URL = "https://genshin.hoyoverse.com/en/gift";
 const API_URL =
@@ -54,7 +53,8 @@ export default new TaprisCommand<GenshinCodesLocale>()
   })
   .disable()
   .setRun(async (client, interaction, locale) => {
-    const res: CodesResponse = await ky.get(API_URL).json();
+    const res = await fetch(API_URL);
+    const data: CodesResponse = await res.json();
 
     const embed = new Embed()
       .setColor(client.botColor)
@@ -62,7 +62,7 @@ export default new TaprisCommand<GenshinCodesLocale>()
       .setDescription(locale.description)
       .setURL(ACTIVATE_GIFT_URL);
 
-    res.CODES.forEach((code: Code) => {
+    data.CODES.forEach((code: Code) => {
       if (!code.is_expired) {
         embed.addField(
           code.code,

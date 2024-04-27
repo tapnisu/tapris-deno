@@ -6,7 +6,6 @@ import {
   Embed,
   MessageComponentType,
 } from "harmony/mod.ts";
-import ky from "ky";
 
 interface SearchResult {
   id: string;
@@ -49,11 +48,10 @@ export default new TaprisCommand<MangaLocales>()
       (option) => option.name == "query",
     )?.value;
 
-    const res: SearchResult[] = await ky
-      .get(`https://manga.deno.dev/api/search?q=${encodeURI(query)}`)
-      .json();
+    const res = await fetch(`https://manga.deno.dev/api/search?q=${encodeURI(query)}`);
+    const data: SearchResult[] = await res.json();
 
-    if (res.length === 0) {
+    if (data.length === 0) {
       return interaction.reply({
         embeds: [
           new Embed().setColor(client.botColor).setTitle(locale.mangaNotFound),
@@ -64,22 +62,22 @@ export default new TaprisCommand<MangaLocales>()
 
     const embed = new Embed()
       .setColor(client.botColor)
-      .setTitle(res[0].name)
+      .setTitle(data[0].name)
       .addFields({
         name: locale.lastChapter,
-        value: res[0].lastChapter,
+        value: data[0].lastChapter,
         inline: true,
       })
-      .setImage(res[0].thumbnail)
-      .setURL(res[0].url)
-      .setAuthor({ name: res[0].author });
+      .setImage(data[0].thumbnail)
+      .setURL(data[0].url)
+      .setAuthor({ name: data[0].author });
 
     const buttonsRow: ActionRowComponent = {
       type: MessageComponentType.ACTION_ROW,
       components: [
         {
           type: MessageComponentType.BUTTON,
-          url: res[0].url,
+          url: data[0].url,
           label: locale.readManga,
           style: ButtonStyle.LINK,
         },
