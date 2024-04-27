@@ -61,7 +61,9 @@ export default new TaprisCommand<TracemoeLocales>()
 
     await interaction.defer();
 
-    const res = await fetch(`https://api.trace.moe/search?url=${encodeURI(url)}`);
+    const res = await fetch(
+      `https://api.trace.moe/search?url=${encodeURI(url)}`,
+    );
     const data: SearchResult = await res.json();
 
     if (!data) return;

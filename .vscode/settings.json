@@ -2,5 +2,5 @@
   "deno.enable": true,
   "deno.lint": true,
   "deno.unstable": true,
-  "editor.defaultFormatter": "biomejs.biome"
+  "editor.defaultFormatter": "denoland.vscode-deno"
 }

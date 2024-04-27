@@ -21,7 +21,9 @@ export default new TaprisEvent<"interactionCreate">()
         });
       }
 
-      if (!interaction.member?.permissions.has(command.memberPermissions, true))
+      if (
+        !interaction.member?.permissions.has(command.memberPermissions, true)
+      ) {
         return await interaction.reply({
           embeds: [
             new Embed()
@@ -32,6 +34,7 @@ export default new TaprisEvent<"interactionCreate">()
           ],
           ephemeral: true,
         });
+      }
 
       const locale = await client.db.selectLocale(
         command.locales,
@@ -47,7 +50,7 @@ export default new TaprisEvent<"interactionCreate">()
 
     if (interaction.isMessageComponent()) {
       const component = client.components.find((component) =>
-        component.customId.test(interaction.data.custom_id),
+        component.customId.test(interaction.data.custom_id)
       );
 
       if (!component) return;

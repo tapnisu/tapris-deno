@@ -48,7 +48,9 @@ export default new TaprisCommand<MangaLocales>()
       (option) => option.name == "query",
     )?.value;
 
-    const res = await fetch(`https://manga.deno.dev/api/search?q=${encodeURI(query)}`);
+    const res = await fetch(
+      `https://manga.deno.dev/api/search?q=${encodeURI(query)}`,
+    );
     const data: SearchResult[] = await res.json();
 
     if (data.length === 0) {

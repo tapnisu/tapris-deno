@@ -6,7 +6,7 @@
     "lint": "deno lint",
     "test": "deno test",
     "cache": "deno cache mod.ts",
-    "fmt": "deno run -A npm:@biomejs/biome format --check .",
+    "fmt": "deno fmt",
     "compile": "deno compile --unstable -A mod.ts"
   },
   "imports": {

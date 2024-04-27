@@ -69,12 +69,13 @@ export default new TaprisCommand<InfoLocale>()
         },
       );
 
-    if (Deno.memoryUsage)
+    if (Deno.memoryUsage) {
       embed.addField({
         name: locale.memoryUsage,
         value: formatSize(Deno.memoryUsage().rss),
         inline: true,
       });
+    }
 
     return interaction.reply({ embeds: [embed] });
   });

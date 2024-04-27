@@ -14,8 +14,8 @@ export type EventRun<T extends EventName> = (
   ...args: EventArgs<T>
 ) =>
   | Promise<
-      ApplicationCommandInteraction | Interaction | Message | undefined | void
-    >
+    ApplicationCommandInteraction | Interaction | Message | undefined | void
+  >
   | Message
   | undefined
   | void;

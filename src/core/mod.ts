@@ -18,7 +18,7 @@ export class TaprisClient extends Client {
     env: Env,
     commands: TaprisCommand[],
     events: TaprisEvent[],
-    components: TaprisComponent[]
+    components: TaprisComponent[],
   ) {
     super();
 

@@ -27,8 +27,7 @@ export default new TaprisCommand<coinLocale>()
     en: {
       winner: (choice: Choice) =>
         `Got ${choice == choices[0] ? "coin" : "tail"}`,
-      youWonLost: (winOrNot: boolean) =>
-        winOrNot ? "You won!" : "You lost! :(",
+      youWonLost: (winOrNot: boolean) => winOrNot ? "You won!" : "You lost! :(",
     },
     ru: {
       winner: (choice: Choice) =>
