@@ -18,7 +18,7 @@
     "@utils/": "./src/utils/",
     "canvas/": "https://deno.land/x/canvas@v1.4.1/",
     "gtr/": "https://deno.land/x/gtr@v0.0.1/",
-    "harmony/": "https://deno.land/x/harmony@v2.9.0/",
+    "harmony/": "https://deno.land/x/harmony@v2.9.1/",
     "std/": "https://deno.land/std@0.223.0/"
   },
   "lock": false
